@@ -3,81 +3,149 @@ import Link from 'next/link';
 import { getAllPosts } from '@/data/blog-posts';
 
 export const metadata: Metadata = {
-  title: 'The Word and The Work | Alpha Omega Strength Team',
+  title: 'The Word and The Work — Journal | Alpha Omega Strength Team',
   description:
     'Training journal from Alpha Omega Strength Team. Faith, fitness, and the pursuit of strength with purpose.',
 };
 
 export default function BlogPage() {
   const posts = getAllPosts();
+  const [featured, ...remaining] = posts;
 
   return (
-    <section className="py-12 md:py-20">
-      <div className="mx-auto max-w-[1440px] px-6">
-        {/* Section tag */}
-        <p className="font-mono text-[11px] uppercase tracking-widest text-white/40 mb-4">
-          TRAINING JOURNAL
-        </p>
+    <section className="pb-24">
+      {/* ── Hero ─────────────────────────────────────────── */}
+      <div className="border-b border-white/10">
+        <div className="mx-auto max-w-[1200px] px-8 md:px-16 pt-20 pb-16 text-center">
+          <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/40 mb-6">
+            // THE JOURNAL
+          </p>
+          <h1 className="font-sans text-5xl md:text-6xl font-black leading-[1.05] tracking-tight mb-6">
+            THE WORD AND THE WORK
+          </h1>
+          <p className="font-sans text-base md:text-lg font-light text-white/50 max-w-[640px] mx-auto leading-relaxed">
+            Faith. Fitness. Purpose. Writing from the front lines of training and walking with God.
+          </p>
+        </div>
+      </div>
 
-        {/* Section label */}
-        <p className="separator mb-6">THE JOURNAL</p>
-
-        {/* Heading */}
-        <h1 className="font-sans text-[40px] md:text-[56px] font-900 leading-[1.1] tracking-tight mb-16">
-          THE WORD AND THE WORK
-        </h1>
-
-        {/* Posts */}
-        <div className="mx-auto max-w-[800px]">
-          {posts.map((post, index) => (
-            <article
-              key={post.slug}
-              className={`py-10 ${index < posts.length - 1 ? 'border-b border-white/10' : ''}`}
-            >
-              {/* Date */}
-              <time className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-3">
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-
-              {/* Title */}
-              <h2 className="mb-3">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="font-sans text-[24px] font-700 leading-tight hover:text-white/80 transition-colors"
-                >
-                  {post.title}
-                </Link>
-              </h2>
-
-              {/* Excerpt */}
-              <p className="font-sans text-[15px] font-300 text-white/70 leading-relaxed mb-4">
-                {post.excerpt}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-[10px] uppercase tracking-widest text-white/50 border border-white/20 px-2 py-1"
-                  >
-                    {tag}
-                  </span>
-                ))}
+      {/* ── Posts Grid ───────────────────────────────────── */}
+      <div className="mx-auto max-w-[1200px] px-8 md:px-16 pt-16">
+        {/* Featured Post (latest) */}
+        {featured && (
+          <Link href={`/blog/${featured.slug}`} className="group block mb-16">
+            <article>
+              {/* Hero image placeholder */}
+              <div className="relative aspect-[21/9] bg-gray-900 overflow-hidden mb-8">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                  <div className="flex flex-wrap items-center gap-3 mb-4">
+                    {featured.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/60 border border-white/20 px-2 py-1"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h2 className="font-sans text-3xl md:text-4xl lg:text-5xl font-black leading-[1.1] tracking-tight mb-3 group-hover:text-white/90 transition-colors">
+                    {featured.title}
+                  </h2>
+                  <p className="font-sans text-base md:text-lg font-light text-white/60 max-w-[720px] leading-relaxed line-clamp-2">
+                    {featured.excerpt}
+                  </p>
+                </div>
               </div>
 
-              {/* Read More */}
-              <Link
-                href={`/blog/${post.slug}`}
-                className="font-mono text-[11px] uppercase tracking-widest text-white/60 hover:text-white transition-colors"
-              >
-                Read More →
-              </Link>
+              {/* Meta row */}
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <time className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/40">
+                    {new Date(featured.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
+                  <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/30">
+                    ·
+                  </span>
+                  <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/40">
+                    By {featured.author}
+                  </span>
+                </div>
+                <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/50 group-hover:text-white transition-colors">
+                  Read More →
+                </span>
+              </div>
             </article>
+          </Link>
+        )}
+
+        {/* Divider */}
+        <div className="border-t border-white/10 mb-16" />
+
+        {/* Remaining posts — 2-col grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+          {remaining.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
+              <article>
+                {/* Hero image placeholder */}
+                <div className="relative aspect-[16/9] bg-gray-900 overflow-hidden mb-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="font-sans text-lg md:text-xl font-bold leading-tight text-white group-hover:text-white/90 transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                  </div>
+                  {/* Hover lift */}
+                  <div className="absolute inset-0 group-hover:-translate-y-1 transition-transform duration-300" />
+                </div>
+
+                {/* Date */}
+                <time className="block font-mono text-[12px] uppercase tracking-[0.15em] text-white/40 mb-3">
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+
+                {/* Title */}
+                <h3 className="font-sans text-xl font-bold leading-tight mb-3 group-hover:text-white/80 transition-colors">
+                  {post.title}
+                </h3>
+
+                {/* Excerpt */}
+                <p className="font-sans text-base font-light text-white/60 leading-relaxed line-clamp-3 mb-4">
+                  {post.excerpt}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/50 border border-white/10 px-2 py-1"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Author + Read More */}
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/40">
+                    By {post.author}
+                  </span>
+                  <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/50 group-hover:text-white transition-colors">
+                    Read More →
+                  </span>
+                </div>
+              </article>
+            </Link>
           ))}
         </div>
       </div>
