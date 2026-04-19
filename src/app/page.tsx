@@ -322,11 +322,11 @@ export default function Home() {
         </motion.div>
 
         <div className="relative max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20 py-32 md:py-48">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
             <motion.span
               className="font-mono text-[13px] tracking-[0.25em] uppercase text-white/30 block mb-8"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
@@ -348,7 +348,7 @@ export default function Home() {
             </motion.h2>
 
             <motion.p
-              className="mt-14 font-sans text-lg font-light text-white/60 leading-8 max-w-2xl"
+              className="mt-14 font-sans text-lg font-light text-white/60 leading-8 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -362,7 +362,7 @@ export default function Home() {
             </motion.p>
 
             <motion.blockquote
-              className="mt-14 border-l-2 border-white/15 pl-10 italic text-base text-white/40 leading-8 max-w-xl"
+              className="mt-14 border-l-2 border-white/15 pl-10 italic text-base text-white/40 leading-8 max-w-xl mx-auto text-left"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -584,11 +584,11 @@ export default function Home() {
         </motion.div>
 
         <div className="relative max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
             <motion.span
               className="font-mono text-[12px] tracking-[0.2em] text-white/40 uppercase block mb-8"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >

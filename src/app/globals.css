@@ -42,11 +42,7 @@
   }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Tailwind v4 @import "tailwindcss" includes preflight reset — no manual * reset needed */
 
 html {
   background-color: #000000;
@@ -73,7 +69,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
