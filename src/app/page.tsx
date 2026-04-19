@@ -97,31 +97,15 @@ export default function Home() {
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/80" />
 
-        {/* Floating decorative crosses */}
+        {/* Subtle thin cross — static, elegant, fades in */}
         <motion.div
-          className="absolute top-[15%] right-[10%] text-white/[0.04]"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        >
-          <CrossIcon className="w-32 h-32 md:w-48 md:h-48" />
-        </motion.div>
-        <motion.div
-          className="absolute bottom-[20%] left-[5%] text-white/[0.03]"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-        >
-          <CrossIcon className="w-20 h-20 md:w-32 md:h-32" />
-        </motion.div>
-
-        {/* Top-left tag */}
-        <motion.span
-          className="absolute top-8 left-8 md:left-16 font-mono text-[12px] tracking-[0.2em] uppercase text-white/40"
+          className="absolute top-[18%] right-[12%] text-white/[0.05] pointer-events-none hidden md:block"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1.2 }}
+          transition={{ duration: 3, delay: 2 }}
         >
-          // ALPHA OMEGA STRENGTH TEAM
-        </motion.span>
+          <ThinCross className="w-16 h-20" />
+        </motion.div>
 
         {/* Hero content */}
         <div className="relative z-10 flex flex-col items-center text-center px-8 md:px-16">

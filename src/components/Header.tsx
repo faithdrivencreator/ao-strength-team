@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useCart } from "@/contexts/CartContext";
 
+const ANNOUNCEMENT_HEIGHT = 36; // matches the announcement bar height
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,30 +32,38 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300 border-b border-white/10"
-      style={{ backgroundColor: scrolled ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)" }}
+      className="fixed left-0 right-0 z-50 transition-all duration-300 border-b border-white/10"
+      style={{
+        top: ANNOUNCEMENT_HEIGHT,
+        backgroundColor: scrolled ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)",
+      }}
     >
-      <div className="mx-auto max-w-[1440px] px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="text-white font-sans font-black text-lg tracking-[-0.025em] uppercase">
-          ALPHA OMEGA
-        </Link>
+      <div className="w-full px-8 md:px-16 lg:px-20 h-14 flex items-center">
+        {/* Logo — fixed width so nav centers properly */}
+        <div className="w-40">
+          <Link href="/" className="text-white font-sans font-black text-base tracking-[-0.025em] uppercase whitespace-nowrap">
+            ALPHA OMEGA
+          </Link>
+        </div>
 
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Nav — centered */}
+        <nav className="hidden md:flex items-center justify-center gap-10 flex-1">
           {["SHOP", "JOURNAL", "CONTACT"].map((item) => (
             <Link
               key={item}
-              href={`/${item.toLowerCase()}`}
-              className="font-mono text-[11px] tracking-[0.1em] text-white/70 uppercase transition-colors duration-150 hover:text-white"
+              href={item === "JOURNAL" ? "/blog" : `/${item.toLowerCase()}`}
+              className="font-mono text-[11px] tracking-[0.15em] text-white/60 uppercase transition-colors duration-200 hover:text-white"
             >
               {item}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        {/* Right side — fixed width to balance logo */}
+        <div className="w-40 flex items-center justify-end gap-4">
           <button
             onClick={toggleCart}
-            className="relative text-white/70 transition-colors duration-150 hover:text-white"
+            className="relative text-white/60 transition-colors duration-200 hover:text-white"
             aria-label="Open cart"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -70,7 +80,7 @@ export default function Header() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white/70 transition-colors duration-150 hover:text-white"
+            className="md:hidden text-white/60 transition-colors duration-200 hover:text-white"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? (
@@ -90,14 +100,14 @@ export default function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 bg-black z-40">
-          <nav className="flex flex-col items-start px-6 pt-8 gap-6">
+        <div className="md:hidden fixed inset-0 top-14 bg-black z-40">
+          <nav className="flex flex-col items-start px-8 pt-10 gap-8">
             {["SHOP", "JOURNAL", "CONTACT"].map((item) => (
               <Link
                 key={item}
-                href={`/${item.toLowerCase()}`}
+                href={item === "JOURNAL" ? "/blog" : `/${item.toLowerCase()}`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-sans font-black text-2xl tracking-[-0.025em] text-white uppercase transition-colors duration-150 hover:text-white/70"
+                className="font-sans font-black text-3xl tracking-[-0.025em] text-white uppercase transition-colors duration-200 hover:text-white/60"
               >
                 {item}
               </Link>
