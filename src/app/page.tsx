@@ -78,114 +78,99 @@ export default function Home() {
     <div className="flex flex-col overflow-x-hidden">
 
       {/* ════════════════════════════════════════════════════════════
-          HERO — Full viewport, cinematic
+          HERO — Split layout (text left, image right)
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
-        <motion.div
-          className="absolute inset-0"
-          initial={{ scale: 1.0 }}
-          animate={{ scale: 1.1 }}
-          transition={{ duration: 25, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
-        >
-          <Image
-            src="/images/hero/hero-bg.png"
-            alt="Alpha Omega Strength Team"
-            fill
-            priority
-            className="object-cover object-top"
-          />
-        </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/80" />
-
-        {/* Subtle thin cross — static, elegant, fades in */}
-        <motion.div
-          className="absolute top-[18%] right-[12%] text-white/[0.05] pointer-events-none hidden md:block"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 3, delay: 2 }}
-        >
-          <ThinCross className="w-16 h-20" />
-        </motion.div>
-
-        {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-center text-center px-8 md:px-16">
-          <motion.h1
-            className="font-sans font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[96px] uppercase leading-[0.95] tracking-tight"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            BUILT FOR THE
-            <br />
-            BEGINNING.
-          </motion.h1>
-
-          <motion.h2
-            className="font-sans font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[96px] uppercase leading-[0.95] tracking-tight mt-4"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-          >
-            PROVEN AT
-            <br />
-            THE FINISH.
-          </motion.h2>
-
-          <motion.p
-            className="mt-12 font-sans text-lg md:text-xl font-light text-white/60 max-w-xl leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.9 }}
-          >
-            Performance apparel for the disciplined. From Alpha to Omega — we are
-            with you from the first step to the last rep.
-          </motion.p>
-
-          <motion.div
-            className="mt-14 flex flex-col sm:flex-row gap-5"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.1 }}
-          >
-            <Link
-              href="/shop"
-              className="bg-white text-black font-sans text-sm font-bold uppercase tracking-[0.15em] px-12 py-5 hover:bg-white/90 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+      <section className="relative min-h-screen w-full flex flex-col md:flex-row">
+        {/* Left side — black with text */}
+        <div className="relative w-full md:w-[48%] bg-black flex items-end md:items-center min-h-[50vh] md:min-h-screen">
+          <div className="relative z-10 px-8 md:px-16 lg:px-20 pb-12 md:pb-0 pt-8 md:pt-0">
+            <motion.span
+              className="font-mono text-[12px] tracking-[0.2em] uppercase text-white/40 block mb-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
             >
-              Shop New Arrivals
-            </Link>
-            <Link
-              href="#signup"
-              className="border border-white/60 text-white font-sans text-sm font-bold uppercase tracking-[0.15em] px-12 py-5 hover:bg-white/10 hover:border-white transition-all duration-300"
+              // ALPHA OMEGA STRENGTH TEAM
+            </motion.span>
+
+            <motion.h1
+              className="font-sans font-black text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl uppercase leading-[0.95] tracking-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Join the Team
-            </Link>
-          </motion.div>
+              BUILT FOR THE
+              <br />
+              BEGINNING.
+            </motion.h1>
+
+            <motion.h2
+              className="font-sans font-black text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl uppercase leading-[0.95] tracking-tight mt-3 text-white/40"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              PROVEN AT THE FINISH.
+            </motion.h2>
+
+            <motion.p
+              className="mt-10 font-sans text-base md:text-lg font-light text-white/50 max-w-md leading-relaxed"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              Performance apparel for the disciplined. From Alpha to Omega — we are
+              with you from the first step to the last rep.
+            </motion.p>
+
+            <motion.div
+              className="mt-10 flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
+            >
+              <Link
+                href="/shop"
+                className="bg-white text-black font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/90 transition-all duration-300 text-center"
+              >
+                Shop New Arrivals
+              </Link>
+              <Link
+                href="#signup"
+                className="border border-white/40 text-white font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/10 hover:border-white transition-all duration-300 text-center"
+              >
+                Join the Team
+              </Link>
+            </motion.div>
+
+            <motion.span
+              className="block mt-16 font-mono text-[11px] tracking-[0.2em] text-white/20"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.4 }}
+            >
+              EST. 2026 &nbsp;/&nbsp; 33.7490° N, 84.3880° W
+            </motion.span>
+          </div>
         </div>
 
-        {/* Bottom tag */}
-        <motion.span
-          className="absolute bottom-8 left-8 md:left-16 font-mono text-[12px] tracking-[0.2em] text-white/30"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1.4 }}
-        >
-          EST. 2026 &nbsp;/&nbsp; 33.7490° N, 84.3880° W
-        </motion.span>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 right-8 md:right-16 flex flex-col items-center gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-        >
-          <span className="font-mono text-[10px] tracking-[0.2em] text-white/30 uppercase">Scroll</span>
+        {/* Right side — hero image */}
+        <div className="relative w-full md:w-[52%] min-h-[50vh] md:min-h-screen overflow-hidden">
           <motion.div
-            className="w-px h-8 bg-white/30"
-            animate={{ scaleY: [1, 0.5, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-        </motion.div>
+            className="absolute inset-0"
+            initial={{ scale: 1.05 }}
+            animate={{ scale: 1.0 }}
+            transition={{ duration: 1.5, delay: 0.3 }}
+          >
+            <Image
+              src="/images/hero/hero-bg.png"
+              alt="Alpha Omega Strength Team — performance apparel"
+              fill
+              priority
+              className="object-cover object-top"
+            />
+          </motion.div>
+        </div>
       </section>
 
 
