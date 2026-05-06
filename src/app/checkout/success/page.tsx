@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import PurchaseTracker from '@/components/PurchaseTracker';
 
 export const metadata = {
   title: 'Order Confirmed | Alpha Omega Strength Team',
@@ -8,6 +9,7 @@ export const metadata = {
 export default function CheckoutSuccessPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center px-6 py-24 text-center">
+      <PurchaseTracker />
       <p className="mb-2 font-mono text-sm tracking-widest text-neutral-500">
         // 01
       </p>

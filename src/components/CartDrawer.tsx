@@ -1,12 +1,57 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/contexts/CartContext";
+import { trackBeginCheckout } from "@/lib/gtag";
 
 export default function CartDrawer() {
   const { items, isOpen, itemCount, subtotal, closeCart, removeItem, updateQuantity } = useCart();
+  const [checkingOut, setCheckingOut] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+
+  async function handleCheckout() {
+    if (items.length === 0 || checkingOut) return;
+    setCheckingOut(true);
+    setCheckoutError(null);
+
+    trackBeginCheckout(
+      items.map((i) => ({
+        item_id: i.productSlug,
+        item_name: i.name,
+        price: i.price,
+        quantity: i.quantity,
+        item_variant: `${i.color} / ${i.size}`,
+      })),
+      subtotal,
+    );
+
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: items.map((i) => ({
+            slug: i.productSlug,
+            color: i.color,
+            size: i.size,
+            quantity: i.quantity,
+          })),
+        }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        setCheckoutError(data.error || "Unable to start checkout. Please try again.");
+        setCheckingOut(false);
+      }
+    } catch {
+      setCheckoutError("Network error. Please try again.");
+      setCheckingOut(false);
+    }
+  }
 
   useEffect(() => {
     if (isOpen) {
@@ -149,9 +194,18 @@ export default function CartDrawer() {
                 ${subtotal.toFixed(2)}
               </span>
             </div>
-            <button className="w-full h-12 bg-white text-black font-sans font-black text-xs tracking-[0.1em] uppercase transition-colors duration-150 hover:bg-gray-200">
-              CHECKOUT
+            <button
+              onClick={handleCheckout}
+              disabled={checkingOut}
+              className="w-full h-12 bg-white text-black font-sans font-black text-xs tracking-[0.1em] uppercase transition-colors duration-150 hover:bg-gray-200 disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {checkingOut ? "PROCESSING..." : "CHECKOUT"}
             </button>
+            {checkoutError && (
+              <p className="mt-3 font-mono text-[10px] tracking-[0.1em] text-red-400 uppercase">
+                {checkoutError}
+              </p>
+            )}
           </div>
         )}
       </div>

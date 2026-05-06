@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/contexts/CartContext";
 import ProductCard from "@/components/ProductCard";
 import type { Product } from "@/data/products";
+import { trackAddToCart, trackViewItem } from "@/lib/gtag";
 
 interface ProductPageClientProps {
   product: Product;
@@ -26,10 +27,18 @@ export default function ProductPageClient({
   const selectedVariant = product.variants[selectedColorIndex];
   const isSoldOut = product.status === "sold-out";
 
+  useEffect(() => {
+    trackViewItem({
+      slug: product.slug,
+      name: product.name,
+      price: product.price,
+    });
+  }, [product.slug]); // eslint-disable-line react-hooks/exhaustive-deps
+
   function handleAddToCart() {
     if (isSoldOut || !selectedSize) return;
 
-    addItem({
+    const cartItem = {
       productSlug: product.slug,
       name: product.name,
       price: product.price,
@@ -37,8 +46,10 @@ export default function ProductPageClient({
       size: selectedSize,
       quantity,
       image: product.images[0],
-    });
+    };
 
+    addItem(cartItem);
+    trackAddToCart(cartItem);
     openCart();
   }
 
