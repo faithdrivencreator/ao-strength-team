@@ -24,8 +24,17 @@ const GATED_PREFIXES = [
   "/checkout",
 ];
 
+const PREVIEW_COOKIE = "ao-preview";
+
 export function proxy(request: NextRequest) {
   if (process.env.NEXT_PUBLIC_COMING_SOON !== "true") {
+    return NextResponse.next();
+  }
+
+  // Preview access: signed-in owner bypasses the gate entirely.
+  const previewCookie = request.cookies.get(PREVIEW_COOKIE)?.value;
+  const expectedToken = process.env.PREVIEW_COOKIE_TOKEN;
+  if (expectedToken && previewCookie === expectedToken) {
     return NextResponse.next();
   }
 
