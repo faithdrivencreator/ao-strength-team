@@ -10,14 +10,14 @@ interface ProductCardProps {
 export default function ProductCard({ product, priority = false }: ProductCardProps) {
   return (
     <Link href={`/products/${product.slug}`} className="group block border border-white/10">
-      <div className="relative aspect-[3/4] overflow-hidden">
+      <div className="relative aspect-[3/4] overflow-hidden bg-neutral-950">
         <Image
           src={product.images[0]}
           alt={product.name}
-          width={600}
-          height={800}
+          fill
           priority={priority}
-          className="object-cover w-full h-full transition-transform duration-200 group-hover:scale-[1.03]"
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          className="object-cover transition-transform duration-200 group-hover:scale-[1.03]"
         />
       </div>
       <div className="px-4 py-4">
