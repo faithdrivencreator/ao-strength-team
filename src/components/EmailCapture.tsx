@@ -6,6 +6,8 @@ export default function EmailCapture() {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const dismissed = sessionStorage.getItem("ao-email-capture-dismissed");
@@ -33,13 +35,31 @@ export default function EmailCapture() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, handleClose]);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email.trim()) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      handleClose();
-    }, 2000);
+    if (!email.trim() || submitting) return;
+    setError(null);
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim(), source: "exit-popup" }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || "Could not subscribe. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+      setSubmitted(true);
+      setTimeout(() => {
+        handleClose();
+      }, 2500);
+    } catch {
+      setError("Network error. Please try again.");
+      setSubmitting(false);
+    }
   }
 
   if (!isOpen) return null;
@@ -87,14 +107,21 @@ export default function EmailCapture() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="EMAIL ADDRESS"
                 required
-                className="w-full h-12 bg-transparent border border-white/10 px-4 font-mono text-[11px] tracking-[0.1em] text-white placeholder:text-white/20 outline-none transition-colors duration-150 focus:border-white/30"
+                disabled={submitting}
+                className="w-full h-12 bg-transparent border border-white/10 px-4 font-mono text-[11px] tracking-[0.1em] text-white placeholder:text-white/20 outline-none transition-colors duration-150 focus:border-white/30 disabled:opacity-60"
               />
               <button
                 type="submit"
-                className="w-full h-12 bg-white text-black font-sans font-black text-xs tracking-[0.1em] uppercase transition-colors duration-150 hover:bg-gray-200"
+                disabled={submitting}
+                className="w-full h-12 bg-white text-black font-sans font-black text-xs tracking-[0.1em] uppercase transition-colors duration-150 hover:bg-gray-200 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Get Early Access
+                {submitting ? "Joining..." : "Get Early Access"}
               </button>
+              {error && (
+                <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-red-400 mt-1">
+                  {error}
+                </p>
+              )}
             </form>
           </>
         )}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import ScrollingMarquee from "@/components/ScrollingMarquee";
+import HomeEmailForm from "@/components/HomeEmailForm";
 import { getAllProducts } from "@/data/products";
 
 /* ── Decorative Cross SVG ── */
@@ -705,27 +706,7 @@ export default function Home() {
             </span>
           </motion.p>
 
-          <motion.form
-            className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
-            onSubmit={(e) => e.preventDefault()}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-          >
-            <input
-              type="email"
-              placeholder="YOUR EMAIL"
-              required
-              className="flex-1 bg-transparent border border-white/15 px-5 py-4 font-mono text-[12px] tracking-[0.15em] text-white placeholder:text-white/25 focus:outline-none focus:border-white/40 transition-colors duration-300"
-            />
-            <button
-              type="submit"
-              className="bg-white text-black font-sans text-[12px] font-bold uppercase tracking-[0.15em] px-8 py-4 hover:bg-white/90 transition-all duration-300"
-            >
-              SUBSCRIBE
-            </button>
-          </motion.form>
+          <HomeEmailForm />
         </div>
       </section>
     </div>
