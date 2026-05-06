@@ -4,10 +4,40 @@ import { useState, type FormEvent } from 'react';
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    if (submitting) return;
+    setError(null);
+    setSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: String(formData.get('name') || ''),
+      email: String(formData.get('email') || ''),
+      subject: String(formData.get('subject') || ''),
+      message: String(formData.get('message') || ''),
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || 'Could not send message. Please try again.');
+        setSubmitting(false);
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError('Network error. Please try again.');
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -30,10 +60,11 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Name */}
       <div>
-        <label className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2">
+        <label htmlFor="contact-name" className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2">
           // NAME
         </label>
         <input
+          id="contact-name"
           type="text"
           name="name"
           required
@@ -44,10 +75,11 @@ export default function ContactForm() {
 
       {/* Email */}
       <div>
-        <label className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2">
+        <label htmlFor="contact-email" className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2">
           // EMAIL
         </label>
         <input
+          id="contact-email"
           type="email"
           name="email"
           required
@@ -58,10 +90,11 @@ export default function ContactForm() {
 
       {/* Subject */}
       <div>
-        <label className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2">
+        <label htmlFor="contact-subject" className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2">
           // SUBJECT
         </label>
         <select
+          id="contact-subject"
           name="subject"
           required
           defaultValue=""
@@ -80,10 +113,11 @@ export default function ContactForm() {
 
       {/* Message */}
       <div>
-        <label className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2">
+        <label htmlFor="contact-message" className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2">
           // MESSAGE
         </label>
         <textarea
+          id="contact-message"
           name="message"
           required
           rows={6}
@@ -92,12 +126,19 @@ export default function ContactForm() {
         />
       </div>
 
+      {error && (
+        <p className="font-mono text-[11px] uppercase tracking-widest text-red-400">
+          {error}
+        </p>
+      )}
+
       {/* Submit */}
       <button
         type="submit"
-        className="w-full md:w-auto bg-white text-black font-mono text-[12px] uppercase tracking-widest px-10 py-4 hover:bg-white/90 transition-colors"
+        disabled={submitting}
+        className="w-full md:w-auto bg-white text-black font-mono text-[12px] uppercase tracking-widest px-10 py-4 hover:bg-white/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        SEND MESSAGE
+        {submitting ? 'SENDING...' : 'SEND MESSAGE'}
       </button>
     </form>
   );

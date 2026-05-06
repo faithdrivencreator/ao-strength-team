@@ -31,8 +31,10 @@ const products: Product[] = [
     scriptureRef: 'Philippians 4:13',
     images: [
       '/images/products/signature-tee-1.png',
-      '/images/products/signature-tee-2.png',
-      '/images/products/signature-tee-3.png',
+      '/images/products/signature-tee-2.jpg',
+      '/images/products/signature-tee-3.jpg',
+      '/images/products/signature-tee-4.jpg',
+      '/images/products/signature-tee-5.jpg',
     ],
     variants: [
       { color: 'Asphalt', colorHex: '#515151', sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL'], inStock: true },
@@ -61,11 +63,7 @@ const products: Product[] = [
     scripture:
       'Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.',
     scriptureRef: 'Joshua 1:9',
-    images: [
-      '/images/products/strength-team-ls-1.png',
-      '/images/products/strength-team-ls-2.png',
-      '/images/products/strength-team-ls-3.png',
-    ],
+    images: ['/images/products/strength-team-ls-1.png'],
     variants: [
       { color: 'Charcoal', colorHex: '#36454F', sizes: ['S', 'M', 'L', 'XL', '2XL'], inStock: false },
       { color: 'Black', colorHex: '#000000', sizes: ['S', 'M', 'L', 'XL', '2XL'], inStock: false },
@@ -84,11 +82,7 @@ const products: Product[] = [
     scripture:
       'No discipline seems pleasant at the time, but painful. Later on, however, it produces a harvest of righteousness.',
     scriptureRef: 'Hebrews 12:11',
-    images: [
-      '/images/products/unbreakable-ls-1.png',
-      '/images/products/unbreakable-ls-2.png',
-      '/images/products/unbreakable-ls-3.png',
-    ],
+    images: ['/images/products/unbreakable-ls-1.png'],
     variants: [
       { color: 'Black', colorHex: '#000000', sizes: ['S', 'M', 'L', 'XL', '2XL'], inStock: false },
       { color: 'Cream', colorHex: '#FFFDD0', sizes: ['S', 'M', 'L', 'XL', '2XL'], inStock: false },

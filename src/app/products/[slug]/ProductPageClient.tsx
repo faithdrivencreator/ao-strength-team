@@ -80,7 +80,8 @@ export default function ProductPageClient({
                     <button
                       key={i}
                       onClick={() => setSelectedImageIndex(i)}
-                      className={`relative w-20 h-26 flex-shrink-0 overflow-hidden border transition-colors duration-150 ${
+                      aria-label={`View image ${i + 1} of ${product.images.length}`}
+                      className={`relative w-20 h-[107px] flex-shrink-0 overflow-hidden border transition-colors duration-150 ${
                         selectedImageIndex === i
                           ? "border-white"
                           : "border-white/10"

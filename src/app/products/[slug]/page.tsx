@@ -31,6 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://aostrengthteam.store";
+
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
   const product = getProduct(slug);
@@ -42,5 +44,34 @@ export default async function ProductPage({ params }: Props) {
   const allProducts = getAllProducts();
   const related = allProducts.filter((p) => p.slug !== product.slug);
 
-  return <ProductPageClient product={product} relatedProducts={related} />;
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: product.images.map((src) => `${SITE_URL}${src}`),
+    brand: { "@type": "Brand", name: "Alpha Omega Strength Team" },
+    sku: product.slug,
+    category: product.category,
+    offers: {
+      "@type": "Offer",
+      url: `${SITE_URL}/products/${product.slug}`,
+      priceCurrency: "USD",
+      price: product.price,
+      availability:
+        product.status === "in-stock"
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <ProductPageClient product={product} relatedProducts={related} />
+    </>
+  );
 }
