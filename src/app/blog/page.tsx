@@ -1,15 +1,19 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getAllPosts } from '@/data/blog-posts';
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { getAllPosts } from "@/lib/blog";
+import { urlFor } from "@/lib/sanity";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'The Word and The Work — Journal | Alpha Omega Strength Team',
+  title: "The Word and The Work — Journal | Alpha Omega Strength Team",
   description:
-    'Training journal from Alpha Omega Strength Team. Faith, fitness, and the pursuit of strength with purpose.',
+    "Training journal from Alpha Omega Strength Team. Faith, fitness, and the pursuit of strength with purpose.",
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export default async function BlogPage() {
+  const posts = await getAllPosts();
   const [featured, ...remaining] = posts;
 
   return (
@@ -35,8 +39,18 @@ export default function BlogPage() {
         {featured && (
           <Link href={`/blog/${featured.slug}`} className="group block mb-16">
             <article>
-              {/* Hero image placeholder */}
+              {/* Hero image */}
               <div className="relative aspect-[21/9] bg-gray-900 overflow-hidden mb-8">
+                {featured.mainImage && (
+                  <Image
+                    src={urlFor(featured.mainImage).width(1600).height(686).url()}
+                    alt={featured.mainImage.alt || featured.title}
+                    fill
+                    priority
+                    sizes="(max-width: 1200px) 100vw, 1200px"
+                    className="object-cover"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
@@ -63,10 +77,10 @@ export default function BlogPage() {
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <time className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/40">
-                    {new Date(featured.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
+                    {new Date(featured.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
                     })}
                   </time>
                   <span className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/30">
@@ -92,24 +106,31 @@ export default function BlogPage() {
           {remaining.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
               <article>
-                {/* Hero image placeholder */}
+                {/* Hero image */}
                 <div className="relative aspect-[16/9] bg-gray-900 overflow-hidden mb-6">
+                  {post.mainImage && (
+                    <Image
+                      src={urlFor(post.mainImage).width(800).height(450).url()}
+                      alt={post.mainImage.alt || post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 600px"
+                      className="object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="font-sans text-lg md:text-xl font-bold leading-tight text-white group-hover:text-white/90 transition-colors line-clamp-2">
                       {post.title}
                     </h3>
                   </div>
-                  {/* Hover lift */}
-                  <div className="absolute inset-0 group-hover:-translate-y-1 transition-transform duration-300" />
                 </div>
 
                 {/* Date */}
                 <time className="block font-mono text-[12px] uppercase tracking-[0.15em] text-white/40 mb-3">
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
+                  {new Date(post.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
                   })}
                 </time>
 
