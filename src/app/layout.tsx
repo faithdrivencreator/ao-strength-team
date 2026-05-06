@@ -57,7 +57,7 @@ const organizationSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/images/products/signature-tee-1.png`,
   description: "Performance apparel for the disciplined. From Alpha to Omega.",
-  sameAs: [],
+  sameAs: ["https://www.instagram.com/alphaomegastrengthteam/"],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",

@@ -19,7 +19,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-6">
             <Link
-              href="https://instagram.com"
+              href="https://www.instagram.com/alphaomegastrengthteam/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/50 transition-colors duration-150 hover:text-white"
