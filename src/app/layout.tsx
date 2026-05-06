@@ -80,7 +80,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-SJ3WHYQPWW"
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q4G9V6ZWCK"
           strategy="afterInteractive"
         />
         <Script id="ga4-init" strategy="afterInteractive">
@@ -88,7 +88,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-SJ3WHYQPWW');
+            gtag('config', 'G-Q4G9V6ZWCK');
           `}
         </Script>
         <CartProvider>
