@@ -53,6 +53,7 @@ export async function POST(request: NextRequest) {
       mode: 'payment',
       customer_creation: 'always',
       line_items: lineItems,
+      allow_promotion_codes: true,
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/shop`,
       shipping_address_collection: {
