@@ -17,7 +17,9 @@ import { renderAOEmail, type EmailSection } from '@/lib/email-shell';
 
 export const runtime = 'nodejs';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend(): Resend {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 const ORDERS_FROM = 'AO Strength Team <orders@aostrengthteam.store>';
 const SUPPORT_EMAIL = 'support@aostrengthteam.store';
 const SITE_URL = 'https://aostrengthteam.store';
@@ -233,7 +235,7 @@ export async function POST(request: NextRequest) {
 
   // 2) Send the friend invitation (Email 6a)
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: ORDERS_FROM,
       to: friendEmail,
       replyTo: SUPPORT_EMAIL,
@@ -259,7 +261,7 @@ export async function POST(request: NextRequest) {
 
   // 3) Send the referrer thank-you (no code, no CTA)
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: ORDERS_FROM,
       to: referrerEmail,
       replyTo: SUPPORT_EMAIL,

@@ -16,7 +16,9 @@ import { renderAOEmail } from '@/lib/email-shell';
 
 export const runtime = 'nodejs';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend(): Resend {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 const PETE_EMAIL = 'pete@fluidfaithsolutions.com';
 const CUSTOMERS_AUDIENCE_ID = process.env.RESEND_AO_CUSTOMERS_AUDIENCE_ID;
 const ORDERS_FROM = 'AO Strength Team <orders@aostrengthteam.store>';
@@ -85,7 +87,7 @@ async function isReturningCustomer(email: string): Promise<boolean> {
 async function addToCustomersAudience(email: string, firstName: string | null) {
   if (!CUSTOMERS_AUDIENCE_ID || !email) return;
   try {
-    await resend.contacts.create({
+    await getResend().contacts.create({
       email,
       firstName: firstName ?? undefined,
       audienceId: CUSTOMERS_AUDIENCE_ID,
@@ -120,9 +122,11 @@ async function extractOrderDetails(session: Stripe.Checkout.Session) {
     currency: session.currency?.toUpperCase() ?? 'USD',
     lineItems,
     shippingAddress:
-      (session as unknown as { collected_information?: { shipping_details?: { address?: Stripe.Address } } })
-        .collected_information?.shipping_details?.address ??
-      session.shipping_details?.address ??
+      (session as unknown as {
+        collected_information?: { shipping_details?: { address?: Stripe.Address } };
+        shipping_details?: { address?: Stripe.Address };
+      }).collected_information?.shipping_details?.address ??
+      (session as unknown as { shipping_details?: { address?: Stripe.Address } }).shipping_details?.address ??
       null,
     stripeSessionId: session.id,
     paymentIntent:
@@ -193,7 +197,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       : 'https://dashboard.stripe.com';
 
     try {
-      await resend.emails.send({
+      await getResend().emails.send({
         from: ORDERS_FROM,
         to: PETE_EMAIL,
         subject: `💰 New AO Order — $${order.amountTotal.toFixed(2)} from ${order.customerName || order.customerEmail}`,
@@ -248,7 +252,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
       // ─── Email 1 — Order Confirmation (immediate) ────────────────────────
       try {
-        await resend.emails.send({
+        await getResend().emails.send({
           from: ORDERS_FROM,
           to: order.customerEmail,
           replyTo: SUPPORT_EMAIL,
@@ -302,7 +306,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
         // ─── Email 2 — Welcome (+24h) ──────────────────────────────────────
         try {
-          await resend.emails.send({
+          await getResend().emails.send({
             from: ORDERS_FROM,
             to: order.customerEmail,
             replyTo: SUPPORT_EMAIL,
