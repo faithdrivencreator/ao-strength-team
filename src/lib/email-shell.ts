@@ -12,6 +12,14 @@
  *   - Border-radius 0 everywhere (sharp corners, per §15 web tokens)
  *   - Buttons: solid white on Iron Black, uppercase, +0.06em tracking
  *   - Code blocks: 1px white rule above and below — no surrounding box
+ *
+ * Visual chrome (added 2026-05-13, "Option B"):
+ *   - Logo PNG masthead (logo-white.png) replaces text wordmark
+ *   - Ghost AΩ monogram watermark near bottom of body (2.5% opacity)
+ *   - Bone-cream scripture band auto-detected from body paragraphs
+ *     (a paragraph starting with `<em` + curly opening quote, followed by a
+ *     citation paragraph beginning with an em-dash, gets re-rendered as a
+ *     Bone-bg pull-quote band)
  */
 
 const SITE_URL = "https://aostrengthteam.store";
@@ -20,6 +28,9 @@ const RULE = "rgba(255,255,255,0.18)";
 const STEEL = "#737373";
 const BG = "#000000";
 const INK = "#FFFFFF";
+// Editorial Bone for scripture pull-quote bands (brand guide §07/§08)
+const BONE = "#F5F4F0";
+const IRON = "#0A0A0A";
 
 const FONT_BODY =
   "'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
@@ -27,6 +38,16 @@ const FONT_MONO =
   "'JetBrains Mono','SF Mono',Menlo,Consolas,'Courier New',monospace";
 const FONT_IMPORT =
   "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap";
+
+// Email-asset CDN URLs (deployed via Netlify; preview script rewrites to
+// file:// for local viewing).
+// Square Emblem for masthead (brand guide §04 — "Architectural… any context
+// where the brand needs structure and symmetry"). Brush wordmark is reserved
+// for apparel/hero banners and is NOT used in email headers.
+const ASSET_LOGO = `${SITE_URL}/email-assets/logo-square-white.png`;
+const ASSET_WATERMARK = `${SITE_URL}/email-assets/logo-square-watermark.png`;
+const INSTAGRAM_URL = "https://www.instagram.com/alphaomegastrengthteam/";
+const INSTAGRAM_HANDLE = "@alphaomegastrengthteam";
 
 export interface EmailSection {
   /** e.g. "01  WELCOME TO THE TEAM" — rendered as `// 01  WELCOME TO THE TEAM` */
@@ -39,6 +60,13 @@ export interface EmailSection {
   code?: { value: string; note?: string };
   /** Optional 2-col mono table (label, value) */
   table?: Array<[string, string]>;
+  /**
+   * Optional explicit kind override. Currently only `'verse'` is supported,
+   * which forces the entire section's body to render as a Bone-cream pull-
+   * quote band even if auto-detection misses. Auto-detection runs on the
+   * body[] array regardless, so most callers do not need to set this.
+   */
+  kind?: "verse";
 }
 
 export interface RenderAOEmailOptions {
@@ -68,15 +96,85 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
+/** Heuristic: is this paragraph the opening line of a scripture quote? */
+function looksLikeVerseQuote(p: string): boolean {
+  return /<em\b/i.test(p) && /&ldquo;|&#8220;|"/.test(p);
+}
+
+/** Heuristic: is this paragraph the citation that follows a verse quote? */
+function looksLikeVerseCitation(p: string): boolean {
+  // Mono span starting with an em-dash, e.g. "— Revelation 22:13"
+  return /font-family:[^"]*Mono/i.test(p) && /—\s*\S/.test(p);
+}
+
+function renderPlainParagraph(p: string): string {
+  return `<p style="margin:0 0 14px;color:${INK};font-family:${FONT_BODY};font-size:13px;font-weight:300;line-height:1.6">${p}</p>`;
+}
+
+/**
+ * Render the Bone-cream scripture band. Receives the raw quote HTML (still
+ * wrapped in the original <em>...</em>) and the citation HTML (which contains
+ * its own <span> styling — we strip it and re-render with band-appropriate
+ * styling so it reads correctly on the Bone background).
+ */
+function renderVerseBand(quoteHtml: string, citationHtml: string): string {
+  // Strip the inner <em>...</em> wrapper so we can re-style for the band.
+  const cleanQuote = quoteHtml
+    .replace(/<em\b[^>]*>/i, "")
+    .replace(/<\/em>/i, "")
+    .trim();
+  // Strip the <span style="..."> wrapper from the citation and keep its text.
+  const cleanCitation = citationHtml
+    .replace(/<span\b[^>]*>/i, "")
+    .replace(/<\/span>/i, "")
+    .trim();
+
+  return `
+    </td></tr>
+    <tr><td style="padding:24px 0 0 0;background-color:${BG}">
+      <div style="border-top:1px solid ${RULE};height:1px;line-height:1px;font-size:1px">&nbsp;</div>
+    </td></tr>
+    <tr>
+      <td style="padding:0;background-color:${BONE}">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;background-color:${BONE}">
+          <tr>
+            <td style="padding:34px 36px 28px 36px;background-color:${BONE};text-align:left">
+              <p style="margin:0 0 14px;color:${IRON};font-family:${FONT_BODY};font-size:17px;font-weight:300;font-style:italic;line-height:1.45;letter-spacing:-0.005em">${cleanQuote}</p>
+              <p style="margin:0;color:${STEEL};font-family:${FONT_MONO};font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase">${cleanCitation}</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr><td style="padding:0;background-color:${BG}">
+      <div style="border-top:1px solid ${RULE};height:1px;line-height:1px;font-size:1px">&nbsp;</div>
+    </td></tr>
+    <tr><td style="padding:28px 36px 0 36px;background-color:${BG}">`;
+}
+
+/**
+ * Render the body[] array, auto-detecting `(verse-quote, citation)` adjacent
+ * pairs and rendering them as a Bone-cream pull-quote band that breaks out of
+ * the standard section cell.
+ *
+ * Returns HTML that must be embedded inside an open `<td>` (the band closes
+ * and reopens the section cell mid-stream — see renderVerseBand).
+ */
 function paragraphs(body: string | string[] | undefined): string {
   if (!body) return "";
   const arr = Array.isArray(body) ? body : [body];
-  return arr
-    .map(
-      (p) =>
-        `<p style="margin:0 0 14px;color:${INK};font-family:${FONT_BODY};font-size:13px;font-weight:300;line-height:1.6">${p}</p>`,
-    )
-    .join("");
+  const out: string[] = [];
+  for (let i = 0; i < arr.length; i++) {
+    const p = arr[i];
+    const next = arr[i + 1];
+    if (next && looksLikeVerseQuote(p) && looksLikeVerseCitation(next)) {
+      out.push(renderVerseBand(p, next));
+      i++; // consume the citation paragraph too
+      continue;
+    }
+    out.push(renderPlainParagraph(p));
+  }
+  return out.join("");
 }
 
 function renderTable(rows: Array<[string, string]>): string {
@@ -176,18 +274,17 @@ export function renderAOEmail(opts: RenderAOEmailOptions): string {
     <td align="center" style="padding:32px 16px 48px 16px;background-color:${BG}">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;background-color:${BG};border-collapse:collapse">
 
-        <!-- masthead -->
+        <!-- masthead — Square Emblem (white, hero size) -->
         <tr>
-          <td style="padding:36px 36px 16px 36px;background-color:${BG}">
-            <a href="${SITE_URL}" style="text-decoration:none;color:${INK}">
-              <p style="margin:0;font-family:${FONT_BODY};font-size:22px;font-weight:900;letter-spacing:0.04em;text-transform:uppercase;color:${INK}">AΩ &nbsp;ALPHA OMEGA</p>
-              <p style="margin:6px 0 0;font-family:${FONT_MONO};font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:${STEEL}">// STRENGTH TEAM</p>
+          <td align="center" style="padding:56px 36px 40px 36px;background-color:${BG};text-align:center">
+            <a href="${SITE_URL}" style="text-decoration:none;color:${INK};display:inline-block;line-height:0">
+              <img src="${ASSET_LOGO}" width="220" height="220" alt="AO Strength Team" style="display:block;border:0;outline:none;text-decoration:none;width:220px;height:220px;margin:0 auto">
             </a>
           </td>
         </tr>
 
         <!-- top rule -->
-        <tr><td style="padding:20px 36px 0 36px;background-color:${BG}"><div style="border-top:1px solid ${RULE};height:1px;line-height:1px;font-size:1px">&nbsp;</div></td></tr>
+        <tr><td style="padding:0 36px 0 36px;background-color:${BG}"><div style="border-top:1px solid ${RULE};height:1px;line-height:1px;font-size:1px">&nbsp;</div></td></tr>
 
         <!-- sections -->
         ${sectionsHtml}
@@ -204,9 +301,16 @@ export function renderAOEmail(opts: RenderAOEmailOptions): string {
 
         ${psHtml}
 
+        <!-- ghost AΩ monogram watermark (2.5% opacity, bottom-right anchor) -->
+        <tr>
+          <td align="right" style="padding:28px 36px 0 36px;background-color:${BG};line-height:0">
+            <img src="${ASSET_WATERMARK}" width="320" height="320" alt="" aria-hidden="true" style="display:inline-block;border:0;outline:none;text-decoration:none;width:320px;height:auto;max-width:320px;opacity:0.025;filter:invert(1)">
+          </td>
+        </tr>
+
         <!-- spam-folder reminder (every transactional email) -->
         <tr>
-          <td style="padding:32px 36px 0 36px;background-color:${BG}">
+          <td style="padding:16px 36px 0 36px;background-color:${BG}">
             <p style="margin:0 0 6px;color:${STEEL};font-family:${FONT_MONO};font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase">// A NOTE ON DELIVERABILITY</p>
             <p style="margin:0;color:${INK_60};font-family:${FONT_BODY};font-size:12px;font-weight:300;line-height:1.6">If our emails aren&rsquo;t landing in your inbox, check your spam or promotions folder. Mark us as &ldquo;Not spam&rdquo; so future order updates, tracking, and tracking links don&rsquo;t get lost.</p>
           </td>
@@ -214,6 +318,15 @@ export function renderAOEmail(opts: RenderAOEmailOptions): string {
 
         <!-- footer rule -->
         <tr><td style="padding:36px 36px 12px 36px;background-color:${BG}"><div style="border-top:1px solid ${RULE};height:1px;line-height:1px;font-size:1px">&nbsp;</div></td></tr>
+
+        <!-- footer — Instagram CTA -->
+        <tr>
+          <td align="center" style="padding:0 36px 28px 36px;background-color:${BG};text-align:center">
+            <a href="${INSTAGRAM_URL}" style="color:${INK};text-decoration:none;font-family:${FONT_MONO};font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;display:inline-block">
+              // FOLLOW THE TEAM &nbsp;&rarr;&nbsp; ${INSTAGRAM_HANDLE}
+            </a>
+          </td>
+        </tr>
 
         <!-- footer line -->
         <tr>
