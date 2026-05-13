@@ -130,7 +130,7 @@ export default function MainHome() {
       <section className="relative w-full bg-black flex flex-col">
         <div className="flex flex-col md:flex-row">
         {/* Left side — black with text */}
-        <div className="relative w-full md:w-[48%] bg-black flex items-end md:items-center min-h-[50vh] md:min-h-[calc(100vh-104px)]">
+        <div className="relative w-full md:w-[48%] bg-black flex items-end md:items-center min-h-[50vh] md:min-h-[calc(100vh-220px)]">
           <div className="relative z-10 px-8 md:px-16 lg:px-20 pb-12 md:pb-0 pt-8 md:pt-0">
             <motion.span
               className="font-mono text-[12px] tracking-[0.2em] uppercase text-white/40 block mb-10"
@@ -202,7 +202,7 @@ export default function MainHome() {
         </div>
 
         {/* Right side — hero image */}
-        <div className="relative w-full md:w-[52%] min-h-[50vh] md:min-h-[calc(100vh-104px)] overflow-hidden">
+        <div className="relative w-full md:w-[52%] min-h-[50vh] md:min-h-[calc(100vh-220px)] overflow-hidden">
           <motion.div
             className="absolute inset-0"
             initial={{ scale: 1.05 }}
@@ -230,15 +230,16 @@ export default function MainHome() {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/10">
             {trustPillars.map(({ Icon, title, line }) => (
-              <div key={title} className="flex items-center gap-4 px-6 md:px-8 py-6">
-                <Icon className="w-7 h-7 text-white/70 shrink-0" />
-                <div>
-                  <div className="font-sans font-bold text-[11px] tracking-[0.18em] uppercase text-white leading-tight">
-                    {title}
-                  </div>
-                  <div className="font-sans text-[12px] text-white/45 mt-1 leading-snug">
-                    {line}
-                  </div>
+              <div
+                key={title}
+                className="group flex flex-col items-center text-center px-6 md:px-8 py-10 md:py-12 transition-colors duration-300 hover:bg-white/[0.03]"
+              >
+                <Icon className="w-10 h-10 md:w-12 md:h-12 text-white shrink-0 mb-5 transition-transform duration-300 group-hover:scale-[1.08]" />
+                <div className="font-sans font-black text-[15px] md:text-[17px] tracking-[0.2em] uppercase text-white leading-tight">
+                  {title}
+                </div>
+                <div className="font-sans text-[12px] md:text-[13px] text-white/55 mt-3 leading-snug max-w-[180px]">
+                  {line}
                 </div>
               </div>
             ))}

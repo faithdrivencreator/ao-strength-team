@@ -3,11 +3,46 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 
+function DumbbellIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="9" width="3" height="6" rx="0.5" />
+      <rect x="5" y="7.5" width="3" height="9" rx="0.5" />
+      <line x1="8" y1="12" x2="16" y2="12" />
+      <rect x="16" y="7.5" width="3" height="9" rx="0.5" />
+      <rect x="19" y="9" width="3" height="6" rx="0.5" />
+    </svg>
+  );
+}
+function ShieldIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M12 3 L4 6 V12 C4 16.5 7.5 19.8 12 21 C16.5 19.8 20 16.5 20 12 V6 L12 3 Z" />
+    </svg>
+  );
+}
+function PersonIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <circle cx="12" cy="8" r="3.5" />
+      <path d="M5 20 C5 16 8 14 12 14 C16 14 19 16 19 20" />
+    </svg>
+  );
+}
+function PillarCrossIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <line x1="12" y1="3" x2="12" y2="21" />
+      <line x1="6" y1="9" x2="18" y2="9" />
+    </svg>
+  );
+}
+
 const pillars = [
-  { title: "DISCIPLINED", line: "Training. Mindset." },
-  { title: "UNBREAKABLE", line: "Built to last. Built to lead." },
-  { title: "COMMUNITY", line: "Stronger together." },
-  { title: "FAITH DRIVEN", line: "Purpose in every rep." },
+  { Icon: DumbbellIcon, title: "DISCIPLINED", line: "Training. Mindset." },
+  { Icon: ShieldIcon, title: "UNBREAKABLE", line: "Built to last. Built to lead." },
+  { Icon: PersonIcon, title: "COMMUNITY", line: "Stronger together." },
+  { Icon: PillarCrossIcon, title: "FAITH DRIVEN", line: "Purpose in every rep." },
 ];
 
 const manifestoLines = [
@@ -185,12 +220,16 @@ export default function AboutClient() {
       {/* ── TRUST BAR — same 4 pillars as homepage hero ── */}
       <section className="bg-black border-b border-white/10">
         <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/10">
-          {pillars.map(({ title, line }) => (
-            <div key={title} className="px-6 md:px-8 py-7 text-center md:text-left">
-              <div className="font-sans font-bold text-[11px] tracking-[0.18em] uppercase text-white leading-tight">
+          {pillars.map(({ Icon, title, line }) => (
+            <div
+              key={title}
+              className="group flex flex-col items-center text-center px-6 md:px-8 py-10 md:py-12 transition-colors duration-300 hover:bg-white/[0.03]"
+            >
+              <Icon className="w-10 h-10 md:w-12 md:h-12 text-white shrink-0 mb-5 transition-transform duration-300 group-hover:scale-[1.08]" />
+              <div className="font-sans font-black text-[15px] md:text-[17px] tracking-[0.2em] uppercase text-white leading-tight">
                 {title}
               </div>
-              <div className="font-sans text-[12px] text-white/45 mt-1 leading-snug">
+              <div className="font-sans text-[12px] md:text-[13px] text-white/55 mt-3 leading-snug max-w-[180px]">
                 {line}
               </div>
             </div>

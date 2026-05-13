@@ -48,7 +48,7 @@ export default function Header() {
 
         {/* Nav — centered */}
         <nav className="hidden md:flex items-center justify-center gap-10 flex-1">
-          {["SHOP", "JOURNAL", "CONTACT"].map((item) => (
+          {["SHOP", "JOURNAL", "ABOUT", "CONTACT"].map((item) => (
             <Link
               key={item}
               href={item === "JOURNAL" ? "/blog" : `/${item.toLowerCase()}`}
@@ -102,7 +102,7 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden fixed inset-0 top-14 bg-black z-40">
           <nav className="flex flex-col items-start px-8 pt-10 gap-8">
-            {["SHOP", "JOURNAL", "CONTACT"].map((item) => (
+            {["SHOP", "JOURNAL", "ABOUT", "CONTACT"].map((item) => (
               <Link
                 key={item}
                 href={item === "JOURNAL" ? "/blog" : `/${item.toLowerCase()}`}
