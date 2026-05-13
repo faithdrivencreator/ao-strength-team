@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
             description: `${item.color} / ${item.size}`,
             images: product.images.length > 0
               ? [
-                  `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}${product.images[0]}`,
+                  `${process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}${product.images[0]}`,
                 ]
               : undefined,
           },
@@ -54,8 +54,8 @@ export async function POST(request: NextRequest) {
       customer_creation: 'always',
       line_items: lineItems,
       allow_promotion_codes: true,
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/shop`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/shop`,
       shipping_address_collection: {
         allowed_countries: ['US'],
       },
