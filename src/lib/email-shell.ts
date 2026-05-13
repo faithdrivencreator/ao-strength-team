@@ -204,6 +204,14 @@ export function renderAOEmail(opts: RenderAOEmailOptions): string {
 
         ${psHtml}
 
+        <!-- spam-folder reminder (every transactional email) -->
+        <tr>
+          <td style="padding:32px 36px 0 36px;background-color:${BG}">
+            <p style="margin:0 0 6px;color:${STEEL};font-family:${FONT_MONO};font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase">// A NOTE ON DELIVERABILITY</p>
+            <p style="margin:0;color:${INK_60};font-family:${FONT_BODY};font-size:12px;font-weight:300;line-height:1.6">If our emails aren&rsquo;t landing in your inbox, check your spam or promotions folder. Mark us as &ldquo;Not spam&rdquo; so future order updates, tracking, and tracking links don&rsquo;t get lost.</p>
+          </td>
+        </tr>
+
         <!-- footer rule -->
         <tr><td style="padding:36px 36px 12px 36px;background-color:${BG}"><div style="border-top:1px solid ${RULE};height:1px;line-height:1px;font-size:1px">&nbsp;</div></td></tr>
 

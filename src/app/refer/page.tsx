@@ -83,6 +83,19 @@ function ReferForm() {
         <p className="font-sans text-[15px] font-300 text-white/60 leading-[1.7]">
           If they wear it, they&apos;re on the team.
         </p>
+
+        <div className="mt-10 border-t border-white/10 pt-6">
+          <p className="font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2">
+            // A NOTE FOR YOUR FRIEND
+          </p>
+          <p className="font-sans text-[14px] font-300 text-white/60 leading-[1.7]">
+            If they don&apos;t see our invitation in their inbox, ask them to
+            check their spam or promotions folder. New sending domains
+            sometimes land there until the recipient marks them as
+            &ldquo;Not spam.&rdquo;
+          </p>
+        </div>
+
         <p className="font-mono text-[11px] uppercase tracking-widest text-white/30 mt-12">
           — AΩ
         </p>
