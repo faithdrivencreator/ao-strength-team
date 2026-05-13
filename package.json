@@ -19,11 +19,13 @@
     "next-sanity": "^12.4.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "resend": "^6.12.3",
     "sanity": "^5.24.0",
     "stripe": "^22.0.2",
     "styled-components": "^6.4.1"
   },
   "devDependencies": {
+    "@netlify/functions": "^5.2.1",
     "@sanity/block-tools": "^3.70.0",
     "@tailwindcss/postcss": "^4",
     "@types/jsdom": "^21.1.7",

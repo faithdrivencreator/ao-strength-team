@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
   }
 
   // Log to server output for now — owner can monitor Netlify function logs.
-  // TODO: forward to hello@alphaomegateam.com via gws or transactional email service.
+  // TODO: forward to hello@aostrengthteam.store via gws or transactional email service.
   console.log("[contact] new submission", {
     timestamp: new Date().toISOString(),
     name,

@@ -57,8 +57,8 @@ export default function ReturnsPage() {
         <Section title="4. How to Start a Return">
           <p>
             Email{" "}
-            <a className="underline hover:text-white" href="mailto:hello@alphaomegateam.com">
-              hello@alphaomegateam.com
+            <a className="underline hover:text-white" href="mailto:hello@aostrengthteam.store">
+              hello@aostrengthteam.store
             </a>{" "}
             with the subject line &ldquo;Return Request&rdquo; and include:
           </p>
@@ -96,8 +96,8 @@ export default function ReturnsPage() {
         <Section title="8. Defective or Incorrect Items">
           <p>
             If you receive a defective or incorrect item, contact us within 7 days of delivery at{" "}
-            <a className="underline hover:text-white" href="mailto:hello@alphaomegateam.com">
-              hello@alphaomegateam.com
+            <a className="underline hover:text-white" href="mailto:hello@aostrengthteam.store">
+              hello@aostrengthteam.store
             </a>{" "}
             with your order number and photos. We&rsquo;ll cover return shipping and either reship the correct item or issue a full refund.
           </p>
@@ -112,8 +112,8 @@ export default function ReturnsPage() {
         <Section title="10. Contact">
           <p>
             All return inquiries:{" "}
-            <a className="underline hover:text-white" href="mailto:hello@alphaomegateam.com">
-              hello@alphaomegateam.com
+            <a className="underline hover:text-white" href="mailto:hello@aostrengthteam.store">
+              hello@aostrengthteam.store
             </a>
             .
           </p>

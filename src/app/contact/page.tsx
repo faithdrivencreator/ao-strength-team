@@ -29,10 +29,10 @@ export default function ContactPage() {
               // EMAIL
             </p>
             <a
-              href="mailto:hello@alphaomegateam.com"
+              href="mailto:hello@aostrengthteam.store"
               className="font-mono text-[14px] text-white/70 hover:text-white transition-colors"
             >
-              hello@alphaomegateam.com
+              hello@aostrengthteam.store
             </a>
           </div>
         </div>

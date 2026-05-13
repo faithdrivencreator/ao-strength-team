@@ -211,6 +211,28 @@ export default function ProductPageClient({
                 </button>
               </div>
 
+              {/* Trust badges */}
+              <ul
+                aria-label="Order benefits"
+                className="mt-6 grid grid-cols-1 md:grid-cols-3 border border-white/10"
+              >
+                <li className="px-4 py-4 md:border-r md:border-white/10 border-b md:border-b-0 border-white/10 last:border-b-0">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.10em] text-[#737373] leading-snug">
+                    // FREE SHIPPING OVER $75
+                  </p>
+                </li>
+                <li className="px-4 py-4 md:border-r md:border-white/10 border-b md:border-b-0 border-white/10 last:border-b-0">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.10em] text-[#737373] leading-snug">
+                    // PREMIUM MOISTURE-WICKING FABRIC
+                  </p>
+                </li>
+                <li className="px-4 py-4">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.10em] text-[#737373] leading-snug">
+                    // 30-DAY EASY RETURNS
+                  </p>
+                </li>
+              </ul>
+
               {/* Description expandable */}
               <div className="mt-10 border-t border-white/10 pt-6">
                 <button

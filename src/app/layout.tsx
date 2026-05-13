@@ -61,7 +61,7 @@ const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    email: "hello@alphaomegateam.com",
+    email: "hello@aostrengthteam.store",
     areaServed: "US",
     availableLanguage: ["English"],
   },

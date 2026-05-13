@@ -81,8 +81,8 @@ export default function PrivacyPage() {
           </ul>
           <p className="mt-4">
             To exercise any of these rights, email{" "}
-            <a className="underline hover:text-white" href="mailto:hello@alphaomegateam.com">
-              hello@alphaomegateam.com
+            <a className="underline hover:text-white" href="mailto:hello@aostrengthteam.store">
+              hello@aostrengthteam.store
             </a>
             . We will respond within 30 days.
           </p>
@@ -115,8 +115,8 @@ export default function PrivacyPage() {
         <Section title="10. Contact">
           <p>
             Questions about this policy? Email{" "}
-            <a className="underline hover:text-white" href="mailto:hello@alphaomegateam.com">
-              hello@alphaomegateam.com
+            <a className="underline hover:text-white" href="mailto:hello@aostrengthteam.store">
+              hello@aostrengthteam.store
             </a>
             .
           </p>

@@ -45,3 +45,12 @@ BUILD-PLAN.md
 
 # Local Netlify folder
 .netlify
+
+# Local-only working content (brand assets, archives, backups, email previews)
+archive/
+brand-assets/
+docs-archive/
+shopify-backup/
+MERGE-INVENTORY.md
+deno.lock
+src/lib/__email-previews__/
