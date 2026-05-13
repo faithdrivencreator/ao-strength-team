@@ -2,19 +2,19 @@ import { NextRequest } from "next/server";
 
 export const runtime = "nodejs";
 
-const MAILERLITE_API = "https://connect.mailerlite.com/api/subscribers";
-
 interface SubscribePayload {
   email?: string;
   source?: string;
+  firstName?: string;
+  lastName?: string;
 }
 
 export async function POST(request: NextRequest) {
-  const apiKey = process.env.MAILERLITE_API_KEY;
-  const groupId = process.env.MAILERLITE_GROUP_ID;
+  const apiKey = process.env.RESEND_API_KEY;
+  const audienceId = process.env.RESEND_STRENGTH_TEAM_AUDIENCE_ID;
 
-  if (!apiKey || !groupId) {
-    console.error("[subscribe] MAILERLITE_API_KEY or MAILERLITE_GROUP_ID missing");
+  if (!apiKey || !audienceId) {
+    console.error("[subscribe] RESEND_API_KEY or RESEND_STRENGTH_TEAM_AUDIENCE_ID missing");
     return Response.json({ error: "Email service not configured" }, { status: 500 });
   }
 
@@ -30,27 +30,31 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "Invalid email" }, { status: 400 });
   }
 
-  const source = body.source || "site";
-
   try {
-    const res = await fetch(MAILERLITE_API, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-        Accept: "application/json",
+    const res = await fetch(
+      `https://api.resend.com/audiences/${audienceId}/contacts`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          first_name: body.firstName ?? "",
+          last_name: body.lastName ?? "",
+          unsubscribed: false,
+        }),
       },
-      body: JSON.stringify({
-        email,
-        groups: [groupId],
-        fields: { source },
-        status: "active",
-      }),
-    });
+    );
 
     if (!res.ok) {
       const errBody = await res.text();
-      console.error("[subscribe] MailerLite error", res.status, errBody);
+      // Resend treats duplicates as a soft error — surface success to keep UX clean.
+      if (errBody.toLowerCase().includes("already")) {
+        return Response.json({ ok: true, duplicate: true });
+      }
+      console.error("[subscribe] Resend error", res.status, errBody);
       return Response.json({ error: "Subscription failed" }, { status: 502 });
     }
 

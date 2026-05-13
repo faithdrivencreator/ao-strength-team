@@ -54,3 +54,7 @@ shopify-backup/
 MERGE-INVENTORY.md
 deno.lock
 src/lib/__email-previews__/
+
+# Project-local reference materials (not deployed)
+/Inspiration/
+/public/images/hero/hero-bg-v1-backup.png

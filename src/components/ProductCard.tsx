@@ -28,6 +28,11 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
           <span className="font-sans font-normal text-[14px] text-white/70">
             ${product.price.toFixed(2)}
           </span>
+          {product.compareAtPrice && product.compareAtPrice > product.price && (
+            <span className="font-sans font-normal text-[13px] text-white/35 line-through">
+              ${product.compareAtPrice.toFixed(2)}
+            </span>
+          )}
           {product.status === "sold-out" && (
             <span className="font-mono text-[11px] tracking-[0.1em] uppercase text-red-500">
               SOLD OUT

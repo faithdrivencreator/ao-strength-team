@@ -46,7 +46,7 @@ export default function HomeEmailForm() {
           Welcome to the team.
         </p>
         <p className="font-mono text-[11px] tracking-[0.15em] text-white/40">
-          Watch your inbox for the first message.
+          First Weekly Discipline lands Sunday morning.
         </p>
       </motion.div>
     );

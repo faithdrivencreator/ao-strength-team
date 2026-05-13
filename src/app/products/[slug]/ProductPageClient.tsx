@@ -22,7 +22,11 @@ export default function ProductPageClient({
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [descriptionOpen, setDescriptionOpen] = useState(false);
+  const [openPanel, setOpenPanel] = useState<string | null>("description");
+
+  function togglePanel(id: string) {
+    setOpenPanel((current) => (current === id ? null : id));
+  }
 
   const selectedVariant = product.variants[selectedColorIndex];
   const isSoldOut = product.status === "sold-out";
@@ -108,9 +112,21 @@ export default function ProductPageClient({
               </h1>
 
               {/* Price */}
-              <p className="font-sans font-normal text-[20px] text-white/70 mt-3">
-                ${product.price.toFixed(2)}
-              </p>
+              <div className="flex items-baseline gap-3 mt-3">
+                <p className="font-sans font-normal text-[20px] text-white/70">
+                  ${product.price.toFixed(2)}
+                </p>
+                {product.compareAtPrice && product.compareAtPrice > product.price && (
+                  <>
+                    <p className="font-sans font-normal text-[16px] text-white/35 line-through">
+                      ${product.compareAtPrice.toFixed(2)}
+                    </p>
+                    <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/60 border border-white/20 px-2 py-1">
+                      Save ${(product.compareAtPrice - product.price).toFixed(2)}
+                    </span>
+                  </>
+                )}
+              </div>
 
               {/* Color swatches */}
               <div className="mt-8">
@@ -217,50 +233,124 @@ export default function ProductPageClient({
                 className="mt-6 grid grid-cols-1 md:grid-cols-3 border border-white/10"
               >
                 <li className="px-4 py-4 md:border-r md:border-white/10 border-b md:border-b-0 border-white/10 last:border-b-0">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.10em] text-[#737373] leading-snug">
-                    // FREE SHIPPING OVER $75
+                  <p className="font-mono text-[11px] uppercase tracking-[0.10em] text-white/65 leading-snug">
+                    // 60-DAY RETURNS
                   </p>
                 </li>
                 <li className="px-4 py-4 md:border-r md:border-white/10 border-b md:border-b-0 border-white/10 last:border-b-0">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.10em] text-[#737373] leading-snug">
-                    // PREMIUM MOISTURE-WICKING FABRIC
+                  <p className="font-mono text-[11px] uppercase tracking-[0.10em] text-white/65 leading-snug">
+                    // FREE EXCHANGES
                   </p>
                 </li>
                 <li className="px-4 py-4">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.10em] text-[#737373] leading-snug">
-                    // 30-DAY EASY RETURNS
+                  <p className="font-mono text-[11px] uppercase tracking-[0.10em] text-white/65 leading-snug">
+                    // SHIPS IN 2&ndash;3 DAYS
                   </p>
                 </li>
               </ul>
+              <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.15em] text-white/40">
+                Free US shipping on orders $75+
+              </p>
 
-              {/* Description expandable */}
-              <div className="mt-10 border-t border-white/10 pt-6">
-                <button
-                  onClick={() => setDescriptionOpen((o) => !o)}
-                  className="flex items-center justify-between w-full"
-                >
-                  <span className="font-mono text-[11px] tracking-[0.1em] text-white/60 uppercase">
-                    // DESCRIPTION+
-                  </span>
-                  <span className="font-mono text-[14px] text-white/40">
-                    {descriptionOpen ? "-" : "+"}
-                  </span>
-                </button>
-                {descriptionOpen && (
-                  <div className="mt-4">
-                    <p className="font-sans text-[13px] font-light text-white/70 leading-relaxed">
-                      {product.description}
-                    </p>
-                    <blockquote className="mt-4 pl-4 border-l border-white/20">
-                      <p className="font-sans text-[13px] italic text-white/50 leading-relaxed">
-                        &ldquo;{product.scripture}&rdquo;
-                      </p>
-                      <cite className="block font-mono text-[11px] tracking-[0.1em] text-white/30 mt-1 not-italic">
-                        {product.scriptureRef}
-                      </cite>
-                    </blockquote>
-                  </div>
-                )}
+              {/* FAQ accordion — Description, Sizing, Shipping, Returns, Care */}
+              <div className="mt-10 border-t border-white/10">
+                {[
+                  {
+                    id: "description",
+                    label: "DESCRIPTION",
+                    body: (
+                      <div>
+                        <p className="font-sans text-[13px] font-light text-white/70 leading-relaxed">
+                          {product.description}
+                        </p>
+                        <blockquote className="mt-4 pl-4 border-l border-white/20">
+                          <p className="font-sans text-[13px] italic text-white/50 leading-relaxed">
+                            &ldquo;{product.scripture}&rdquo;
+                          </p>
+                          <cite className="block font-mono text-[11px] tracking-[0.1em] text-white/30 mt-1 not-italic">
+                            {product.scriptureRef}
+                          </cite>
+                        </blockquote>
+                      </div>
+                    ),
+                  },
+                  {
+                    id: "sizing",
+                    label: "SIZING & FIT",
+                    body: (
+                      <div className="space-y-3 font-sans text-[13px] font-light text-white/70 leading-relaxed">
+                        <p>
+                          Runs true to size. Most of the team wears their normal
+                          size. If you prefer a relaxed fit, size up one. Between
+                          sizes? Size up.
+                        </p>
+                        <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-white/40">
+                          // Chest (in): S 38&ndash;40 · M 41&ndash;43 · L 44&ndash;46 · XL 47&ndash;49 · 2XL 50&ndash;52 · 3XL 53&ndash;55
+                        </p>
+                      </div>
+                    ),
+                  },
+                  {
+                    id: "shipping",
+                    label: "SHIPPING",
+                    body: (
+                      <ul className="space-y-2 font-sans text-[13px] font-light text-white/70 leading-relaxed list-disc pl-5">
+                        <li>Free US shipping on orders $75+.</li>
+                        <li>Standard US orders ship in 2&ndash;3 business days via USPS.</li>
+                        <li>Tracking emailed the moment your order leaves the facility.</li>
+                        <li>International shipping rates calculated at checkout.</li>
+                      </ul>
+                    ),
+                  },
+                  {
+                    id: "returns",
+                    label: "RETURNS & EXCHANGES",
+                    body: (
+                      <ul className="space-y-2 font-sans text-[13px] font-light text-white/70 leading-relaxed list-disc pl-5">
+                        <li>60-day returns on unworn, unwashed items with tags attached.</li>
+                        <li>Free exchanges for size or color &mdash; we cover the return shipping.</li>
+                        <li>Refunds processed within 5 business days of receipt.</li>
+                        <li>Email returns@aostrengthteam.store to start.</li>
+                      </ul>
+                    ),
+                  },
+                  {
+                    id: "care",
+                    label: "CARE",
+                    body: (
+                      <ul className="space-y-2 font-sans text-[13px] font-light text-white/70 leading-relaxed list-disc pl-5">
+                        <li>Machine wash cold with like colors, inside out.</li>
+                        <li>Tumble dry low or hang dry to preserve fit and print.</li>
+                        <li>Do not bleach. Do not iron print.</li>
+                        <li>Built to last &mdash; care for it, train hard, repeat.</li>
+                      </ul>
+                    ),
+                  },
+                ].map((panel) => {
+                  const isOpen = openPanel === panel.id;
+                  return (
+                    <div key={panel.id} className="border-b border-white/10">
+                      <button
+                        onClick={() => togglePanel(panel.id)}
+                        aria-expanded={isOpen}
+                        aria-controls={`faq-${panel.id}`}
+                        className="flex items-center justify-between w-full py-5 text-left"
+                      >
+                        <span className="font-mono text-[11px] tracking-[0.1em] text-white/80 uppercase">
+                          // {panel.label}
+                        </span>
+                        <span className="font-mono text-[16px] text-white/40 leading-none">
+                          {isOpen ? "−" : "+"}
+                        </span>
+                      </button>
+                      {isOpen && (
+                        <div id={`faq-${panel.id}`} className="pb-6 pr-2">
+                          {panel.body}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

@@ -9,6 +9,12 @@ export interface Product {
   slug: string;
   name: string;
   price: number;
+  /**
+   * Original retail price, shown as strikethrough when present.
+   * Use ONLY for honest, time-limited promotions tied to a real drop —
+   * never as a permanent MSRP anchor.
+   */
+  compareAtPrice?: number;
   description: string;
   scripture: string;
   scriptureRef: string;

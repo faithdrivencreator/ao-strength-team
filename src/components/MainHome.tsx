@@ -37,6 +37,52 @@ function ThinCross({ className = "" }: { className?: string }) {
   );
 }
 
+/* ── Pillar icons (24px stroke set) ── */
+function DumbbellIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect x="2" y="9" width="3" height="6" rx="0.5" />
+      <rect x="5" y="7.5" width="3" height="9" rx="0.5" />
+      <line x1="8" y1="12" x2="16" y2="12" />
+      <rect x="16" y="7.5" width="3" height="9" rx="0.5" />
+      <rect x="19" y="9" width="3" height="6" rx="0.5" />
+    </svg>
+  );
+}
+
+function ShieldIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M12 3 L4 6 V12 C4 16.5 7.5 19.8 12 21 C16.5 19.8 20 16.5 20 12 V6 L12 3 Z" />
+    </svg>
+  );
+}
+
+function PersonIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <circle cx="12" cy="8" r="3.5" />
+      <path d="M5 20 C5 16 8 14 12 14 C16 14 19 16 19 20" />
+    </svg>
+  );
+}
+
+function PillarCrossIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <line x1="12" y1="3" x2="12" y2="21" />
+      <line x1="6" y1="9" x2="18" y2="9" />
+    </svg>
+  );
+}
+
+const trustPillars = [
+  { Icon: DumbbellIcon, title: "DISCIPLINED", line: "Training. Mindset." },
+  { Icon: ShieldIcon, title: "UNBREAKABLE", line: "Built to last. Built to lead." },
+  { Icon: PersonIcon, title: "COMMUNITY", line: "Stronger together." },
+  { Icon: PillarCrossIcon, title: "FAITH DRIVEN", line: "Purpose in every rep." },
+];
+
 const pillars = [
   {
     num: "01",
@@ -79,11 +125,12 @@ export default function MainHome() {
     <div className="flex flex-col overflow-x-hidden">
 
       {/* ════════════════════════════════════════════════════════════
-          HERO — Split layout (text left, image right)
+          HERO — Split layout (text left, image right) + trust bar
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen w-full flex flex-col md:flex-row">
+      <section className="relative w-full bg-black flex flex-col">
+        <div className="flex flex-col md:flex-row">
         {/* Left side — black with text */}
-        <div className="relative w-full md:w-[48%] bg-black flex items-end md:items-center min-h-[50vh] md:min-h-screen">
+        <div className="relative w-full md:w-[48%] bg-black flex items-end md:items-center min-h-[50vh] md:min-h-[calc(100vh-104px)]">
           <div className="relative z-10 px-8 md:px-16 lg:px-20 pb-12 md:pb-0 pt-8 md:pt-0">
             <motion.span
               className="font-mono text-[12px] tracking-[0.2em] uppercase text-white/40 block mb-10"
@@ -115,13 +162,12 @@ export default function MainHome() {
             </motion.h2>
 
             <motion.p
-              className="mt-10 font-sans text-base md:text-lg font-light text-white/50 max-w-md leading-relaxed"
+              className="mt-10 font-mono text-[12px] tracking-[0.25em] uppercase text-white/55"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              Performance apparel for the disciplined. From Alpha to Omega — we are
-              with you from the first step to the last rep.
+              STRENGTHEN. ENDURE. FINISH.
             </motion.p>
 
             <motion.div
@@ -134,7 +180,7 @@ export default function MainHome() {
                 href="/shop"
                 className="bg-white text-black font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/90 transition-all duration-300 text-center"
               >
-                Shop New Arrivals
+                Shop the Collection
               </Link>
               <Link
                 href="#signup"
@@ -156,7 +202,7 @@ export default function MainHome() {
         </div>
 
         {/* Right side — hero image */}
-        <div className="relative w-full md:w-[52%] min-h-[50vh] md:min-h-screen overflow-hidden">
+        <div className="relative w-full md:w-[52%] min-h-[50vh] md:min-h-[calc(100vh-104px)] overflow-hidden">
           <motion.div
             className="absolute inset-0"
             initial={{ scale: 1.05 }}
@@ -165,13 +211,39 @@ export default function MainHome() {
           >
             <Image
               src="/images/hero/hero-bg.png"
-              alt="Alpha Omega Strength Team — performance apparel"
+              alt="Athlete from behind wearing the Alpha Omega Unbreakable hoodie in a dark gym"
               fill
-              priority
-              className="object-cover object-top"
+              preload
+              sizes="(max-width: 768px) 100vw, 52vw"
+              className="object-cover object-[70%_center]"
             />
           </motion.div>
         </div>
+        </div>
+
+        {/* Trust bar — 4 pillars across full width */}
+        <motion.div
+          className="relative z-10 border-t border-white/10 bg-black"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/10">
+            {trustPillars.map(({ Icon, title, line }) => (
+              <div key={title} className="flex items-center gap-4 px-6 md:px-8 py-6">
+                <Icon className="w-7 h-7 text-white/70 shrink-0" />
+                <div>
+                  <div className="font-sans font-bold text-[11px] tracking-[0.18em] uppercase text-white leading-tight">
+                    {title}
+                  </div>
+                  <div className="font-sans text-[12px] text-white/45 mt-1 leading-snug">
+                    {line}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
 
@@ -263,6 +335,11 @@ export default function MainHome() {
                     </h3>
                     <p className="font-mono text-sm text-white/50">
                       ${product.price.toFixed(2)}
+                      {product.compareAtPrice && product.compareAtPrice > product.price && (
+                        <span className="ml-2 text-white/30 line-through">
+                          ${product.compareAtPrice.toFixed(2)}
+                        </span>
+                      )}
                     </p>
                   </div>
                 </Link>
@@ -379,7 +456,7 @@ export default function MainHome() {
             transition={{ duration: 0.8 }}
           >
             <span className="font-mono text-[12px] tracking-[0.25em] uppercase text-white/30 block mb-4">
-              // WHAT WE STAND FOR
+              RESTRAINED · ENCOURAGING · DISCIPLINED · FAITH-GROUNDED
             </span>
             <h2 className="font-sans font-black text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight leading-[1.05]">
               OUR PILLARS
@@ -427,6 +504,45 @@ export default function MainHome() {
 
 
       {/* ════════════════════════════════════════════════════════════
+          TRAIN WITH PURPOSE — Bridge band
+      ════════════════════════════════════════════════════════════ */}
+      <section className="relative border-y border-white/10 bg-black overflow-hidden">
+        <motion.div
+          className="absolute -right-10 top-1/2 -translate-y-1/2 text-white/[0.025] pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
+        >
+          <ThinCross className="w-[260px] h-[340px]" />
+        </motion.div>
+
+        <div className="relative max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20 py-20 md:py-28 text-center">
+          <motion.span
+            className="font-mono text-[12px] tracking-[0.25em] uppercase text-white/30 block mb-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            // THE STANDARD
+          </motion.span>
+          <motion.h2
+            className="font-sans font-black text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight leading-[0.95]"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+          >
+            TRAIN WITH
+            <br />
+            <span className="text-white/50">PURPOSE.</span>
+          </motion.h2>
+        </div>
+      </section>
+
+
+      {/* ════════════════════════════════════════════════════════════
           GENESIS — Full-screen cinematic CTA
       ════════════════════════════════════════════════════════════ */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
@@ -450,7 +566,7 @@ export default function MainHome() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            GENESIS
+            BUILT FOR THE DISCIPLINED
           </motion.span>
 
           <motion.span
@@ -460,7 +576,7 @@ export default function MainHome() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            // LIMITED RELEASE
+            GENESIS — LIMITED RELEASE
           </motion.span>
 
           <motion.h2
@@ -682,14 +798,19 @@ export default function MainHome() {
             transition={{ duration: 0.8 }}
           >
             <span className="font-mono text-[12px] tracking-[0.25em] uppercase text-white/25 block mb-6">
-              // JOIN US
+              // THE WEEKLY DISCIPLINE
             </span>
 
-            <h2 className="font-sans font-black text-3xl md:text-5xl uppercase tracking-tight leading-[1.05] mb-8">
-              JOIN THE
+            <h2 className="font-sans font-black text-3xl md:text-5xl uppercase tracking-tight leading-[1.05] mb-6">
+              SCRIPTURE.
               <br />
-              STRENGTH TEAM
+              TRAINING. DROPS.
             </h2>
+
+            <p className="font-sans text-base font-light text-white/60 max-w-md mx-auto leading-relaxed mb-10">
+              Discipline your mind. Strengthen your body. Lead with purpose. One
+              short read every Sunday morning &mdash; plus first access to every new drop.
+            </p>
           </motion.div>
 
           <motion.p
