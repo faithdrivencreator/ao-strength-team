@@ -21,6 +21,7 @@ const authors: Record<string, Author> = {
     name: "Pete Fluriach",
     title: "Founder, Alpha Omega Strength Team",
     bio: "Pete Fluriach is the founder of Alpha Omega Strength Team. He writes from the intersection of faith, training, and the discipline of finishing what you start. Based in Miami, FL.",
+    portrait: "/images/authors/pete-fluriach.jpeg",
     url: "/about",
   },
   "Alpha Omega Strength Team": {

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { urlFor } from "@/lib/sanity";
 import type { BlogPost } from "@/lib/blog";
 
 interface PostCardProps {
@@ -48,7 +47,7 @@ export default function PostCard({ post, index = 0, variant = "default" }: PostC
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-950 mb-5">
           {post.mainImage ? (
             <Image
-              src={urlFor(post.mainImage).width(900).height(675).url()}
+              src={post.mainImage.src}
               alt={post.mainImage.alt || post.title}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

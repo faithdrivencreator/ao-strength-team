@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { urlFor } from "@/lib/sanity";
 import type { BlogPost } from "@/lib/blog";
 
 interface FeaturedPostProps {
@@ -42,7 +41,7 @@ export default function FeaturedPost({ post }: FeaturedPostProps) {
       >
         {post.mainImage ? (
           <Image
-            src={urlFor(post.mainImage).width(1800).height(1200).url()}
+            src={post.mainImage.src}
             alt={post.mainImage.alt || post.title}
             fill
             preload

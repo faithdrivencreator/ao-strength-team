@@ -1,5 +1,3 @@
-import type { PortableTextBlock } from "@portabletext/react";
-
 const WORDS_PER_MINUTE = 200;
 
 interface PortableTextSpan {
@@ -15,7 +13,7 @@ interface PortableTextBlockWithChildren {
 /**
  * Walks a PortableText body, concatenates every span's text, returns a word count.
  */
-export function getWordCount(body: PortableTextBlock[] | undefined | null): number {
+export function getWordCount(body: readonly unknown[] | undefined | null): number {
   if (!body || body.length === 0) return 0;
 
   let text = "";
@@ -35,7 +33,7 @@ export function getWordCount(body: PortableTextBlock[] | undefined | null): numb
 /**
  * Estimated reading time in minutes (200 wpm, minimum 1 min).
  */
-export function getReadingTimeMinutes(body: PortableTextBlock[] | undefined | null): number {
+export function getReadingTimeMinutes(body: readonly unknown[] | undefined | null): number {
   const words = getWordCount(body);
   if (words === 0) return 1;
   return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
@@ -44,7 +42,7 @@ export function getReadingTimeMinutes(body: PortableTextBlock[] | undefined | nu
 /**
  * Pull the first N characters of body text — for fallback article schema bodies.
  */
-export function getBodyExcerpt(body: PortableTextBlock[] | undefined | null, maxLen = 300): string {
+export function getBodyExcerpt(body: readonly unknown[] | undefined | null, maxLen = 300): string {
   if (!body || body.length === 0) return "";
   let text = "";
   for (const block of body as unknown as PortableTextBlockWithChildren[]) {

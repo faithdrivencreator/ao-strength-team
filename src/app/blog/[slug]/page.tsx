@@ -5,10 +5,8 @@ import { notFound } from "next/navigation";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import type { PortableTextBlock } from "@portabletext/react";
 import { getAllPosts, getPost, type BlogPost } from "@/lib/blog";
-import { urlFor } from "@/lib/sanity";
 import { getReadingTimeMinutes, getWordCount, getBodyExcerpt } from "@/lib/reading-time";
 import { getAuthorOrFallback } from "@/data/authors";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 import PostCard from "@/components/blog/PostCard";
 import Tldr from "@/components/blog/Tldr";
@@ -43,9 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return { title: "Post Not Found" };
 
   const description = post.seoDescription || post.excerpt;
-  const ogImage = post.mainImage
-    ? urlFor(post.mainImage).width(1200).height(630).url()
-    : undefined;
+  const ogImage = post.mainImage?.src;
 
   return {
     title: post.seoTitle || post.title,
@@ -59,7 +55,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: post.date,
       authors: [post.author],
       tags: post.tags,
-      images: ogImage ? [{ url: ogImage, width: 1200, height: 630, alt: post.mainImage?.alt || post.title }] : undefined,
+      images: ogImage
+        ? [{ url: ogImage, width: 1200, height: 630, alt: post.mainImage?.alt || post.title }]
+        : undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -121,24 +119,39 @@ const portableTextComponents: PortableTextComponents = {
     },
   },
   types: {
-    image: ({ value }: { value: SanityImageSource & { alt?: string; caption?: string } }) => (
-      <figure className="my-12 -mx-2 md:mx-0">
-        <div className="relative w-full">
-          <Image
-            src={urlFor(value).width(1440).url()}
-            alt={value.alt || ""}
-            width={1440}
-            height={960}
-            className="w-full h-auto"
-          />
-        </div>
-        {value.caption && (
-          <figcaption className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/40">
-            // {value.caption}
-          </figcaption>
-        )}
-      </figure>
-    ),
+    image: ({
+      value,
+    }: {
+      value: {
+        asset?: { url?: string };
+        src?: string;
+        alt?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+      };
+    }) => {
+      const src = value.asset?.url || value.src;
+      if (!src) return null;
+      return (
+        <figure className="my-12 -mx-2 md:mx-0">
+          <div className="relative w-full">
+            <Image
+              src={src}
+              alt={value.alt || ""}
+              width={value.width ?? 1440}
+              height={value.height ?? 960}
+              className="w-full h-auto"
+            />
+          </div>
+          {value.caption && (
+            <figcaption className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/40">
+              // {value.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
   },
 };
 
@@ -174,7 +187,7 @@ const FAQ_HEADING_REGEX = /^\s*(faq|frequently\s+asked\s+questions?|questions?\s
  *
  * Returns [] if no FAQ section is found — the component renders nothing in that case.
  */
-function extractFAQ(body: PortableTextBlock[] | undefined | null): FAQItem[] {
+function extractFAQ(body: readonly unknown[] | undefined | null): FAQItem[] {
   if (!body) return [];
   const blocks = body as unknown as PTBlock[];
   const items: FAQItem[] = [];
@@ -316,9 +329,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.seoDescription || post.excerpt,
-    image: post.mainImage
-      ? [urlFor(post.mainImage).width(1200).height(630).url()]
-      : undefined,
+    image: post.mainImage ? [post.mainImage.src] : undefined,
     datePublished: post.date,
     dateModified: post.modifiedDate || post.date,
     wordCount,
@@ -449,12 +460,13 @@ export default async function BlogPostPage({ params }: PageProps) {
       </header>
 
       {/* ════════════════════════════════════════════════════════════
-          HERO IMAGE — full-bleed cinematic banner, no overlay
+          HERO IMAGE — full-bleed cinematic banner, no overlay.
+          If the file is missing the dark placeholder shows through.
       ════════════════════════════════════════════════════════════ */}
       {post.mainImage && (
         <div className="relative w-full aspect-[3/1] bg-neutral-950 overflow-hidden">
           <Image
-            src={urlFor(post.mainImage).width(2000).height(667).url()}
+            src={post.mainImage.src}
             alt={post.mainImage.alt || post.title}
             fill
             preload
@@ -480,7 +492,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* Article body */}
         <div className="article-prose">
-          <PortableText value={post.body} components={portableTextComponents} />
+          <PortableText value={post.body as PortableTextBlock[]} components={portableTextComponents} />
         </div>
 
         {/* FAQ — only when present in body */}
@@ -544,23 +556,36 @@ export default async function BlogPostPage({ params }: PageProps) {
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/40 mb-4">
               // WRITTEN BY
             </p>
-            <h2 className="font-sans font-black uppercase tracking-tight text-2xl md:text-3xl mb-2 text-white">
-              {author.name}
-            </h2>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/45 mb-5">
-              {author.title}
-            </p>
-            <p className="font-sans text-base text-white/70 leading-[1.7] max-w-xl">
-              {author.bio}
-            </p>
-            {author.url && (
-              <Link
-                href={author.url}
-                className="mt-5 inline-block font-mono text-[11px] uppercase tracking-[0.22em] text-white/55 hover:text-white transition-colors"
-              >
-                More about {author.name.split(" ")[0]} —→
-              </Link>
-            )}
+            <div className="flex items-start gap-5">
+              {author.portrait && (
+                <Image
+                  src={author.portrait}
+                  alt={`${author.name} portrait`}
+                  width={80}
+                  height={80}
+                  className="h-16 w-16 md:h-20 md:w-20 rounded-full object-cover ring-1 ring-white/20 shrink-0"
+                />
+              )}
+              <div>
+                <h2 className="font-sans font-black uppercase tracking-tight text-2xl md:text-3xl mb-2 text-white">
+                  {author.name}
+                </h2>
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/45 mb-5">
+                  {author.title}
+                </p>
+                <p className="font-sans text-base text-white/70 leading-[1.7] max-w-xl">
+                  {author.bio}
+                </p>
+                {author.url && (
+                  <Link
+                    href={author.url}
+                    className="mt-5 inline-block font-mono text-[11px] uppercase tracking-[0.22em] text-white/55 hover:text-white transition-colors"
+                  >
+                    More about {author.name.split(" ")[0]} —→
+                  </Link>
+                )}
+              </div>
+            </div>
           </aside>
         )}
 
