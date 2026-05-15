@@ -11,6 +11,8 @@
  *
  * The exported functions are synchronous internally but kept async to preserve
  * the existing call-sites that `await` them.
+ *
+ * @see https://github.com/faithdrivencreator/ao-strength-team — auto-deploys from `main`
  */
 
 import {
