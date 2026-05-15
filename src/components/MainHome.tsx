@@ -1,11 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import ScrollingMarquee from "@/components/ScrollingMarquee";
 import HomeEmailForm from "@/components/HomeEmailForm";
+import LaunchCountdown from "@/components/LaunchCountdown";
+import NotifyDropModal from "@/components/NotifyDropModal";
 import { getAllProducts } from "@/data/products";
+
+const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
 
 /* ── Decorative Cross SVG ── */
 function CrossIcon({ className = "" }: { className?: string }) {
@@ -120,9 +125,14 @@ const pillars = [
 
 export default function MainHome() {
   const products = getAllProducts();
+  const [notifyOpen, setNotifyOpen] = useState(false);
 
   return (
     <div className="flex flex-col overflow-x-hidden">
+
+      {PURCHASE_LOCKED && (
+        <NotifyDropModal open={notifyOpen} onClose={() => setNotifyOpen(false)} />
+      )}
 
       {/* ════════════════════════════════════════════════════════════
           HERO — Split layout (text left, image right) + trust bar
@@ -170,24 +180,54 @@ export default function MainHome() {
               STRENGTHEN. ENDURE. FINISH.
             </motion.p>
 
+            {PURCHASE_LOCKED && (
+              <motion.div
+                className="mt-10"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.85 }}
+              >
+                <LaunchCountdown />
+              </motion.div>
+            )}
+
             <motion.div
               className="mt-10 flex flex-col sm:flex-row gap-4"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
             >
-              <Link
-                href="/shop"
-                className="bg-white text-black font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/90 transition-all duration-300 text-center"
-              >
-                Shop the Collection
-              </Link>
-              <Link
-                href="#signup"
-                className="border border-white/40 text-white font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/10 hover:border-white transition-all duration-300 text-center"
-              >
-                Join the Team
-              </Link>
+              {PURCHASE_LOCKED ? (
+                <>
+                  <button
+                    onClick={() => setNotifyOpen(true)}
+                    className="bg-white text-black font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/90 transition-all duration-300 text-center"
+                  >
+                    Get First Access
+                  </button>
+                  <Link
+                    href="/shop"
+                    className="border border-white/40 text-white font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/10 hover:border-white transition-all duration-300 text-center"
+                  >
+                    Preview the Collection
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/shop"
+                    className="bg-white text-black font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/90 transition-all duration-300 text-center"
+                  >
+                    Shop the Collection
+                  </Link>
+                  <Link
+                    href="#signup"
+                    className="border border-white/40 text-white font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/10 hover:border-white transition-all duration-300 text-center"
+                  >
+                    Join the Team
+                  </Link>
+                </>
+              )}
             </motion.div>
 
             <motion.span

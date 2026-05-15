@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 
 interface NotifyDropModalProps {
-  productSlug: string;
-  productName: string;
+  /** When omitted, the modal acts as a generic "get first access" prompt. */
+  productSlug?: string;
+  productName?: string;
   open: boolean;
   onClose: () => void;
 }
@@ -49,7 +50,10 @@ export default function NotifyDropModal({
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: `drop-notify:${productSlug}` }),
+        body: JSON.stringify({
+          email,
+          source: productSlug ? `drop-notify:${productSlug}` : "drop-notify:homepage",
+        }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -97,7 +101,11 @@ export default function NotifyDropModal({
               You're on the list.
             </h2>
             <p className="text-white/70 text-[15px] leading-relaxed">
-              We'll email you the moment the <strong className="text-white">{productName}</strong> goes live on {LAUNCH_DATE_LABEL}. First access. Limited drop.
+              {productName ? (
+                <>We'll email you the moment the <strong className="text-white">{productName}</strong> goes live on {LAUNCH_DATE_LABEL}. First access. Limited drop.</>
+              ) : (
+                <>We'll email you the moment the drop goes live on {LAUNCH_DATE_LABEL}. First access. Limited release.</>
+              )}
             </p>
             <button
               onClick={onClose}
@@ -112,10 +120,14 @@ export default function NotifyDropModal({
               id="notify-drop-title"
               className="font-serif text-2xl md:text-[28px] leading-tight text-white mb-3"
             >
-              Notify me on drop day.
+              {productName ? "Notify me on drop day." : "Get first access."}
             </h2>
             <p className="text-white/65 text-[14px] leading-relaxed mb-5">
-              <strong className="text-white">{productName}</strong> drops {LAUNCH_DATE_LABEL}. Drop the email and we'll send you the link the second it's live.
+              {productName ? (
+                <><strong className="text-white">{productName}</strong> drops {LAUNCH_DATE_LABEL}. Drop the email and we'll send you the link the second it's live.</>
+              ) : (
+                <>The Alpha Omega drop goes live {LAUNCH_DATE_LABEL} at 8PM ET. Drop your email and we'll send the link the moment it's live — before the public shop opens.</>
+              )}
             </p>
             <form onSubmit={handleSubmit} className="space-y-3">
               <input
