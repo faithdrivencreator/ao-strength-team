@@ -18,7 +18,9 @@ import { NextRequest, NextResponse } from "next/server";
  */
 
 const COMING_SOON_GATED = ["/shop", "/products", "/blog", "/contact", "/checkout"];
-const PURCHASE_LOCKED_GATED = ["/shop", "/products", "/cart", "/checkout"];
+// NOTE: /shop is intentionally NOT gated — it renders ShopComingSoon (a hype page
+// with countdown + waitlist) when locked. Only purchase paths are blocked.
+const PURCHASE_LOCKED_GATED = ["/products", "/cart", "/checkout"];
 
 const PREVIEW_COOKIE = "ao-preview";
 

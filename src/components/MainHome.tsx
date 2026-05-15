@@ -206,10 +206,10 @@ export default function MainHome() {
                     Get First Access
                   </button>
                   <Link
-                    href="/blog"
+                    href="/shop"
                     className="border border-white/40 text-white font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/10 hover:border-white transition-all duration-300 text-center"
                   >
-                    Read the Journal
+                    See the Drop
                   </Link>
                 </>
               ) : (

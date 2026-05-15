@@ -6,9 +6,8 @@ import { useCart } from "@/contexts/CartContext";
 
 const ANNOUNCEMENT_HEIGHT = 36; // matches the announcement bar height
 const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
-const NAV_ITEMS = PURCHASE_LOCKED
-  ? ["JOURNAL", "ABOUT", "CONTACT"]
-  : ["SHOP", "JOURNAL", "ABOUT", "CONTACT"];
+// SHOP remains in nav even when locked — it routes to the ShopComingSoon hype page.
+const NAV_ITEMS = ["SHOP", "JOURNAL", "ABOUT", "CONTACT"];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
