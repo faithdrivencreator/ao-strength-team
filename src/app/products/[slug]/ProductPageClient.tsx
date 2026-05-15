@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/contexts/CartContext";
 import ProductCard from "@/components/ProductCard";
+import NotifyDropModal from "@/components/NotifyDropModal";
 import type { Product } from "@/data/products";
 import { trackAddToCart, trackViewItem } from "@/lib/gtag";
+
+const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
 
 interface ProductPageClientProps {
   product: Product;
@@ -23,6 +26,7 @@ export default function ProductPageClient({
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [openPanel, setOpenPanel] = useState<string | null>("description");
+  const [notifyOpen, setNotifyOpen] = useState(false);
 
   function togglePanel(id: string) {
     setOpenPanel((current) => (current === id ? null : id));
@@ -210,22 +214,45 @@ export default function ProductPageClient({
                 </div>
               </div>
 
-              {/* Add to Cart */}
+              {/* CTA — Add to Cart, or Notify-Me when purchase is locked */}
               <div className="mt-10">
-                <button
-                  onClick={handleAddToCart}
-                  disabled={isSoldOut || !selectedSize}
-                  className={`w-full h-12 font-sans font-bold text-[14px] uppercase tracking-wide transition-colors duration-150 ${
-                    isSoldOut
-                      ? "bg-white/10 text-white/30 cursor-not-allowed"
-                      : !selectedSize
-                        ? "bg-white/20 text-white/50 cursor-not-allowed"
-                        : "bg-white text-black hover:bg-white/90"
-                  }`}
-                >
-                  {isSoldOut ? "SOLD OUT" : !selectedSize ? "SELECT A SIZE" : "ADD TO CART"}
-                </button>
+                {PURCHASE_LOCKED ? (
+                  <button
+                    onClick={() => setNotifyOpen(true)}
+                    className="w-full h-12 font-sans font-bold text-[14px] uppercase tracking-wide transition-colors duration-150 bg-white text-black hover:bg-white/90"
+                  >
+                    Notify Me On Drop Day
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleAddToCart}
+                    disabled={isSoldOut || !selectedSize}
+                    className={`w-full h-12 font-sans font-bold text-[14px] uppercase tracking-wide transition-colors duration-150 ${
+                      isSoldOut
+                        ? "bg-white/10 text-white/30 cursor-not-allowed"
+                        : !selectedSize
+                          ? "bg-white/20 text-white/50 cursor-not-allowed"
+                          : "bg-white text-black hover:bg-white/90"
+                    }`}
+                  >
+                    {isSoldOut ? "SOLD OUT" : !selectedSize ? "SELECT A SIZE" : "ADD TO CART"}
+                  </button>
+                )}
+                {PURCHASE_LOCKED && (
+                  <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.15em] text-white/45 text-center">
+                    // Official drop · {process.env.NEXT_PUBLIC_LAUNCH_DATE_LABEL || "May 25"}
+                  </p>
+                )}
               </div>
+
+              {PURCHASE_LOCKED && (
+                <NotifyDropModal
+                  productSlug={product.slug}
+                  productName={product.name}
+                  open={notifyOpen}
+                  onClose={() => setNotifyOpen(false)}
+                />
+              )}
 
               {/* Trust badges */}
               <ul

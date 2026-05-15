@@ -1,37 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Pre-launch gate. Next.js 16 Proxy (formerly Middleware).
+ * Pre-launch gates. Next.js 16 Proxy (formerly Middleware).
  *
- * When NEXT_PUBLIC_COMING_SOON=true, redirect public-facing browse routes back
- * to the homepage (which renders the Coming Soon teaser). The following stay
- * accessible:
- *   - /                    (the teaser itself)
- *   - /studio*             (Sanity CMS)
- *   - /api/*               (form submissions, webhooks)
- *   - /privacy, /terms,
- *     /shipping, /returns  (legal — required by Stripe)
- *   - /not-found, /_next/* (system routes)
+ * Two independent flags:
  *
- * Flip NEXT_PUBLIC_COMING_SOON to "false" (or unset) when ready to launch.
+ *   NEXT_PUBLIC_COMING_SOON=true
+ *     Whole-site teaser mode. Public browse routes redirect to `/`,
+ *     which renders the Coming Soon hero. Used before the site went public.
+ *
+ *   NEXT_PUBLIC_PURCHASE_LOCKED=true
+ *     Site is open and indexable, but checkout/cart routes are blocked.
+ *     Visitors can browse products + read the journal; "Notify Me On Drop"
+ *     replaces "Add to Cart" in the UI. Used between soft-open and full launch.
+ *
+ * Both flags honor the preview cookie — owners bypass.
  */
 
-const GATED_PREFIXES = [
-  "/shop",
-  "/products",
-  "/blog",
-  "/contact",
-  "/checkout",
-];
+const COMING_SOON_GATED = ["/shop", "/products", "/blog", "/contact", "/checkout"];
+const PURCHASE_LOCKED_GATED = ["/cart", "/checkout"];
 
 const PREVIEW_COOKIE = "ao-preview";
 
 export function proxy(request: NextRequest) {
-  if (process.env.NEXT_PUBLIC_COMING_SOON !== "true") {
+  const comingSoon = process.env.NEXT_PUBLIC_COMING_SOON === "true";
+  const purchaseLocked = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
+
+  if (!comingSoon && !purchaseLocked) {
     return NextResponse.next();
   }
 
-  // Preview access: signed-in owner bypasses the gate entirely.
+  // Preview cookie bypasses everything.
   const previewCookie = request.cookies.get(PREVIEW_COOKIE)?.value;
   const expectedToken = process.env.PREVIEW_COOKIE_TOKEN;
   if (expectedToken && previewCookie === expectedToken) {
@@ -40,7 +39,9 @@ export function proxy(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
-  const isGated = GATED_PREFIXES.some(
+  const gatedPrefixes = comingSoon ? COMING_SOON_GATED : PURCHASE_LOCKED_GATED;
+
+  const isGated = gatedPrefixes.some(
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
   );
 
