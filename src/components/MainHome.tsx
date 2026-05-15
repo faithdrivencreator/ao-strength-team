@@ -206,10 +206,10 @@ export default function MainHome() {
                     Get First Access
                   </button>
                   <Link
-                    href="/shop"
+                    href="/blog"
                     className="border border-white/40 text-white font-sans text-[13px] font-bold uppercase tracking-[0.15em] px-10 py-4 hover:bg-white/10 hover:border-white transition-all duration-300 text-center"
                   >
-                    Preview the Collection
+                    Read the Journal
                   </Link>
                 </>
               ) : (
@@ -297,8 +297,9 @@ export default function MainHome() {
 
 
       {/* ════════════════════════════════════════════════════════════
-          NEW ARRIVALS — Big product showcase
+          NEW ARRIVALS — Big product showcase (hidden while purchase is locked)
       ════════════════════════════════════════════════════════════ */}
+      {!PURCHASE_LOCKED && (
       <section className="relative py-32 md:py-48 lg:py-56">
         {/* Background decorative cross */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/[0.02] pointer-events-none">
@@ -389,6 +390,7 @@ export default function MainHome() {
           </div>
         </div>
       </section>
+      )}
 
 
       {/* ════════════════════════════════════════════════════════════
@@ -648,12 +650,21 @@ export default function MainHome() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            <Link
-              href="/shop"
-              className="inline-block mt-12 bg-white text-black font-sans text-sm font-bold uppercase tracking-[0.15em] px-14 py-5 hover:bg-white/90 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.08)] hover:shadow-[0_0_60px_rgba(255,255,255,0.15)]"
-            >
-              SHOP THE DROP →
-            </Link>
+            {PURCHASE_LOCKED ? (
+              <button
+                onClick={() => setNotifyOpen(true)}
+                className="inline-block mt-12 bg-white text-black font-sans text-sm font-bold uppercase tracking-[0.15em] px-14 py-5 hover:bg-white/90 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.08)] hover:shadow-[0_0_60px_rgba(255,255,255,0.15)]"
+              >
+                GET FIRST ACCESS →
+              </button>
+            ) : (
+              <Link
+                href="/shop"
+                className="inline-block mt-12 bg-white text-black font-sans text-sm font-bold uppercase tracking-[0.15em] px-14 py-5 hover:bg-white/90 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.08)] hover:shadow-[0_0_60px_rgba(255,255,255,0.15)]"
+              >
+                SHOP THE DROP →
+              </Link>
+            )}
           </motion.div>
         </div>
       </section>

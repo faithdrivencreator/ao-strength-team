@@ -18,7 +18,7 @@ import { NextRequest, NextResponse } from "next/server";
  */
 
 const COMING_SOON_GATED = ["/shop", "/products", "/blog", "/contact", "/checkout"];
-const PURCHASE_LOCKED_GATED = ["/cart", "/checkout"];
+const PURCHASE_LOCKED_GATED = ["/shop", "/products", "/cart", "/checkout"];
 
 const PREVIEW_COOKIE = "ao-preview";
 
