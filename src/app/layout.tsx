@@ -48,6 +48,9 @@ export const metadata: Metadata = {
     images: ["/images/products/signature-tee-1.png"],
   },
   robots: { index: true, follow: true },
+  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+    : undefined,
 };
 
 const organizationSchema = {
