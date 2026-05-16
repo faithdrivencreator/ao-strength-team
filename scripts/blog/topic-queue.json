@@ -1,0 +1,402 @@
+{
+  "_comment": "Topic queue for the ao-strength-team-daily-blog Scheduled Agent. Each run consumes the FIRST topic with status='pending' and flips it to 'published' with a publishedAt timestamp. Edit freely; the Scheduled Agent re-fetches this on every run.",
+  "topics": [
+    {
+      "slug": "pre-workout-prayer-faith-driven-lifters",
+      "title": "The Faith-Driven Lifter's Guide to Pre-Workout Prayer: A 5-Minute Mental Routine for Strength Training",
+      "primary_keyword": "pre-workout prayer for lifters",
+      "tags": [
+        "Faith",
+        "Mindset",
+        "Prayer",
+        "Training"
+      ],
+      "angle": "5-minute mental routine: Still / Scripture / Surrender / Set the Intention / Step Under the Bar. Faith-driven pre-workout frame for serious lifters.",
+      "stage": "pre-launch",
+      "status": "published",
+      "publishedAt": "2026-05-16"
+    },
+    {
+      "slug": "faith-driven-training-split-for-busy-men",
+      "title": "The Faith-Driven Training Split for Busy Men: A 4-Day Program That Fits a Real Life",
+      "primary_keyword": "faith-driven training split for busy men",
+      "tags": [
+        "Training",
+        "Discipline",
+        "Faith"
+      ],
+      "angle": "Practical 4-day upper/lower split with a built-in Sabbath rest day. For working men with 3-4 hours of training time per week.",
+      "stage": "pre-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "what-the-bible-says-about-physical-strength",
+      "title": "What the Bible Actually Says About Physical Strength: A Lifter's Theological Primer",
+      "primary_keyword": "what the bible says about physical strength",
+      "tags": [
+        "Faith",
+        "Training",
+        "Identity"
+      ],
+      "angle": "Survey of Old and New Testament passages on the body, strength, and stewardship. Not Philippians 4:13 again \u2014 the deeper texts.",
+      "stage": "pre-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "morning-vs-evening-training-faith-driven-lifter",
+      "title": "Morning vs. Evening Training for the Faith-Driven Lifter: Choosing the Right Window",
+      "primary_keyword": "morning vs evening training",
+      "tags": [
+        "Training",
+        "Discipline",
+        "Mindset"
+      ],
+      "angle": "When to lift if you want training to serve the rest of your life, not consume it. Argues for early morning as the default for men with families.",
+      "stage": "pre-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "compound-lifts-every-christian-man-should-know",
+      "title": "The 5 Compound Lifts Every Christian Man Should Know: A Strength Foundation Guide",
+      "primary_keyword": "compound lifts for beginners",
+      "tags": [
+        "Training",
+        "Faith",
+        "Discipline"
+      ],
+      "angle": "Squat, deadlift, bench, overhead press, row. Why these five matter, faith-frame for hard work, beginner programming notes.",
+      "stage": "pre-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "fueling-a-strength-program-on-a-budget",
+      "title": "Fueling a Strength Program on a Real Budget: The Faith-Driven Lifter's Grocery Guide",
+      "primary_keyword": "strength training nutrition on a budget",
+      "tags": [
+        "Nutrition",
+        "Training",
+        "Discipline"
+      ],
+      "angle": "How to hit 180g+ protein under $100/week. Stewardship framing \u2014 your body and your wallet both matter.",
+      "stage": "pre-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "training-when-life-falls-apart",
+      "title": "Training When Life Falls Apart: A Faith-Driven Guide to Staying in the Gym Through the Hard Seasons",
+      "primary_keyword": "training through hard seasons",
+      "tags": [
+        "Faith",
+        "Discipline",
+        "Mindset"
+      ],
+      "angle": "Job loss, grief, divorce \u2014 the case for why showing up to the gym matters more, not less, when life is breaking. Pete-voice, honest, not preachy.",
+      "stage": "pre-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "why-faith-driven-apparel-matters",
+      "title": "Why What You Wear to the Gym Matters: The Case for Faith-Driven Training Apparel",
+      "primary_keyword": "faith-driven gym apparel",
+      "tags": [
+        "Apparel",
+        "Identity",
+        "Faith"
+      ],
+      "angle": "Identity-formation argument for intentional training apparel. Soft pitch for AO without being a sales page. Releases 1 day before drop.",
+      "stage": "pre-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "alpha-omega-revelation-22-13-meaning",
+      "title": "Alpha and Omega: What Revelation 22:13 Means for the Man Under the Bar",
+      "primary_keyword": "alpha and omega meaning for christians",
+      "tags": [
+        "Faith",
+        "Identity"
+      ],
+      "angle": "Theological deep-dive on the Alpha and Omega title of Christ, what it means for a lifter's identity, and why it's the foundation of the AO brand. Releases day of launch.",
+      "stage": "launch-day",
+      "status": "pending"
+    },
+    {
+      "slug": "first-30-days-of-strength-training",
+      "title": "Your First 30 Days of Strength Training: A Faith-Driven Lifter's Survival Guide",
+      "primary_keyword": "first 30 days of strength training",
+      "tags": [
+        "Training",
+        "Faith",
+        "Discipline"
+      ],
+      "angle": "Practical onboarding for the absolute beginner. What to do, what to skip, what to expect physically and spiritually in the first month.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "deadlift-form-faith-driven-lifter",
+      "title": "The Faith-Driven Lifter's Guide to the Deadlift: Form, Programming, and Mental Frame",
+      "primary_keyword": "deadlift form guide",
+      "tags": [
+        "Training",
+        "Discipline"
+      ],
+      "angle": "Cue-by-cue deadlift breakdown plus the mental/spiritual frame for the lift that humbles every lifter who takes it seriously.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "sabbath-rest-for-lifters",
+      "title": "The Sabbath Rest for Lifters: Why a Real Day Off Makes You Stronger",
+      "primary_keyword": "sabbath rest for athletes",
+      "tags": [
+        "Recovery",
+        "Faith",
+        "Wellness"
+      ],
+      "angle": "Theology + physiology of the seventh-day rest. Argues for one true off day per week \u2014 not active recovery, full Sabbath.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "protein-targets-for-faith-driven-athletes",
+      "title": "Protein Targets for the Faith-Driven Athlete: How Much You Actually Need",
+      "primary_keyword": "protein targets for lifters",
+      "tags": [
+        "Nutrition",
+        "Training"
+      ],
+      "angle": "The evidence-backed protein target (~0.8g/lb bodyweight) and why the bro-science of 2g/lb wastes money. Stewardship angle.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "sleep-for-strength-faith-driven-athletes",
+      "title": "Sleep Is the Foundation: A Faith-Driven Athlete's Guide to Recovery Through Rest",
+      "primary_keyword": "sleep for strength athletes",
+      "tags": [
+        "Recovery",
+        "Wellness",
+        "Faith"
+      ],
+      "angle": "Why sleep beats every supplement on the market. The 7-step pre-sleep routine for serious lifters.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "training-with-your-son",
+      "title": "Training With Your Son: A Faith-Driven Father's Guide to Building Strength Together",
+      "primary_keyword": "training with your son",
+      "tags": [
+        "Faith",
+        "Identity",
+        "Training"
+      ],
+      "angle": "Multi-generational angle. How to introduce a 12+ y/o son to lifting without crushing him; age-appropriate progressions; the discipleship frame.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "garage-gym-build-on-a-budget",
+      "title": "Building a Faith-Driven Garage Gym Under $1500: The Essential Equipment List",
+      "primary_keyword": "garage gym on a budget",
+      "tags": [
+        "Training",
+        "Discipline"
+      ],
+      "angle": "Specific equipment list with prices. Why a garage gym beats a commercial gym for the faith-driven man who wants privacy + family proximity.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "mobility-routine-for-lifters-over-30",
+      "title": "The 10-Minute Mobility Routine for Faith-Driven Lifters Over 30",
+      "primary_keyword": "mobility routine for lifters",
+      "tags": [
+        "Recovery",
+        "Training",
+        "Wellness"
+      ],
+      "angle": "Daily mobility sequence targeting hips, T-spine, and shoulders. Frame: stewardship of the body God gave you for the long run.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "training-while-fasting",
+      "title": "Training While Fasting: A Faith-Driven Lifter's Guide to Strength Work During Lent or Personal Fasts",
+      "primary_keyword": "training while fasting",
+      "tags": [
+        "Faith",
+        "Nutrition",
+        "Discipline"
+      ],
+      "angle": "Practical adjustments for training during religious or personal fasts. Honest about what works and what doesn't.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "squat-programming-faith-driven-lifter",
+      "title": "The Faith-Driven Lifter's Guide to Squat Programming: A 12-Week Block for Real Progress",
+      "primary_keyword": "squat programming for intermediate lifters",
+      "tags": [
+        "Training",
+        "Discipline"
+      ],
+      "angle": "Concrete 12-week squat block with weekly RPE/load prescriptions. For intermediate lifters who've stalled.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "training-after-injury-faith-driven-comeback",
+      "title": "The Faith-Driven Comeback: Returning to the Bar After Injury Without Losing Your Mind",
+      "primary_keyword": "returning to training after injury",
+      "tags": [
+        "Recovery",
+        "Faith",
+        "Mindset"
+      ],
+      "angle": "Mental and spiritual frame for the long return. Practical re-loading protocol. When patience is obedience, not weakness.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "fasted-cardio-myths",
+      "title": "Fasted Cardio for the Faith-Driven Lifter: What the Research Actually Says",
+      "primary_keyword": "fasted cardio for fat loss",
+      "tags": [
+        "Nutrition",
+        "Training"
+      ],
+      "angle": "Myth-busting on fasted cardio. When it helps, when it doesn't, and why the morning prayer + walk combo is undervalued.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "training-partner-iron-sharpens-iron",
+      "title": "Finding a Faith-Driven Training Partner: How Iron Sharpens Iron in the Gym",
+      "primary_keyword": "faith-driven training partner",
+      "tags": [
+        "Faith",
+        "Discipline",
+        "Identity"
+      ],
+      "angle": "Proverbs 27:17 framing. What to look for in a training partner, how to find one in your church, and why solo training has a ceiling.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "cutting-without-losing-strength",
+      "title": "Cutting Without Losing Strength: The Faith-Driven Lifter's Guide to a Disciplined Fat-Loss Phase",
+      "primary_keyword": "cutting without losing strength",
+      "tags": [
+        "Nutrition",
+        "Training",
+        "Discipline"
+      ],
+      "angle": "12-week cut protocol that preserves muscle and strength. Stewardship framing without crash-diet nonsense.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "morning-prayer-routine-for-athletes",
+      "title": "The 5-Minute Morning Prayer Routine for Faith-Driven Athletes",
+      "primary_keyword": "morning prayer routine for athletes",
+      "tags": [
+        "Faith",
+        "Prayer",
+        "Discipline"
+      ],
+      "angle": "Companion piece to the pre-workout prayer guide. The morning routine that sets the whole day, not just the workout.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "supplements-worth-the-money",
+      "title": "The Only 4 Supplements Worth the Money for Faith-Driven Lifters",
+      "primary_keyword": "supplements for lifters",
+      "tags": [
+        "Nutrition",
+        "Training"
+      ],
+      "angle": "Creatine, protein, vitamin D, fish oil. Why the rest is wasted money and where to spend it instead. Stewardship angle.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "training-when-you-dont-feel-like-it",
+      "title": "Training When You Don't Feel Like It: The Faith-Driven Discipline of Showing Up",
+      "primary_keyword": "training motivation",
+      "tags": [
+        "Discipline",
+        "Mindset",
+        "Faith"
+      ],
+      "angle": "The motivation-vs-discipline argument from a Christian frame. Practical tactics for the days the body says no.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "bench-press-faith-driven-lifter",
+      "title": "The Faith-Driven Lifter's Guide to the Bench Press: Form, Programming, and the Plateau",
+      "primary_keyword": "bench press form guide",
+      "tags": [
+        "Training",
+        "Discipline"
+      ],
+      "angle": "Bench press deep-dive: setup, cues, plateau-breaking programming. The lift with the worst ego-injury ratio in lifting.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "training-as-anti-anxiety-medication",
+      "title": "Training as the Cheapest Anti-Anxiety Medication: A Faith-Driven Case",
+      "primary_keyword": "training for anxiety relief",
+      "tags": [
+        "Mindset",
+        "Wellness",
+        "Faith"
+      ],
+      "angle": "Honest, careful look at how heavy compound lifting reduces anxiety, with a faith-driven theology of suffering and the body. Defers to professional help when warranted.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "what-to-wear-under-the-bar",
+      "title": "What to Wear Under the Bar: The Faith-Driven Lifter's Apparel Guide",
+      "primary_keyword": "what to wear lifting",
+      "tags": [
+        "Apparel",
+        "Training",
+        "Identity"
+      ],
+      "angle": "Practical breakdown of training apparel \u2014 shirts, shorts, shoes, belt, sleeves. AO product mention is the natural fit, not a forced sale.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "summer-training-heat-and-discipline",
+      "title": "Summer Training for the Faith-Driven Lifter: Heat, Hydration, and Holding the Line",
+      "primary_keyword": "summer training tips",
+      "tags": [
+        "Training",
+        "Wellness",
+        "Discipline"
+      ],
+      "angle": "Hot-weather training adjustments. Hydration math. Why summer is the season most lifters slip \u2014 and how to not.",
+      "stage": "post-launch",
+      "status": "pending"
+    },
+    {
+      "slug": "annual-review-for-faith-driven-lifters",
+      "title": "The Annual Review for Faith-Driven Lifters: How to Plan a Year of Training That Honors God",
+      "primary_keyword": "annual training plan",
+      "tags": [
+        "Training",
+        "Discipline",
+        "Faith"
+      ],
+      "angle": "Year-long planning framework \u2014 strength blocks, hypertrophy blocks, deloads, and Sabbath rhythms. Closes the 30-day series with a long-horizon view.",
+      "stage": "post-launch",
+      "status": "pending"
+    }
+  ]
+}
