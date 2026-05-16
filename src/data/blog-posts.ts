@@ -21,6 +21,7 @@ import apparelGuide from "./blog-drafts/faith-driven-gym-apparel-guide";
 import trainingAsWorship from "./blog-drafts/training-as-worship";
 import womensGuide from "./blog-drafts/christian-womens-guide-to-strength-training";
 import unbreakable from "./blog-drafts/unbreakable-finishing-strong";
+import preWorkoutPrayer from "./blog-drafts/pre-workout-prayer-faith-driven-lifters";
 
 export interface BlogPostImage {
   src: string;
@@ -2330,6 +2331,7 @@ blogPosts.push(
   trainingAsWorship,
   womensGuide,
   unbreakable,
+  preWorkoutPrayer,
 );
 
 /** All posts, newest first. */
