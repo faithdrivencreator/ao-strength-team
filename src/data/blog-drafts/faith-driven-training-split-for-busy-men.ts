@@ -250,7 +250,7 @@ const post: BlogPost = {
           _key: "s1p1s",
           _type: "span",
           marks: [],
-          text: "The upper/lower split has been a staple of serious programming since at least the 1970s, and the research has never stopped validating it. A 2025 meta-analysis in the Journal of Strength and Conditioning Research found that twice-weekly training frequency per muscle group produces statistically equivalent hypertrophy to three-times-weekly training for intermediate lifters — while requiring significantly less weekly session volume. That is good news for men with jobs, children, and lives. You do not need to live in the gym. You need to train hard twice on each half of your body every week.",
+          text: "The upper/lower split has been a staple of serious programming since at least the 1970s, and the research has never stopped validating it. A landmark 2016 meta-analysis by Schoenfeld, Ogborn, and Krieger in Sports Medicine found that twice-weekly training frequency per muscle group produces hypertrophy outcomes statistically equivalent to higher frequency training for intermediate lifters, while requiring less total weekly volume — a finding replicated across multiple subsequent reviews through 2024. That is good news for men with jobs, children, and lives. You do not need to live in the gym. You need to train hard twice on each half of your body every week.",
         },
       ],
     },
@@ -1051,6 +1051,79 @@ const post: BlogPost = {
         },
       ],
     },
+
+  // SOURCES
+  {
+    _key: "sources_h",
+    _type: "block",
+    style: "h2",
+    markDefs: [],
+    children: [{ _key: "sources_hs", _type: "span", marks: [], text: "Sources" }],
+  },
+  {
+    _key: "sources_1",
+    _type: "block",
+    style: "normal",
+    listItem: "number",
+    level: 1,
+    markDefs: [],
+    children: [
+      {
+        _key: "sources_1s",
+        _type: "span",
+        marks: [],
+        text: "Schoenfeld, B.J., Ogborn, D., & Krieger, J.W. (2016). Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis. Sports Medicine, 46(11), 1689–1697.",
+      },
+    ],
+  },
+  {
+    _key: "sources_2",
+    _type: "block",
+    style: "normal",
+    listItem: "number",
+    level: 1,
+    markDefs: [],
+    children: [
+      {
+        _key: "sources_2s",
+        _type: "span",
+        marks: [],
+        text: "Phillips, S.M., Tipton, K.D., Aarsland, A., Wolf, S.E., & Wolfe, R.R. (1997). Mixed muscle protein synthesis and breakdown after resistance exercise in humans. American Journal of Physiology — Endocrinology and Metabolism, 273(1), E99–E107.",
+      },
+    ],
+  },
+  {
+    _key: "sources_3",
+    _type: "block",
+    style: "normal",
+    listItem: "number",
+    level: 1,
+    markDefs: [],
+    children: [
+      {
+        _key: "sources_3s",
+        _type: "span",
+        marks: [],
+        text: "Morton, R.W., Murphy, K.T., McKellar, S.R., Schoenfeld, B.J., Henselmans, M., Helms, E., ... & Phillips, S.M. (2018). A systematic review, meta-analysis, and meta-regression of the effect of protein supplementation on gains in muscle mass and strength in healthy adults. British Journal of Sports Medicine, 52(6), 376–384.",
+      },
+    ],
+  },
+  {
+    _key: "sources_4",
+    _type: "block",
+    style: "normal",
+    listItem: "number",
+    level: 1,
+    markDefs: [],
+    children: [
+      {
+        _key: "sources_4s",
+        _type: "span",
+        marks: [],
+        text: "Krieger, J.W. (2010). Single vs. Multiple Sets of Resistance Exercise for Muscle Hypertrophy: A Meta-Analysis. Journal of Strength and Conditioning Research, 24(4), 1150–1159.",
+      },
+    ],
+  },
   ],
 };
 
