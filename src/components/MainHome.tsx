@@ -9,6 +9,13 @@ import HomeEmailForm from "@/components/HomeEmailForm";
 import LaunchCountdown from "@/components/LaunchCountdown";
 import NotifyDropModal from "@/components/NotifyDropModal";
 import { getAllProducts } from "@/data/products";
+import type { BlogPost } from "@/lib/blog";
+
+const JOURNAL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
 
 const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
 
@@ -123,7 +130,11 @@ const pillars = [
   },
 ];
 
-export default function MainHome() {
+interface MainHomeProps {
+  latestPosts?: BlogPost[];
+}
+
+export default function MainHome({ latestPosts = [] }: MainHomeProps) {
   const products = getAllProducts();
   const [notifyOpen, setNotifyOpen] = useState(false);
 
@@ -586,88 +597,159 @@ export default function MainHome() {
 
 
       {/* ════════════════════════════════════════════════════════════
-          GENESIS — Full-screen cinematic CTA
+          THE JOURNAL — Editorial 3-card block, latest blog posts
+          Auto-refreshes via ISR on the parent page (revalidate=60s).
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        {/* Radial gradient background */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#111_0%,_#000_70%)]" />
+      {latestPosts.length > 0 && (
+        <section className="relative py-32 md:py-40 overflow-hidden">
+          {/* Radial gradient background — matches the section it replaced */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#111_0%,_#000_70%)]" />
 
-        {/* Animated cross at center (behind text) */}
-        <motion.div
-          className="absolute text-white/[0.04] pointer-events-none"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-        >
-          <CrossIcon className="w-[400px] h-[400px] md:w-[600px] md:h-[600px]" />
-        </motion.div>
-
-        <div className="relative text-center px-8 md:px-16">
-          <motion.span
-            className="font-mono text-[13px] tracking-[0.3em] uppercase text-white/30 block mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            BUILT FOR THE DISCIPLINED
-          </motion.span>
-
-          <motion.span
-            className="font-mono text-[12px] tracking-[0.2em] uppercase text-white/40 block mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-          >
-            GENESIS — LIMITED RELEASE
-          </motion.span>
-
-          <motion.h2
-            className="font-sans font-black text-5xl md:text-7xl lg:text-8xl xl:text-9xl uppercase tracking-tight leading-[0.95]"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            THE FIRST
-            <br />
-            DROP
-          </motion.h2>
-
-          <motion.p
-            className="mt-10 font-sans text-lg font-light text-white/50 leading-relaxed"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            Limited release. Built for the faithful.
-          </motion.p>
-
+          {/* Slow-rotating cross behind heading (kept for visual continuity) */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            className="absolute left-1/2 top-32 -translate-x-1/2 text-white/[0.03] pointer-events-none"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 180, repeat: Infinity, ease: "linear" }}
           >
-            {PURCHASE_LOCKED ? (
-              <button
-                onClick={() => setNotifyOpen(true)}
-                className="inline-block mt-12 bg-white text-black font-sans text-sm font-bold uppercase tracking-[0.15em] px-14 py-5 hover:bg-white/90 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.08)] hover:shadow-[0_0_60px_rgba(255,255,255,0.15)]"
-              >
-                GET FIRST ACCESS →
-              </button>
-            ) : (
-              <Link
-                href="/shop"
-                className="inline-block mt-12 bg-white text-black font-sans text-sm font-bold uppercase tracking-[0.15em] px-14 py-5 hover:bg-white/90 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.08)] hover:shadow-[0_0_60px_rgba(255,255,255,0.15)]"
-              >
-                SHOP THE DROP →
-              </Link>
-            )}
+            <CrossIcon className="w-[320px] h-[320px] md:w-[460px] md:h-[460px]" />
           </motion.div>
-        </div>
-      </section>
+
+          <div className="relative max-w-7xl mx-auto px-6 md:px-12">
+            {/* ── Heading area ───────────────────────────────── */}
+            <div className="text-center mb-20 md:mb-24">
+              <motion.span
+                className="font-mono text-[13px] tracking-[0.3em] uppercase text-white/30 block mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                LATEST FROM THE JOURNAL
+              </motion.span>
+
+              <motion.span
+                className="font-mono text-[12px] tracking-[0.2em] uppercase text-white/40 block mb-10"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+              >
+                NEW WRITING EVERY MORNING
+              </motion.span>
+
+              <motion.h2
+                className="font-sans font-black text-5xl md:text-7xl lg:text-8xl xl:text-9xl uppercase tracking-tight leading-[0.95]"
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.2 }}
+              >
+                FROM
+                <br />
+                THE FLOOR
+              </motion.h2>
+
+              <motion.p
+                className="mt-10 font-sans text-lg font-light text-white/50 leading-relaxed max-w-xl mx-auto"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                Notes on training, faith, and the long discipline.
+              </motion.p>
+            </div>
+
+            {/* ── 3-card grid ────────────────────────────────── */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12">
+              {latestPosts.map((post, i) => {
+                const primaryTag = post.tags?.[0];
+                const formattedDate = JOURNAL_DATE_FORMATTER.format(
+                  new Date(post.date),
+                ).toUpperCase();
+
+                return (
+                  <motion.article
+                    key={post.slug}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{
+                      duration: 0.7,
+                      delay: 0.15 + i * 0.12,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="group block focus:outline-none focus-visible:ring-1 focus-visible:ring-white/60"
+                    >
+                      {/* Card index — small mono numeric in the top-left corner of the image */}
+                      <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-950 mb-6">
+                        {post.mainImage ? (
+                          <Image
+                            src={post.mainImage.src}
+                            alt={post.mainImage.alt || post.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 to-black" />
+                        )}
+
+                        {/* Numeric index overlay */}
+                        <div className="absolute top-4 left-4 font-mono text-[11px] tracking-[0.25em] text-white/70 mix-blend-difference">
+                          // 0{i + 1}
+                        </div>
+
+                        {/* Subtle dark wash on hover for legibility */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+
+                      {primaryTag && (
+                        <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/40 mb-3">
+                          // {primaryTag.toUpperCase()}
+                        </p>
+                      )}
+
+                      <h3 className="font-sans font-bold uppercase tracking-tight leading-[1.15] text-white text-xl md:text-[22px] group-hover:text-white/75 transition-colors duration-200">
+                        {post.title}
+                      </h3>
+
+                      <time
+                        dateTime={post.date}
+                        className="block mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/35"
+                      >
+                        {formattedDate}
+                      </time>
+                    </Link>
+                  </motion.article>
+                );
+              })}
+            </div>
+
+            {/* ── Read-all CTA ───────────────────────────────── */}
+            <motion.div
+              className="text-center mt-20 md:mt-24"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <Link
+                href="/blog"
+                className="group inline-flex items-center gap-3 font-mono text-[12px] tracking-[0.25em] uppercase text-white/70 hover:text-white border-b border-white/20 hover:border-white/60 pb-1 transition-all duration-300"
+              >
+                <span>READ EVERY POST</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
 
       {/* ════════════════════════════════════════════════════════════
