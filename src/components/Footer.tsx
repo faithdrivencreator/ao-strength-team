@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const legalLinks = [
@@ -21,9 +22,16 @@ export default function Footer() {
       </div>
       <div className="mx-auto max-w-[1440px] px-6 py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-          <p className="font-sans font-black text-sm tracking-[-0.025em] uppercase text-white">
-            ALPHA OMEGA STRENGTH TEAM
-          </p>
+          <Link href="/" aria-label="Alpha Omega Strength Team — Home" className="inline-block">
+            <Image
+              src="/brand/logo-horizontal-white.png"
+              alt="Alpha Omega Strength Team"
+              width={3800}
+              height={900}
+              sizes="200px"
+              className="h-9 w-auto"
+            />
+          </Link>
 
           <div className="flex items-center gap-6">
             <Link

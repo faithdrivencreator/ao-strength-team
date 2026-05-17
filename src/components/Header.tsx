@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/contexts/CartContext";
 
@@ -42,10 +43,18 @@ export default function Header() {
       }}
     >
       <div className="w-full px-8 md:px-16 lg:px-20 h-14 flex items-center">
-        {/* Logo — fixed width so nav centers properly */}
+        {/* Logo — horizontal wordmark (Alpha [cross] Omega). Fixed width so nav centers properly. */}
         <div className="w-40">
-          <Link href="/" className="text-white font-sans font-black text-base tracking-[-0.025em] uppercase whitespace-nowrap">
-            ALPHA OMEGA
+          <Link href="/" aria-label="Alpha Omega Strength Team — Home" className="inline-block">
+            <Image
+              src="/brand/logo-horizontal-white.png"
+              alt="Alpha Omega Strength Team"
+              width={3800}
+              height={900}
+              priority
+              sizes="160px"
+              className="h-7 w-auto"
+            />
           </Link>
         </div>
 
