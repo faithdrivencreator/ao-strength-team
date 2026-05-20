@@ -939,6 +939,12 @@ const post: BlogPost = {
       },
       alt: "Two women training together in a gym — community and accountability in faith-based women's strength training",
     } as any,
+    // ─── INSTAGRAM EMBED ─────────────────────────────────────────────
+    {
+      _key: "ig_cwgst",
+      _type: "instagramEmbed",
+      url: "https://www.instagram.com/p/DYkdtUqlJmA/",
+    },
     // ─── H2: FAQ ──────────────────────────────────────────────────────
     {
       _key: "a5f0c3d67e99",

@@ -914,6 +914,13 @@ const post: BlogPost = {
         },
       ],
     },
+    // ─── INSTAGRAM EMBED ──────────────────────────────────────────────────────────
+    {
+      _key: "ig_fdtsb",
+      _type: "instagramEmbed",
+      url: "https://www.instagram.com/reel/DYiwBC-jsHO/",
+    },
+
 
     // SECTION 5 — FAQ
     {

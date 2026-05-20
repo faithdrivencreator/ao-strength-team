@@ -23,6 +23,7 @@ import womensGuide from "./blog-drafts/christian-womens-guide-to-strength-traini
 import unbreakable from "./blog-drafts/unbreakable-finishing-strong";
 import preWorkoutPrayer from "./blog-drafts/pre-workout-prayer-faith-driven-lifters";
 import faithDrivenTrainingSplit from "./blog-drafts/faith-driven-training-split-for-busy-men";
+import whatTheBibleSaysAboutPhysicalStrength from "./blog-drafts/what-the-bible-says-about-physical-strength";
 
 export interface BlogPostImage {
   src: string;
@@ -38,7 +39,14 @@ export interface PortableTextInlineImage {
   alt: string;
 }
 
-export type BlogBodyBlock = PortableTextBlock | PortableTextInlineImage;
+export interface InstagramEmbedBlock {
+  _type: "instagramEmbed";
+  _key?: string;
+  url: string;
+  caption?: string;
+}
+
+export type BlogBodyBlock = PortableTextBlock | PortableTextInlineImage | InstagramEmbedBlock;
 
 export interface BlogPost {
   slug: string;
@@ -2334,6 +2342,7 @@ blogPosts.push(
   unbreakable,
   preWorkoutPrayer,
   faithDrivenTrainingSplit,
+  whatTheBibleSaysAboutPhysicalStrength,
 );
 
 /** All posts, newest first. */

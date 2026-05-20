@@ -10,6 +10,7 @@ import { getAuthorOrFallback } from "@/data/authors";
 
 import PostCard from "@/components/blog/PostCard";
 import Tldr from "@/components/blog/Tldr";
+import InstagramEmbed from "@/components/blog/InstagramEmbed";
 import FAQ, { type FAQItem } from "@/components/blog/FAQ";
 import NewsletterInline from "@/components/blog/NewsletterInline";
 import ProductCTAStrip from "@/components/blog/ProductCTAStrip";
@@ -119,6 +120,12 @@ const portableTextComponents: PortableTextComponents = {
     },
   },
   types: {
+    instagramEmbed: ({
+      value,
+    }: {
+      value: { url: string; caption?: string };
+    }) => <InstagramEmbed url={value.url} caption={value.caption} />,
+
     image: ({
       value,
     }: {

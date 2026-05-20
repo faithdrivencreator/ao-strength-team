@@ -927,6 +927,13 @@ const post: BlogPost = {
       asset: { url: "/images/blog/training-as-worship/inline-3.webp" },
       alt: "Athlete seated quietly after a training session, head bowed, towel around neck — training as worship completed",
     },
+    // ─── INSTAGRAM EMBED ──────────────────────────────────────────────────────────
+    {
+      _key: "ig_taw",
+      _type: "instagramEmbed",
+      url: "https://www.instagram.com/p/DYiUVnbEnQc/",
+    },
+
 
     // ─── SECTION 5: FAQ ───────────────────────────────────────────────────────
     {

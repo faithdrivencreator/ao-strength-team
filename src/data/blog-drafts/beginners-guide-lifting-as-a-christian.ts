@@ -950,6 +950,13 @@ const post: BlogPost = {
       ],
       markDefs: []
     },
+    // ─── INSTAGRAM EMBED ──────────────────────────────────────────────────────────
+    {
+      _key: "ig_bglac",
+      _type: "instagramEmbed",
+      url: "https://www.instagram.com/reel/DYjtzSQky8y/",
+    },
+
 
     // ─── SECTION 5: FAQ ──────────────────────────────────────────────────────
     {

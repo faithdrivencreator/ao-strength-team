@@ -1153,6 +1153,13 @@ const post: BlogPost = {
       asset: { url: "/images/blog/unbreakable-finishing-strong/inline-3.webp" },
       alt: "Gym floor with a barbell and a worn Bible beside it — faith and discipline as the dual foundation of long-term athletic endurance",
     },
+    // ─── INSTAGRAM EMBED ──────────────────────────────────────────────────────────
+    {
+      _key: "ig_ufs",
+      _type: "instagramEmbed",
+      url: "https://www.instagram.com/p/DYh43u_CQWW/",
+    },
+
 
     // ── SECTION 5 — FAQ ──
     {

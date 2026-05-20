@@ -1027,6 +1027,13 @@ const post: BlogPost = {
         },
       ],
     },
+    // ─── INSTAGRAM EMBED ──────────────────────────────────────────────────────────
+    {
+      _key: "ig_pwpfd",
+      _type: "instagramEmbed",
+      url: "https://www.instagram.com/reel/DYhJEIvkzVi/",
+    },
+
 
     // ─── SECTION 5 — FAQ ───────────────────────────────────────────────────────
     {

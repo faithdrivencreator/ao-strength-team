@@ -1229,6 +1229,12 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
     },
+    // ─── INSTAGRAM EMBED ─────────────────────────────────────────────
+    {
+      _key: "ig_fdgag",
+      _type: "instagramEmbed",
+      url: "https://www.instagram.com/p/DYkP7zokeHT/",
+    },
     // ─── H2: FREQUENTLY ASKED QUESTIONS ──────────────────────────────────────
     {
       _key: "a4b5c6d7e8f9",

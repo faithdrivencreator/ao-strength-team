@@ -1243,6 +1243,13 @@ const post: BlogPost = {
       },
       alt: "Athlete in a quiet gym, open training log beside a loaded barbell rack — discipline framework for progressive overload",
     },
+    // ─── INSTAGRAM EMBED ──────────────────────────────────────────────────────────
+    {
+      _key: "ig_pofda",
+      _type: "instagramEmbed",
+      url: "https://www.instagram.com/reel/DYgLJiAEXQz/",
+    },
+
     // ─── SECTION 5: FAQ ─────────────────────────────────────────────────────────
     {
       _key: "a5b0c1d2e8f3",
