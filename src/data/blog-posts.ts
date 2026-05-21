@@ -24,6 +24,7 @@ import unbreakable from "./blog-drafts/unbreakable-finishing-strong";
 import preWorkoutPrayer from "./blog-drafts/pre-workout-prayer-faith-driven-lifters";
 import faithDrivenTrainingSplit from "./blog-drafts/faith-driven-training-split-for-busy-men";
 import whatTheBibleSaysAboutPhysicalStrength from "./blog-drafts/what-the-bible-says-about-physical-strength";
+import morningVsEveningTraining from "./blog-drafts/morning-vs-evening-training-faith-driven-lifter";
 
 export interface BlogPostImage {
   src: string;
@@ -2343,6 +2344,7 @@ blogPosts.push(
   preWorkoutPrayer,
   faithDrivenTrainingSplit,
   whatTheBibleSaysAboutPhysicalStrength,
+  morningVsEveningTraining,
 );
 
 /** All posts, newest first. */
