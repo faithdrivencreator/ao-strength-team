@@ -354,7 +354,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/images/products/signature-tee-1.png`,
+        url: `${SITE_URL}/images/products/signature-tee-1.webp`,
       },
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },

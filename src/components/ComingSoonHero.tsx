@@ -109,7 +109,7 @@ export default function ComingSoonHero() {
       {/* ── Full-bleed hero background ─────────────────────────── */}
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/images/hero/hero-bg.png"
+          src="/images/hero/hero-bg.webp"
           alt=""
           fill
           priority

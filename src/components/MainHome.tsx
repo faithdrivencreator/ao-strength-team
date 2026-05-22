@@ -261,7 +261,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             transition={{ duration: 1.5, delay: 0.3 }}
           >
             <Image
-              src="/images/hero/hero-bg.png"
+              src="/images/hero/hero-bg.webp"
               alt="Athlete from behind wearing the Alpha Omega Unbreakable hoodie in a dark gym"
               fill
               preload

@@ -28,8 +28,8 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://aostrengthteam.sto
 const PURCHASE_LOCKED_BUILD = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
 
 const OG_IMAGE = PURCHASE_LOCKED_BUILD
-  ? "/images/hero/hero-bg.png"
-  : "/images/products/signature-tee-1.png";
+  ? "/images/hero/hero-bg.webp"
+  : "/images/products/signature-tee-1.webp";
 const OG_IMAGE_ALT = PURCHASE_LOCKED_BUILD
   ? "Alpha Omega Strength Team — First drop May 25"
   : "Alpha Omega Signature Tee";
