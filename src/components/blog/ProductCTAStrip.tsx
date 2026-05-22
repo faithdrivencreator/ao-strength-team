@@ -9,12 +9,18 @@ interface ProductCTAStripProps {
   max?: number;
 }
 
+/** Official merchandise drop date — strip is hidden until this day. */
+const LAUNCH_DATE = new Date("2026-05-25T00:00:00-04:00"); // EST
+
 /**
  * "Gear worn in this training" — end-of-article product strip.
  * Buck Mason pattern: editorial and commerce share the same visual grammar
  * so the conversion handoff feels native, not bolted on.
  */
 export default function ProductCTAStrip({ slugs, max = 2 }: ProductCTAStripProps) {
+  // Hide the strip until the official drop date.
+  if (new Date() < LAUNCH_DATE) return null;
+
   const all = getAllProducts();
 
   let products: Product[] = [];
