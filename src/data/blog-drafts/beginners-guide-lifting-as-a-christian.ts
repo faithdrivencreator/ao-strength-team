@@ -850,7 +850,7 @@ const post: BlogPost = {
       _type: "image",
       _key: "inline3img003",
       asset: { url: "/images/blog/beginners-guide-lifting-as-a-christian/inline-3.webp" },
-      alt: "Athlete wearing Alpha Omega Strength Team apparel standing quietly at a barbell rack — faith-driven training identity"
+      alt: "Athlete standing quietly at a barbell rack in a gym — faith-driven training identity"
     },
     {
       _key: "e2f3a8b9c0d1",
@@ -1123,29 +1123,11 @@ const post: BlogPost = {
         {
           _key: "e3f4a5b0c1d2s0",
           _type: "span",
-          text: "What you're building isn't just muscle. It's the kind of character that shows up when it doesn't feel like it. That's worth starting today. When you're ready to train in something that reflects who you actually are, ",
-          marks: []
-        },
-        {
-          _key: "e3f4a5b0c1d2s1",
-          _type: "span",
-          text: "explore the AO Strength Team collection",
-          marks: ["strong"]
-        },
-        {
-          _key: "e3f4a5b0c1d2s2",
-          _type: "span",
-          text: " — gear built for people who train with purpose, not performance.",
+          text: "What you're building isn't just muscle. It's the kind of character that shows up when it doesn't feel like it. That's worth starting today.",
           marks: []
         }
       ],
-      markDefs: [
-        {
-          _key: "link002",
-          _type: "link",
-          href: "/shop"
-        }
-      ]
+      markDefs: []
     }
   ]
 };

@@ -907,39 +907,6 @@ const post: BlogPost = {
       ],
     },
     {
-      _key: "s4l1",
-      _type: "block",
-      style: "normal",
-      listItem: "bullet",
-      level: 1,
-      markDefs: [],
-      children: [
-        { _key: "s4l1s", _type: "span", marks: [], text: "A pre-workout prayer routine works best when paired with a consistent training identity — a shirt, a routine, a reminder you don't have to re-decide each day." },
-      ],
-    },
-    {
-      _key: "s4l2",
-      _type: "block",
-      style: "normal",
-      listItem: "bullet",
-      level: 1,
-      markDefs: [],
-      children: [
-        { _key: "s4l2s", _type: "span", marks: [], text: "Alpha Omega Strength Team apparel is built for serious lifters who want their training to mean something — pieces designed for the work, not for the scroll." },
-      ],
-    },
-    {
-      _key: "s4l3",
-      _type: "block",
-      style: "normal",
-      listItem: "bullet",
-      level: 1,
-      markDefs: [],
-      children: [
-        { _key: "s4l3s", _type: "span", marks: [], text: "Heavyweight cotton and engineered cuts that hold up to a real program, not a photoshoot." },
-      ],
-    },
-    {
       _key: "s4l4",
       _type: "block",
       style: "normal",
@@ -994,38 +961,6 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [{ _key: "s4n4s", _type: "span", marks: [], text: "Re-read the routine every 90 days; pre-workout prayer goes stale faster than a training program does" }],
-    },
-    {
-      _key: "s4p2",
-      _type: "block",
-      style: "normal",
-      children: [
-        {
-          _key: "s4p2s",
-          _type: "span",
-          marks: [],
-          text: "If you want to see what apparel built for this kind of lifter looks like, ",
-        },
-        {
-          _key: "s4p2l",
-          _type: "span",
-          marks: ["s4p2link"],
-          text: "preview the Alpha Omega drop here",
-        },
-        {
-          _key: "s4p2e",
-          _type: "span",
-          marks: [],
-          text: ".",
-        },
-      ],
-      markDefs: [
-        {
-          _key: "s4p2link",
-          _type: "link",
-          href: "/shop",
-        },
-      ],
     },
     // ─── INSTAGRAM EMBED ──────────────────────────────────────────────────────────
     {

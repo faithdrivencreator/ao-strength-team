@@ -1094,31 +1094,13 @@ const post: BlogPost = {
       _key: "e5d0a3b67c99",
       _type: "block",
       style: "normal",
-      markDefs: [
-        {
-          _key: "e5d0a3b67c90",
-          _type: "link",
-          href: "/shop",
-        },
-      ],
+      markDefs: [],
       children: [
         {
           _key: "e5d0a3b67c91",
           _type: "span",
           marks: [],
-          text: "If you are ready to train like Proverbs 31:17 describes — vigorously, with arms strong for your tasks — start with the framework in this guide and give it 90 days. When you are ready to gear up, our ",
-        },
-        {
-          _key: "e5d0a3b67c92",
-          _type: "span",
-          marks: ["e5d0a3b67c90"],
-          text: "full line",
-        },
-        {
-          _key: "e5d0a3b67c93",
-          _type: "span",
-          marks: [],
-          text: " was built for the kind of training that takes the work seriously. Clothed in strength.",
+          text: "If you are ready to train like Proverbs 31:17 describes — vigorously, with arms strong for your tasks — start with the framework in this guide and give it 90 days. Clothed in strength.",
         },
       ],
     },
