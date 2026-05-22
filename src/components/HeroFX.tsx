@@ -1,22 +1,3 @@
-"use client";
-
-import { motion } from "motion/react";
-import { useMemo } from "react";
-
-/**
- * Animated background FX for the pre-launch hero.
- *
- * Layers (back to front):
- *   1. Pulsing radial vignette (slow "breathing" glow)
- *   2. Scanning horizontal beam (every ~9s)
- *   3. Drifting tactical text strip (slow vertical scroll)
- *   4. Floating dust particles (slow vertical drift)
- *   5. Rotating cross watermark
- *
- * All layers are absolutely positioned, pointer-events-none, aria-hidden,
- * and use transform/opacity for GPU-accelerated rendering.
- */
-
 const TACTICAL_LINES = [
   "// 01 — FIRST DROP",
   "// 02 — STRENGTH TEAM",
@@ -41,7 +22,6 @@ interface Particle {
 }
 
 function generateParticles(count: number, seed: number): Particle[] {
-  // Deterministic pseudo-random for stable SSR/CSR output
   const out: Particle[] = [];
   let s = seed;
   const rand = () => {
@@ -69,45 +49,46 @@ function CrossIcon({ className = "" }: { className?: string }) {
   );
 }
 
+const PARTICLES = generateParticles(10, 42);
+
 export default function HeroFX() {
-  const particles = useMemo(() => generateParticles(28, 42), []);
+  const particles = PARTICLES;
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-      {/* ── Layer 1: Breathing radial vignette ─────────────────── */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 w-[140vmax] h-[140vmax] -translate-x-1/2 -translate-y-1/2 rounded-full"
+    <div
+      className="ao-hero-fx absolute inset-0 pointer-events-none overflow-hidden"
+      aria-hidden="true"
+    >
+      {/* Breathing radial vignette */}
+      <div
+        className="absolute top-1/2 left-1/2 w-[140vmax] h-[140vmax] rounded-full"
         style={{
           background:
             "radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 35%, transparent 70%)",
+          animation: "aoHeroPulse 7s ease-in-out infinite",
+          willChange: "transform, opacity",
         }}
-        animate={{ scale: [1, 1.08, 1], opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* ── Layer 2: Sweeping horizontal scan beam ─────────────── */}
-      <motion.div
+      {/* Sweeping horizontal scan beam */}
+      <div
         className="absolute left-0 right-0 h-px"
         style={{
           background:
             "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%)",
           filter: "blur(1px)",
-        }}
-        initial={{ top: "-5%", opacity: 0 }}
-        animate={{ top: ["-5%", "105%"], opacity: [0, 0.7, 0] }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: "linear",
-          times: [0, 0.5, 1],
+          animation: "aoHeroScan 9s linear infinite",
+          willChange: "top, opacity",
         }}
       />
 
-      {/* ── Layer 3: Drifting tactical text strip (left edge) ──── */}
-      <motion.div
+      {/* Drifting tactical text strip (left edge) */}
+      <div
         className="absolute left-4 md:left-8 top-0 bottom-0 flex flex-col gap-12"
-        animate={{ y: ["0%", "-50%"] }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        style={{
+          animation: "aoHeroDriftDown 60s linear infinite",
+          willChange: "transform",
+        }}
       >
         {[...TACTICAL_LINES, ...TACTICAL_LINES].map((line, i) => (
           <span
@@ -118,13 +99,15 @@ export default function HeroFX() {
             {line}
           </span>
         ))}
-      </motion.div>
+      </div>
 
-      {/* ── Layer 3b: Drifting tactical text strip (right edge, opposite direction) ── */}
-      <motion.div
+      {/* Drifting tactical text strip (right edge, opposite direction) */}
+      <div
         className="absolute right-4 md:right-8 top-0 bottom-0 flex flex-col gap-12"
-        animate={{ y: ["-50%", "0%"] }}
-        transition={{ duration: 75, repeat: Infinity, ease: "linear" }}
+        style={{
+          animation: "aoHeroDriftUp 75s linear infinite",
+          willChange: "transform",
+        }}
       >
         {[...TACTICAL_LINES, ...TACTICAL_LINES].map((line, i) => (
           <span
@@ -135,11 +118,11 @@ export default function HeroFX() {
             {line}
           </span>
         ))}
-      </motion.div>
+      </div>
 
-      {/* ── Layer 4: Floating dust particles ───────────────────── */}
+      {/* Floating dust particles — reduced from 28 -> 10, pure CSS */}
       {particles.map((p, i) => (
-        <motion.div
+        <div
           key={i}
           className="absolute rounded-full bg-white"
           style={{
@@ -148,38 +131,24 @@ export default function HeroFX() {
             height: `${p.size}px`,
             opacity: p.opacity,
             filter: "blur(0.5px)",
-          }}
-          initial={{ top: "100%" }}
-          animate={{ top: "-5%", opacity: [0, p.opacity, p.opacity, 0] }}
-          transition={{
-            duration: p.duration,
-            delay: p.delay,
-            repeat: Infinity,
-            ease: "linear",
-            times: [0, 0.1, 0.9, 1],
+            animation: `aoHeroFloat ${p.duration}s linear ${p.delay}s infinite`,
+            willChange: "top, opacity",
           }}
         />
       ))}
 
-      {/* ── Layer 5: Slow-rotating cross watermark, far behind ── */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55vmin] h-[55vmin]"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 240, repeat: Infinity, ease: "linear" }}
+      {/* Slow-rotating cross watermark (single layer — outer counter-rotating cross removed) */}
+      <div
+        className="absolute top-1/2 left-1/2 w-[55vmin] h-[55vmin]"
+        style={{
+          animation: "aoHeroRotate 240s linear infinite",
+          willChange: "transform",
+        }}
       >
         <CrossIcon className="w-full h-full text-white/[0.025]" />
-      </motion.div>
+      </div>
 
-      {/* ── Layer 6: Counter-rotating outer cross (different speed for parallax depth) ── */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vmin] h-[85vmin]"
-        animate={{ rotate: -360 }}
-        transition={{ duration: 380, repeat: Infinity, ease: "linear" }}
-      >
-        <CrossIcon className="w-full h-full text-white/[0.015]" />
-      </motion.div>
-
-      {/* ── Layer 7: Subtle grain via repeating SVG noise ──────── */}
+      {/* Subtle grain via repeating SVG noise */}
       <div
         className="absolute inset-0 opacity-[0.04] mix-blend-overlay"
         style={{

@@ -42,6 +42,41 @@
   }
 }
 
+/* HeroFX — pure-CSS animations, no JS runtime cost */
+@keyframes aoHeroPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+}
+@keyframes aoHeroScan {
+  0% { top: -5%; opacity: 0; }
+  50% { opacity: 0.7; }
+  100% { top: 105%; opacity: 0; }
+}
+@keyframes aoHeroDriftDown {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(-50%); }
+}
+@keyframes aoHeroDriftUp {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0%); }
+}
+@keyframes aoHeroFloat {
+  0% { top: 100%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: -5%; opacity: 0; }
+}
+@keyframes aoHeroRotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ao-hero-fx * {
+    animation: none !important;
+  }
+}
+
 /* Tailwind v4 @import "tailwindcss" includes preflight reset — no manual * reset needed */
 
 html {

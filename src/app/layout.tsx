@@ -107,10 +107,6 @@ export default function RootLayout({
             gtag('config', 'G-Q4G9V6ZWCK');
           `}
         </Script>
-        <Script
-          src="https://www.instagram.com/embed.js"
-          strategy="lazyOnload"
-        />
         <CartProvider>
           <AnnouncementBar />
           <Header />

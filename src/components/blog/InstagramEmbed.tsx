@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Script from "next/script";
 
 declare global {
   interface Window {
@@ -19,10 +20,8 @@ interface InstagramEmbedProps {
 
 /**
  * Renders a single Instagram post or Reel embed inside a blog article.
- * Instagram's embed.js (loaded once in root layout) scans for
- * [data-instgrm-permalink] blockquotes and hydrates them into the
- * full interactive widget. We call process() again here in case the
- * script has already loaded before this component mounts.
+ * embed.js is co-located here so it only loads on pages with embeds.
+ * Multiple embed instances on one page share a single script (Next dedupes by id).
  */
 export default function InstagramEmbed({ url, caption }: InstagramEmbedProps) {
   useEffect(() => {
@@ -33,6 +32,11 @@ export default function InstagramEmbed({ url, caption }: InstagramEmbedProps) {
 
   return (
     <figure className="my-12 flex flex-col items-center">
+      <Script
+        id="instagram-embed-js"
+        src="https://www.instagram.com/embed.js"
+        strategy="lazyOnload"
+      />
       <blockquote
         className="instagram-media"
         data-instgrm-permalink={url}
