@@ -693,6 +693,13 @@ const post: BlogPost = {
       ],
     },
 
+    // ─── INSTAGRAM EMBED ──────────────────────────────────────────────────────────
+    {
+      _key: "ig_mvevt",
+      _type: "instagramEmbed",
+      url: "https://www.instagram.com/p/DYkdtUqlJmA/",
+    },
+
     // ─── SECTION 4 — Brand Value ────────────────────────────────────────────────
     {
       _key: "s4h2",
@@ -742,17 +749,6 @@ const post: BlogPost = {
       markDefs: [],
       children: [
         { _key: "s4l2s", _type: "span", marks: [], text: "Training identity is built in the morning. The discipline of waking before the world asks anything of you is a different kind of discipline than the discipline of finishing a set. Both matter. The first is rarer." },
-      ],
-    },
-    {
-      _key: "s4l3",
-      _type: "block",
-      style: "normal",
-      listItem: "bullet",
-      level: 1,
-      markDefs: [],
-      children: [
-        { _key: "s4l3s", _type: "span", marks: [], text: "Alpha Omega Strength Team gear is built for men who train before the day makes demands — heavyweight cotton, cuts designed for compound work, messaging that doesn't apologize for what it is." },
       ],
     },
     {
