@@ -26,6 +26,7 @@ import faithDrivenTrainingSplit from "./blog-drafts/faith-driven-training-split-
 import whatTheBibleSaysAboutPhysicalStrength from "./blog-drafts/what-the-bible-says-about-physical-strength";
 import morningVsEveningTraining from "./blog-drafts/morning-vs-evening-training-faith-driven-lifter";
 import compoundLifts from "./blog-drafts/compound-lifts-every-christian-man-should-know";
+import fuelingOnBudget from "./blog-drafts/fueling-a-strength-program-on-a-budget";
 
 export interface BlogPostImage {
   src: string;
@@ -2347,6 +2348,7 @@ blogPosts.push(
   whatTheBibleSaysAboutPhysicalStrength,
   morningVsEveningTraining,
   compoundLifts,
+  fuelingOnBudget,
 );
 
 /** All posts, newest first. */
