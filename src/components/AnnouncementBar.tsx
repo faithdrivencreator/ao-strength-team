@@ -1,5 +1,5 @@
 const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
-const LAUNCH_LABEL = process.env.NEXT_PUBLIC_LAUNCH_DATE_LABEL || "May 25";
+const LAUNCH_LABEL = process.env.NEXT_PUBLIC_LAUNCH_DATE_LABEL || "June 2";
 
 export default function AnnouncementBar() {
   return (

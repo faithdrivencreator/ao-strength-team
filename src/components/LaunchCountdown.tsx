@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 interface LaunchCountdownProps {
-  /** ISO 8601 target datetime (with timezone). Falls back to env var, then May 25 2026 8pm ET. */
+  /** ISO 8601 target datetime (with timezone). Falls back to env var, then June 2 2026 8pm ET. */
   target?: string;
   /** Visual size variant. */
   size?: "compact" | "hero";
@@ -34,7 +34,7 @@ function pad(n: number) {
 }
 
 const DEFAULT_TARGET =
-  process.env.NEXT_PUBLIC_LAUNCH_DATETIME || "2026-05-26T00:00:00Z";
+  process.env.NEXT_PUBLIC_LAUNCH_DATETIME || "2026-06-03T00:00:00Z";
 
 export default function LaunchCountdown({
   target = DEFAULT_TARGET,
@@ -84,7 +84,7 @@ export default function LaunchCountdown({
   return (
     <div className={className} aria-live="polite" aria-atomic="true">
       <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-white/55 mb-3">
-        // Official drop · May 25 · 8PM ET
+        // Official drop · June 2 · 8PM ET
       </p>
       <div className="flex items-start gap-3 md:gap-5">
         <Cell value={parts ? display.days : null} label="Days" numClass={numberClass} labClass={labelClass} />

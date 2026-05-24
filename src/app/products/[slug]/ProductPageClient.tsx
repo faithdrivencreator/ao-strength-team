@@ -240,7 +240,7 @@ export default function ProductPageClient({
                 )}
                 {PURCHASE_LOCKED && (
                   <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.15em] text-white/45 text-center">
-                    // Official drop · {process.env.NEXT_PUBLIC_LAUNCH_DATE_LABEL || "May 25"}
+                    // Official drop · {process.env.NEXT_PUBLIC_LAUNCH_DATE_LABEL || "June 2"}
                   </p>
                 )}
               </div>

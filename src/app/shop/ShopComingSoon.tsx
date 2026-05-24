@@ -265,7 +265,7 @@ function WaitlistForm({ placement }: { placement: "hero" | "footer" }) {
           You&apos;re on the team.
         </p>
         <p className="mt-2 font-sans font-light text-white/65 text-[14px] md:text-[15px]">
-          We&apos;ll be in touch May 25.
+          We&apos;ll be in touch June 2.
         </p>
       </div>
     );

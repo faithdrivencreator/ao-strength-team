@@ -31,11 +31,11 @@ const OG_IMAGE = PURCHASE_LOCKED_BUILD
   ? "/images/hero/hero-bg.webp"
   : "/images/products/signature-tee-1.webp";
 const OG_IMAGE_ALT = PURCHASE_LOCKED_BUILD
-  ? "Alpha Omega Strength Team — First drop May 25"
+  ? "Alpha Omega Strength Team — First drop June 2"
   : "Alpha Omega Signature Tee";
 
 const OG_DESCRIPTION = PURCHASE_LOCKED_BUILD
-  ? "Faith-grounded performance apparel for the disciplined. First drop opens May 25."
+  ? "Faith-grounded performance apparel for the disciplined. First drop opens June 2."
   : "Performance apparel for the disciplined. From Alpha to Omega.";
 
 export const metadata: Metadata = {

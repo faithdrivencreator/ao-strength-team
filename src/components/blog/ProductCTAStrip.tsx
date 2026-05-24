@@ -10,7 +10,7 @@ interface ProductCTAStripProps {
 }
 
 /** Official merchandise drop date — strip is hidden until this day. */
-const LAUNCH_DATE = new Date("2026-05-25T00:00:00-04:00"); // EST
+const LAUNCH_DATE = new Date("2026-06-02T00:00:00-04:00"); // EDT
 
 /**
  * "Gear worn in this training" — end-of-article product strip.

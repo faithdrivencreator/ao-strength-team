@@ -10,7 +10,7 @@ interface NotifyDropModalProps {
   onClose: () => void;
 }
 
-const LAUNCH_DATE_LABEL = process.env.NEXT_PUBLIC_LAUNCH_DATE_LABEL || "May 25";
+const LAUNCH_DATE_LABEL = process.env.NEXT_PUBLIC_LAUNCH_DATE_LABEL || "June 2";
 
 export default function NotifyDropModal({
   productSlug,

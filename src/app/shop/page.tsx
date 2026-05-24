@@ -6,9 +6,9 @@ const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
 
 export const metadata: Metadata = PURCHASE_LOCKED
   ? {
-      title: "First Drop · May 25, 2026 | Alpha Omega Strength Team",
+      title: "First Drop · June 2, 2026 | Alpha Omega Strength Team",
       description:
-        "Faith-grounded performance apparel. Strengthen. Endure. Finish. The first drop opens May 25.",
+        "Faith-grounded performance apparel. Strengthen. Endure. Finish. The first drop opens June 2.",
     }
   : {
       title: "Shop | Alpha Omega Strength Team",
