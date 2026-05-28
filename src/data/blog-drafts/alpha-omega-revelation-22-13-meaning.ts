@@ -649,6 +649,13 @@ const post: BlogPost = {
       ],
     },
 
+    // ─── INSTAGRAM EMBED ───────────────────────────────────────────────────────
+    {
+      _key: "ig_aorev",
+      _type: "instagramEmbed",
+      url: "https://www.instagram.com/reel/DY4ULbzDnhg/",
+    },
+
     // ─── SECTION 4 — Identity / Foundation ─────────────────────────────────────
     {
       _key: "s4h2",
