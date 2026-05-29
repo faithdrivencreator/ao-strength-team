@@ -168,35 +168,35 @@ export default function ComingSoonHero() {
             </p>
           </motion.div>
 
-          {/* Countdown */}
+          {/* Email capture — moved above the countdown for conversion */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mb-14"
+            transition={{ duration: 0.7, delay: 0.8 }}
+            className="w-full max-w-md mb-14"
           >
-            <LaunchCountdown size="hero" />
-          </motion.div>
-
-          {/* Email capture with coupon incentive */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.0 }}
-            className="w-full max-w-md"
-          >
-            <p className="font-sans font-bold text-lg sm:text-xl text-white mb-2">
+            <p className="font-sans font-bold text-xl sm:text-2xl text-white mb-2">
               Get notified when we launch.
             </p>
-            <p className="font-sans text-sm sm:text-base text-white/65 leading-relaxed mb-5">
+            <p className="font-sans text-sm sm:text-base text-white/70 leading-relaxed mb-5">
               Join the list and we&rsquo;ll send the drop link the moment it
               goes live, plus a first-buyer discount code reserved for early
               subscribers.
             </p>
-            <HomeEmailForm />
-            <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/30 mt-4">
+            <HomeEmailForm variant="solid" />
+            <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/40 mt-4">
               No spam. Launch alerts and codes only.
             </p>
+          </motion.div>
+
+          {/* Countdown */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="mb-14"
+          >
+            <LaunchCountdown size="hero" />
           </motion.div>
 
           {/* Divider */}

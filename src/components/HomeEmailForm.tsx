@@ -3,7 +3,14 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 
-export default function HomeEmailForm() {
+interface HomeEmailFormProps {
+  /** "transparent" (default) blends into dark hero backdrops. "solid" puts the
+   *  input on a white field so it pops against black backgrounds — used on
+   *  conversion-critical pages like the pre-launch DROP landing. */
+  variant?: "transparent" | "solid";
+}
+
+export default function HomeEmailForm({ variant = "transparent" }: HomeEmailFormProps = {}) {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -70,10 +77,14 @@ export default function HomeEmailForm() {
           required
           disabled={submitting}
           aria-label="Email address"
-          className="w-full bg-transparent border border-white/15 px-5 py-4 font-mono text-[12px] tracking-[0.15em] text-white placeholder:text-white/25 focus:outline-none focus:border-white/40 transition-colors duration-300 disabled:opacity-60"
+          className={
+            variant === "solid"
+              ? "w-full bg-white border border-white px-5 py-4 font-mono text-[12px] tracking-[0.15em] text-black placeholder:text-black/45 focus:outline-none focus:ring-2 focus:ring-white/50 transition-shadow duration-300 disabled:opacity-60"
+              : "w-full bg-transparent border border-white/15 px-5 py-4 font-mono text-[12px] tracking-[0.15em] text-white placeholder:text-white/25 focus:outline-none focus:border-white/40 transition-colors duration-300 disabled:opacity-60"
+          }
         />
         {error && (
-          <p className="font-mono text-[10px] tracking-[0.15em] text-red-400 text-left">
+          <p className={variant === "solid" ? "font-mono text-[10px] tracking-[0.15em] text-red-300 text-left" : "font-mono text-[10px] tracking-[0.15em] text-red-400 text-left"}>
             {error}
           </p>
         )}
@@ -81,7 +92,11 @@ export default function HomeEmailForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="bg-white text-black font-sans text-[12px] font-bold uppercase tracking-[0.15em] px-8 py-4 hover:bg-white/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+        className={
+          variant === "solid"
+            ? "bg-black text-white border border-white font-sans text-[12px] font-bold uppercase tracking-[0.15em] px-8 py-4 hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+            : "bg-white text-black font-sans text-[12px] font-bold uppercase tracking-[0.15em] px-8 py-4 hover:bg-white/90 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+        }
       >
         {submitting ? "..." : "SUBSCRIBE"}
       </button>
