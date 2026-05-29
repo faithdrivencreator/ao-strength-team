@@ -120,27 +120,29 @@ export default function ComingSoonHero() {
           >
             <span className="block w-2 h-2 rounded-full bg-red-500 animate-pulse" aria-hidden />
             <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/55">
-              // SITE UNDER WORK · DROP 001 INCOMING
+              // New collection · Drops June 2
             </p>
           </motion.div>
 
-          {/* The headline */}
+          {/* Brand wordmark */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-sans font-black text-[110px] sm:text-[150px] md:text-[200px] lg:text-[240px] leading-[0.85] tracking-[-0.05em] uppercase text-white"
+            className="font-sans font-black text-[56px] sm:text-[72px] md:text-[96px] lg:text-[120px] leading-[0.9] tracking-[-0.04em] uppercase text-white"
           >
-            DROP
+            ALPHA
+            <br />
+            OMEGA
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="font-sans font-bold text-[11px] sm:text-[13px] tracking-[0.45em] uppercase text-white/70 mt-6 mb-14"
+            className="font-sans font-black text-sm sm:text-base tracking-[0.4em] uppercase text-white/80 mt-6 mb-14"
           >
-            ALPHA&nbsp;OMEGA&nbsp;·&nbsp;STRENGTH&nbsp;TEAM
+            STRENGTH&nbsp;&nbsp;TEAM
           </motion.p>
 
           {/* Construction copy */}
@@ -148,15 +150,16 @@ export default function ComingSoonHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="max-w-[600px] mb-14 space-y-4"
+            className="max-w-[620px] mb-14 space-y-5"
           >
-            <p className="font-sans text-lg sm:text-xl leading-snug text-white font-semibold">
-              The store is shut for a minute. We&rsquo;re cutting the next round of gear.
+            <p className="font-sans text-2xl sm:text-3xl leading-tight text-white font-bold">
+              The first collection drops June 2.
             </p>
-            <p className="font-sans text-base sm:text-lg leading-relaxed text-white/65">
-              New hoodies. New tees. New scripture-grounded pieces built for
-              hard training and harder living. Final stitching, final QC, final prayer
-              over every box before it ships.
+            <p className="font-sans text-base sm:text-lg leading-relaxed text-white/70">
+              We&rsquo;re putting the store on pause while we finish the first
+              run. New hoodies, new tees, new scripture-grounded gear built for
+              hard training and harder living. Final stitching, final QC, final
+              prayer over every box before it ships.
             </p>
           </motion.div>
 
@@ -177,16 +180,17 @@ export default function ComingSoonHero() {
             transition={{ duration: 0.7, delay: 1.0 }}
             className="w-full max-w-md"
           >
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/65 mb-2">
-              Get on the drop list
+            <p className="font-sans font-bold text-lg sm:text-xl text-white mb-2">
+              Get notified when we launch.
             </p>
-            <p className="font-sans text-sm text-white/55 leading-relaxed mb-5">
-              Early access to the link the second it&rsquo;s live, plus a
-              first-buyer code only the list gets.
+            <p className="font-sans text-sm sm:text-base text-white/65 leading-relaxed mb-5">
+              Join the list and we&rsquo;ll send the drop link the moment it
+              goes live, plus a first-buyer discount code reserved for early
+              subscribers.
             </p>
             <HomeEmailForm />
             <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/30 mt-4">
-              No spam. No filler. Drop news and codes only.
+              No spam. Launch alerts and codes only.
             </p>
           </motion.div>
 
