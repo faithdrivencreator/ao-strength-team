@@ -41,6 +41,16 @@ export function proxy(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
+  // Coming-soon mode: rewrite `/` to the static `/coming-soon` page so the
+  // homepage stays statically prerendered. (Previously this branch was
+  // decided inside page.tsx via cookies(), which forced SSR on every cold
+  // request and ballooned TTFB.)
+  if (comingSoon && pathname === "/") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/coming-soon";
+    return NextResponse.rewrite(url);
+  }
+
   const gatedPrefixes = comingSoon ? COMING_SOON_GATED : PURCHASE_LOCKED_GATED;
 
   const isGated = gatedPrefixes.some(

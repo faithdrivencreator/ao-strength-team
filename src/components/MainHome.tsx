@@ -264,7 +264,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
               src="/images/hero/hero-bg.webp"
               alt="Athlete from behind wearing the Alpha Omega Unbreakable hoodie in a dark gym"
               fill
-              preload
+              priority
               sizes="(max-width: 768px) 100vw, 52vw"
               className="object-cover object-[70%_center]"
             />
