@@ -1,27 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion } from "motion/react";
 import HomeEmailForm from "@/components/HomeEmailForm";
 import HeroFX from "@/components/HeroFX";
-
-/* ── Decorative Cross SVG ── */
-function CrossIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-    >
-      <rect x="44" y="10" width="12" height="80" fill="currentColor" />
-      <rect x="20" y="34" width="60" height="12" fill="currentColor" />
-    </svg>
-  );
-}
+import LaunchCountdown from "@/components/LaunchCountdown";
 
 function PreviewAccess() {
   const [open, setOpen] = useState(false);
@@ -45,7 +30,6 @@ function PreviewAccess() {
         setSubmitting(false);
         return;
       }
-      // Redirect to /shop so Pete sees the gated content immediately
       window.location.href = "/shop";
     } catch {
       setError("Network error.");
@@ -116,9 +100,8 @@ export default function ComingSoonHero() {
           sizes="100vw"
           className="object-cover object-top"
         />
-        {/* Layered atmospheric overlays for legibility */}
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/40 to-black/95" />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/45 to-black/95" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
       </div>
 
@@ -127,74 +110,84 @@ export default function ComingSoonHero() {
 
       {/* ── Content layer ──────────────────────────────────────── */}
       <section className="relative z-10 min-h-[100svh] flex flex-col items-center justify-center px-6 py-20">
-        <div className="max-w-[760px] w-full text-center flex flex-col items-center">
-          {/* Eyebrow */}
-          <motion.p
+        <div className="max-w-[820px] w-full text-center flex flex-col items-center">
+          {/* Status eyebrow */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="font-mono text-[11px] uppercase tracking-[0.3em] text-white/50 mb-10"
+            className="flex items-center gap-3 mb-10"
           >
-            // 01 — FIRST DROP INCOMING
-          </motion.p>
+            <span className="block w-2 h-2 rounded-full bg-red-500 animate-pulse" aria-hidden />
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/55">
+              // SITE UNDER WORK · DROP 001 INCOMING
+            </p>
+          </motion.div>
 
-          {/* Brand wordmark */}
+          {/* The headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-sans font-black text-[56px] sm:text-[72px] md:text-[96px] lg:text-[120px] leading-[0.9] tracking-[-0.04em] uppercase text-white"
+            className="font-sans font-black text-[110px] sm:text-[150px] md:text-[200px] lg:text-[240px] leading-[0.85] tracking-[-0.05em] uppercase text-white"
           >
-            ALPHA
-            <br />
-            OMEGA
+            DROP
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="font-sans font-black text-sm sm:text-base tracking-[0.4em] uppercase text-white/80 mt-6 mb-14"
+            className="font-sans font-bold text-[11px] sm:text-[13px] tracking-[0.45em] uppercase text-white/70 mt-6 mb-14"
           >
-            STRENGTH&nbsp;&nbsp;TEAM
+            ALPHA&nbsp;OMEGA&nbsp;·&nbsp;STRENGTH&nbsp;TEAM
           </motion.p>
 
-          {/* Manifesto */}
-          <motion.p
+          {/* Construction copy */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="font-sans text-base sm:text-lg leading-relaxed text-white/75 max-w-[520px] mb-3"
+            className="max-w-[600px] mb-14 space-y-4"
           >
-            Performance apparel for the disciplined.
-            <br className="hidden sm:block" />
-            <span className="text-white/55">Built for those who train with purpose.</span>
-          </motion.p>
+            <p className="font-sans text-lg sm:text-xl leading-snug text-white font-semibold">
+              The store is shut for a minute. We&rsquo;re cutting the next round of gear.
+            </p>
+            <p className="font-sans text-base sm:text-lg leading-relaxed text-white/65">
+              New hoodies. New tees. New scripture-grounded pieces built for
+              hard training and harder living. Final stitching, final QC, final prayer
+              over every box before it ships.
+            </p>
+          </motion.div>
 
-          {/* Scripture */}
-          <motion.blockquote
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="font-sans text-sm italic text-white/45 mb-12 max-w-[460px]"
+          {/* Countdown */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mb-14"
           >
-            &ldquo;I can do all things through Christ who strengthens me.&rdquo;
-            <span className="block mt-2 not-italic font-mono text-[10px] tracking-[0.3em] text-white/30">
-              — PHILIPPIANS 4:13
-            </span>
-          </motion.blockquote>
+            <LaunchCountdown size="hero" />
+          </motion.div>
 
-          {/* Email capture — primary CTA */}
+          {/* Email capture with coupon incentive */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.0 }}
             className="w-full max-w-md"
           >
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/55 mb-4">
-              Be first when the drop hits
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/65 mb-2">
+              Get on the drop list
+            </p>
+            <p className="font-sans text-sm text-white/55 leading-relaxed mb-5">
+              Early access to the link the second it&rsquo;s live, plus a
+              first-buyer code only the list gets.
             </p>
             <HomeEmailForm />
+            <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-white/30 mt-4">
+              No spam. No filler. Drop news and codes only.
+            </p>
           </motion.div>
 
           {/* Divider */}
@@ -205,15 +198,28 @@ export default function ComingSoonHero() {
             className="w-24 h-px bg-white/15 my-12"
           />
 
+          {/* Scripture */}
+          <motion.blockquote
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.3 }}
+            className="font-sans text-sm italic text-white/45 mb-12 max-w-[460px]"
+          >
+            &ldquo;I can do all things through Christ who strengthens me.&rdquo;
+            <span className="block mt-2 not-italic font-mono text-[10px] tracking-[0.3em] text-white/30">
+              PHILIPPIANS 4:13
+            </span>
+          </motion.blockquote>
+
           {/* Instagram CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.3 }}
+            transition={{ duration: 0.7, delay: 1.4 }}
             className="flex flex-col items-center gap-4"
           >
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/55">
-              Follow the journey
+              Behind the build
             </p>
             <Link
               href="https://www.instagram.com/alphaomegastrengthteam/"
