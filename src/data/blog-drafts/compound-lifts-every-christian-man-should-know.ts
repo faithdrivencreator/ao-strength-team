@@ -258,7 +258,7 @@ const post: BlogPost = {
     {
       _key: "ig_clf",
       _type: "instagramEmbed",
-      url: "https://www.instagram.com/p/DYkdtUqlJmA/",
+      url: "https://www.instagram.com/p/DYnrqMwFo2x/",
     },
 
     { _key: "s4h2", _type: "block", style: "h2", markDefs: [], children: [{ _key: "s4h2s", _type: "span", marks: [], text: "Why the Faith-Driven Lifter Approaches Compound Training Differently" }] },
