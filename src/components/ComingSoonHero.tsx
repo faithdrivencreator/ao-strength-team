@@ -124,17 +124,22 @@ export default function ComingSoonHero() {
             </p>
           </motion.div>
 
-          {/* Brand wordmark */}
-          <motion.h1
+          {/* Square brand logo */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-sans font-black text-[56px] sm:text-[72px] md:text-[96px] lg:text-[120px] leading-[0.9] tracking-[-0.04em] uppercase text-white"
+            className="w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] relative"
           >
-            ALPHA
-            <br />
-            OMEGA
-          </motion.h1>
+            <Image
+              src="/brand/logo-square-white.png"
+              alt="Alpha Omega Strength Team"
+              fill
+              priority
+              sizes="(max-width: 640px) 260px, (max-width: 768px) 320px, 400px"
+              className="object-contain"
+            />
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
