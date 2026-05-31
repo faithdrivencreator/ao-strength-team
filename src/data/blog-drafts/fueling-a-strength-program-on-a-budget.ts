@@ -1,7 +1,7 @@
 import type { BlogPost } from "../blog-posts";
 
 /**
- * AO daily blog — 2026-05-24
+ * AO daily blog - 2026-05-24
  * Universal Blog Post template (Opening + 5 sections + FAQ + Conclusion).
  * Primary keyword: strength training nutrition on a budget
  */
@@ -12,23 +12,23 @@ const post: BlogPost = {
     "Fueling a Strength Program on a Real Budget: The Faith-Driven Lifter's Grocery Guide",
   date: "2026-05-24",
   excerpt:
-    "Most nutrition advice assumes you have $300 a week and no family to feed. This is the actual grocery framework for hitting 180g+ protein under $100 a week — built on stewardship, not supplement sponsorships.",
+    "Most nutrition advice assumes you have $300 a week and no family to feed. This is the actual grocery framework for hitting 180g+ protein under $100 a week - built on stewardship, not supplement sponsorships.",
   tags: ["Nutrition", "Training", "Discipline"],
   author: "Pete Fluriach",
   mainImage: {
     src: "/images/blog/fueling-a-strength-program-on-a-budget/hero.webp",
-    alt: "Meal prep containers with chicken, rice, and eggs on a kitchen counter — strength training nutrition on a budget",
+    alt: "Meal prep containers with chicken, rice, and eggs on a kitchen counter - strength training nutrition on a budget",
   },
   seoTitle:
     "Strength Training Nutrition on a Budget: Hit 180g Protein Under $100/Week",
   seoDescription:
-    "A faith-driven grocery guide for serious lifters on a real budget. Learn how to hit your protein targets, fuel your training, and steward your money well — all under $100 a week.",
+    "A faith-driven grocery guide for serious lifters on a real budget. Learn how to hit your protein targets, fuel your training, and steward your money well - all under $100 a week.",
   tldr: [
-    "Protein is the only macro worth tracking first — carbs and fats sort themselves out once protein is locked.",
+    "Protein is the only macro worth tracking first - carbs and fats sort themselves out once protein is locked.",
     "You can hit 180g+ protein per day on under $100 a week. The math is not complicated; the discipline is.",
     "Chicken thighs, eggs, canned tuna, ground beef, and cottage cheese are the backbone of every budget protein stack worth running.",
     "White rice, oats, and potatoes are the three carbohydrate sources that fund a serious training program without bankrupting you.",
-    "Stewardship applies to the grocery budget the same way it applies to training time — intentional, not frugal; generous to the work, not wasteful.",
+    "Stewardship applies to the grocery budget the same way it applies to training time - intentional, not frugal; generous to the work, not wasteful.",
   ],
   body: [
     // ─── OPENING ────────────────────────────────────────────────────────────────
@@ -42,7 +42,7 @@ const post: BlogPost = {
           _key: "open001s",
           _type: "span",
           marks: [],
-          text: "Pete Fluriach, founder of Alpha Omega Strength Team. I've run structured strength programs for several years on the same budget most working men are actually dealing with — not the supplement-company fantasy budget, and not the dismiss-it-all approach either. This is the grocery framework I use, tested against real protein targets and real weekly spending in 2026.",
+          text: "Pete Fluriach, founder of Alpha Omega Strength Team. I've run structured strength programs for several years on the same budget most working men are actually dealing with - not the supplement-company fantasy budget, and not the dismiss-it-all approach either. This is the grocery framework I use, tested against real protein targets and real weekly spending in 2026.",
         },
       ],
     },
@@ -56,7 +56,7 @@ const post: BlogPost = {
           _key: "open002s",
           _type: "span",
           marks: [],
-          text: "Nutrition is where most strength programs die quietly. The training program is sound, the effort is real, but the food never gets dialed in because it feels complicated or expensive — so the body never catches up to the work being asked of it. This guide fixes that.",
+          text: "Nutrition is where most strength programs die quietly. The training program is sound, the effort is real, but the food never gets dialed in because it feels complicated or expensive - so the body never catches up to the work being asked of it. This guide fixes that.",
         },
       ],
     },
@@ -84,7 +84,7 @@ const post: BlogPost = {
           _key: "open004s",
           _type: "span",
           marks: [],
-          text: "Budget nutrition for lifting is not about eating less or eating cheap. It is about eating with intention — the same stewardship logic that governs your time and your training applied to the grocery store. The five protein sources most budget-stack lifters rely on:",
+          text: "Budget nutrition for lifting is not about eating less or eating cheap. It is about eating with intention - the same stewardship logic that governs your time and your training applied to the grocery store. The five protein sources most budget-stack lifters rely on:",
         },
       ],
     },
@@ -96,7 +96,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open005s", _type: "span", marks: [], text: "Chicken breast and thighs — the backbone of any serious budget protein stack" },
+        { _key: "open005s", _type: "span", marks: [], text: "Chicken breast and thighs - the backbone of any serious budget protein stack" },
       ],
     },
     {
@@ -107,7 +107,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open006s", _type: "span", marks: [], text: "Eggs — the most complete, cheapest protein-per-gram source available in any grocery store" },
+        { _key: "open006s", _type: "span", marks: [], text: "Eggs - the most complete, cheapest protein-per-gram source available in any grocery store" },
       ],
     },
     {
@@ -118,7 +118,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open007s", _type: "span", marks: [], text: "Canned tuna and sardines — shelf-stable, zero-prep, high-density protein that most lifters underuse" },
+        { _key: "open007s", _type: "span", marks: [], text: "Canned tuna and sardines - shelf-stable, zero-prep, high-density protein that most lifters underuse" },
       ],
     },
     {
@@ -129,7 +129,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open008s", _type: "span", marks: [], text: "90/10 ground beef — affordable, satiating, requires no additional fat sources in the meal" },
+        { _key: "open008s", _type: "span", marks: [], text: "90/10 ground beef - affordable, satiating, requires no additional fat sources in the meal" },
       ],
     },
     {
@@ -140,7 +140,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open009s", _type: "span", marks: [], text: "Greek yogurt and cottage cheese — slow-digesting dairy protein suited to pre-sleep and recovery meals" },
+        { _key: "open009s", _type: "span", marks: [], text: "Greek yogurt and cottage cheese - slow-digesting dairy protein suited to pre-sleep and recovery meals" },
       ],
     },
     {
@@ -165,7 +165,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open011s", _type: "span", marks: [], text: "Protein target — 0.7–0.8g per pound of bodyweight for most natural lifters running a serious program" },
+        { _key: "open011s", _type: "span", marks: [], text: "Protein target - 0.7-0.8g per pound of bodyweight for most natural lifters running a serious program" },
       ],
     },
     {
@@ -176,7 +176,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open012s", _type: "span", marks: [], text: "Carbohydrate sources — cheap, calorie-dense, and timed around training rather than spread randomly" },
+        { _key: "open012s", _type: "span", marks: [], text: "Carbohydrate sources - cheap, calorie-dense, and timed around training rather than spread randomly" },
       ],
     },
     {
@@ -187,7 +187,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open013s", _type: "span", marks: [], text: "Batch cooking logistics — one two-hour cook session per week determines whether you actually hit your targets" },
+        { _key: "open013s", _type: "span", marks: [], text: "Batch cooking logistics - one two-hour cook session per week determines whether you actually hit your targets" },
       ],
     },
     {
@@ -198,7 +198,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open014s", _type: "span", marks: [], text: "Weekly food budget — $80–$100 is the realistic floor for a 180-pound lifter trying to eat seriously" },
+        { _key: "open014s", _type: "span", marks: [], text: "Weekly food budget - $80-$100 is the realistic floor for a 180-pound lifter trying to eat seriously" },
       ],
     },
     {
@@ -216,7 +216,7 @@ const post: BlogPost = {
       ],
     },
 
-    // ─── SECTION 1 — Landscape Overview ─────────────────────────────────────────
+    // ─── SECTION 1 - Landscape Overview ─────────────────────────────────────────
     {
       _key: "s1h2",
       _type: "block",
@@ -241,7 +241,7 @@ const post: BlogPost = {
           _key: "s1p1s",
           _type: "span",
           marks: [],
-          text: "Grocery prices in 2026 are meaningfully higher than they were four years ago — protein costs have risen roughly 18–22% across most retail formats since 2022. That reality lands hard on the working man running a serious training program without a professional athlete's stipend. The good news is that the math still works. A 180-pound lifter targeting 145g of protein per day — 0.8g/lb — can hit that number comfortably for under $100 a week if the grocery stack is built correctly from the bottom up.",
+          text: "Grocery prices in 2026 are meaningfully higher than they were four years ago - protein costs have risen roughly 18-22% across most retail formats since 2022. That reality lands hard on the working man running a serious training program without a professional athlete's stipend. The good news is that the math still works. A 180-pound lifter targeting 145g of protein per day - 0.8g/lb - can hit that number comfortably for under $100 a week if the grocery stack is built correctly from the bottom up.",
         },
       ],
     },
@@ -255,7 +255,7 @@ const post: BlogPost = {
           _key: "s1p2s",
           _type: "span",
           marks: [],
-          text: "Where most lifters bleed budget is not on whole food — it is on supplements, premium cuts of meat, and pre-made protein snacks that charge a 300% markup on protein that eggs could have delivered for pennies. Strip those out first. The budget freed up is substantial.",
+          text: "Where most lifters bleed budget is not on whole food - it is on supplements, premium cuts of meat, and pre-made protein snacks that charge a 300% markup on protein that eggs could have delivered for pennies. Strip those out first. The budget freed up is substantial.",
         },
       ],
     },
@@ -265,7 +265,7 @@ const post: BlogPost = {
       asset: {
         url: "/images/blog/fueling-a-strength-program-on-a-budget/inline-1.webp",
       },
-      alt: "Overhead flat lay of budget protein staples — chicken, eggs, tuna, oats, peanut butter — on a wooden surface, cinematic light — strength training nutrition on a budget",
+      alt: "Overhead flat lay of budget protein staples - chicken, eggs, tuna, oats, peanut butter - on a wooden surface, cinematic light - strength training nutrition on a budget",
     },
     {
       _key: "s1h3a",
@@ -286,7 +286,7 @@ const post: BlogPost = {
           _key: "s1p3s",
           _type: "span",
           marks: [],
-          text: "The evidence on protein is cleaner than any other nutritional variable in strength sports. Hit your protein target and the rest of the diet — within reason — largely takes care of itself. Carbohydrate intake can flex with training volume and budget. Fat intake settles around whatever whole-food protein sources you are eating. Protein is the constraint that governs the rest, which means it is the only macro worth obsessing over at the planning stage.",
+          text: "The evidence on protein is cleaner than any other nutritional variable in strength sports. Hit your protein target and the rest of the diet - within reason - largely takes care of itself. Carbohydrate intake can flex with training volume and budget. Fat intake settles around whatever whole-food protein sources you are eating. Protein is the constraint that governs the rest, which means it is the only macro worth obsessing over at the planning stage.",
         },
       ],
     },
@@ -298,7 +298,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s1l1s", _type: "span", marks: [], text: "Muscle protein synthesis requires sufficient leucine per meal — roughly 2.5–3g — meaning 3–5 protein-forward meals per day beats 8–10 small snacks" },
+        { _key: "s1l1s", _type: "span", marks: [], text: "Muscle protein synthesis requires sufficient leucine per meal - roughly 2.5-3g - meaning 3-5 protein-forward meals per day beats 8-10 small snacks" },
       ],
     },
     {
@@ -320,7 +320,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s1l3s", _type: "span", marks: [], text: "The 2g/lb bro-science target wastes money and rarely improves outcomes for natural athletes — the excess gets oxidized, not built" },
+        { _key: "s1l3s", _type: "span", marks: [], text: "The 2g/lb bro-science target wastes money and rarely improves outcomes for natural athletes - the excess gets oxidized, not built" },
       ],
     },
     {
@@ -342,12 +342,12 @@ const post: BlogPost = {
           _key: "s1p4s",
           _type: "span",
           marks: [],
-          text: "The biblical case for stewardship is not about spending as little as possible — it is about spending with intention. Proverbs 21:5 reads: the plans of the diligent lead surely to abundance, but everyone who is hasty comes only to poverty. A grocery stack built from planning and bought from a list is the diligent path. Impulse buying at the supplement store, or defaulting to restaurant food because nothing is prepped, is the hasty one. Your body and your wallet both deserve better.",
+          text: "The biblical case for stewardship is not about spending as little as possible - it is about spending with intention. Proverbs 21:5 reads: the plans of the diligent lead surely to abundance, but everyone who is hasty comes only to poverty. A grocery stack built from planning and bought from a list is the diligent path. Impulse buying at the supplement store, or defaulting to restaurant food because nothing is prepped, is the hasty one. Your body and your wallet both deserve better.",
         },
       ],
     },
 
-    // ─── SECTION 2 — Decision Framework ─────────────────────────────────────────
+    // ─── SECTION 2 - Decision Framework ─────────────────────────────────────────
     {
       _key: "s2h2",
       _type: "block",
@@ -372,7 +372,7 @@ const post: BlogPost = {
           _key: "s2p1s",
           _type: "span",
           marks: [],
-          text: "Organize every grocery trip into four tiers. Spend money in order — Tier 1 first, Tier 4 last. If the budget is tight, Tier 4 disappears entirely and nothing important is lost.",
+          text: "Organize every grocery trip into four tiers. Spend money in order - Tier 1 first, Tier 4 last. If the budget is tight, Tier 4 disappears entirely and nothing important is lost.",
         },
       ],
     },
@@ -382,7 +382,7 @@ const post: BlogPost = {
       style: "h3",
       markDefs: [],
       children: [
-        { _key: "s2h3as", _type: "span", marks: [], text: "Tier 1 — Protein Foundation (~$40/week)" },
+        { _key: "s2h3as", _type: "span", marks: [], text: "Tier 1 - Protein Foundation (~$40/week)" },
       ],
     },
     {
@@ -392,7 +392,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l1as", _type: "span", marks: [], text: "Chicken thighs (5 lbs) — roughly $8–10; higher fat than breast, more forgiving to cook, still 27g protein per 4oz serving" }],
+      children: [{ _key: "s2l1as", _type: "span", marks: [], text: "Chicken thighs (5 lbs) - roughly $8-10; higher fat than breast, more forgiving to cook, still 27g protein per 4oz serving" }],
     },
     {
       _key: "s2l1b",
@@ -401,7 +401,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l1bs", _type: "span", marks: [], text: "Eggs (2–3 dozen) — roughly $8–12; 6g protein per egg, cheapest complete protein on the market" }],
+      children: [{ _key: "s2l1bs", _type: "span", marks: [], text: "Eggs (2-3 dozen) - roughly $8-12; 6g protein per egg, cheapest complete protein on the market" }],
     },
     {
       _key: "s2l1c",
@@ -410,7 +410,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l1cs", _type: "span", marks: [], text: "Canned tuna or sardines (8–10 cans) — roughly $10–14; 22g protein per can, zero prep time" }],
+      children: [{ _key: "s2l1cs", _type: "span", marks: [], text: "Canned tuna or sardines (8-10 cans) - roughly $10-14; 22g protein per can, zero prep time" }],
     },
     {
       _key: "s2l1d",
@@ -419,7 +419,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l1ds", _type: "span", marks: [], text: "Cottage cheese or Greek yogurt (2–3 lbs) — roughly $7–10; ideal for pre-sleep protein, high casein content" }],
+      children: [{ _key: "s2l1ds", _type: "span", marks: [], text: "Cottage cheese or Greek yogurt (2-3 lbs) - roughly $7-10; ideal for pre-sleep protein, high casein content" }],
     },
     {
       _key: "s2h3b",
@@ -427,7 +427,7 @@ const post: BlogPost = {
       style: "h3",
       markDefs: [],
       children: [
-        { _key: "s2h3bs", _type: "span", marks: [], text: "Tier 2 — Carbohydrate Fuel (~$15/week)" },
+        { _key: "s2h3bs", _type: "span", marks: [], text: "Tier 2 - Carbohydrate Fuel (~$15/week)" },
       ],
     },
     {
@@ -437,7 +437,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l2as", _type: "span", marks: [], text: "White rice (10 lb bag) — roughly $8–10; 45g carbs per cup cooked, easy to batch, digests quickly around training" }],
+      children: [{ _key: "s2l2as", _type: "span", marks: [], text: "White rice (10 lb bag) - roughly $8-10; 45g carbs per cup cooked, easy to batch, digests quickly around training" }],
     },
     {
       _key: "s2l2b",
@@ -446,7 +446,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l2bs", _type: "span", marks: [], text: "Rolled oats (42oz container) — roughly $4; 27g carbs per half-cup dry, high fiber, inexpensive pre-training fuel" }],
+      children: [{ _key: "s2l2bs", _type: "span", marks: [], text: "Rolled oats (42oz container) - roughly $4; 27g carbs per half-cup dry, high fiber, inexpensive pre-training fuel" }],
     },
     {
       _key: "s2l2c",
@@ -455,7 +455,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l2cs", _type: "span", marks: [], text: "Russet potatoes (5 lb bag) — roughly $4–5; micronutrient-dense, filling, versatile, routinely overlooked" }],
+      children: [{ _key: "s2l2cs", _type: "span", marks: [], text: "Russet potatoes (5 lb bag) - roughly $4-5; micronutrient-dense, filling, versatile, routinely overlooked" }],
     },
     {
       _key: "s2h3c",
@@ -463,7 +463,7 @@ const post: BlogPost = {
       style: "h3",
       markDefs: [],
       children: [
-        { _key: "s2h3cs", _type: "span", marks: [], text: "Tier 3 — Fats and Micronutrients (~$15/week)" },
+        { _key: "s2h3cs", _type: "span", marks: [], text: "Tier 3 - Fats and Micronutrients (~$15/week)" },
       ],
     },
     {
@@ -473,7 +473,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l3as", _type: "span", marks: [], text: "90/10 ground beef (2 lbs) — roughly $10–12; adds protein volume and saturated fat for hormone support" }],
+      children: [{ _key: "s2l3as", _type: "span", marks: [], text: "90/10 ground beef (2 lbs) - roughly $10-12; adds protein volume and saturated fat for hormone support" }],
     },
     {
       _key: "s2l3b",
@@ -482,7 +482,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l3bs", _type: "span", marks: [], text: "Frozen broccoli and spinach (2–3 bags) — roughly $6–8; the cheapest route to vitamin K, magnesium, and iron" }],
+      children: [{ _key: "s2l3bs", _type: "span", marks: [], text: "Frozen broccoli and spinach (2-3 bags) - roughly $6-8; the cheapest route to vitamin K, magnesium, and iron" }],
     },
     {
       _key: "s2l3c",
@@ -491,7 +491,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l3cs", _type: "span", marks: [], text: "Olive oil or butter (one container) — roughly $5–8; covers fat intake for the week without overthinking the macro" }],
+      children: [{ _key: "s2l3cs", _type: "span", marks: [], text: "Olive oil or butter (one container) - roughly $5-8; covers fat intake for the week without overthinking the macro" }],
     },
     {
       _key: "s2h3d",
@@ -499,7 +499,7 @@ const post: BlogPost = {
       style: "h3",
       markDefs: [],
       children: [
-        { _key: "s2h3ds", _type: "span", marks: [], text: "Tier 4 — Strategic Supplements (~$10–15/week, optional)" },
+        { _key: "s2h3ds", _type: "span", marks: [], text: "Tier 4 - Strategic Supplements (~$10-15/week, optional)" },
       ],
     },
     {
@@ -509,7 +509,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l4as", _type: "span", marks: [], text: "Creatine monohydrate — the only supplement with a consistent, well-replicated performance benefit; roughly $0.25 per day at 5g per day" }],
+      children: [{ _key: "s2l4as", _type: "span", marks: [], text: "Creatine monohydrate - the only supplement with a consistent, well-replicated performance benefit; roughly $0.25 per day at 5g per day" }],
     },
     {
       _key: "s2l4b",
@@ -518,7 +518,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l4bs", _type: "span", marks: [], text: "Protein powder (whey concentrate) — buy only when whole food falls short of the weekly protein target; not a staple, a backup" }],
+      children: [{ _key: "s2l4bs", _type: "span", marks: [], text: "Protein powder (whey concentrate) - buy only when whole food falls short of the weekly protein target; not a staple, a backup" }],
     },
     {
       _key: "s2tip",
@@ -550,7 +550,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2n1s", _type: "span", marks: [], text: "Never shop hungry — every unnecessary purchase in a lifter's cart traces back to walking in without eating first" }],
+      children: [{ _key: "s2n1s", _type: "span", marks: [], text: "Never shop hungry - every unnecessary purchase in a lifter's cart traces back to walking in without eating first" }],
     },
     {
       _key: "s2n2",
@@ -559,7 +559,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2n2s", _type: "span", marks: [], text: "Buy in bulk when protein is on sale — frozen chicken freezes cleanly for 3 months; double the buy when the price is right" }],
+      children: [{ _key: "s2n2s", _type: "span", marks: [], text: "Buy in bulk when protein is on sale - frozen chicken freezes cleanly for 3 months; double the buy when the price is right" }],
     },
     {
       _key: "s2n3",
@@ -577,7 +577,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2n4s", _type: "span", marks: [], text: "Avoid the supplement aisle on every trip until Tier 1–3 is covered; supplements are Tier 4 because they are" }],
+      children: [{ _key: "s2n4s", _type: "span", marks: [], text: "Avoid the supplement aisle on every trip until Tier 1-3 is covered; supplements are Tier 4 because they are" }],
     },
     {
       _key: "s2p3",
@@ -612,7 +612,7 @@ const post: BlogPost = {
       ],
     },
 
-    // ─── SECTION 3 — Context / Use-Case Mapping ──────────────────────────────────
+    // ─── SECTION 3 - Context / Use-Case Mapping ──────────────────────────────────
     {
       _key: "s3h2",
       _type: "block",
@@ -653,7 +653,7 @@ const post: BlogPost = {
           _key: "s3l1s",
           _type: "span",
           marks: [],
-          text: "Building phase — increase Tier 2 volume (add another 5 lb bag of rice, more oats, a few more potatoes); keep protein floor identical; allow total spend to reach $100–110",
+          text: "Building phase - increase Tier 2 volume (add another 5 lb bag of rice, more oats, a few more potatoes); keep protein floor identical; allow total spend to reach $100-110",
         },
       ],
     },
@@ -669,7 +669,7 @@ const post: BlogPost = {
           _key: "s3l2s",
           _type: "span",
           marks: [],
-          text: "Maintenance phase — Tier 1 and Tier 3 stay unchanged; Tier 2 carbs match training load week to week; total spend $85–95",
+          text: "Maintenance phase - Tier 1 and Tier 3 stay unchanged; Tier 2 carbs match training load week to week; total spend $85-95",
         },
       ],
     },
@@ -685,7 +685,7 @@ const post: BlogPost = {
           _key: "s3l3s",
           _type: "span",
           marks: [],
-          text: "Cutting phase — reduce Tier 2 carbs by 30–40% and shift those calories into non-starchy vegetables; protein rises slightly to preserve muscle; total spend can drop to $70–80",
+          text: "Cutting phase - reduce Tier 2 carbs by 30-40% and shift those calories into non-starchy vegetables; protein rises slightly to preserve muscle; total spend can drop to $70-80",
         },
       ],
     },
@@ -708,7 +708,7 @@ const post: BlogPost = {
           _key: "s3p2s",
           _type: "span",
           marks: [],
-          text: "Protein targets and weekly cost scale with bodyweight. A 160-pound lifter needs roughly 128g per day; a 200-pound lifter needs 160g. The gap is a few extra cans of tuna and another dozen eggs per week — under $10 in real grocery terms. Do not let a heavier body weight convince you the budget math breaks. It does not.",
+          text: "Protein targets and weekly cost scale with bodyweight. A 160-pound lifter needs roughly 128g per day; a 200-pound lifter needs 160g. The gap is a few extra cans of tuna and another dozen eggs per week - under $10 in real grocery terms. Do not let a heavier body weight convince you the budget math breaks. It does not.",
         },
       ],
     },
@@ -731,12 +731,12 @@ const post: BlogPost = {
           _key: "s3p3s",
           _type: "span",
           marks: [],
-          text: "The grocery list only works if the food gets cooked. A 90-minute Sunday cook session — one pot of rice, a sheet pan of chicken thighs, a dozen hard-boiled eggs, and portioned Greek yogurt — covers the majority of weekday eating. Meal timing becomes a retrieval problem, not a cooking problem. That shift matters more than any specific food choice in the stack.",
+          text: "The grocery list only works if the food gets cooked. A 90-minute Sunday cook session - one pot of rice, a sheet pan of chicken thighs, a dozen hard-boiled eggs, and portioned Greek yogurt - covers the majority of weekday eating. Meal timing becomes a retrieval problem, not a cooking problem. That shift matters more than any specific food choice in the stack.",
         },
       ],
     },
 
-    // ─── SECTION 4 — Brand Value Proposition ─────────────────────────────────────
+    // ─── SECTION 4 - Brand Value Proposition ─────────────────────────────────────
     {
       _key: "s4h2",
       _type: "block",
@@ -761,7 +761,7 @@ const post: BlogPost = {
           _key: "s4p1s",
           _type: "span",
           marks: [],
-          text: "Most men running a serious training program feel a low-grade guilt about the grocery budget. They know they should eat better but cannot fully justify the spend when there are mortgage payments and kids to feed. The theology that resolves that tension is not your body is a temple, therefore spend whatever it takes. It is stewardship — the full picture. Your body matters and so does your family's financial stability. Budget nutrition is not a compromise. It is the right answer for almost every working man who takes both seriously.",
+          text: "Most men running a serious training program feel a low-grade guilt about the grocery budget. They know they should eat better but cannot fully justify the spend when there are mortgage payments and kids to feed. The theology that resolves that tension is not your body is a temple, therefore spend whatever it takes. It is stewardship - the full picture. Your body matters and so does your family's financial stability. Budget nutrition is not a compromise. It is the right answer for almost every working man who takes both seriously.",
         },
       ],
     },
@@ -773,7 +773,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s4l1s", _type: "span", marks: [], text: "Whole food first — real ingredients, not engineered products with impressive labels" },
+        { _key: "s4l1s", _type: "span", marks: [], text: "Whole food first - real ingredients, not engineered products with impressive labels" },
       ],
     },
     {
@@ -784,7 +784,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s4l2s", _type: "span", marks: [], text: "Evidence-based targets — protein math grounded in research, not supplement-company self-interest" },
+        { _key: "s4l2s", _type: "span", marks: [], text: "Evidence-based targets - protein math grounded in research, not supplement-company self-interest" },
       ],
     },
     {
@@ -795,7 +795,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s4l3s", _type: "span", marks: [], text: "Long-horizon thinking — a grocery strategy that works at 35 and at 55, not just during a 12-week program" },
+        { _key: "s4l3s", _type: "span", marks: [], text: "Long-horizon thinking - a grocery strategy that works at 35 and at 55, not just during a 12-week program" },
       ],
     },
     {
@@ -806,7 +806,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s4l4s", _type: "span", marks: [], text: "Integrated stewardship — body, budget, and family treated as connected responsibilities, not competing ones" },
+        { _key: "s4l4s", _type: "span", marks: [], text: "Integrated stewardship - body, budget, and family treated as connected responsibilities, not competing ones" },
       ],
     },
     {
@@ -825,7 +825,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s4n1s", _type: "span", marks: [], text: "Weigh your protein sources for two weeks to calibrate your eye — after that, estimating by portion size is accurate enough for maintenance" }],
+      children: [{ _key: "s4n1s", _type: "span", marks: [], text: "Weigh your protein sources for two weeks to calibrate your eye - after that, estimating by portion size is accurate enough for maintenance" }],
     },
     {
       _key: "s4n2",
@@ -834,7 +834,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s4n2s", _type: "span", marks: [], text: "Write the grocery list from the Tier system, not from what sounds good in the moment — the list precedes the trip, not the other way around" }],
+      children: [{ _key: "s4n2s", _type: "span", marks: [], text: "Write the grocery list from the Tier system, not from what sounds good in the moment - the list precedes the trip, not the other way around" }],
     },
     {
       _key: "s4n3",
@@ -843,7 +843,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s4n3s", _type: "span", marks: [], text: "Rotate two or three different Tier 1 proteins each week to avoid sensory fatigue — tuna for three straight days is a fast path to quitting the plan" }],
+      children: [{ _key: "s4n3s", _type: "span", marks: [], text: "Rotate two or three different Tier 1 proteins each week to avoid sensory fatigue - tuna for three straight days is a fast path to quitting the plan" }],
     },
     {
       _key: "s4n4",
@@ -852,7 +852,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s4n4s", _type: "span", marks: [], text: "Track your actual weekly grocery spend for 30 days — most men are surprised by what the number is before they introduce any discipline to the process" }],
+      children: [{ _key: "s4n4s", _type: "span", marks: [], text: "Track your actual weekly grocery spend for 30 days - most men are surprised by what the number is before they introduce any discipline to the process" }],
     },
     {
       _key: "s4p2",
@@ -887,7 +887,7 @@ const post: BlogPost = {
       ],
     },
 
-    // ─── SECTION 5 — FAQ ──────────────────────────────────────────────────────────
+    // ─── SECTION 5 - FAQ ──────────────────────────────────────────────────────────
     {
       _key: "s5h2",
       _type: "block",
@@ -944,7 +944,7 @@ const post: BlogPost = {
           _key: "s5a2s",
           _type: "span",
           marks: [],
-          text: "Four scrambled eggs with half a cup of oats cooked in water costs roughly $1.00–1.50, delivers 40g protein and 40g carbohydrate, and takes eight minutes to make. That combination — eggs and oats — is the most cost-effective lifting breakfast available. It requires no appliances beyond a pan and a pot, holds through a full morning of work, and matches the training fuel profile of options that cost three times as much.",
+          text: "Four scrambled eggs with half a cup of oats cooked in water costs roughly $1.00-1.50, delivers 40g protein and 40g carbohydrate, and takes eight minutes to make. That combination - eggs and oats - is the most cost-effective lifting breakfast available. It requires no appliances beyond a pan and a pot, holds through a full morning of work, and matches the training fuel profile of options that cost three times as much.",
         },
       ],
     },
@@ -967,7 +967,7 @@ const post: BlogPost = {
           _key: "s5a3s",
           _type: "span",
           marks: [],
-          text: "Rotate one Tier 1 protein per week and change one preparation method per batch cook. Week one: chicken thighs roasted with salt and olive oil. Week two: ground beef with cumin and garlic over rice. Week three: sardines with lemon and black pepper on potatoes. The base stack stays identical — the seasoning and preparation method provide enough variety that adherence holds. Boredom with food is almost always a preparation problem, not a budget problem.",
+          text: "Rotate one Tier 1 protein per week and change one preparation method per batch cook. Week one: chicken thighs roasted with salt and olive oil. Week two: ground beef with cumin and garlic over rice. Week three: sardines with lemon and black pepper on potatoes. The base stack stays identical - the seasoning and preparation method provide enough variety that adherence holds. Boredom with food is almost always a preparation problem, not a budget problem.",
         },
       ],
     },
@@ -992,7 +992,7 @@ const post: BlogPost = {
           _key: "cp1s",
           _type: "span",
           marks: [],
-          text: "A serious strength program deserves a serious food strategy. Not an expensive one — a disciplined one. The man who builds his grocery stack the same way he builds his training block — with intention, from first principles, for the long run — will outlast the man who relies on supplements, skips meal prep, and wonders why his numbers do not move. The bar and the grocery cart answer to the same logic: plan the work, do the work, and let the results follow.",
+          text: "A serious strength program deserves a serious food strategy. Not an expensive one - a disciplined one. The man who builds his grocery stack the same way he builds his training block - with intention, from first principles, for the long run - will outlast the man who relies on supplements, skips meal prep, and wonders why his numbers do not move. The bar and the grocery cart answer to the same logic: plan the work, do the work, and let the results follow.",
         },
       ],
     },
@@ -1005,7 +1005,7 @@ const post: BlogPost = {
           _key: "cp2s",
           _type: "span",
           marks: [],
-          text: "Build the Tier 1 list this week. Run the protein math. Cook Sunday. To understand what you are fueling — the training framework this grocery stack is designed to support — ",
+          text: "Build the Tier 1 list this week. Run the protein math. Cook Sunday. To understand what you are fueling - the training framework this grocery stack is designed to support - ",
         },
         {
           _key: "cp2l",

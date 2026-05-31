@@ -46,7 +46,7 @@ export async function GET(): Promise<Response> {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>The Word and The Work — Alpha Omega Strength Team Journal</title>
+<title>The Word and The Work - Alpha Omega Strength Team Journal</title>
 <link>${SITE_URL}/blog</link>
 <atom:link href="${SITE_URL}/blog/rss.xml" rel="self" type="application/rss+xml" />
 <description>Field journal of the Alpha Omega Strength Team. Faith. Fitness. The discipline of finishing what you start.</description>

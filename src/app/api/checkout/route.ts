@@ -1,12 +1,22 @@
 import { NextRequest } from 'next/server';
 import { stripe } from '@/lib/stripe';
-import { getProduct } from '@/data/products';
+import {
+  getProduct,
+  parseProductSlug,
+  getAuthoritativeUnitPrice,
+  type Sleeve,
+} from '@/data/products';
 
 interface CheckoutItem {
   slug: string;
   color: string;
   size: string;
   quantity: number;
+  // Optional client hints. Never trusted for pricing: the server re-derives the
+  // unit price from product data, and `price` (if sent) is only used to detect
+  // tampering or drift, never to charge.
+  sleeve?: Sleeve;
+  price?: number;
 }
 
 export async function POST(request: NextRequest) {
@@ -20,16 +30,47 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate + price every line server-side before building the Stripe
+    // session. Any client/server mismatch is a 400, not a silent overcharge.
+    const validationError = (() => {
+      for (const item of body.items) {
+        const { baseSlug } = parseProductSlug(item.slug);
+        const product = getProduct(baseSlug);
+
+        if (!product) {
+          return `Product not found: ${item.slug}`;
+        }
+        if (product.status === 'sold-out') {
+          return `Product is sold out: ${product.name}`;
+        }
+
+        const unitPrice = getAuthoritativeUnitPrice(item.slug, item.sleeve);
+        if (typeof unitPrice !== 'number') {
+          return `Unavailable variant for ${product.name}`;
+        }
+
+        // If the client sent a price, it MUST equal the server-derived legal
+        // price for this product + sleeve. Reject mismatches outright.
+        if (
+          typeof item.price === 'number' &&
+          Math.round(item.price * 100) !== Math.round(unitPrice * 100)
+        ) {
+          return `Price mismatch for ${product.name}`;
+        }
+      }
+      return null;
+    })();
+
+    if (validationError) {
+      return Response.json({ error: validationError }, { status: 400 });
+    }
+
     const lineItems = body.items.map((item) => {
-      const product = getProduct(item.slug);
-
-      if (!product) {
-        throw new Error(`Product not found: ${item.slug}`);
-      }
-
-      if (product.status === 'sold-out') {
-        throw new Error(`Product is sold out: ${product.name}`);
-      }
+      const { baseSlug } = parseProductSlug(item.slug);
+      // Non-null assertions are safe: the validation pass above already
+      // confirmed the product exists and the unit price resolves.
+      const product = getProduct(baseSlug)!;
+      const unitPrice = getAuthoritativeUnitPrice(item.slug, item.sleeve)!;
 
       return {
         price_data: {
@@ -43,7 +84,7 @@ export async function POST(request: NextRequest) {
                 ]
               : undefined,
           },
-          unit_amount: Math.round(product.price * 100),
+          unit_amount: Math.round(unitPrice * 100),
         },
         quantity: item.quantity,
       };

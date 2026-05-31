@@ -126,7 +126,7 @@ export default function NotifyDropModal({
               {productName ? (
                 <><strong className="text-white">{productName}</strong> drops {LAUNCH_DATE_LABEL}. Drop the email and we'll send you the link the second it's live.</>
               ) : (
-                <>The Alpha Omega drop goes live {LAUNCH_DATE_LABEL} at 8PM ET. Drop your email and we'll send the link the moment it's live — before the public shop opens.</>
+                <>The Alpha Omega drop goes live {LAUNCH_DATE_LABEL} at 8PM ET. Drop your email and we'll send the link the moment it's live - before the public shop opens.</>
               )}
             </p>
             <form onSubmit={handleSubmit} className="space-y-3">

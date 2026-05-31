@@ -1,5 +1,5 @@
 /**
- * Stripe Webhook Handler — AO Strength Team
+ * Stripe Webhook Handler - AO Strength Team
  *
  * SETUP (one-time):
  * 1. Stripe Dashboard → Developers → Webhooks → Add endpoint
@@ -13,6 +13,7 @@ import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe';
 import { Resend } from 'resend';
 import { renderAOEmail } from '@/lib/email-shell';
+import { sendMetaCapiPurchase } from '@/lib/meta-capi';
 
 export const runtime = 'nodejs';
 
@@ -175,7 +176,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   // orders, FFS manual invoices, other-brand events) gets a 200 and exits.
   if (session.metadata?.source_site !== 'aostrengthteam.store') {
     console.log(
-      '[Webhook] Ignored — source_site=',
+      '[Webhook] Ignored - source_site=',
       session.metadata?.source_site ?? '(missing)',
       'session=', session.id,
     );
@@ -194,9 +195,29 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     console.log('[New Order]', JSON.stringify(order, null, 2));
 
     const orderRef = order.stripeSessionId.slice(-8).toUpperCase();
-    const customerFirstName = (order.customerName ?? '').split(' ')[0] || null;
+    const nameParts = (order.customerName ?? '').trim().split(/\s+/).filter(Boolean);
+    const customerFirstName = nameParts[0] || null;
+    const customerLastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : null;
 
-    // ─── Internal Pete alert (plain HTML — internal only) ──────────────────
+    // ─── Meta CAPI Purchase (server-side, deduped via Stripe session id) ────
+    // event_id is the Stripe session id - the SAME id the client Pixel Purchase
+    // passes as fbq eventID, so Meta merges the two into one conversion.
+    // No-ops entirely unless META_CAPI_ACCESS_TOKEN and a dataset/pixel id are
+    // set. Awaited so the serverless function does not exit before it finishes,
+    // but it never throws, so the order flow is never affected.
+    await sendMetaCapiPurchase({
+      eventId: order.stripeSessionId,
+      eventSourceUrl: `${SITE_URL}/checkout/success`,
+      value: order.amountTotal,
+      currency: order.currency,
+      contentIds: order.lineItems.map((i) => i.name),
+      email: order.customerEmail || null,
+      firstName: customerFirstName,
+      lastName: customerLastName,
+      zip: order.shippingAddress?.postal_code ?? null,
+    });
+
+    // ─── Internal Pete alert (plain HTML - internal only) ──────────────────
     const peteItemRows = order.lineItems
       .map((i) => `<tr><td style="padding:8px;border-bottom:1px solid #eee">${i.name}</td><td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${i.quantity}</td><td style="padding:8px;border-bottom:1px solid #eee;text-align:right">$${i.subtotal.toFixed(2)}</td></tr>`)
       .join('');
@@ -213,7 +234,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       await getResend().emails.send({
         from: ORDERS_FROM,
         to: PETE_EMAIL,
-        subject: `💰 New AO Order — $${order.amountTotal.toFixed(2)} from ${order.customerName || order.customerEmail}`,
+        subject: `💰 New AO Order - $${order.amountTotal.toFixed(2)} from ${order.customerName || order.customerEmail}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
             <h2 style="color:#000;border-bottom:2px solid #000;padding-bottom:8px">New AO Strength Team Order</h2>
@@ -263,13 +284,13 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
           ].filter((line): line is string => Boolean(line && line.trim()))
         : ['On file with Stripe'];
 
-      // ─── Email 1 — Order Confirmation (immediate) ────────────────────────
+      // ─── Email 1 - Order Confirmation (immediate) ────────────────────────
       try {
         await getResend().emails.send({
           from: ORDERS_FROM,
           to: order.customerEmail,
           replyTo: SUPPORT_EMAIL,
-          subject: `Order received — #${orderRef}`,
+          subject: `Order received - #${orderRef}`,
           html: renderAOEmail({
             preheader: 'From the Alpha to the Omega. Tracking when it ships.',
             sections: [
@@ -279,7 +300,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
                   `${customerFirstName ?? 'Friend'},`,
                   `Your order is logged. It&rsquo;s in the queue for dispatch.`,
                   `Tracking will follow the moment it leaves the bench.`,
-                  `<em style="color:rgba(255,255,255,0.60)">&ldquo;I am the Alpha and the Omega, the First and the Last, the Beginning and the End.&rdquo; &mdash; Revelation 22:13</em>`,
+                  `<span style="color:rgba(255,255,255,0.60)">&ldquo;I am the Alpha and the Omega, the First and the Last, the Beginning and the End.&rdquo; - Revelation 22:13</span>`,
                 ],
               },
               {
@@ -317,7 +338,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
         const welcomeAt = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
 
-        // ─── Email 2 — Welcome (+24h) ──────────────────────────────────────
+        // ─── Email 2 - Welcome (+24h) ──────────────────────────────────────
         try {
           await getResend().emails.send({
             from: ORDERS_FROM,
@@ -326,7 +347,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
             scheduledAt: welcomeAt,
             subject: `Welcome to the team, ${customerFirstName ?? 'friend'}`,
             html: renderAOEmail({
-              preheader: 'Built for the reps no one sees — and 15% off the next one.',
+              preheader: 'Built for the reps no one sees - and 15% off the next one.',
               sections: [
                 {
                   eyebrow: '01  WELCOME TO THE TEAM',
@@ -335,8 +356,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
                     `We build for the reps no one sees.`,
                     `For the early-morning lift. For the run after the long day. For the discipline that doesn&rsquo;t ask for an audience.`,
                     `Alpha is the decision. Omega is the finish. Both matter. Both deserve gear that respects the work.`,
-                    `We don&rsquo;t design for trends. We don&rsquo;t chase noise. We make apparel for the disciplined &mdash; and the team that holds them to it.`,
-                    `<em style="color:rgba(255,255,255,0.60)">&ldquo;I can do all things through Christ who strengthens me.&rdquo; &mdash; Philippians 4:13</em>`,
+                    `We don&rsquo;t design for trends. We don&rsquo;t chase noise. We make apparel for the disciplined - and the team that holds them to it.`,
+                    `<span style="color:rgba(255,255,255,0.60)">&ldquo;I can do all things through Christ who strengthens me.&rdquo; - Philippians 4:13</span>`,
                   ],
                 },
                 {
@@ -368,7 +389,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         // Note: the day-14 REVIEW email and day-30 referral invite are fired
         // by daily scheduled functions (Phase 2), not from this webhook.
       } else {
-        console.log('[Webhook] Returning customer — skipping welcome email');
+        console.log('[Webhook] Returning customer - skipping welcome email');
       }
     }
   } catch (err) {

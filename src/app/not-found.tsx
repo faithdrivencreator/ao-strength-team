@@ -16,10 +16,10 @@ export default function NotFound() {
       <p className="mb-10 max-w-md font-sans text-base text-neutral-400">
         The page you&rsquo;re looking for doesn&rsquo;t exist. Get back to the work.
       </p>
-      <blockquote className="mb-12 max-w-lg border-l-2 border-neutral-700 pl-4 text-left italic text-neutral-500">
+      <blockquote className="mb-12 max-w-lg border-l-2 border-neutral-700 pl-4 text-left text-neutral-500">
         &ldquo;I have learned, in whatsoever state I am, therewith to be content.&rdquo;
         <cite className="mt-2 block text-sm not-italic text-neutral-600">
-          &mdash; Philippians 4:11
+          - Philippians 4:11
         </cite>
       </blockquote>
       <div className="flex flex-col sm:flex-row gap-4">

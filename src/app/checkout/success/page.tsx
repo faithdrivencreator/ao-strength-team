@@ -19,10 +19,10 @@ export default function CheckoutSuccessPage() {
       <p className="mb-8 max-w-md text-lg text-neutral-400">
         Thank you for joining the Strength Team.
       </p>
-      <blockquote className="mb-10 max-w-lg border-l-2 border-neutral-700 pl-4 text-left italic text-neutral-500">
+      <blockquote className="mb-10 max-w-lg border-l-2 border-neutral-700 pl-4 text-left text-neutral-500">
         &ldquo;I can do all things through Christ who strengthens me.&rdquo;
         <cite className="mt-2 block text-sm not-italic text-neutral-600">
-          &mdash; Philippians 4:13
+          - Philippians 4:13
         </cite>
       </blockquote>
 

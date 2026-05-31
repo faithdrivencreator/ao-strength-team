@@ -67,7 +67,7 @@ export default function TermsPage() {
 
         <Section title="6. Intellectual Property">
           <p>
-            All content on the Site — including text, graphics, logos, product designs, photographs, blog posts, and the Alpha Omega Strength Team name and marks — is owned by us or our licensors and protected by U.S. and international intellectual property laws. You may not copy, reproduce, distribute, modify, or create derivative works from any of this content without our prior written consent.
+            All content on the Site - including text, graphics, logos, product designs, photographs, blog posts, and the Alpha Omega Strength Team name and marks - is owned by us or our licensors and protected by U.S. and international intellectual property laws. You may not copy, reproduce, distribute, modify, or create derivative works from any of this content without our prior written consent.
           </p>
         </Section>
 

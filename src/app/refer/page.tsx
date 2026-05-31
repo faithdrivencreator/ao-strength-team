@@ -97,7 +97,7 @@ function ReferForm() {
         </div>
 
         <p className="font-mono text-[11px] uppercase tracking-widest text-white/30 mt-12">
-          — AΩ
+          - AΩ
         </p>
       </div>
     );
@@ -152,7 +152,7 @@ function ReferForm() {
           htmlFor="friend-first-name"
           className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2"
         >
-          // FRIEND&apos;S FIRST NAME — OPTIONAL
+          // FRIEND&apos;S FIRST NAME - OPTIONAL
         </label>
         <input
           id="friend-first-name"
@@ -171,7 +171,7 @@ function ReferForm() {
           htmlFor="personal-note"
           className="block font-mono text-[11px] uppercase tracking-widest text-white/40 mb-2"
         >
-          // A SHORT NOTE — OPTIONAL
+          // A SHORT NOTE - OPTIONAL
         </label>
         <textarea
           id="personal-note"

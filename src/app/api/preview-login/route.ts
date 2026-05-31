@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  // Constant-time-ish compare. The brutally simple version is fine here — the
+  // Constant-time-ish compare. The brutally simple version is fine here - the
   // password gate is for owner preview, not protecting customer data.
   if (!body.password || body.password !== expectedPassword) {
     return Response.json({ error: "Invalid password" }, { status: 401 });

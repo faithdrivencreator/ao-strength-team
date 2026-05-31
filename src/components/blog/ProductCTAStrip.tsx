@@ -9,11 +9,11 @@ interface ProductCTAStripProps {
   max?: number;
 }
 
-/** Official merchandise drop date — strip is hidden until this day. */
+/** Official merchandise drop date - strip is hidden until this day. */
 const LAUNCH_DATE = new Date("2026-06-02T00:00:00-04:00"); // EDT
 
 /**
- * "Gear worn in this training" — end-of-article product strip.
+ * "Gear worn in this training" - end-of-article product strip.
  * Buck Mason pattern: editorial and commerce share the same visual grammar
  * so the conversion handoff feels native, not bolted on.
  */
@@ -81,7 +81,7 @@ export default function ProductCTAStrip({ slugs, max = 2 }: ProductCTAStripProps
               )}
             </p>
             <span className="mt-3 inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-white/40 group-hover:text-white transition-colors">
-              Shop —→
+              Shop -→
             </span>
           </Link>
         ))}

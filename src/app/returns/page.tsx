@@ -68,7 +68,7 @@ export default function ReturnsPage() {
             <li>The reason for the return</li>
           </ul>
           <p className="mt-4">
-            We&rsquo;ll respond within 1–2 business days with return instructions and the address to ship to. <strong>Do not send items back without contacting us first</strong> — unauthorized returns may not be processed.
+            We&rsquo;ll respond within 1-2 business days with return instructions and the address to ship to. <strong>Do not send items back without contacting us first</strong> - unauthorized returns may not be processed.
           </p>
         </Section>
 
@@ -80,7 +80,7 @@ export default function ReturnsPage() {
 
         <Section title="6. Refunds">
           <p>
-            Once we receive and inspect your return, we&rsquo;ll send an email confirming approval or rejection. Approved refunds are issued to the original payment method within <strong>5–10 business days</strong>. Depending on your bank, it may take an additional 2–5 business days for the refund to appear on your statement.
+            Once we receive and inspect your return, we&rsquo;ll send an email confirming approval or rejection. Approved refunds are issued to the original payment method within <strong>5-10 business days</strong>. Depending on your bank, it may take an additional 2-5 business days for the refund to appear on your statement.
           </p>
           <p className="mt-4">
             Original shipping charges are non-refundable.
@@ -105,7 +105,7 @@ export default function ReturnsPage() {
 
         <Section title="9. Late or Missing Refunds">
           <p>
-            If you haven&rsquo;t received a refund within the timeframe above, first check with your bank or credit card company — refund posting times vary. If you&rsquo;ve done that and still haven&rsquo;t received your refund, email us and we&rsquo;ll investigate.
+            If you haven&rsquo;t received a refund within the timeframe above, first check with your bank or credit card company - refund posting times vary. If you&rsquo;ve done that and still haven&rsquo;t received your refund, email us and we&rsquo;ll investigate.
           </p>
         </Section>
 

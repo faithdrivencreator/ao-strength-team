@@ -7,7 +7,7 @@ import { useCart } from "@/contexts/CartContext";
 
 const ANNOUNCEMENT_HEIGHT = 36; // matches the announcement bar height
 const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
-// SHOP remains in nav even when locked — it routes to the ShopComingSoon hype page.
+// SHOP remains in nav even when locked - it routes to the ShopComingSoon hype page.
 const NAV_ITEMS = ["SHOP", "JOURNAL", "ABOUT", "CONTACT"];
 
 export default function Header() {
@@ -43,9 +43,9 @@ export default function Header() {
       }}
     >
       <div className="w-full px-8 md:px-16 lg:px-20 h-14 flex items-center">
-        {/* Logo — horizontal wordmark (Alpha [cross] Omega). Fixed width so nav centers properly. */}
+        {/* Logo - horizontal wordmark (Alpha [cross] Omega). Fixed width so nav centers properly. */}
         <div className="w-40">
-          <Link href="/" aria-label="Alpha Omega Strength Team — Home" className="inline-block">
+          <Link href="/" aria-label="Alpha Omega Strength Team - Home" className="inline-block">
             <Image
               src="/brand/logo-horizontal-white.png"
               alt="Alpha Omega Strength Team"
@@ -58,7 +58,7 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Nav — centered */}
+        {/* Nav - centered */}
         <nav className="hidden md:flex items-center justify-center gap-10 flex-1">
           {NAV_ITEMS.map((item) => (
             <Link
@@ -71,7 +71,7 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Right side — fixed width to balance logo */}
+        {/* Right side - fixed width to balance logo */}
         <div className="w-40 flex items-center justify-end gap-4">
           {process.env.NEXT_PUBLIC_PURCHASE_LOCKED !== "true" && (
             <button

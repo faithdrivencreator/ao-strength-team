@@ -8,7 +8,7 @@ import ScrollingMarquee from "@/components/ScrollingMarquee";
 import HomeEmailForm from "@/components/HomeEmailForm";
 import LaunchCountdown from "@/components/LaunchCountdown";
 import NotifyDropModal from "@/components/NotifyDropModal";
-import { getAllProducts } from "@/data/products";
+import { getAllProducts, getDisplayPrice } from "@/data/products";
 import type { BlogPost } from "@/lib/blog";
 
 const JOURNAL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -146,11 +146,11 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
       )}
 
       {/* ════════════════════════════════════════════════════════════
-          HERO — Split layout (text left, image right) + trust bar
+          HERO Split layout (text left, image right) + trust bar
       ════════════════════════════════════════════════════════════ */}
       <section className="relative w-full bg-black flex flex-col">
         <div className="flex flex-col md:flex-row">
-        {/* Left side — black with text */}
+        {/* Left side - black with text */}
         <div className="relative w-full md:w-[48%] bg-black flex items-end md:items-center min-h-[50vh] md:min-h-[calc(100vh-220px)]">
           <div className="relative z-10 px-8 md:px-16 lg:px-20 pb-12 md:pb-0 pt-8 md:pt-0">
             <motion.span
@@ -252,7 +252,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
           </div>
         </div>
 
-        {/* Right side — hero image */}
+        {/* Right side - hero image */}
         <div className="relative w-full md:w-[52%] min-h-[50vh] md:min-h-[calc(100vh-220px)] overflow-hidden">
           <motion.div
             className="absolute inset-0"
@@ -272,7 +272,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
         </div>
         </div>
 
-        {/* Trust bar — 4 pillars across full width */}
+        {/* Trust bar - 4 pillars across full width */}
         <motion.div
           className="relative z-10 border-t border-white/10 bg-black"
           initial={{ opacity: 0, y: 20 }}
@@ -308,7 +308,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
 
       {/* ════════════════════════════════════════════════════════════
-          NEW ARRIVALS — Big product showcase (hidden while purchase is locked)
+          NEW ARRIVALS Big product showcase (hidden while purchase is locked)
       ════════════════════════════════════════════════════════════ */}
       {!PURCHASE_LOCKED && (
       <section className="relative py-32 md:py-48 lg:py-56">
@@ -387,7 +387,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
                       {product.name}
                     </h3>
                     <p className="font-mono text-sm text-white/50">
-                      ${product.price.toFixed(2)}
+                      {getDisplayPrice(product)}
                       {product.compareAtPrice && product.compareAtPrice > product.price && (
                         <span className="ml-2 text-white/30 line-through">
                           ${product.compareAtPrice.toFixed(2)}
@@ -405,7 +405,246 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
 
       {/* ════════════════════════════════════════════════════════════
-          BRAND STORY — "FAITHFUL" with background texture
+          LOOKBOOK Editorial bento grid of lifestyle photography
+      ════════════════════════════════════════════════════════════ */}
+      <section className="relative py-32 md:py-48 bg-black">
+        <div className="relative max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20">
+          {/* Section header */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 md:mb-20">
+            <div className="max-w-2xl">
+              <motion.span
+                className="font-mono text-[12px] tracking-[0.2em] text-white/40 uppercase block mb-3"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7 }}
+              >
+                // 02 &nbsp;/&nbsp; WORN BY THE TEAM
+              </motion.span>
+              <motion.h2
+                className="font-sans font-black text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight leading-[1.05]"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+              >
+                WORN IN. LIVED OUT.
+              </motion.h2>
+              <motion.p
+                className="mt-6 font-sans font-light text-white/55 text-base md:text-lg leading-relaxed max-w-xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+              >
+                Built for the work. Cut for movement. This is the gear under load,
+                between sets, and walking out stronger than it walked in.
+              </motion.p>
+            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+            >
+              <Link
+                href="/shop"
+                className="font-mono text-[12px] tracking-[0.15em] uppercase text-white/50 hover:text-white transition-colors duration-300 border-b border-white/20 hover:border-white pb-1 whitespace-nowrap"
+              >
+                SHOP THE COLLECTION →
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Bento grid - 12-col desktop, asymmetric mix of landscape features + portraits */}
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4">
+            {/* Row 1 - landscape feature (left, clickable) + two portraits */}
+            <motion.div
+              className="col-span-2 md:col-span-6"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0 }}
+            >
+              <Link
+                href="/shop"
+                className="group relative block w-full aspect-[16/9] overflow-hidden bg-neutral-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-white/60"
+              >
+                <Image
+                  src="/images/lifestyle/female-back-black.webp"
+                  alt="Athlete seen from behind wearing the black Alpha Omega sweater"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-500 pointer-events-none" />
+                <span className="absolute bottom-4 left-4 font-mono text-[10px] tracking-[0.2em] uppercase text-[#E8DCC8]">
+                  // THE STRENGTH TEAM
+                </span>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              className="col-span-1 md:col-span-3"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.08 }}
+            >
+              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
+                <Image
+                  src="/images/lifestyle/male-overhead-press.webp"
+                  alt="Athlete pressing overhead in the black Alpha Omega gear"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="col-span-1 md:col-span-3"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.16 }}
+            >
+              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
+                <Image
+                  src="/images/lifestyle/female-bench-press.webp"
+                  alt="Athlete on the bench press in the cream Alpha Omega gear"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
+              </div>
+            </motion.div>
+
+            {/* Row 2 - anchor portrait (couple, taller) + two portraits + landscape feature */}
+            <motion.div
+              className="col-span-2 md:col-span-3"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0 }}
+            >
+              <Link
+                href="/shop"
+                className="group relative block w-full aspect-[4/5] md:h-full overflow-hidden bg-neutral-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-white/60"
+              >
+                <Image
+                  src="/images/lifestyle/couple-walkout.webp"
+                  alt="A couple walking out of the gym in matching cream Alpha Omega tanks"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-500 pointer-events-none" />
+                <span className="absolute bottom-4 left-4 font-mono text-[10px] tracking-[0.2em] uppercase text-[#E8DCC8]">
+                  // CORNERSTONE
+                </span>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              className="col-span-1 md:col-span-3"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.08 }}
+            >
+              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
+                <Image
+                  src="/images/lifestyle/female-cable-row.webp"
+                  alt="Athlete on the cable row in the black Alpha Omega gear"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="col-span-1 md:col-span-3"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.16 }}
+            >
+              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
+                <Image
+                  src="/images/lifestyle/female-portrait-sage.webp"
+                  alt="Portrait of an athlete in the sage Alpha Omega piece"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="col-span-2 md:col-span-3"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.24 }}
+            >
+              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
+                <Image
+                  src="/images/lifestyle/male-towel-rest.webp"
+                  alt="Athlete resting between sets in the black Alpha Omega gear"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
+              </div>
+            </motion.div>
+
+            {/* Row 3 - landscape feature (right, clickable) spanning the back half */}
+            <motion.div
+              className="col-span-2 md:col-span-6 md:col-start-7"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              <Link
+                href="/shop"
+                className="group relative block w-full aspect-[16/9] overflow-hidden bg-neutral-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-white/60"
+              >
+                <Image
+                  src="/images/lifestyle/male-portrait-cream.webp"
+                  alt="Portrait of an athlete in the cream Alpha Omega sweater"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-500 pointer-events-none" />
+                <span className="absolute bottom-4 left-4 font-mono text-[10px] tracking-[0.2em] uppercase text-[#E8DCC8]">
+                  // TRAIN. ENDURE. FINISH.
+                </span>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ════════════════════════════════════════════════════════════
+          BRAND STORY - "FAITHFUL" with background texture
       ════════════════════════════════════════════════════════════ */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Dark gradient background with subtle texture */}
@@ -471,15 +710,15 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Alpha — God is the beginning. The One who set it all in motion. The
+              Alpha: God is the beginning. The One who set it all in motion. The
               reason we rise, the reason we train, the reason we push through.
               <br /><br />
-              Omega — He is the end. The promise that no effort is wasted when your
+              Omega: He is the end. The promise that no effort is wasted when your
               strength comes from Him. We don&apos;t just wear this name. We carry it.
             </motion.p>
 
             <motion.blockquote
-              className="mt-14 border-l-2 border-white/15 pl-10 italic text-base text-white/40 leading-8 max-w-xl mx-auto text-left"
+              className="mt-14 border-l-2 border-white/15 pl-10 text-base text-white/40 leading-8 max-w-xl mx-auto text-left"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -488,7 +727,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
               &ldquo;I am the Alpha and the Omega, the First and the Last, the
               Beginning and the End.&rdquo;
               <span className="block mt-4 not-italic font-mono text-[12px] tracking-[0.2em] text-white/30">
-                — Revelation 22:13
+                Revelation 22:13
               </span>
             </motion.blockquote>
           </div>
@@ -497,7 +736,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
 
       {/* ════════════════════════════════════════════════════════════
-          FOUR PILLARS — Each one is a statement
+          FOUR PILLARS Each one is a statement
       ════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-48 lg:py-56">
         <div className="max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20">
@@ -544,10 +783,10 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
                   {pillar.text}
                 </p>
 
-                <blockquote className="border-l-2 border-white/10 pl-6 italic text-[15px] text-white/35 leading-7 max-w-md group-hover:border-white/20 transition-colors duration-500">
+                <blockquote className="border-l-2 border-white/10 pl-6 text-[15px] text-white/35 leading-7 max-w-md group-hover:border-white/20 transition-colors duration-500">
                   {pillar.quote}
                   <span className="block mt-3 not-italic font-mono text-[11px] tracking-[0.2em] text-white/25">
-                    — {pillar.ref}
+                    {pillar.ref}
                   </span>
                 </blockquote>
               </motion.div>
@@ -558,7 +797,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
 
       {/* ════════════════════════════════════════════════════════════
-          TRAIN WITH PURPOSE — Bridge band
+          TRAIN WITH PURPOSE Bridge band
       ════════════════════════════════════════════════════════════ */}
       <section className="relative border-y border-white/10 bg-black overflow-hidden">
         <motion.div
@@ -597,12 +836,12 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
 
       {/* ════════════════════════════════════════════════════════════
-          THE JOURNAL — Editorial 3-card block, latest blog posts
+          THE JOURNAL Editorial 3-card block, latest blog posts
           Auto-refreshes via ISR on the parent page (revalidate=60s).
       ════════════════════════════════════════════════════════════ */}
       {latestPosts.length > 0 && (
         <section className="relative py-32 md:py-40 overflow-hidden">
-          {/* Radial gradient background — matches the section it replaced */}
+          {/* Radial gradient background - matches the section it replaced */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#111_0%,_#000_70%)]" />
 
           {/* Slow-rotating cross behind heading (kept for visual continuity) */}
@@ -684,7 +923,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
                       href={`/blog/${post.slug}`}
                       className="group block focus:outline-none focus-visible:ring-1 focus-visible:ring-white/60"
                     >
-                      {/* Card index — small mono numeric in the top-left corner of the image */}
+                      {/* Card index - small mono numeric in the top-left corner of the image */}
                       <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-950 mb-6">
                         {post.mainImage ? (
                           <Image
@@ -753,7 +992,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
 
       {/* ════════════════════════════════════════════════════════════
-          SCRIPTURE — Full-screen moment of reflection
+          SCRIPTURE Full-screen moment of reflection
       ════════════════════════════════════════════════════════════ */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950/50 to-black" />
@@ -791,14 +1030,14 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            — Philippians 4:13
+            Philippians 4:13
           </motion.p>
         </div>
       </section>
 
 
       {/* ════════════════════════════════════════════════════════════
-          BRAND MANIFESTO — Dramatic reveal
+          BRAND MANIFESTO Dramatic reveal
       ════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-48 lg:py-56 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-tr from-black via-gray-950 to-black" />
@@ -871,13 +1110,13 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                When you wear the mark, you carry the standard — and you carry it
+                When you wear the mark, you carry the standard, and you carry it
                 for Him.
               </motion.p>
             </div>
 
             <motion.blockquote
-              className="border-l-2 border-white/15 pl-10 italic text-base text-white/40 leading-8 max-w-xl mb-16"
+              className="border-l-2 border-white/15 pl-10 text-base text-white/40 leading-8 max-w-xl mb-16"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -887,7 +1126,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
               afraid; do not be discouraged, for the Lord your God will be with you
               wherever you go.&rdquo;
               <span className="block mt-4 not-italic font-mono text-[12px] tracking-[0.2em] text-white/25">
-                — Joshua 1:9
+                Joshua 1:9
               </span>
             </motion.blockquote>
 
@@ -910,7 +1149,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
 
       {/* ════════════════════════════════════════════════════════════
-          EMAIL SIGNUP — Final CTA with cross backdrop
+          EMAIL SIGNUP Final CTA with cross backdrop
       ════════════════════════════════════════════════════════════ */}
       <section id="signup" className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
@@ -943,12 +1182,12 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
             <p className="font-sans text-base font-light text-white/60 max-w-md mx-auto leading-relaxed mb-10">
               Discipline your mind. Strengthen your body. Lead with purpose. One
-              short read every Sunday morning &mdash; plus first access to every new drop.
+              short read every Sunday morning, plus first access to every new drop.
             </p>
           </motion.div>
 
           <motion.p
-            className="font-sans text-base italic text-white/40 mb-14 leading-relaxed"
+            className="font-sans text-base text-white/40 mb-14 leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -957,7 +1196,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             &ldquo;For where two or three gather in my name, there am I with
             them.&rdquo;
             <span className="block mt-3 not-italic font-mono text-[11px] tracking-[0.2em] text-white/25">
-              — Matthew 18:20
+              Matthew 18:20
             </span>
           </motion.p>
 

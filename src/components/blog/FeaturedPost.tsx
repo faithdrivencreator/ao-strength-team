@@ -19,13 +19,13 @@ const MONTH_FORMATTER = new Intl.DateTimeFormat("en-US", {
  * with a soft gradient mask only behind the text (not the whole image).
  *
  * Pattern: full-bleed aspect-[3/2] hero, title fused into the image, single
- * mono eyebrow above title in `// TAG — MONTH YYYY` format.
+ * mono eyebrow above title in `// TAG - MONTH YYYY` format.
  */
 export default function FeaturedPost({ post }: FeaturedPostProps) {
   const primaryTag = post.tags?.[0];
   const monthYear = MONTH_FORMATTER.format(new Date(post.date)).toUpperCase();
   const eyebrow = primaryTag
-    ? `// ${primaryTag.toUpperCase()} — ${monthYear}`
+    ? `// ${primaryTag.toUpperCase()} - ${monthYear}`
     : `// ${monthYear}`;
 
   return (
@@ -52,10 +52,10 @@ export default function FeaturedPost({ post }: FeaturedPostProps) {
           <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 to-black" />
         )}
 
-        {/* Gradient mask — only behind the text band at the bottom. Not a full overlay. */}
+        {/* Gradient mask - only behind the text band at the bottom. Not a full overlay. */}
         <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none" />
 
-        {/* Text block — bottom-left, journal-style */}
+        {/* Text block - bottom-left, journal-style */}
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 lg:p-16">
           <div className="flex items-end justify-between gap-8">
             <div className="max-w-[820px]">
@@ -70,7 +70,7 @@ export default function FeaturedPost({ post }: FeaturedPostProps) {
               className="hidden sm:inline-flex shrink-0 items-center font-mono text-[11px] md:text-[12px] uppercase tracking-[0.22em] text-white/70 group-hover:text-white transition-colors duration-300 pb-2"
               aria-hidden="true"
             >
-              Read&nbsp;—&nbsp;→
+              Read&nbsp;-&nbsp;→
             </span>
           </div>
         </div>

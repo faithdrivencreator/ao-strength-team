@@ -168,7 +168,7 @@ export default function ComingSoonHero() {
             </p>
           </motion.div>
 
-          {/* Email capture — moved above the countdown for conversion */}
+          {/* Email capture - moved above the countdown for conversion */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -212,7 +212,7 @@ export default function ComingSoonHero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.3 }}
-            className="font-sans text-sm italic text-white/45 mb-12 max-w-[460px]"
+            className="font-sans text-sm text-white/45 mb-12 max-w-[460px]"
           >
             &ldquo;I can do all things through Christ who strengthens me.&rdquo;
             <span className="block mt-2 not-italic font-mono text-[10px] tracking-[0.3em] text-white/30">

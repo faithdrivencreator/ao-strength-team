@@ -19,8 +19,8 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   const rawTag = Array.isArray(sp.tag) ? sp.tag[0] : sp.tag;
   const tag = typeof rawTag === "string" && rawTag.trim() ? rawTag.trim() : undefined;
 
-  const baseTitle = "The Journal — The Word and The Work";
-  const title = tag ? `${tag} — Journal` : baseTitle;
+  const baseTitle = "The Journal - The Word and The Work";
+  const title = tag ? `${tag} - Journal` : baseTitle;
   const description = tag
     ? `Journal entries tagged ${tag}. Faith-rooted training notes from Alpha Omega Strength Team.`
     : "Field journal of the Alpha Omega Strength Team. Faith. Fitness. The discipline of finishing what you start.";
@@ -61,7 +61,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
 
   const [featured, ...remaining] = filteredPosts;
 
-  // BreadcrumbList JSON-LD — Home > Journal
+  // BreadcrumbList JSON-LD - Home > Journal
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -71,11 +71,11 @@ export default async function BlogPage({ searchParams }: PageProps) {
     ],
   };
 
-  // Blog collection JSON-LD — helps Google understand the index
+  // Blog collection JSON-LD - helps Google understand the index
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "The Word and The Work — Alpha Omega Strength Team Journal",
+    name: "The Word and The Work - Alpha Omega Strength Team Journal",
     url: `${SITE_URL}/blog`,
     description:
       "Field journal of the Alpha Omega Strength Team. Faith. Fitness. The discipline of finishing what you start.",
@@ -105,7 +105,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
       />
 
       {/* ════════════════════════════════════════════════════════════
-          MASTHEAD — left-aligned, newspaper-style
+          MASTHEAD - left-aligned, newspaper-style
       ════════════════════════════════════════════════════════════ */}
       <header className="border-b border-white/10">
         <div className="mx-auto max-w-[1440px] px-8 md:px-16 lg:px-20 pt-20 md:pt-24 pb-12 md:pb-16">
@@ -116,11 +116,11 @@ export default async function BlogPage({ searchParams }: PageProps) {
             The Journal
           </h1>
           <p className="mt-6 max-w-2xl font-sans text-base md:text-lg font-light text-white/55 leading-relaxed">
-            Field notes from the team — scripture, training, and the work of
+            Field notes from the team - scripture, training, and the work of
             finishing strong. New entries weekly.
           </p>
 
-          {/* Tag filter — only render when there are tags */}
+          {/* Tag filter - only render when there are tags */}
           {allTags.length > 0 && (
             <div className="mt-10">
               <TagFilter tags={allTags} activeTag={activeTag} />
@@ -130,7 +130,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
       </header>
 
       {/* ════════════════════════════════════════════════════════════
-          FEATURED POST — Rapha-style title overlay
+          FEATURED POST - Rapha-style title overlay
       ════════════════════════════════════════════════════════════ */}
       {featured && (
         <div className="mx-auto max-w-[1440px] px-8 md:px-16 lg:px-20 pt-12 md:pt-16">
@@ -139,7 +139,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
       )}
 
       {/* ════════════════════════════════════════════════════════════
-          RECENT ENTRIES — 3-col grid
+          RECENT ENTRIES - 3-col grid
       ════════════════════════════════════════════════════════════ */}
       {remaining.length > 0 && (
         <div className="mx-auto max-w-[1440px] px-8 md:px-16 lg:px-20 mt-20 md:mt-24">
@@ -194,14 +194,14 @@ export default async function BlogPage({ searchParams }: PageProps) {
       )}
 
       {/* ════════════════════════════════════════════════════════════
-          NEWSLETTER — mid-archive CTA (always at the bottom on mobile)
+          NEWSLETTER - mid-archive CTA (always at the bottom on mobile)
       ════════════════════════════════════════════════════════════ */}
       <div className="mx-auto max-w-[920px] px-8 md:px-16 lg:px-20 mt-24 md:mt-28 lg:hidden">
         <NewsletterInline />
       </div>
 
       {/* ════════════════════════════════════════════════════════════
-          RSS LINK — mono footnote
+          RSS LINK - mono footnote
       ════════════════════════════════════════════════════════════ */}
       <div className="mx-auto max-w-[1440px] px-8 md:px-16 lg:px-20 mt-24 md:mt-28 pt-10 border-t border-white/10">
         <div className="flex flex-wrap items-center justify-between gap-4">

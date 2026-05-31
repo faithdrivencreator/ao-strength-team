@@ -1,5 +1,5 @@
 /**
- * Returns AO Strength Team orders waiting to ship — succeeded Stripe
+ * Returns AO Strength Team orders waiting to ship - succeeded Stripe
  * PaymentIntents tagged with `metadata.source_site=aostrengthteam.store`
  * that don't yet have a `metadata.shipped_at` timestamp.
  *
@@ -187,7 +187,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     }
   }
 
-  // Oldest first — those have been waiting longest. Cap at 50.
+  // Oldest first - those have been waiting longest. Cap at 50.
   orders.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
   const capped = orders.slice(0, 50);
 

@@ -1,16 +1,16 @@
 const TACTICAL_LINES = [
-  "// 01 — FIRST DROP",
-  "// 02 — STRENGTH TEAM",
-  "// 03 — TRAIN WITH PURPOSE",
-  "// 04 — ALPHA OMEGA",
-  "// 05 — INCOMING",
-  "// 06 — STAY READY",
-  "// 07 — DEPLOY",
-  "// 08 — DISCIPLINE",
-  "// 09 — RECOVERY",
-  "// 10 — REPS",
-  "// 11 — TRUST",
-  "// 12 — UNBREAKABLE",
+  "// 01 - FIRST DROP",
+  "// 02 - STRENGTH TEAM",
+  "// 03 - TRAIN WITH PURPOSE",
+  "// 04 - ALPHA OMEGA",
+  "// 05 - INCOMING",
+  "// 06 - STAY READY",
+  "// 07 - DEPLOY",
+  "// 08 - DISCIPLINE",
+  "// 09 - RECOVERY",
+  "// 10 - REPS",
+  "// 11 - TRUST",
+  "// 12 - UNBREAKABLE",
 ];
 
 interface Particle {
@@ -120,7 +120,7 @@ export default function HeroFX() {
         ))}
       </div>
 
-      {/* Floating dust particles — reduced from 28 -> 10, pure CSS */}
+      {/* Floating dust particles - reduced from 28 -> 10, pure CSS */}
       {particles.map((p, i) => (
         <div
           key={i}
@@ -137,7 +137,7 @@ export default function HeroFX() {
         />
       ))}
 
-      {/* Slow-rotating cross watermark (single layer — outer counter-rotating cross removed) */}
+      {/* Slow-rotating cross watermark (single layer - outer counter-rotating cross removed) */}
       <div
         className="absolute top-1/2 left-1/2 w-[55vmin] h-[55vmin]"
         style={{

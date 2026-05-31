@@ -8,13 +8,13 @@ interface FAQProps {
 }
 
 /**
- * FAQ block — only renders when the article PortableText has a heading reading
+ * FAQ block - only renders when the article PortableText has a heading reading
  * "FAQ" or "Frequently Asked Questions" followed by Q/A blocks. The article
  * page parses this out and passes the structured items here, plus emits a
  * matching FAQPage JSON-LD for SEO/GEO.
  *
  * Encouraged copy form: H2 questions on the article body should be phrased as
- * questions when possible — LLMs prefer extracting question-shaped text.
+ * questions when possible - LLMs prefer extracting question-shaped text.
  */
 export default function FAQ({ items }: FAQProps) {
   if (!items || items.length === 0) return null;

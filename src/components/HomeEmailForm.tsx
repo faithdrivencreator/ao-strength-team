@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 interface HomeEmailFormProps {
   /** "transparent" (default) blends into dark hero backdrops. "solid" puts the
-   *  input on a white field so it pops against black backgrounds — used on
+   *  input on a white field so it pops against black backgrounds - used on
    *  conversion-critical pages like the pre-launch DROP landing. */
   variant?: "transparent" | "solid";
 }

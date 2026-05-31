@@ -1,5 +1,5 @@
 /**
- * Sanity Studio — embedded at /studio.
+ * Sanity Studio - embedded at /studio.
  * Pete logs in here to write blog posts. Hit Publish and the post appears
  * on the live site within ~60s (ISR revalidate window).
  */

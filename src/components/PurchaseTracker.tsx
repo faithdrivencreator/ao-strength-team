@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useCart, type CartItem } from "@/contexts/CartContext";
 import { trackPurchase } from "@/lib/gtag";
+import { metaPurchase } from "@/lib/meta-pixel";
 
 const FIRED_KEY = "ao-purchase-fired";
 const STORAGE_KEY = "ao-strength-cart";
@@ -19,7 +20,7 @@ export default function PurchaseTracker() {
       return;
     }
 
-    // Idempotency — guard against page reloads double-counting
+    // Idempotency - guard against page reloads double-counting
     if (sessionStorage.getItem(FIRED_KEY) === sessionId) {
       clearCart();
       return;
@@ -46,6 +47,13 @@ export default function PurchaseTracker() {
           quantity: i.quantity,
           item_variant: `${i.color} / ${i.size}`,
         })),
+      });
+      // Mirror to Meta Pixel. event_id is the Stripe session id, the same id
+      // the server CAPI Purchase event uses, so Meta dedupes the two.
+      metaPurchase({
+        eventId: sessionId,
+        value,
+        contentIds: purchaseItems.map((i) => i.productSlug),
       });
       sessionStorage.setItem(FIRED_KEY, sessionId);
     }

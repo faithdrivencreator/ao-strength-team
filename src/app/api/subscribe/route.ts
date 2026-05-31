@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
 
     if (!res.ok) {
       const errBody = await res.text();
-      // Resend treats duplicates as a soft error — surface success to keep UX clean.
+      // Resend treats duplicates as a soft error - surface success to keep UX clean.
       if (errBody.toLowerCase().includes("already")) {
         return Response.json({ ok: true, duplicate: true });
       }

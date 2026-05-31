@@ -40,7 +40,7 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-6 mt-3 space-y-1">
             <li>Process and fulfill orders</li>
             <li>Communicate about your purchases, including shipping confirmations and customer service</li>
-            <li>Send marketing emails (only if you opt in — you can unsubscribe at any time)</li>
+            <li>Send marketing emails (only if you opt in - you can unsubscribe at any time)</li>
             <li>Improve our website, products, and customer experience</li>
             <li>Detect and prevent fraud or abuse</li>
             <li>Comply with legal obligations</li>
@@ -52,11 +52,11 @@ export default function PrivacyPage() {
             We do not sell your personal information. We share it only with service providers that help us operate the business, including:
           </p>
           <ul className="list-disc pl-6 mt-3 space-y-1">
-            <li><strong>Stripe</strong> — payment processing</li>
-            <li><strong>Netlify</strong> — site hosting</li>
-            <li><strong>Sanity</strong> — content management</li>
-            <li><strong>Google Analytics</strong> — site usage analytics</li>
-            <li>Shipping carriers — to deliver your orders</li>
+            <li><strong>Stripe</strong> - payment processing</li>
+            <li><strong>Netlify</strong> - site hosting</li>
+            <li><strong>Sanity</strong> - content management</li>
+            <li><strong>Google Analytics</strong> - site usage analytics</li>
+            <li>Shipping carriers - to deliver your orders</li>
           </ul>
           <p className="mt-4">
             We may also disclose information if required by law, to enforce our terms, or to protect the rights, property, or safety of our customers or the public.

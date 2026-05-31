@@ -31,7 +31,7 @@ export default function ShippingPage() {
 
         <Section number="01" title="Free Shipping Over $75">
           <p>
-            Orders $75 or more ship free. USPS Priority Mail, 3–5 business days, U.S. addresses only.
+            Orders $75 or more ship free. USPS Priority Mail, 3-5 business days, U.S. addresses only.
           </p>
           <p>
             Under $75, shipping is a flat $7.95. Same carrier. Same timing. No tiered upsells.
@@ -40,7 +40,7 @@ export default function ShippingPage() {
 
         <Section number="02" title="Processing">
           <p>
-            Orders are packed and dispatched within 2–3 business days. Monday through Friday, holidays excluded.
+            Orders are packed and dispatched within 2-3 business days. Monday through Friday, holidays excluded.
           </p>
           <p>
             The moment your order leaves the bench, you get a tracking email. One link. The carrier handles the rest.
@@ -60,12 +60,12 @@ export default function ShippingPage() {
           </p>
         </Section>
 
-        <Section number="04" title="Returns — 30 Days">
+        <Section number="04" title="Returns - 30 Days">
           <p>
             Thirty days from the day your order arrives. Items must be unworn, unwashed, and have the original tags attached.
           </p>
           <p>
-            You cover the return shipping. If the return is on us — defect, wrong item, damage in transit — we cover it.
+            You cover the return shipping. If the return is on us - defect, wrong item, damage in transit - we cover it.
           </p>
           <p>
             Start a return:{" "}
@@ -78,7 +78,7 @@ export default function ShippingPage() {
 
         <Section number="05" title="Refund Timing">
           <p>
-            Once we receive the return, we inspect it within 2 business days. Approved refunds post to the original payment method within 5–7 business days after that.
+            Once we receive the return, we inspect it within 2 business days. Approved refunds post to the original payment method within 5-7 business days after that.
           </p>
           <p>
             Your bank decides the exact day it lands. We don&rsquo;t.
@@ -100,7 +100,7 @@ export default function ShippingPage() {
 
         <Section number="07" title="Lost in Transit">
           <p>
-            If tracking shows delivered and the package isn&rsquo;t at your door — check with neighbors and the building, then wait 24 hours. Carriers occasionally mark packages early.
+            If tracking shows delivered and the package isn&rsquo;t at your door - check with neighbors and the building, then wait 24 hours. Carriers occasionally mark packages early.
           </p>
           <p>
             Still nothing after 48 hours, email{" "}
@@ -126,21 +126,21 @@ export default function ShippingPage() {
 
         <Section number="09" title="Contact">
           <p>
-            General questions —{" "}
+            General questions -{" "}
             <a className="underline underline-offset-4 hover:text-white" href={`mailto:${HELLO}`}>
               {HELLO}
             </a>
             .
           </p>
           <p>
-            Returns —{" "}
+            Returns -{" "}
             <a className="underline underline-offset-4 hover:text-white" href={`mailto:${RETURNS}`}>
               {RETURNS}
             </a>
             .
           </p>
           <p>
-            Order issues —{" "}
+            Order issues -{" "}
             <a className="underline underline-offset-4 hover:text-white" href={`mailto:${SUPPORT}`}>
               {SUPPORT}
             </a>

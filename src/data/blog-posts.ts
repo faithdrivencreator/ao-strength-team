@@ -1,5 +1,5 @@
 /**
- * AO Strength Team — Blog posts (static data layer).
+ * AO Strength Team - Blog posts (static data layer).
  *
  * Replaces the Sanity CMS fetch path. Hand-edit this file to publish new posts.
  * The PortableText `body` array preserves the original Sanity shape so the
@@ -14,7 +14,7 @@
 
 import type { PortableTextBlock } from "@portabletext/react";
 
-// New blog posts (2026-05 wave) — each draft lives in ./blog-drafts/<slug>.ts and is appended to `blogPosts` below.
+// New blog posts (2026-05 wave) - each draft lives in ./blog-drafts/<slug>.ts and is appended to `blogPosts` below.
 import beginnersGuide from "./blog-drafts/beginners-guide-lifting-as-a-christian";
 import progressiveOverload from "./blog-drafts/progressive-overload-for-faith-driven-athletes";
 import apparelGuide from "./blog-drafts/faith-driven-gym-apparel-guide";
@@ -78,7 +78,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     "slug": "rest-is-not-weakness",
-    "title": "Rest Is Not Weakness — The Case for Recovery",
+    "title": "Rest Is Not Weakness - The Case for Recovery",
     "date": "2026-04-18",
     "excerpt": "God rested on the seventh day. Jesus told his disciples to come away and rest. If they needed it, so do you.",
     "tags": [
@@ -138,7 +138,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "e00846652a6a0",
             "_type": "span",
             "marks": [],
-            "text": "\"By the seventh day God had finished the work he had been doing; so on the seventh day he rested from all his work.\" — Genesis 2:2"
+            "text": "\"By the seventh day God had finished the work he had been doing; so on the seventh day he rested from all his work.\" - Genesis 2:2"
           }
         ],
         "markDefs": [],
@@ -152,7 +152,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "2b95b8a9f9880",
             "_type": "span",
             "marks": [],
-            "text": "\"Then, because so many people were coming and going that they did not even have a chance to eat, he said to them, 'Come with me by yourselves to a quiet place and get some rest.'\" — Mark 6:31"
+            "text": "\"Then, because so many people were coming and going that they did not even have a chance to eat, he said to them, 'Come with me by yourselves to a quiet place and get some rest.'\" - Mark 6:31"
           }
         ],
         "markDefs": [],
@@ -166,7 +166,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "78c4118bb27c0",
             "_type": "span",
             "marks": [],
-            "text": "God rested after creation. Jesus pulled his disciples away from productive work to rest. If the Creator of the universe built rest into the design, and if Jesus modeled it even in the middle of active ministry, then dismissing rest as weakness isn't discipline — it's arrogance."
+            "text": "God rested after creation. Jesus pulled his disciples away from productive work to rest. If the Creator of the universe built rest into the design, and if Jesus modeled it even in the middle of active ministry, then dismissing rest as weakness isn't discipline - it's arrogance."
           }
         ],
         "markDefs": [],
@@ -194,7 +194,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "7639fc3f9dbc0",
             "_type": "span",
             "marks": [],
-            "text": "Muscle does not grow during your workout. It grows during recovery. Every training session creates microtears in muscle fibers through mechanical stress — that's the stimulus. The rebuilding, the thickening, the actual growth, happens afterward. And the majority of that repair happens during sleep."
+            "text": "Muscle does not grow during your workout. It grows during recovery. Every training session creates microtears in muscle fibers through mechanical stress - that's the stimulus. The rebuilding, the thickening, the actual growth, happens afterward. And the majority of that repair happens during sleep."
           }
         ],
         "markDefs": [],
@@ -222,7 +222,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "1705932e0ec10",
             "_type": "span",
             "marks": [],
-            "text": "The mechanism is growth hormone. Human growth hormone (HGH) — the body's primary driver of tissue repair and muscle synthesis — is released in its greatest pulses during slow-wave (deep) sleep. Cutting sleep cuts HGH. Cut HGH and you're training without the repair signal your body needs to respond to the stimulus you're giving it. You're putting stress on a system you're not letting recover."
+            "text": "The mechanism is growth hormone. Human growth hormone (HGH) - the body's primary driver of tissue repair and muscle synthesis - is released in its greatest pulses during slow-wave (deep) sleep. Cutting sleep cuts HGH. Cut HGH and you're training without the repair signal your body needs to respond to the stimulus you're giving it. You're putting stress on a system you're not letting recover."
           }
         ],
         "markDefs": [],
@@ -236,7 +236,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "e3e375e0346e0",
             "_type": "span",
             "marks": [],
-            "text": "Sleep deprivation also raises cortisol — a catabolic hormone that breaks down muscle tissue. A 2011 study published in the "
+            "text": "Sleep deprivation also raises cortisol - a catabolic hormone that breaks down muscle tissue. A 2011 study published in the "
           },
           {
             "_key": "e3e375e0346e1",
@@ -278,7 +278,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "b9c9f61cba880",
             "_type": "span",
             "marks": [],
-            "text": "Rest doesn't have to mean doing nothing. Active recovery — low-intensity movement that increases blood flow without creating additional stress — accelerates the repair process."
+            "text": "Rest doesn't have to mean doing nothing. Active recovery - low-intensity movement that increases blood flow without creating additional stress - accelerates the repair process."
           }
         ],
         "markDefs": [],
@@ -292,7 +292,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "636453a234860",
             "_type": "span",
             "marks": [],
-            "text": "A 20-30 minute walk, a yoga or mobility session, light swimming, or a stretching routine all qualify. These activities move fresh blood and nutrients through damaged tissue, clear metabolic waste products like lactate, and reduce soreness through increased circulation — without triggering additional breakdown. Research in the "
+            "text": "A 20-30 minute walk, a yoga or mobility session, light swimming, or a stretching routine all qualify. These activities move fresh blood and nutrients through damaged tissue, clear metabolic waste products like lactate, and reduce soreness through increased circulation - without triggering additional breakdown. Research in the "
           },
           {
             "_key": "636453a234861",
@@ -320,7 +320,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "8ec4d70556af0",
             "_type": "span",
             "marks": [],
-            "text": "On my recovery days, I walk. I stretch. I do things that serve the body without taxing it. I also prioritize sleep — not as a luxury but as training."
+            "text": "On my recovery days, I walk. I stretch. I do things that serve the body without taxing it. I also prioritize sleep - not as a luxury but as training."
           }
         ],
         "markDefs": [],
@@ -348,7 +348,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "48e53482e94a0",
             "_type": "span",
             "marks": [],
-            "text": "The Sabbath principle is older than sports science, and it maps onto what we now know about periodization — the structured cycling of training stress and recovery that every legitimate strength and conditioning program is built around."
+            "text": "The Sabbath principle is older than sports science, and it maps onto what we now know about periodization - the structured cycling of training stress and recovery that every legitimate strength and conditioning program is built around."
           }
         ],
         "markDefs": [],
@@ -376,7 +376,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "2584676fb71c0",
             "_type": "span",
             "marks": [],
-            "text": "One full rest day per week is not optional — it's structural. One deload week every four to six weeks of training is not laziness — it's how progress compounds over months and years instead of stalling out after six weeks."
+            "text": "One full rest day per week is not optional - it's structural. One deload week every four to six weeks of training is not laziness - it's how progress compounds over months and years instead of stalling out after six weeks."
           }
         ],
         "markDefs": [],
@@ -404,7 +404,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "1b31d8e030bb0",
             "_type": "span",
             "marks": [],
-            "text": "If you're someone who struggles to rest — who feels guilty on days off, who equates stopping with weakness — I want to give you this clearly: rest is not the opposite of discipline. It is part of discipline. The most disciplined thing you can do some days is go to bed early, skip the extra session, and trust that the work you put in will be made complete by the recovery you give it."
+            "text": "If you're someone who struggles to rest - who feels guilty on days off, who equates stopping with weakness - I want to give you this clearly: rest is not the opposite of discipline. It is part of discipline. The most disciplined thing you can do some days is go to bed early, skip the extra session, and trust that the work you put in will be made complete by the recovery you give it."
           }
         ],
         "markDefs": [],
@@ -442,12 +442,12 @@ export const blogPosts: BlogPost[] = [
     "featured": false,
     "mainImage": {
       "src": "/images/blog/rest-is-not-weakness/hero.webp",
-      "alt": "Editorial image for the journal entry titled 'Rest Is Not Weakness — The Case for Recovery'."
+      "alt": "Editorial image for the journal entry titled 'Rest Is Not Weakness - The Case for Recovery'."
     }
   },
   {
     "slug": "iron-sharpens-iron",
-    "title": "Iron Sharpens Iron — Why You Need a Training Partner",
+    "title": "Iron Sharpens Iron - Why You Need a Training Partner",
     "date": "2026-04-16",
     "excerpt": "You were not built to do this alone. The research backs it up, and Scripture said it first.",
     "tags": [
@@ -493,7 +493,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "4faa83d831f40",
             "_type": "span",
             "marks": [],
-            "text": "\"As iron sharpens iron, so one person sharpens another.\" — Proverbs 27:17"
+            "text": "\"As iron sharpens iron, so one person sharpens another.\" - Proverbs 27:17"
           }
         ],
         "markDefs": [],
@@ -507,7 +507,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "7d1cae8b37c50",
             "_type": "span",
             "marks": [],
-            "text": "That's not metaphor for motivational posters. It's a description of how human beings actually develop — through friction, accountability, and the honest resistance of another person who's in it with you."
+            "text": "That's not metaphor for motivational posters. It's a description of how human beings actually develop - through friction, accountability, and the honest resistance of another person who's in it with you."
           }
         ],
         "markDefs": [],
@@ -563,7 +563,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "23d37db170b52",
             "_type": "span",
             "marks": [],
-            "text": " found that having an accountability partner increased the success rate of behavioral commitments by up to 95%, compared to people who kept goals to themselves. That's not a marginal improvement — that's the difference between a goal and a result."
+            "text": " found that having an accountability partner increased the success rate of behavioral commitments by up to 95%, compared to people who kept goals to themselves. That's not a marginal improvement - that's the difference between a goal and a result."
           }
         ],
         "markDefs": [],
@@ -577,7 +577,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "0bed8d8253480",
             "_type": "span",
             "marks": [],
-            "text": "Research from the University of Aberdeen found that having a new exercise companion who supported their partner's efforts led to a significant increase in workout frequency. The key variable wasn't just having a partner — it was having one who was actively engaged and emotionally invested. A partner who shows up and asks how it went is worth more than one who just texts encouragement."
+            "text": "Research from the University of Aberdeen found that having a new exercise companion who supported their partner's efforts led to a significant increase in workout frequency. The key variable wasn't just having a partner - it was having one who was actively engaged and emotionally invested. A partner who shows up and asks how it went is worth more than one who just texts encouragement."
           }
         ],
         "markDefs": [],
@@ -605,7 +605,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "fcc233f8df8f2",
             "_type": "span",
             "marks": [],
-            "text": " found that working out alongside a more capable partner increased exercise intensity and duration by up to 200% in some participants — a phenomenon called the Köhler effect, where people work harder to avoid being the weakest link in a partnership."
+            "text": " found that working out alongside a more capable partner increased exercise intensity and duration by up to 200% in some participants - a phenomenon called the Köhler effect, where people work harder to avoid being the weakest link in a partnership."
           }
         ],
         "markDefs": [],
@@ -655,7 +655,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "e56f3625ae7e1",
             "_type": "span",
             "marks": [],
-            "text": " Attempting a new max on the bench press without a spotter is a risk most people rightfully avoid. A good training partner removes that ceiling. You can push to true failure because you have someone there to catch the weight if you fail. Research consistently shows that training to near-failure is one of the most important drivers of hypertrophy — and most people stop far short of that limit when training alone."
+            "text": " Attempting a new max on the bench press without a spotter is a risk most people rightfully avoid. A good training partner removes that ceiling. You can push to true failure because you have someone there to catch the weight if you fail. Research consistently shows that training to near-failure is one of the most important drivers of hypertrophy - and most people stop far short of that limit when training alone."
           }
         ],
         "markDefs": [],
@@ -699,7 +699,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "75b0363576da1",
             "_type": "span",
             "marks": [],
-            "text": " On the days you don't want to go, knowing someone is waiting for you changes the calculation. You're no longer breaking a personal intention — you're leaving someone else without their workout. The external commitment is a forcing function that personal motivation cannot replicate on its own."
+            "text": " On the days you don't want to go, knowing someone is waiting for you changes the calculation. You're no longer breaking a personal intention - you're leaving someone else without their workout. The external commitment is a forcing function that personal motivation cannot replicate on its own."
           }
         ],
         "markDefs": [],
@@ -741,7 +741,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "c779820981000",
             "_type": "span",
             "marks": [],
-            "text": "You want someone who is consistent — who shows up when they say they will. You want someone who challenges you without competing against you; the goal is mutual growth, not ego. You want someone who is honest with you about your form, your effort, and your attitude. And ideally, you want someone whose values align — because the conversations you have between sets shape your mindset as much as the sets themselves."
+            "text": "You want someone who is consistent - who shows up when they say they will. You want someone who challenges you without competing against you; the goal is mutual growth, not ego. You want someone who is honest with you about your form, your effort, and your attitude. And ideally, you want someone whose values align - because the conversations you have between sets shape your mindset as much as the sets themselves."
           }
         ],
         "markDefs": [],
@@ -783,7 +783,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "46b171a6e3112",
             "_type": "span",
             "marks": [],
-            "text": " — not Strength Brand, not Strength Wear. Team is the word."
+            "text": " - not Strength Brand, not Strength Wear. Team is the word."
           }
         ],
         "markDefs": [],
@@ -811,7 +811,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "90ee358e70f60",
             "_type": "span",
             "marks": [],
-            "text": "Physical training done in community becomes something more than fitness. It becomes a practice of sharpening — where you become sharper through honest contact with other people who are trying to grow the same way you are."
+            "text": "Physical training done in community becomes something more than fitness. It becomes a practice of sharpening - where you become sharper through honest contact with other people who are trying to grow the same way you are."
           }
         ],
         "markDefs": [],
@@ -835,12 +835,12 @@ export const blogPosts: BlogPost[] = [
     "featured": false,
     "mainImage": {
       "src": "/images/blog/iron-sharpens-iron/hero.webp",
-      "alt": "Editorial image for the journal entry titled 'Iron Sharpens Iron — Why You Need a Training Partner'."
+      "alt": "Editorial image for the journal entry titled 'Iron Sharpens Iron - Why You Need a Training Partner'."
     }
   },
   {
     "slug": "fueling-the-temple",
-    "title": "Fueling the Temple — What I Eat in a Day",
+    "title": "Fueling the Temple - What I Eat in a Day",
     "date": "2026-04-14",
     "excerpt": "This isn't a meal plan. It's a framework for treating your body like it belongs to something greater than yourself.",
     "tags": [
@@ -858,7 +858,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "4a7df9f332080",
             "_type": "span",
             "marks": [],
-            "text": "I want to be upfront: I'm not a registered dietitian. I'm not going to hand you a meal plan and tell you it's the only way. What I'm going to share is how I think about food and what that looks like in practice — because the framework matters more than the specific meals."
+            "text": "I want to be upfront: I'm not a registered dietitian. I'm not going to hand you a meal plan and tell you it's the only way. What I'm going to share is how I think about food and what that looks like in practice - because the framework matters more than the specific meals."
           }
         ],
         "markDefs": [],
@@ -872,7 +872,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "bf9d62555f2c0",
             "_type": "span",
             "marks": [],
-            "text": "\"Do you not know that your bodies are temples of the Holy Spirit, who is in you, whom you have received from God? You are not your own; you were bought at a price. Therefore honor God with your bodies.\" — 1 Corinthians 6:19-20"
+            "text": "\"Do you not know that your bodies are temples of the Holy Spirit, who is in you, whom you have received from God? You are not your own; you were bought at a price. Therefore honor God with your bodies.\" - 1 Corinthians 6:19-20"
           }
         ],
         "markDefs": [],
@@ -886,7 +886,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "92f3e31cedc70",
             "_type": "span",
             "marks": [],
-            "text": "That verse changed how I approach eating. It's not about looking good at the beach. It's not about restriction or punishment. It's stewardship. I was given this body as an instrument of purpose — I owe it the fuel to function at its best."
+            "text": "That verse changed how I approach eating. It's not about looking good at the beach. It's not about restriction or punishment. It's stewardship. I was given this body as an instrument of purpose - I owe it the fuel to function at its best."
           }
         ],
         "markDefs": [],
@@ -914,7 +914,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "246846d32fc70",
             "_type": "span",
             "marks": [],
-            "text": "I build every meal around protein first. This isn't a trend — it's biology. Protein is the primary driver of muscle repair, immune function, and satiety. For active adults, the International Society of Sports Nutrition (ISSN) recommends 0.7 to 1.0 grams of protein per pound of bodyweight per day to support muscle retention and growth. At my bodyweight, that puts me around 180-200g daily."
+            "text": "I build every meal around protein first. This isn't a trend - it's biology. Protein is the primary driver of muscle repair, immune function, and satiety. For active adults, the International Society of Sports Nutrition (ISSN) recommends 0.7 to 1.0 grams of protein per pound of bodyweight per day to support muscle retention and growth. At my bodyweight, that puts me around 180-200g daily."
           }
         ],
         "markDefs": [],
@@ -942,7 +942,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "a0986dd0a75a0",
             "_type": "span",
             "marks": [],
-            "text": "I hit that number through whole food sources first: eggs, chicken, ground beef, Greek yogurt, cottage cheese, canned fish. I use protein shakes as a backup when I'm short — not as a substitute for real food."
+            "text": "I hit that number through whole food sources first: eggs, chicken, ground beef, Greek yogurt, cottage cheese, canned fish. I use protein shakes as a backup when I'm short - not as a substitute for real food."
           }
         ],
         "markDefs": [],
@@ -970,7 +970,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "eb2a423975890",
             "_type": "span",
             "marks": [],
-            "text": "Beyond protein, I eat mostly whole foods — not because I'm following some strict protocol, but because processed food actively works against performance. A 2019 study published in "
+            "text": "Beyond protein, I eat mostly whole foods - not because I'm following some strict protocol, but because processed food actively works against performance. A 2019 study published in "
           },
           {
             "_key": "eb2a423975891",
@@ -984,7 +984,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "eb2a423975892",
             "_type": "span",
             "marks": [],
-            "text": " by the NIH found that participants eating an ultra-processed diet consumed an average of 500 more calories per day than those eating whole foods — even when both groups had unrestricted access to food. The processed food group ate faster and felt less satisfied. The researchers concluded that ultra-processed foods disrupt the body's natural satiety signaling."
+            "text": " by the NIH found that participants eating an ultra-processed diet consumed an average of 500 more calories per day than those eating whole foods - even when both groups had unrestricted access to food. The processed food group ate faster and felt less satisfied. The researchers concluded that ultra-processed foods disrupt the body's natural satiety signaling."
           }
         ],
         "markDefs": [],
@@ -998,7 +998,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "8521b0fc3e040",
             "_type": "span",
             "marks": [],
-            "text": "Real food is self-regulating in a way that engineered food is not. When I eat whole foods, I stop when I'm full. When I eat processed food, that signal breaks down. It's not a willpower issue — it's a product design issue. Those foods are engineered to override your stop mechanism."
+            "text": "Real food is self-regulating in a way that engineered food is not. When I eat whole foods, I stop when I'm full. When I eat processed food, that signal breaks down. It's not a willpower issue - it's a product design issue. Those foods are engineered to override your stop mechanism."
           }
         ],
         "markDefs": [],
@@ -1034,7 +1034,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "81977206dff11",
             "_type": "span",
             "marks": [],
-            "text": " Three to four whole eggs with vegetables, sometimes with a cup of Greek yogurt on the side. I keep breakfast simple and high in protein — usually 40-50g before I start the day. Coffee with nothing added. Water first."
+            "text": " Three to four whole eggs with vegetables, sometimes with a cup of Greek yogurt on the side. I keep breakfast simple and high in protein - usually 40-50g before I start the day. Coffee with nothing added. Water first."
           }
         ],
         "markDefs": [],
@@ -1056,7 +1056,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "b370194ea82f1",
             "_type": "span",
             "marks": [],
-            "text": " A large salad or grain bowl with a protein source — chicken, ground beef, tuna, whatever's easy. I try to get vegetables in here because I know dinner tends to be more protein-and-starch focused. This is also where I get a lot of fiber, which supports gut health and keeps energy stable in the afternoon."
+            "text": " A large salad or grain bowl with a protein source - chicken, ground beef, tuna, whatever's easy. I try to get vegetables in here because I know dinner tends to be more protein-and-starch focused. This is also where I get a lot of fiber, which supports gut health and keeps energy stable in the afternoon."
           }
         ],
         "markDefs": [],
@@ -1078,7 +1078,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "830618697f5f1",
             "_type": "span",
             "marks": [],
-            "text": " If I'm training within two hours of a meal, I don't do anything special. If I'm training fasted or it's been a while since eating, I'll have something simple — a banana and a protein shake, or a small serving of rice with chicken. The goal is available fuel without a full stomach."
+            "text": " If I'm training within two hours of a meal, I don't do anything special. If I'm training fasted or it's been a while since eating, I'll have something simple - a banana and a protein shake, or a small serving of rice with chicken. The goal is available fuel without a full stomach."
           }
         ],
         "markDefs": [],
@@ -1128,7 +1128,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "8caaee4b1a7f0",
             "_type": "span",
             "marks": [],
-            "text": "I drink a lot of water. The NIH general recommendation is about 3.7 liters (125 oz) for men per day from all sources — more if you're training hard or in a hot climate. In Miami, that number goes up."
+            "text": "I drink a lot of water. The NIH general recommendation is about 3.7 liters (125 oz) for men per day from all sources - more if you're training hard or in a hot climate. In Miami, that number goes up."
           }
         ],
         "markDefs": [],
@@ -1142,7 +1142,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "4e6668590bc90",
             "_type": "span",
             "marks": [],
-            "text": "Dehydration affects performance significantly. Even mild dehydration — as little as 2% of body weight — reduces strength, endurance, and cognitive function according to research published in the "
+            "text": "Dehydration affects performance significantly. Even mild dehydration - as little as 2% of body weight - reduces strength, endurance, and cognitive function according to research published in the "
           },
           {
             "_key": "4e6668590bc91",
@@ -1184,7 +1184,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "0c2120024d3e0",
             "_type": "span",
             "marks": [],
-            "text": "I don't count every calorie. I don't follow a named protocol. I don't eat the same thing every day. I don't have \"cheat meals\" — that framing turns food into a moral issue and sets you up for guilt cycles that go nowhere useful."
+            "text": "I don't count every calorie. I don't follow a named protocol. I don't eat the same thing every day. I don't have \"cheat meals\" - that framing turns food into a moral issue and sets you up for guilt cycles that go nowhere useful."
           }
         ],
         "markDefs": [],
@@ -1240,7 +1240,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "b36fefbf20f70",
             "_type": "span",
             "marks": [],
-            "text": "That question — asked honestly — will upgrade your eating more than any protocol ever could."
+            "text": "That question - asked honestly - will upgrade your eating more than any protocol ever could."
           }
         ],
         "markDefs": [],
@@ -1250,12 +1250,12 @@ export const blogPosts: BlogPost[] = [
     "featured": false,
     "mainImage": {
       "src": "/images/blog/fueling-the-temple/hero.webp",
-      "alt": "Editorial image for the journal entry titled 'Fueling the Temple — What I Eat in a Day'."
+      "alt": "Editorial image for the journal entry titled 'Fueling the Temple - What I Eat in a Day'."
     }
   },
   {
     "slug": "training-through-the-valley",
-    "title": "Training Through the Valley — When You Don't Feel Like Showing Up",
+    "title": "Training Through the Valley - When You Don't Feel Like Showing Up",
     "date": "2026-04-10",
     "excerpt": "Motivation is a feeling. Discipline is a decision. Here's how to keep moving when everything in you wants to stop.",
     "tags": [
@@ -1301,7 +1301,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "c4ce58c2ffea0",
             "_type": "span",
             "marks": [],
-            "text": "You wake up tired. Not just physically tired — the kind of tired that lives in your chest. Life is heavy. The weights feel heavier. The voice in your head says: what's the point? Skip it. Rest tomorrow. You'll feel better then."
+            "text": "You wake up tired. Not just physically tired - the kind of tired that lives in your chest. Life is heavy. The weights feel heavier. The voice in your head says: what's the point? Skip it. Rest tomorrow. You'll feel better then."
           }
         ],
         "markDefs": [],
@@ -1329,7 +1329,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "aee989ac31f60",
             "_type": "span",
             "marks": [],
-            "text": "\"Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me.\" — Psalm 23:4"
+            "text": "\"Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me.\" - Psalm 23:4"
           }
         ],
         "markDefs": [],
@@ -1357,7 +1357,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "bd13d8014a280",
             "_type": "span",
             "marks": [],
-            "text": "Motivation is an emotion. Emotions are temporary. If you've built your training around how you feel, you will eventually stop training — because feelings change constantly and not always in your favor."
+            "text": "Motivation is an emotion. Emotions are temporary. If you've built your training around how you feel, you will eventually stop training - because feelings change constantly and not always in your favor."
           }
         ],
         "markDefs": [],
@@ -1399,7 +1399,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "c3e7e884a9f82",
             "_type": "span",
             "marks": [],
-            "text": " found that making a specific plan — writing down when, where, and how you will exercise — increased follow-through rates to 91%, compared to 35% for people who simply intended to work out. The people who showed up consistently weren't more motivated. They had better systems."
+            "text": " found that making a specific plan - writing down when, where, and how you will exercise - increased follow-through rates to 91%, compared to 35% for people who simply intended to work out. The people who showed up consistently weren't more motivated. They had better systems."
           }
         ],
         "markDefs": [],
@@ -1455,7 +1455,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "b8328168627e2",
             "_type": "span",
             "marks": [],
-            "text": ", covering over 33,000 adults tracked for 11 years, found that regular physical activity reduced the incidence of depression by 26%. Not slightly improved mood — a 26% reduction in clinical depression risk. And the effect held across all intensity levels, including low-intensity activity like walking."
+            "text": ", covering over 33,000 adults tracked for 11 years, found that regular physical activity reduced the incidence of depression by 26%. Not slightly improved mood - a 26% reduction in clinical depression risk. And the effect held across all intensity levels, including low-intensity activity like walking."
           }
         ],
         "markDefs": [],
@@ -1555,7 +1555,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "60d1fb8858241",
             "_type": "span",
             "marks": [],
-            "text": " Habit stacking — pairing a hard habit with an existing one — is one of the most effective behavioral change tools available. If you already go to the gym after work, tie a short walk to your lunch break. If you already wake up early, attach five minutes of movement to that routine. Attach the hard thing to the thing you already do."
+            "text": " Habit stacking - pairing a hard habit with an existing one - is one of the most effective behavioral change tools available. If you already go to the gym after work, tie a short walk to your lunch break. If you already wake up early, attach five minutes of movement to that routine. Attach the hard thing to the thing you already do."
           }
         ],
         "markDefs": [],
@@ -1577,7 +1577,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "190d445f76221",
             "_type": "span",
             "marks": [],
-            "text": " Accountability changes the math. We'll talk more about training partners in another post, but even a simple text to a friend — \"training at 6 PM today\" — raises your follow-through rate significantly. External commitment is a forcing function."
+            "text": " Accountability changes the math. We'll talk more about training partners in another post, but even a simple text to a friend - \"training at 6 PM today\" - raises your follow-through rate significantly. External commitment is a forcing function."
           }
         ],
         "markDefs": [],
@@ -1605,7 +1605,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "9fe5a0d365f00",
             "_type": "span",
             "marks": [],
-            "text": "David didn't walk around the valley. He walked through it. The promise isn't that you avoid hard seasons — it's that you don't walk through them alone, and you come out the other side."
+            "text": "David didn't walk around the valley. He walked through it. The promise isn't that you avoid hard seasons - it's that you don't walk through them alone, and you come out the other side."
           }
         ],
         "markDefs": [],
@@ -1643,14 +1643,14 @@ export const blogPosts: BlogPost[] = [
     "featured": false,
     "mainImage": {
       "src": "/images/blog/training-through-the-valley/hero.webp",
-      "alt": "Editorial image for the journal entry titled 'Training Through the Valley — When You Don't Feel Like Showing Up'."
+      "alt": "Editorial image for the journal entry titled 'Training Through the Valley - When You Don't Feel Like Showing Up'."
     }
   },
   {
     "slug": "morning-habits-that-changed-my-training",
     "title": "5 Morning Habits That Changed My Training",
     "date": "2026-04-05",
-    "excerpt": "The first hour sets the tone for everything that follows. Here's exactly what I do — and why it works.",
+    "excerpt": "The first hour sets the tone for everything that follows. Here's exactly what I do - and why it works.",
     "tags": [
       "Training",
       "Discipline",
@@ -1694,7 +1694,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "927fa99152ba0",
             "_type": "span",
             "marks": [],
-            "text": "\"The steadfast love of the LORD never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness.\" — Lamentations 3:22-23"
+            "text": "\"The steadfast love of the LORD never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness.\" - Lamentations 3:22-23"
           }
         ],
         "markDefs": [],
@@ -1708,7 +1708,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "c7f4546259fd0",
             "_type": "span",
             "marks": [],
-            "text": "Every morning is a reset. A fresh mercy. The question is whether you use it or waste it. Here are the five habits that changed the way I train — and live."
+            "text": "Every morning is a reset. A fresh mercy. The question is whether you use it or waste it. Here are the five habits that changed the way I train - and live."
           }
         ],
         "markDefs": [],
@@ -1736,7 +1736,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "69e844246f3a0",
             "_type": "span",
             "marks": [],
-            "text": "Not coffee. Not a scroll. Cold water — either a glass of it immediately upon waking, or a cold shower within the first twenty minutes."
+            "text": "Not coffee. Not a scroll. Cold water - either a glass of it immediately upon waking, or a cold shower within the first twenty minutes."
           }
         ],
         "markDefs": [],
@@ -1764,7 +1764,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "7bc71aafe0202",
             "_type": "span",
             "marks": [],
-            "text": " found that cold water immersion activates the sympathetic nervous system, increasing norepinephrine levels by up to 300%. That's the neurotransmitter responsible for focus and alertness. It also reduces inflammation — which matters if you trained hard the day before."
+            "text": " found that cold water immersion activates the sympathetic nervous system, increasing norepinephrine levels by up to 300%. That's the neurotransmitter responsible for focus and alertness. It also reduces inflammation - which matters if you trained hard the day before."
           }
         ],
         "markDefs": [],
@@ -1834,7 +1834,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "966646807df72",
             "_type": "span",
             "marks": [],
-            "text": " found that morning mindfulness and centering practices — including prayer and meditation — reduce cortisol reactivity throughout the day. Starting with the phone does the opposite: it spikes cortisol by triggering threat-response mechanisms tied to comparison, news, and social pressure."
+            "text": " found that morning mindfulness and centering practices - including prayer and meditation - reduce cortisol reactivity throughout the day. Starting with the phone does the opposite: it spikes cortisol by triggering threat-response mechanisms tied to comparison, news, and social pressure."
           }
         ],
         "markDefs": [],
@@ -1876,7 +1876,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "1589d240d2660",
             "_type": "span",
             "marks": [],
-            "text": "I don't always train in the morning — some days I lift in the afternoon. But I always move in the morning. A walk. A mobility flow. A set of push-ups and a stretch. Something that tells your body: we're awake, we're capable, let's go."
+            "text": "I don't always train in the morning - some days I lift in the afternoon. But I always move in the morning. A walk. A mobility flow. A set of push-ups and a stretch. Something that tells your body: we're awake, we're capable, let's go."
           }
         ],
         "markDefs": [],
@@ -1904,7 +1904,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "138b31014e4f2",
             "_type": "span",
             "marks": [],
-            "text": " found that morning exercise improves attention, visual learning, and decision-making throughout the day — effects that persisted even into the evening. You're not just warming up your body. You're warming up your brain."
+            "text": " found that morning exercise improves attention, visual learning, and decision-making throughout the day - effects that persisted even into the evening. You're not just warming up your body. You're warming up your brain."
           }
         ],
         "markDefs": [],
@@ -1946,7 +1946,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "30cdc20109dc0",
             "_type": "span",
             "marks": [],
-            "text": "I eat protein within an hour of waking. Not because some fitness influencer told me to — because the science on muscle protein synthesis is clear."
+            "text": "I eat protein within an hour of waking. Not because some fitness influencer told me to - because the science on muscle protein synthesis is clear."
           }
         ],
         "markDefs": [],
@@ -1974,7 +1974,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "4119e046cf052",
             "_type": "span",
             "marks": [],
-            "text": " published research in 2020 showing that distributing protein intake across all three meals — including breakfast — maximizes muscle protein synthesis compared to back-loading protein toward dinner. Most people get less than 15g of protein at breakfast, nowhere near enough to trigger that anabolic response."
+            "text": " published research in 2020 showing that distributing protein intake across all three meals - including breakfast - maximizes muscle protein synthesis compared to back-loading protein toward dinner. Most people get less than 15g of protein at breakfast, nowhere near enough to trigger that anabolic response."
           }
         ],
         "markDefs": [],
@@ -1988,7 +1988,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "00db66712fa30",
             "_type": "span",
             "marks": [],
-            "text": "I aim for 40-50g in my first meal. Eggs, Greek yogurt, a protein shake if I'm moving fast. This isn't about being obsessive — it's about fueling your body like you take it seriously. Because I do."
+            "text": "I aim for 40-50g in my first meal. Eggs, Greek yogurt, a protein shake if I'm moving fast. This isn't about being obsessive - it's about fueling your body like you take it seriously. Because I do."
           }
         ],
         "markDefs": [],
@@ -2058,7 +2058,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "373031b939ca2",
             "_type": "span",
             "marks": [],
-            "text": " on implementation intentions — the concept of pre-committing to a specific action in a specific context — shows they increase goal completion rates by up to 91% compared to vague aspirations. One clear intention beats ten foggy goals."
+            "text": " on implementation intentions - the concept of pre-committing to a specific action in a specific context - shows they increase goal completion rates by up to 91% compared to vague aspirations. One clear intention beats ten foggy goals."
           }
         ],
         "markDefs": [],
@@ -2086,7 +2086,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "6c54dc02b0d50",
             "_type": "span",
             "marks": [],
-            "text": "You don't have to do all five at once. Start with one. Then stack the next. The goal isn't a perfect morning routine — it's a morning that belongs to you before it belongs to everyone else."
+            "text": "You don't have to do all five at once. Start with one. Then stack the next. The goal isn't a perfect morning routine - it's a morning that belongs to you before it belongs to everyone else."
           }
         ],
         "markDefs": [],
@@ -2147,7 +2147,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "1ae990a8616b0",
             "_type": "span",
             "marks": [],
-            "text": "Alpha Omega Strength Team was born from a simple truth: the same God who calls us to run the race with endurance is the same God who gives us the strength to finish it. He is the Alpha — the beginning of every purpose, every plan, every first rep. And He is the Omega — the One who sees us through to the end."
+            "text": "Alpha Omega Strength Team was born from a simple truth: the same God who calls us to run the race with endurance is the same God who gives us the strength to finish it. He is the Alpha - the beginning of every purpose, every plan, every first rep. And He is the Omega - the One who sees us through to the end."
           }
         ],
         "markDefs": [],
@@ -2175,7 +2175,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "ced7059ca6a00",
             "_type": "span",
             "marks": [],
-            "text": "Training isn't just physical. Every time you show up — tired, sore, doubting — and push through anyway, you're exercising the same muscle that faith requires. Discipline. Perseverance. Trust in something bigger than the moment."
+            "text": "Training isn't just physical. Every time you show up - tired, sore, doubting - and push through anyway, you're exercising the same muscle that faith requires. Discipline. Perseverance. Trust in something bigger than the moment."
           }
         ],
         "markDefs": [],
@@ -2189,7 +2189,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "8fd2d8ded3130",
             "_type": "span",
             "marks": [],
-            "text": "\"No discipline seems pleasant at the time, but painful. Later on, however, it produces a harvest of righteousness and peace for those who have been trained by it.\" — Hebrews 12:11"
+            "text": "\"No discipline seems pleasant at the time, but painful. Later on, however, it produces a harvest of righteousness and peace for those who have been trained by it.\" - Hebrews 12:11"
           }
         ],
         "markDefs": [],
@@ -2217,7 +2217,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "cae48d36af610",
             "_type": "span",
             "marks": [],
-            "text": "We're not here to sell you hype. We're here to build something real — a community of people who train with purpose, live with conviction, and wear their faith boldly. Every piece we make carries that standard."
+            "text": "We're not here to sell you hype. We're here to build something real - a community of people who train with purpose, live with conviction, and wear their faith boldly. Every piece we make carries that standard."
           }
         ],
         "markDefs": [],
@@ -2253,7 +2253,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "7d792076e6610",
             "_type": "span",
             "marks": [],
-            "text": "\"I can do all things through Christ who strengthens me.\" — Philippians 4:13"
+            "text": "\"I can do all things through Christ who strengthens me.\" - Philippians 4:13"
           }
         ],
         "markDefs": [],
@@ -2323,7 +2323,7 @@ export const blogPosts: BlogPost[] = [
             "_key": "20f917b0c79b0",
             "_type": "span",
             "marks": [],
-            "text": "— The Alpha Omega Strength Team"
+            "text": "- The Alpha Omega Strength Team"
           }
         ],
         "markDefs": [],
@@ -2367,7 +2367,7 @@ export function getPost(slug: string): BlogPost | null {
   return blogPosts.find((p) => p.slug === slug) ?? null;
 }
 
-/** Posts containing a given tag (case-sensitive match — tags are canonical strings). */
+/** Posts containing a given tag (case-sensitive match - tags are canonical strings). */
 export function getPostsByTag(tag: string): BlogPost[] {
   return getAllPosts().filter((p) => Array.isArray(p.tags) && p.tags.includes(tag));
 }

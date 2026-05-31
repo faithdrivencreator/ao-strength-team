@@ -40,7 +40,7 @@ export function getReadingTimeMinutes(body: readonly unknown[] | undefined | nul
 }
 
 /**
- * Pull the first N characters of body text — for fallback article schema bodies.
+ * Pull the first N characters of body text - for fallback article schema bodies.
  */
 export function getBodyExcerpt(body: readonly unknown[] | undefined | null, maxLen = 300): string {
   if (!body || body.length === 0) return "";

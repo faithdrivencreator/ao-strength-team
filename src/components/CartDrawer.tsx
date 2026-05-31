@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/contexts/CartContext";
 import { trackBeginCheckout } from "@/lib/gtag";
+import { metaInitiateCheckout } from "@/lib/meta-pixel";
 
 export default function CartDrawer() {
   const { items, isOpen, itemCount, subtotal, closeCart, removeItem, updateQuantity } = useCart();
@@ -26,6 +27,11 @@ export default function CartDrawer() {
       })),
       subtotal,
     );
+    metaInitiateCheckout({
+      contentIds: items.map((i) => i.productSlug),
+      value: subtotal,
+      numItems: items.reduce((sum, i) => sum + i.quantity, 0),
+    });
 
     try {
       const res = await fetch("/api/checkout", {
@@ -37,6 +43,16 @@ export default function CartDrawer() {
             color: i.color,
             size: i.size,
             quantity: i.quantity,
+            // Sleeve is encoded in the slug by the showcase add-to-cart flow
+            // (e.g. ao-brushstroke-short-sleeve). Send it explicitly so the
+            // server can derive the authoritative per-sleeve price, and send
+            // the displayed price so the server can reject any drift.
+            sleeve: i.productSlug.endsWith("-long-sleeve")
+              ? "long"
+              : i.productSlug.endsWith("-short-sleeve")
+                ? "short"
+                : undefined,
+            price: i.price,
           })),
         }),
       });

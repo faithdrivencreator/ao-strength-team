@@ -22,7 +22,7 @@ export default function Footer() {
       </div>
       <div className="mx-auto max-w-[1440px] px-6 py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-          <Link href="/" aria-label="Alpha Omega Strength Team — Home" className="inline-block">
+          <Link href="/" aria-label="Alpha Omega Strength Team - Home" className="inline-block">
             <Image
               src="/brand/logo-horizontal-white.png"
               alt="Alpha Omega Strength Team"

@@ -14,11 +14,11 @@ import { NextRequest, NextResponse } from "next/server";
  *     Visitors can browse products + read the journal; "Notify Me On Drop"
  *     replaces "Add to Cart" in the UI. Used between soft-open and full launch.
  *
- * Both flags honor the preview cookie — owners bypass.
+ * Both flags honor the preview cookie - owners bypass.
  */
 
 const COMING_SOON_GATED = ["/shop", "/products", "/blog", "/contact", "/checkout"];
-// NOTE: /shop is intentionally NOT gated — it renders ShopComingSoon (a hype page
+// NOTE: /shop is intentionally NOT gated - it renders ShopComingSoon (a hype page
 // with countdown + waitlist) when locked. Only purchase paths are blocked.
 const PURCHASE_LOCKED_GATED = ["/products", "/cart", "/checkout"];
 

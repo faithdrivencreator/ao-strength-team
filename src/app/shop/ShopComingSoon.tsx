@@ -10,7 +10,7 @@ export default function ShopComingSoon() {
   return (
     <div className="bg-black text-white">
       {/* ════════════════════════════════════════════════════════════
-          HERO — "Something is being built." + countdown + email capture
+          HERO - "Something is being built." + countdown + email capture
       ════════════════════════════════════════════════════════════ */}
       <section className="relative min-h-[100svh] flex items-center overflow-hidden border-b border-white/10">
         {/* Soft radial backlight, kept very dark */}
@@ -78,7 +78,7 @@ export default function ShopComingSoon() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════
-          MANIFESTO — // THE TEAM
+          MANIFESTO - // THE TEAM
       ════════════════════════════════════════════════════════════ */}
       <section className="border-b border-white/10">
         <div className="max-w-[1440px] mx-auto px-6 md:px-16 lg:px-20 py-28 md:py-40">
@@ -113,7 +113,7 @@ export default function ShopComingSoon() {
               <br />
               Five fits. Each made for the body that&apos;s earned them.
               <br />
-              One team. Built around the Alpha and the Omega — the One who is the Beginning and the End.
+              One team. Built around the Alpha and the Omega - the One who is the Beginning and the End.
             </p>
             <p>
               This is performance apparel for people who train with purpose.
@@ -125,7 +125,7 @@ export default function ShopComingSoon() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════
-          SCRIPTURE — Revelation 22:13
+          SCRIPTURE - Revelation 22:13
       ════════════════════════════════════════════════════════════ */}
       <section className="border-b border-white/10">
         <div className="max-w-[1440px] mx-auto px-6 md:px-16 lg:px-20 py-32 md:py-44 text-center">
@@ -134,7 +134,7 @@ export default function ShopComingSoon() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 1.0, ease: EXPO_EASE }}
-            className="font-sans font-light text-white text-[28px] md:text-[40px] leading-[1.5] italic max-w-[820px] mx-auto"
+            className="font-sans font-light text-white text-[28px] md:text-[40px] leading-[1.5] max-w-[820px] mx-auto"
           >
             &ldquo;I am the Alpha and the Omega,
             <br />
@@ -156,7 +156,7 @@ export default function ShopComingSoon() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════
-          ATMOSPHERE STRIP — 3 tactical eyebrows, no product images
+          ATMOSPHERE STRIP - 3 tactical eyebrows, no product images
       ════════════════════════════════════════════════════════════ */}
       <section className="border-b border-white/10">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-3 divide-x divide-y md:divide-y-0 divide-white/10">
@@ -174,7 +174,7 @@ export default function ShopComingSoon() {
               className="px-8 md:px-12 py-16 md:py-24"
             >
               <p className="font-mono text-[11px] md:text-[12px] tracking-[0.30em] uppercase text-white/45">
-                // {cell.num} — {cell.label}
+                // {cell.num} - {cell.label}
               </p>
               <p className="mt-6 font-sans font-light text-[17px] md:text-[19px] leading-[1.55] text-white/80">
                 {cell.body}
@@ -185,7 +185,7 @@ export default function ShopComingSoon() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════
-          FOOTER CTA — Second waitlist
+          FOOTER CTA - Second waitlist
       ════════════════════════════════════════════════════════════ */}
       <section>
         <div className="max-w-[1440px] mx-auto px-6 md:px-16 lg:px-20 py-32 md:py-44 text-center">
@@ -227,7 +227,7 @@ export default function ShopComingSoon() {
 }
 
 /* ─────────────────────────────────────────────────────────────────
-   WaitlistForm — shared between hero + footer placements
+   WaitlistForm - shared between hero + footer placements
 ───────────────────────────────────────────────────────────────── */
 function WaitlistForm({ placement }: { placement: "hero" | "footer" }) {
   const [email, setEmail] = useState("");

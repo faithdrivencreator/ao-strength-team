@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import EmailCapture from "@/components/EmailCapture";
+import MetaPixel from "@/components/MetaPixel";
 import "./globals.css";
 
 const inter = Inter({
@@ -31,7 +32,7 @@ const OG_IMAGE = PURCHASE_LOCKED_BUILD
   ? "/images/hero/hero-bg.webp"
   : "/images/products/signature-tee-1.webp";
 const OG_IMAGE_ALT = PURCHASE_LOCKED_BUILD
-  ? "Alpha Omega Strength Team — First drop June 2"
+  ? "Alpha Omega Strength Team - First drop June 2"
   : "Alpha Omega Signature Tee";
 
 const OG_DESCRIPTION = PURCHASE_LOCKED_BUILD
@@ -107,6 +108,7 @@ export default function RootLayout({
             gtag('config', 'G-Q4G9V6ZWCK');
           `}
         </Script>
+        <MetaPixel />
         <CartProvider>
           <AnnouncementBar />
           <Header />

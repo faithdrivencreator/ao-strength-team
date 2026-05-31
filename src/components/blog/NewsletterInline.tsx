@@ -10,7 +10,7 @@ interface NewsletterInlineProps {
 }
 
 /**
- * Inline newsletter strip — drops mid-archive or end-of-article inside the
+ * Inline newsletter strip - drops mid-archive or end-of-article inside the
  * 720px body column. Reuses the same HomeEmailForm component the homepage uses.
  */
 export default function NewsletterInline({

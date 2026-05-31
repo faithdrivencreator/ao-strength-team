@@ -20,7 +20,7 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
 
 /**
  * Field-journal grid card. Title below image, single mono eyebrow above title,
- * mono date below. No tag pills, no excerpt, no author at this level — let the
+ * mono date below. No tag pills, no excerpt, no author at this level - let the
  * title carry the card. (Buck Mason / Tracksmith pattern.)
  */
 export default function PostCard({ post, index = 0, variant = "default" }: PostCardProps) {
@@ -43,7 +43,7 @@ export default function PostCard({ post, index = 0, variant = "default" }: PostC
         href={`/blog/${post.slug}`}
         className="group block focus:outline-none focus-visible:ring-1 focus-visible:ring-white/60"
       >
-        {/* Image — 4:3 editorial crop, no text overlay */}
+        {/* Image - 4:3 editorial crop, no text overlay */}
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-950 mb-5">
           {post.mainImage ? (
             <Image
@@ -58,21 +58,21 @@ export default function PostCard({ post, index = 0, variant = "default" }: PostC
           )}
         </div>
 
-        {/* Mono eyebrow — single primary tag, replaces the old pill array */}
+        {/* Mono eyebrow - single primary tag, replaces the old pill array */}
         {primaryTag && (
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/40 mb-3">
             // {primaryTag.toUpperCase()}
           </p>
         )}
 
-        {/* Title — title-only, no duplicate overlay */}
+        {/* Title - title-only, no duplicate overlay */}
         <h3
           className={`font-sans font-bold uppercase tracking-tight leading-[1.15] text-white group-hover:text-white/75 transition-colors duration-200 ${titleSize}`}
         >
           {post.title}
         </h3>
 
-        {/* Date — mono, secondary. No author here. */}
+        {/* Date - mono, secondary. No author here. */}
         <time
           dateTime={post.date}
           className="block mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/35"

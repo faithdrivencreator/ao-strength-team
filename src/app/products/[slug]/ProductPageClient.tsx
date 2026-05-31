@@ -7,6 +7,7 @@ import ProductCard from "@/components/ProductCard";
 import NotifyDropModal from "@/components/NotifyDropModal";
 import type { Product } from "@/data/products";
 import { trackAddToCart, trackViewItem } from "@/lib/gtag";
+import { metaAddToCart, metaViewContent } from "@/lib/meta-pixel";
 
 const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
 
@@ -41,6 +42,7 @@ export default function ProductPageClient({
       name: product.name,
       price: product.price,
     });
+    metaViewContent({ slug: product.slug, price: product.price });
   }, [product.slug]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleAddToCart() {
@@ -58,6 +60,11 @@ export default function ProductPageClient({
 
     addItem(cartItem);
     trackAddToCart(cartItem);
+    metaAddToCart({
+      productSlug: cartItem.productSlug,
+      price: cartItem.price,
+      quantity: cartItem.quantity,
+    });
     openCart();
   }
 
@@ -214,7 +221,7 @@ export default function ProductPageClient({
                 </div>
               </div>
 
-              {/* CTA — Add to Cart, or Notify-Me when purchase is locked */}
+              {/* CTA - Add to Cart, or Notify-Me when purchase is locked */}
               <div className="mt-10">
                 {PURCHASE_LOCKED ? (
                   <button
@@ -271,7 +278,7 @@ export default function ProductPageClient({
                 </li>
                 <li className="px-4 py-4">
                   <p className="font-mono text-[11px] uppercase tracking-[0.10em] text-white/65 leading-snug">
-                    // SHIPS IN 2&ndash;3 DAYS
+                    // SHIPS IN 2-3 DAYS
                   </p>
                 </li>
               </ul>
@@ -279,7 +286,7 @@ export default function ProductPageClient({
                 Free US shipping on orders $75+
               </p>
 
-              {/* FAQ accordion — Description, Sizing, Shipping, Returns, Care */}
+              {/* FAQ accordion - Description, Sizing, Shipping, Returns, Care */}
               <div className="mt-10 border-t border-white/10">
                 {[
                   {
@@ -291,7 +298,7 @@ export default function ProductPageClient({
                           {product.description}
                         </p>
                         <blockquote className="mt-4 pl-4 border-l border-white/20">
-                          <p className="font-sans text-[13px] italic text-white/50 leading-relaxed">
+                          <p className="font-sans text-[13px] text-white/50 leading-relaxed">
                             &ldquo;{product.scripture}&rdquo;
                           </p>
                           <cite className="block font-mono text-[11px] tracking-[0.1em] text-white/30 mt-1 not-italic">
@@ -312,7 +319,7 @@ export default function ProductPageClient({
                           sizes? Size up.
                         </p>
                         <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-white/40">
-                          // Chest (in): S 38&ndash;40 · M 41&ndash;43 · L 44&ndash;46 · XL 47&ndash;49 · 2XL 50&ndash;52 · 3XL 53&ndash;55
+                          // Chest (in): S 38-40 · M 41-43 · L 44-46 · XL 47-49 · 2XL 50-52 · 3XL 53-55
                         </p>
                       </div>
                     ),
@@ -323,7 +330,7 @@ export default function ProductPageClient({
                     body: (
                       <ul className="space-y-2 font-sans text-[13px] font-light text-white/70 leading-relaxed list-disc pl-5">
                         <li>Free US shipping on orders $75+.</li>
-                        <li>Standard US orders ship in 2&ndash;3 business days via USPS.</li>
+                        <li>Standard US orders ship in 2-3 business days via USPS.</li>
                         <li>Tracking emailed the moment your order leaves the facility.</li>
                         <li>International shipping rates calculated at checkout.</li>
                       </ul>
@@ -335,7 +342,7 @@ export default function ProductPageClient({
                     body: (
                       <ul className="space-y-2 font-sans text-[13px] font-light text-white/70 leading-relaxed list-disc pl-5">
                         <li>60-day returns on unworn, unwashed items with tags attached.</li>
-                        <li>Free exchanges for size or color &mdash; we cover the return shipping.</li>
+                        <li>Free exchanges for size or color - we cover the return shipping.</li>
                         <li>Refunds processed within 5 business days of receipt.</li>
                         <li>Email returns@aostrengthteam.store to start.</li>
                       </ul>
@@ -349,7 +356,7 @@ export default function ProductPageClient({
                         <li>Machine wash cold with like colors, inside out.</li>
                         <li>Tumble dry low or hang dry to preserve fit and print.</li>
                         <li>Do not bleach. Do not iron print.</li>
-                        <li>Built to last &mdash; care for it, train hard, repeat.</li>
+                        <li>Built to last - care for it, train hard, repeat.</li>
                       </ul>
                     ),
                   },

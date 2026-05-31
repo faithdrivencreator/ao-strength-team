@@ -1,7 +1,7 @@
 import type { BlogPost } from "../blog-posts";
 
 /**
- * AO daily blog — 2026-05-17
+ * AO daily blog - 2026-05-17
  * Universal Blog Post template (Opening + 5 sections + FAQ + Conclusion).
  * Primary keyword: faith-driven training split for busy men
  */
@@ -12,23 +12,23 @@ const post: BlogPost = {
     "The Faith-Driven Training Split for Busy Men: A 4-Day Program That Fits a Real Life",
   date: "2026-05-17",
   excerpt:
-    "If you have 3–4 hours of training time per week, a family to lead, and a God to honor, this 4-day upper/lower split is built for you — with a Sabbath rest day baked in from the start.",
+    "If you have 3-4 hours of training time per week, a family to lead, and a God to honor, this 4-day upper/lower split is built for you - with a Sabbath rest day baked in from the start.",
   tags: ["Training", "Discipline", "Faith"],
   author: "Pete Fluriach",
   mainImage: {
     src: "/images/blog/faith-driven-training-split-for-busy-men/hero.webp",
-    alt: "Faith-driven man performing a heavy barbell overhead press in a dim garage gym — faith-driven training split for busy men",
+    alt: "Faith-driven man performing a heavy barbell overhead press in a dim garage gym - faith-driven training split for busy men",
   },
   seoTitle:
     "The Faith-Driven Training Split for Busy Men: A 4-Day Program That Fits a Real Life",
   seoDescription:
-    "A practical 4-day upper/lower training split for working men with 3–4 hours a week. Built around a real schedule, a Sabbath rest day, and the conviction that stewardship includes your body.",
+    "A practical 4-day upper/lower training split for working men with 3-4 hours a week. Built around a real schedule, a Sabbath rest day, and the conviction that stewardship includes your body.",
   tldr: [
-    "Busy men do not need a 6-day program — they need a 4-day upper/lower split that fits inside a real week.",
+    "Busy men do not need a 6-day program - they need a 4-day upper/lower split that fits inside a real week.",
     "The built-in Sabbath rest day is not a concession to fatigue; it is a theological commitment baked into the program's structure.",
-    "Upper/lower organization allows each muscle group 48–72 hours of recovery between sessions, which is the physiological minimum for progress.",
-    "Three to four hours of quality training per week is enough to build serious strength. The problem is almost never insufficient volume — it is inconsistency.",
-    "The faith-driven lifter does not train to be impressive. He trains to be reliable — to the bar, to his family, and to God.",
+    "Upper/lower organization allows each muscle group 48-72 hours of recovery between sessions, which is the physiological minimum for progress.",
+    "Three to four hours of quality training per week is enough to build serious strength. The problem is almost never insufficient volume - it is inconsistency.",
+    "The faith-driven lifter does not train to be impressive. He trains to be reliable - to the bar, to his family, and to God.",
   ],
   body: [
     // OPENING
@@ -42,7 +42,7 @@ const post: BlogPost = {
           _key: "open001s",
           _type: "span",
           marks: [],
-          text: "Pete Fluriach, founder of Alpha Omega Strength Team. I have trained on and off since my twenties, but the program that finally stuck was not the most sophisticated one I found — it was the one that fit inside my actual life. I have a business, a family, and obligations that do not move for the gym. So the question was never what is the optimal split — the question was what is the best program I will actually run for the next six months. This is that program.",
+          text: "Pete Fluriach, founder of Alpha Omega Strength Team. I have trained on and off since my twenties, but the program that finally stuck was not the most sophisticated one I found - it was the one that fit inside my actual life. I have a business, a family, and obligations that do not move for the gym. So the question was never what is the optimal split - the question was what is the best program I will actually run for the next six months. This is that program.",
         },
       ],
     },
@@ -84,7 +84,7 @@ const post: BlogPost = {
           _key: "open004s",
           _type: "span",
           marks: [],
-          text: "A training split is simply how you divide your training volume across the days of the week. The upper/lower split is the most time-efficient and physiologically sound option for men with limited weekly training time. It trains each major muscle group twice per week — which 2025 research continues to confirm is the minimum stimulus for meaningful hypertrophy and strength gain — while leaving adequate recovery between sessions.",
+          text: "A training split is simply how you divide your training volume across the days of the week. The upper/lower split is the most time-efficient and physiologically sound option for men with limited weekly training time. It trains each major muscle group twice per week - which 2025 research continues to confirm is the minimum stimulus for meaningful hypertrophy and strength gain - while leaving adequate recovery between sessions.",
         },
       ],
     },
@@ -110,7 +110,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open006s", _type: "span", marks: [], text: "Full-body 3x per week — high frequency, short sessions, excellent for beginners" },
+        { _key: "open006s", _type: "span", marks: [], text: "Full-body 3x per week - high frequency, short sessions, excellent for beginners" },
       ],
     },
     {
@@ -121,7 +121,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open007s", _type: "span", marks: [], text: "Upper/lower 4x per week — balanced frequency and volume, best fit for intermediate lifters with 3 to 4 hours available" },
+        { _key: "open007s", _type: "span", marks: [], text: "Upper/lower 4x per week - balanced frequency and volume, best fit for intermediate lifters with 3 to 4 hours available" },
       ],
     },
     {
@@ -132,7 +132,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open008s", _type: "span", marks: [], text: "Push/pull/legs 6x per week — high volume, requires significant weekly time, prone to collapse under real-life stress" },
+        { _key: "open008s", _type: "span", marks: [], text: "Push/pull/legs 6x per week - high volume, requires significant weekly time, prone to collapse under real-life stress" },
       ],
     },
     {
@@ -143,7 +143,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open009s", _type: "span", marks: [], text: "Bro split (body part per day) — low frequency per muscle, suboptimal for time-limited lifters, survives on gym culture nostalgia" },
+        { _key: "open009s", _type: "span", marks: [], text: "Bro split (body part per day) - low frequency per muscle, suboptimal for time-limited lifters, survives on gym culture nostalgia" },
       ],
     },
     {
@@ -190,7 +190,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "open013s", _type: "span", marks: [], text: "Current training level — beginner, intermediate, or advanced" },
+        { _key: "open013s", _type: "span", marks: [], text: "Current training level - beginner, intermediate, or advanced" },
       ],
     },
     {
@@ -230,7 +230,7 @@ const post: BlogPost = {
       ],
     },
 
-    // SECTION 1 — LANDSCAPE OVERVIEW
+    // SECTION 1 - LANDSCAPE OVERVIEW
     {
       _key: "s1h1",
       _type: "block",
@@ -250,7 +250,7 @@ const post: BlogPost = {
           _key: "s1p1s",
           _type: "span",
           marks: [],
-          text: "The upper/lower split has been a staple of serious programming since at least the 1970s, and the research has never stopped validating it. A landmark 2016 meta-analysis by Schoenfeld, Ogborn, and Krieger in Sports Medicine found that twice-weekly training frequency per muscle group produces hypertrophy outcomes statistically equivalent to higher frequency training for intermediate lifters, while requiring less total weekly volume — a finding replicated across multiple subsequent reviews through 2024. That is good news for men with jobs, children, and lives. You do not need to live in the gym. You need to train hard twice on each half of your body every week.",
+          text: "The upper/lower split has been a staple of serious programming since at least the 1970s, and the research has never stopped validating it. A landmark 2016 meta-analysis by Schoenfeld, Ogborn, and Krieger in Sports Medicine found that twice-weekly training frequency per muscle group produces hypertrophy outcomes statistically equivalent to higher frequency training for intermediate lifters, while requiring less total weekly volume - a finding replicated across multiple subsequent reviews through 2024. That is good news for men with jobs, children, and lives. You do not need to live in the gym. You need to train hard twice on each half of your body every week.",
         },
       ],
     },
@@ -287,7 +287,7 @@ const post: BlogPost = {
           _key: "s1p3s",
           _type: "span",
           marks: [],
-          text: "Muscle protein synthesis (MPS) — the biological process of building new muscle tissue — peaks within 24 to 36 hours of a training stimulus and returns to baseline by roughly 48 to 72 hours in trained individuals. A bro split that trains each muscle once per week leaves a five-day window where the muscle receives no growth signal. An upper/lower split at 4 days per week hits each muscle group every 72 to 96 hours, keeping MPS elevated across the week in a way that one-session-per-muscle programming cannot match.",
+          text: "Muscle protein synthesis (MPS) - the biological process of building new muscle tissue - peaks within 24 to 36 hours of a training stimulus and returns to baseline by roughly 48 to 72 hours in trained individuals. A bro split that trains each muscle once per week leaves a five-day window where the muscle receives no growth signal. An upper/lower split at 4 days per week hits each muscle group every 72 to 96 hours, keeping MPS elevated across the week in a way that one-session-per-muscle programming cannot match.",
         },
       ],
     },
@@ -310,7 +310,7 @@ const post: BlogPost = {
           _key: "s1p4s",
           _type: "span",
           marks: [],
-          text: "Christian stewardship theology applies to time just as much as it applies to money. A 6-day program that you run for three weeks and then abandon because life happened is not good stewardship — it is wishful thinking dressed up as dedication. The 4-day upper/lower is honest about what a working man can sustain. It builds the discipline of showing up consistently, which is worth more over a five-year horizon than any program optimization.",
+          text: "Christian stewardship theology applies to time just as much as it applies to money. A 6-day program that you run for three weeks and then abandon because life happened is not good stewardship - it is wishful thinking dressed up as dedication. The 4-day upper/lower is honest about what a working man can sustain. It builds the discipline of showing up consistently, which is worth more over a five-year horizon than any program optimization.",
         },
       ],
     },
@@ -318,10 +318,10 @@ const post: BlogPost = {
       _type: "image",
       _key: "s1img",
       asset: { url: "/images/blog/faith-driven-training-split-for-busy-men/inline-1.webp" },
-      alt: "A worn training journal open to a weekly split schedule beside a chalk bag and iron barbell plate — faith-driven training split for busy men",
+      alt: "A worn training journal open to a weekly split schedule beside a chalk bag and iron barbell plate - faith-driven training split for busy men",
     },
 
-    // SECTION 2 — DECISION FRAMEWORK
+    // SECTION 2 - DECISION FRAMEWORK
     {
       _key: "s2h1",
       _type: "block",
@@ -341,7 +341,7 @@ const post: BlogPost = {
           _key: "s2p1s",
           _type: "span",
           marks: [],
-          text: "Here is the weekly structure. Days can shift based on your calendar — the pattern matters more than the specific day of the week. The one non-negotiable is the Sabbath rest on Sunday.",
+          text: "Here is the weekly structure. Days can shift based on your calendar - the pattern matters more than the specific day of the week. The one non-negotiable is the Sabbath rest on Sunday.",
         },
       ],
     },
@@ -353,7 +353,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s2t1s", _type: "span", marks: [], text: "Monday: Upper A — strength focus, horizontal push and pull emphasis (bench press, barbell row)" },
+        { _key: "s2t1s", _type: "span", marks: [], text: "Monday: Upper A - strength focus, horizontal push and pull emphasis (bench press, barbell row)" },
       ],
     },
     {
@@ -364,7 +364,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s2t2s", _type: "span", marks: [], text: "Tuesday: Lower A — strength focus, squat pattern emphasis (back squat, Romanian deadlift)" },
+        { _key: "s2t2s", _type: "span", marks: [], text: "Tuesday: Lower A - strength focus, squat pattern emphasis (back squat, Romanian deadlift)" },
       ],
     },
     {
@@ -386,7 +386,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s2t4s", _type: "span", marks: [], text: "Thursday: Upper B — volume focus, vertical push and pull emphasis (overhead press, weighted pull-ups or lat pulldown)" },
+        { _key: "s2t4s", _type: "span", marks: [], text: "Thursday: Upper B - volume focus, vertical push and pull emphasis (overhead press, weighted pull-ups or lat pulldown)" },
       ],
     },
     {
@@ -397,7 +397,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s2t5s", _type: "span", marks: [], text: "Friday: Lower B — volume focus, hinge pattern emphasis (conventional deadlift, Bulgarian split squat)" },
+        { _key: "s2t5s", _type: "span", marks: [], text: "Friday: Lower B - volume focus, hinge pattern emphasis (conventional deadlift, Bulgarian split squat)" },
       ],
     },
     {
@@ -408,7 +408,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s2t6s", _type: "span", marks: [], text: "Saturday: Rest or light activity — walk, mobility work, family time" },
+        { _key: "s2t6s", _type: "span", marks: [], text: "Saturday: Rest or light activity - walk, mobility work, family time" },
       ],
     },
     {
@@ -419,7 +419,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s2t7s", _type: "span", marks: [], text: "Sunday: Sabbath — full rest, no training" },
+        { _key: "s2t7s", _type: "span", marks: [], text: "Sunday: Sabbath - full rest, no training" },
       ],
     },
     {
@@ -432,7 +432,7 @@ const post: BlogPost = {
           _key: "s2bqs",
           _type: "span",
           marks: [],
-          text: "The man who trains four days consistently for a year will outgrow the man who trains six days for three months and then collapses back to two. Consistency is not a virtue — it is the mechanism. — Pete Fluriach, Alpha Omega Strength Team",
+          text: "The man who trains four days consistently for a year will outgrow the man who trains six days for three months and then collapses back to two. Consistency is not a virtue - it is the mechanism. - Pete Fluriach, Alpha Omega Strength Team",
         },
       ],
     },
@@ -531,7 +531,7 @@ const post: BlogPost = {
           _key: "s2inlink1c",
           _type: "span",
           marks: [],
-          text: " — it covers the foundational movements in detail.",
+          text: " - it covers the foundational movements in detail.",
         },
       ],
     },
@@ -539,10 +539,10 @@ const post: BlogPost = {
       _type: "image",
       _key: "s2img",
       asset: { url: "/images/blog/faith-driven-training-split-for-busy-men/inline-2.webp" },
-      alt: "Editorial poster showing the 4-Day Training Split with upper and lower body days labeled — faith-driven training split for busy men",
+      alt: "Editorial poster showing the 4-Day Training Split with upper and lower body days labeled - faith-driven training split for busy men",
     },
 
-    // SECTION 3 — CONTEXT / USE-CASE MAPPING
+    // SECTION 3 - CONTEXT / USE-CASE MAPPING
     {
       _key: "s3h1",
       _type: "block",
@@ -666,7 +666,7 @@ const post: BlogPost = {
           _key: "s3t3s",
           _type: "span",
           marks: [],
-          text: "Advanced (3 or more years): Block periodization — alternate 4 to 6 week strength blocks (3 to 5 rep range) with 4 to 6 week hypertrophy blocks (6 to 10 rep range). Schedule a deload week every 6 to 8 weeks.",
+          text: "Advanced (3 or more years): Block periodization - alternate 4 to 6 week strength blocks (3 to 5 rep range) with 4 to 6 week hypertrophy blocks (6 to 10 rep range). Schedule a deload week every 6 to 8 weeks.",
         },
       ],
     },
@@ -701,7 +701,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s3c1s", _type: "span", marks: [], text: "30 minutes: Compound movement only — warm-up sets plus 3 working sets, then out. No accessories." },
+        { _key: "s3c1s", _type: "span", marks: [], text: "30 minutes: Compound movement only - warm-up sets plus 3 working sets, then out. No accessories." },
       ],
     },
     {
@@ -730,10 +730,10 @@ const post: BlogPost = {
       _type: "image",
       _key: "s3img",
       asset: { url: "/images/blog/faith-driven-training-split-for-busy-men/inline-3.webp" },
-      alt: "Early morning light casting shadows across a loaded barbell in a garage gym — faith-driven morning training session",
+      alt: "Early morning light casting shadows across a loaded barbell in a garage gym - faith-driven morning training session",
     },
 
-    // SECTION 4 — BRAND VALUE PROPOSITION
+    // SECTION 4 - BRAND VALUE PROPOSITION
     {
       _key: "s4h1",
       _type: "block",
@@ -753,7 +753,7 @@ const post: BlogPost = {
           _key: "s4p1s",
           _type: "span",
           marks: [],
-          text: "The most common pushback on this program is the Sabbath rest day. Not the Wednesday rest day — that one makes obvious physiological sense. The Sunday rest day. The men asking the question are usually the most motivated ones, which is exactly why they need the answer. The Sabbath is not a weakness accommodation. It is a theological statement about who is in charge of your progress. You are not. You train hard six days and rest on the seventh because the rhythm of creation demands it, because your body requires it physiologically, and because the man who cannot stop training for 24 hours has made training his god, not his discipline.",
+          text: "The most common pushback on this program is the Sabbath rest day. Not the Wednesday rest day - that one makes obvious physiological sense. The Sunday rest day. The men asking the question are usually the most motivated ones, which is exactly why they need the answer. The Sabbath is not a weakness accommodation. It is a theological statement about who is in charge of your progress. You are not. You train hard six days and rest on the seventh because the rhythm of creation demands it, because your body requires it physiologically, and because the man who cannot stop training for 24 hours has made training his god, not his discipline.",
         },
       ],
     },
@@ -779,7 +779,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s4b1s", _type: "span", marks: [], text: "The program structure respects your obligations — to God, to your family, and to your work — without treating the gym as a competitor to any of them" },
+        { _key: "s4b1s", _type: "span", marks: [], text: "The program structure respects your obligations - to God, to your family, and to your work - without treating the gym as a competitor to any of them" },
       ],
     },
     {
@@ -790,7 +790,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s4b2s", _type: "span", marks: [], text: "Four days is enough if each day is trained with genuine intensity and progressive overload — nothing is wasted, nothing is coasted through" },
+        { _key: "s4b2s", _type: "span", marks: [], text: "Four days is enough if each day is trained with genuine intensity and progressive overload - nothing is wasted, nothing is coasted through" },
       ],
     },
     {
@@ -801,7 +801,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "s4b3s", _type: "span", marks: [], text: "The theological frame transforms training from ego-driven performance into purposeful stewardship — a more sustainable fuel source than motivation" },
+        { _key: "s4b3s", _type: "span", marks: [], text: "The theological frame transforms training from ego-driven performance into purposeful stewardship - a more sustainable fuel source than motivation" },
       ],
     },
     {
@@ -922,7 +922,7 @@ const post: BlogPost = {
     },
 
 
-    // SECTION 5 — FAQ
+    // SECTION 5 - FAQ
     {
       _key: "s5h1",
       _type: "block",
@@ -974,7 +974,7 @@ const post: BlogPost = {
           _key: "s5a2s",
           _type: "span",
           marks: [],
-          text: "No. Start the 3-day compressed version now: Upper A, Lower A, Upper B — rest days between each. When your schedule opens up to four days, add Lower B back in. The goal is to build the habit of training consistently with a Sabbath rest. The specific day count is secondary to that habit being in place.",
+          text: "No. Start the 3-day compressed version now: Upper A, Lower A, Upper B - rest days between each. When your schedule opens up to four days, add Lower B back in. The goal is to build the habit of training consistently with a Sabbath rest. The specific day count is secondary to that habit being in place.",
         },
       ],
     },
@@ -1022,7 +1022,7 @@ const post: BlogPost = {
           _key: "concl2s",
           _type: "span",
           marks: [],
-          text: "There is no shortage of complex, high-volume programs online written by men who have nothing else to do but train. This is not that. The 4-day upper/lower split described here is built for men who carry real weight outside the gym — in their jobs, their families, and their faith commitments — and who want to honor God with the body they have been given without sacrificing everything else to do it. Four days is enough. Progressive overload is the mechanism. A Sabbath rest day is the discipline. Run it for 12 weeks and see what consistent, theologically grounded training actually produces.",
+          text: "There is no shortage of complex, high-volume programs online written by men who have nothing else to do but train. This is not that. The 4-day upper/lower split described here is built for men who carry real weight outside the gym - in their jobs, their families, and their faith commitments - and who want to honor God with the body they have been given without sacrificing everything else to do it. Four days is enough. Progressive overload is the mechanism. A Sabbath rest day is the discipline. Run it for 12 weeks and see what consistent, theologically grounded training actually produces.",
         },
       ],
     },
@@ -1054,7 +1054,7 @@ const post: BlogPost = {
           _key: "concl3c",
           _type: "span",
           marks: [],
-          text: " — then come back here and build your week around them. Alpha Omega is the beginning and the end. Train accordingly.",
+          text: " - then come back here and build your week around them. Alpha Omega is the beginning and the end. Train accordingly.",
         },
       ],
     },
@@ -1079,7 +1079,7 @@ const post: BlogPost = {
         _key: "sources_1s",
         _type: "span",
         marks: [],
-        text: "Schoenfeld, B.J., Ogborn, D., & Krieger, J.W. (2016). Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis. Sports Medicine, 46(11), 1689–1697.",
+        text: "Schoenfeld, B.J., Ogborn, D., & Krieger, J.W. (2016). Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis. Sports Medicine, 46(11), 1689-1697.",
       },
     ],
   },
@@ -1095,7 +1095,7 @@ const post: BlogPost = {
         _key: "sources_2s",
         _type: "span",
         marks: [],
-        text: "Phillips, S.M., Tipton, K.D., Aarsland, A., Wolf, S.E., & Wolfe, R.R. (1997). Mixed muscle protein synthesis and breakdown after resistance exercise in humans. American Journal of Physiology — Endocrinology and Metabolism, 273(1), E99–E107.",
+        text: "Phillips, S.M., Tipton, K.D., Aarsland, A., Wolf, S.E., & Wolfe, R.R. (1997). Mixed muscle protein synthesis and breakdown after resistance exercise in humans. American Journal of Physiology - Endocrinology and Metabolism, 273(1), E99-E107.",
       },
     ],
   },
@@ -1111,7 +1111,7 @@ const post: BlogPost = {
         _key: "sources_3s",
         _type: "span",
         marks: [],
-        text: "Morton, R.W., Murphy, K.T., McKellar, S.R., Schoenfeld, B.J., Henselmans, M., Helms, E., ... & Phillips, S.M. (2018). A systematic review, meta-analysis, and meta-regression of the effect of protein supplementation on gains in muscle mass and strength in healthy adults. British Journal of Sports Medicine, 52(6), 376–384.",
+        text: "Morton, R.W., Murphy, K.T., McKellar, S.R., Schoenfeld, B.J., Henselmans, M., Helms, E., ... & Phillips, S.M. (2018). A systematic review, meta-analysis, and meta-regression of the effect of protein supplementation on gains in muscle mass and strength in healthy adults. British Journal of Sports Medicine, 52(6), 376-384.",
       },
     ],
   },
@@ -1127,7 +1127,7 @@ const post: BlogPost = {
         _key: "sources_4s",
         _type: "span",
         marks: [],
-        text: "Krieger, J.W. (2010). Single vs. Multiple Sets of Resistance Exercise for Muscle Hypertrophy: A Meta-Analysis. Journal of Strength and Conditioning Research, 24(4), 1150–1159.",
+        text: "Krieger, J.W. (2010). Single vs. Multiple Sets of Resistance Exercise for Muscle Hypertrophy: A Meta-Analysis. Journal of Strength and Conditioning Research, 24(4), 1150-1159.",
       },
     ],
   },

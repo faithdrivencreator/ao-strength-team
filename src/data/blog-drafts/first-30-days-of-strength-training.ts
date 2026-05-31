@@ -1,7 +1,7 @@
 import type { BlogPost } from "../blog-posts";
 
 /**
- * AO daily blog — 2026-05-27
+ * AO daily blog - 2026-05-27
  * Universal Blog Post template (Opening + 5 sections + FAQ + Conclusion).
  * Primary keyword: first 30 days of strength training
  */
@@ -12,7 +12,7 @@ const post: BlogPost = {
     "Your First 30 Days of Strength Training: A Faith-Driven Lifter's Survival Guide",
   date: "2026-05-27",
   excerpt:
-    "Most men quit lifting before week three. This is the 30-day onboarding plan that gets you to day 31 — physically, mentally, and spiritually intact.",
+    "Most men quit lifting before week three. This is the 30-day onboarding plan that gets you to day 31 - physically, mentally, and spiritually intact.",
   tags: ["Training", "Faith", "Discipline"],
   author: "Pete Fluriach",
   mainImage: {
@@ -24,10 +24,10 @@ const post: BlogPost = {
   seoDescription:
     "A 30-day strength training plan for the faith-driven beginner. What to do, what to skip, what to expect in body and spirit during your first month under the bar.",
   tldr: [
-    "Most beginners do not fail at strength training because the program was wrong. They fail because the first thirty days were unmanaged — too much intensity, too little structure, no spiritual frame.",
+    "Most beginners do not fail at strength training because the program was wrong. They fail because the first thirty days were unmanaged - too much intensity, too little structure, no spiritual frame.",
     "The first 30 days have one job: install the habit. Strength gains come later. Identity comes first.",
-    "Build the month around four weeks with one job each — Week 1 Learn the Lifts, Week 2 Build the Habit, Week 3 Add the Load, Week 4 Test and Trust.",
-    "Three full-body sessions per week is enough. More is not better in month one — it is the fastest way to quit by day 22.",
+    "Build the month around four weeks with one job each - Week 1 Learn the Lifts, Week 2 Build the Habit, Week 3 Add the Load, Week 4 Test and Trust.",
+    "Three full-body sessions per week is enough. More is not better in month one - it is the fastest way to quit by day 22.",
     "Discipline is the visible part. The invisible part is the spiritual frame: who the work is for, what it is forming, and why showing up on a low-motivation day still counts as worship.",
   ],
   body: [
@@ -42,7 +42,7 @@ const post: BlogPost = {
           _key: "op001s",
           _type: "span",
           marks: [],
-          text: "Pete Fluriach, founder of Alpha Omega Strength Team. I have onboarded enough beginners — men I trained, men I lifted alongside, men I watched walk out of the gym after two weeks and never come back — to know that the first thirty days are the only thirty days that matter for most people. Get this month right and the next ten years of training are possible. Get this month wrong and you join the seventy-plus percent of new lifters who are gone before the first quarter ends. This guide is the survival plan I would hand any faith-driven man on day one.",
+          text: "Pete Fluriach, founder of Alpha Omega Strength Team. I have onboarded enough beginners - men I trained, men I lifted alongside, men I watched walk out of the gym after two weeks and never come back - to know that the first thirty days are the only thirty days that matter for most people. Get this month right and the next ten years of training are possible. Get this month wrong and you join the seventy-plus percent of new lifters who are gone before the first quarter ends. This guide is the survival plan I would hand any faith-driven man on day one.",
         },
       ],
     },
@@ -110,7 +110,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "op006s", _type: "span", marks: [], text: "Too many exercises — chasing six-day splits before the body has earned three" },
+        { _key: "op006s", _type: "span", marks: [], text: "Too many exercises - chasing six-day splits before the body has earned three" },
       ],
     },
     {
@@ -121,7 +121,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "op007s", _type: "span", marks: [], text: "Too much intensity — training to failure on lifts the nervous system has not learned" },
+        { _key: "op007s", _type: "span", marks: [], text: "Too much intensity - training to failure on lifts the nervous system has not learned" },
       ],
     },
     {
@@ -132,7 +132,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "op008s", _type: "span", marks: [], text: "Too little patience — expecting visible change inside thirty days" },
+        { _key: "op008s", _type: "span", marks: [], text: "Too little patience - expecting visible change inside thirty days" },
       ],
     },
     {
@@ -143,7 +143,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "op009s", _type: "span", marks: [], text: "No written plan — relying on memory and motivation, both of which fail by day 10" },
+        { _key: "op009s", _type: "span", marks: [], text: "No written plan - relying on memory and motivation, both of which fail by day 10" },
       ],
     },
     {
@@ -154,7 +154,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "op010s", _type: "span", marks: [], text: "No spiritual frame — training the body without ever asking what the body is for" },
+        { _key: "op010s", _type: "span", marks: [], text: "No spiritual frame - training the body without ever asking what the body is for" },
       ],
     },
     {
@@ -167,7 +167,7 @@ const post: BlogPost = {
           _key: "op011s",
           _type: "span",
           marks: [],
-          text: "Each of those failures has a single fix. Together they form the four-week structure below — one job per week, no overlap, no negotiation.",
+          text: "Each of those failures has a single fix. Together they form the four-week structure below - one job per week, no overlap, no negotiation.",
         },
       ],
     },
@@ -193,7 +193,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "op013s", _type: "span", marks: [], text: "Frequency — three full-body sessions per week, never two, never four" },
+        { _key: "op013s", _type: "span", marks: [], text: "Frequency - three full-body sessions per week, never two, never four" },
       ],
     },
     {
@@ -204,7 +204,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "op014s", _type: "span", marks: [], text: "Movements — squat, hinge, press, pull, carry — every session touches all five" },
+        { _key: "op014s", _type: "span", marks: [], text: "Movements - squat, hinge, press, pull, carry - every session touches all five" },
       ],
     },
     {
@@ -215,7 +215,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "op015s", _type: "span", marks: [], text: "Intensity — every working set stops two reps shy of failure, no exceptions" },
+        { _key: "op015s", _type: "span", marks: [], text: "Intensity - every working set stops two reps shy of failure, no exceptions" },
       ],
     },
     {
@@ -226,7 +226,7 @@ const post: BlogPost = {
       level: 1,
       markDefs: [],
       children: [
-        { _key: "op016s", _type: "span", marks: [], text: "Frame — every session begins with one minute of prayer and one verse held in mind" },
+        { _key: "op016s", _type: "span", marks: [], text: "Frame - every session begins with one minute of prayer and one verse held in mind" },
       ],
     },
     {
@@ -239,21 +239,21 @@ const post: BlogPost = {
           _key: "op017s",
           _type: "span",
           marks: [],
-          text: "Hold those four for four weeks and the program has done its job. The payoff is small in pounds on the bar and enormous in identity: by day 31, training is no longer a thing you are trying — it is a thing you do.",
+          text: "Hold those four for four weeks and the program has done its job. The payoff is small in pounds on the bar and enormous in identity: by day 31, training is no longer a thing you are trying - it is a thing you do.",
         },
       ],
     },
-    // Infographic — the 4-week timeline
+    // Infographic - the 4-week timeline
     {
       _key: "opimg",
       _type: "image",
       asset: {
         url: "/images/blog/first-30-days-of-strength-training/inline-2.webp",
       },
-      alt: "Infographic showing the four-week structure of the first 30 days of strength training — Week 1 Learn the Lifts, Week 2 Build the Habit, Week 3 Add the Load, Week 4 Test and Trust",
+      alt: "Infographic showing the four-week structure of the first 30 days of strength training - Week 1 Learn the Lifts, Week 2 Build the Habit, Week 3 Add the Load, Week 4 Test and Trust",
     },
 
-    // ─── SECTION 1 — Landscape ─────────────────────────────────────────────────
+    // ─── SECTION 1 - Landscape ─────────────────────────────────────────────────
     {
       _key: "s1h2",
       _type: "block",
@@ -273,7 +273,7 @@ const post: BlogPost = {
           _key: "s1p1s",
           _type: "span",
           marks: [],
-          text: "The fitness industry in 2026 has more onboarding content than at any point in its history — phone apps, free programs, AI coaches, full-length video libraries. None of that has moved the dropout number. Industry attrition data still shows roughly half of new gym members stop showing up inside the first six months, with the steepest drop happening in the first four weeks. The product is not the problem. The structure of the first month is.",
+          text: "The fitness industry in 2026 has more onboarding content than at any point in its history - phone apps, free programs, AI coaches, full-length video libraries. None of that has moved the dropout number. Industry attrition data still shows roughly half of new gym members stop showing up inside the first six months, with the steepest drop happening in the first four weeks. The product is not the problem. The structure of the first month is.",
         },
       ],
     },
@@ -296,7 +296,7 @@ const post: BlogPost = {
           _key: "s1p2s",
           _type: "span",
           marks: [],
-          text: "When researchers track new lifters who quit, two patterns dominate. First, the men who quit almost never quit on a hard day — they quit on a missable day, a Tuesday with light rain and a busy inbox, the kind of day where the program asked for nothing dramatic and they could not produce even the small yes. Second, the men who quit almost always over-built week one. They trained five days, sore for nine, never recovered, and read that as failure of will rather than failure of dose. The program asked too much and they paid for the math.",
+          text: "When researchers track new lifters who quit, two patterns dominate. First, the men who quit almost never quit on a hard day - they quit on a missable day, a Tuesday with light rain and a busy inbox, the kind of day where the program asked for nothing dramatic and they could not produce even the small yes. Second, the men who quit almost always over-built week one. They trained five days, sore for nine, never recovered, and read that as failure of will rather than failure of dose. The program asked too much and they paid for the math.",
         },
       ],
     },
@@ -319,7 +319,7 @@ const post: BlogPost = {
           _key: "s1p3s",
           _type: "span",
           marks: [],
-          text: "A man who already orders his week around worship has a built-in scaffolding most beginners do not. He knows what it looks like to do a thing weekly because it is good and not because it is fun. He has practiced showing up to obligations the body resists. Strength training maps onto that scaffolding cleanly — three sessions a week is well below the cadence of even a casual prayer life. The advantage exists. The problem is that most faith-driven beginners never connect the two practices, so the gym stays in the same mental category as a hobby, and hobbies are the first thing a busy man drops.",
+          text: "A man who already orders his week around worship has a built-in scaffolding most beginners do not. He knows what it looks like to do a thing weekly because it is good and not because it is fun. He has practiced showing up to obligations the body resists. Strength training maps onto that scaffolding cleanly - three sessions a week is well below the cadence of even a casual prayer life. The advantage exists. The problem is that most faith-driven beginners never connect the two practices, so the gym stays in the same mental category as a hobby, and hobbies are the first thing a busy man drops.",
         },
       ],
     },
@@ -330,10 +330,10 @@ const post: BlogPost = {
       asset: {
         url: "/images/blog/first-30-days-of-strength-training/inline-1.webp",
       },
-      alt: "Overhead still life of a training journal, pencil, chalk, water bottle, and open Bible on a concrete gym floor — the tools of a faith-driven beginner's first 30 days",
+      alt: "Overhead still life of a training journal, pencil, chalk, water bottle, and open Bible on a concrete gym floor - the tools of a faith-driven beginner's first 30 days",
     },
 
-    // ─── SECTION 2 — Decision Framework ────────────────────────────────────────
+    // ─── SECTION 2 - Decision Framework ────────────────────────────────────────
     {
       _key: "s2h2",
       _type: "block",
@@ -353,7 +353,7 @@ const post: BlogPost = {
           _key: "s2p1s",
           _type: "span",
           marks: [],
-          text: "The single biggest mistake a beginner makes is treating month one as a smaller version of month six. Month six is about progressive overload, periodization, and chasing a number on the bar. Month one is about something more boring and more important — installing a man who lifts. Use the four-week breakdown below to keep each week pointed at one job and one job only.",
+          text: "The single biggest mistake a beginner makes is treating month one as a smaller version of month six. Month six is about progressive overload, periodization, and chasing a number on the bar. Month one is about something more boring and more important - installing a man who lifts. Use the four-week breakdown below to keep each week pointed at one job and one job only.",
         },
       ],
     },
@@ -363,7 +363,7 @@ const post: BlogPost = {
       style: "h3",
       markDefs: [],
       children: [
-        { _key: "s2h3as", _type: "span", marks: [], text: "Week 1 — Learn the Lifts" },
+        { _key: "s2h3as", _type: "span", marks: [], text: "Week 1 - Learn the Lifts" },
       ],
     },
     {
@@ -382,7 +382,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l1bs", _type: "span", marks: [], text: "Load: empty bar or light dumbbell — three sets of five, slow tempo" }],
+      children: [{ _key: "s2l1bs", _type: "span", marks: [], text: "Load: empty bar or light dumbbell - three sets of five, slow tempo" }],
     },
     {
       _key: "s2l1c",
@@ -399,7 +399,7 @@ const post: BlogPost = {
       style: "h3",
       markDefs: [],
       children: [
-        { _key: "s2h3bs", _type: "span", marks: [], text: "Week 2 — Build the Habit" },
+        { _key: "s2h3bs", _type: "span", marks: [], text: "Week 2 - Build the Habit" },
       ],
     },
     {
@@ -435,7 +435,7 @@ const post: BlogPost = {
       style: "h3",
       markDefs: [],
       children: [
-        { _key: "s2h3cs", _type: "span", marks: [], text: "Week 3 — Add the Load" },
+        { _key: "s2h3cs", _type: "span", marks: [], text: "Week 3 - Add the Load" },
       ],
     },
     {
@@ -471,7 +471,7 @@ const post: BlogPost = {
       style: "h3",
       markDefs: [],
       children: [
-        { _key: "s2h3ds", _type: "span", marks: [], text: "Week 4 — Test and Trust" },
+        { _key: "s2h3ds", _type: "span", marks: [], text: "Week 4 - Test and Trust" },
       ],
     },
     {
@@ -490,7 +490,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2l4bs", _type: "span", marks: [], text: "Load: hold week 3 numbers — no PR attempts in month one, ever" }],
+      children: [{ _key: "s2l4bs", _type: "span", marks: [], text: "Load: hold week 3 numbers - no PR attempts in month one, ever" }],
     },
     {
       _key: "s2l4c",
@@ -531,7 +531,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2n1s", _type: "span", marks: [], text: "Pack the gym bag the night before — friction kills more sessions than fatigue does" }],
+      children: [{ _key: "s2n1s", _type: "span", marks: [], text: "Pack the gym bag the night before - friction kills more sessions than fatigue does" }],
     },
     {
       _key: "s2n2",
@@ -540,7 +540,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2n2s", _type: "span", marks: [], text: "Eat one real meal in the two hours before training — protein, carbs, water, no novelty supplements" }],
+      children: [{ _key: "s2n2s", _type: "span", marks: [], text: "Eat one real meal in the two hours before training - protein, carbs, water, no novelty supplements" }],
     },
     {
       _key: "s2n3",
@@ -549,7 +549,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2n3s", _type: "span", marks: [], text: "Log every working set on paper or in one app — memory is not a logging system" }],
+      children: [{ _key: "s2n3s", _type: "span", marks: [], text: "Log every working set on paper or in one app - memory is not a logging system" }],
     },
     {
       _key: "s2n4",
@@ -558,7 +558,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2n4s", _type: "span", marks: [], text: "Sleep seven hours minimum during the month — recovery in week one is the load you carry into week two" }],
+      children: [{ _key: "s2n4s", _type: "span", marks: [], text: "Sleep seven hours minimum during the month - recovery in week one is the load you carry into week two" }],
     },
     {
       _key: "s2n5",
@@ -567,7 +567,7 @@ const post: BlogPost = {
       listItem: "number",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s2n5s", _type: "span", marks: [], text: "Start each session with one minute of silence and one verse held in mind — the spiritual frame is a load-bearing wall, not a decoration" }],
+      children: [{ _key: "s2n5s", _type: "span", marks: [], text: "Start each session with one minute of silence and one verse held in mind - the spiritual frame is a load-bearing wall, not a decoration" }],
     },
     {
       _key: "s2h3f",
@@ -588,7 +588,7 @@ const post: BlogPost = {
           _key: "s2p2s",
           _type: "span",
           marks: [],
-          text: "The five-day bro split is the single most over-prescribed program for new lifters. It is engineered for men with three years of training history, not three weeks. In month one, body-part splits give too much recovery to the muscles they hit and too little practice to the movements you have not learned. Full-body three days a week gives the nervous system thirty-six exposures to the main lifts inside a month — six times what a bro split delivers. The man who learns to squat across thirty-six reps a week becomes a squatter. The man who squats once a week on leg day in month one becomes a man who knows what soreness feels like.",
+          text: "The five-day bro split is the single most over-prescribed program for new lifters. It is engineered for men with three years of training history, not three weeks. In month one, body-part splits give too much recovery to the muscles they hit and too little practice to the movements you have not learned. Full-body three days a week gives the nervous system thirty-six exposures to the main lifts inside a month - six times what a bro split delivers. The man who learns to squat across thirty-six reps a week becomes a squatter. The man who squats once a week on leg day in month one becomes a man who knows what soreness feels like.",
         },
       ],
     },
@@ -599,10 +599,10 @@ const post: BlogPost = {
       asset: {
         url: "/images/blog/first-30-days-of-strength-training/inline-3.webp",
       },
-      alt: "Atmospheric image of a faith-driven lifter sitting beside a loaded barbell at the end of a session — reflecting on the work of the first 30 days of strength training",
+      alt: "Atmospheric image of a faith-driven lifter sitting beside a loaded barbell at the end of a session - reflecting on the work of the first 30 days of strength training",
     },
 
-    // ─── SECTION 3 — Use-Case Mapping ─────────────────────────────────────────
+    // ─── SECTION 3 - Use-Case Mapping ─────────────────────────────────────────
     {
       _key: "s3h2",
       _type: "block",
@@ -645,7 +645,7 @@ const post: BlogPost = {
           _key: "s3p2s",
           _type: "span",
           marks: [],
-          text: "Beginner version: pick the rack in the back corner, use the empty bar for the first two sessions, and let crowded peak hours teach you patience instead of frustration. Advanced version: by week three, train at off-peak times even if it costs you a 5 a.m. wake-up — the equipment access is worth the early alarm. Customize by mapping out which racks are open at your three target time slots before the month starts.",
+          text: "Beginner version: pick the rack in the back corner, use the empty bar for the first two sessions, and let crowded peak hours teach you patience instead of frustration. Advanced version: by week three, train at off-peak times even if it costs you a 5 a.m. wake-up - the equipment access is worth the early alarm. Customize by mapping out which racks are open at your three target time slots before the month starts.",
         },
       ],
     },
@@ -668,7 +668,7 @@ const post: BlogPost = {
           _key: "s3p3s",
           _type: "span",
           marks: [],
-          text: "Beginner version: a bar, plates to 135, a flat bench, and a rack — that is enough for the entire first month. Do not buy specialty bars or accessories until you have completed thirty days. Advanced version: by week four, add a single piece of equipment you will use every session — a trap bar, a safety squat bar, or fractional plates. Customize by treating the garage as a chapel — same lighting, same music, same first verse every session.",
+          text: "Beginner version: a bar, plates to 135, a flat bench, and a rack - that is enough for the entire first month. Do not buy specialty bars or accessories until you have completed thirty days. Advanced version: by week four, add a single piece of equipment you will use every session - a trap bar, a safety squat bar, or fractional plates. Customize by treating the garage as a chapel - same lighting, same music, same first verse every session.",
         },
       ],
     },
@@ -691,7 +691,7 @@ const post: BlogPost = {
           _key: "s3p4s",
           _type: "span",
           marks: [],
-          text: "Beginner version: hotel gyms in 2026 are uneven; assume dumbbells to 50 lbs, a cable stack, and a treadmill, and design the week around what is guaranteed. Advanced version: book hotels with full racks for any trip of three days or more in your first 30 days — the cost differential is the price of the month succeeding. Customize by keeping a single dumbbell-only session in your back pocket as the travel default.",
+          text: "Beginner version: hotel gyms in 2026 are uneven; assume dumbbells to 50 lbs, a cable stack, and a treadmill, and design the week around what is guaranteed. Advanced version: book hotels with full racks for any trip of three days or more in your first 30 days - the cost differential is the price of the month succeeding. Customize by keeping a single dumbbell-only session in your back pocket as the travel default.",
         },
       ],
     },
@@ -713,7 +713,7 @@ const post: BlogPost = {
           _key: "s3p5s",
           _type: "span",
           marks: [],
-          text: "The three immovable variables are frequency, dose, and frame. Everything else is negotiable. Move the sessions around the week. Adjust the lifts based on equipment. Swap a verse for a different verse. But do not drop a session in week one to make room for life — life will not give the time back, and the month will quietly slip. The schedule that survives is the schedule that respects the immovables first. For a deeper walk-through of how to ",
+          text: "The three immovable variables are frequency, dose, and frame. Everything else is negotiable. Move the sessions around the week. Adjust the lifts based on equipment. Swap a verse for a different verse. But do not drop a session in week one to make room for life - life will not give the time back, and the month will quietly slip. The schedule that survives is the schedule that respects the immovables first. For a deeper walk-through of how to ",
         },
         {
           _key: "s3p5l",
@@ -743,7 +743,7 @@ const post: BlogPost = {
       url: "https://www.instagram.com/reel/DY1vbavD1kt/",
     },
 
-    // ─── SECTION 4 — Brand Value Proposition ───────────────────────────────────
+    // ─── SECTION 4 - Brand Value Proposition ───────────────────────────────────
     {
       _key: "s4h2",
       _type: "block",
@@ -763,7 +763,7 @@ const post: BlogPost = {
           _key: "s4p1s",
           _type: "span",
           marks: [],
-          text: "The first 30 days of strength training fail or succeed on a few small architectural choices. The Alpha Omega Strength Team approach was built around the same convictions that make month one survivable for a beginner — long-arc thinking, theological seriousness, and a refusal to treat training like a personality.",
+          text: "The first 30 days of strength training fail or succeed on a few small architectural choices. The Alpha Omega Strength Team approach was built around the same convictions that make month one survivable for a beginner - long-arc thinking, theological seriousness, and a refusal to treat training like a personality.",
         },
       ],
     },
@@ -774,7 +774,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s4l1s", _type: "span", marks: [], text: "Built for the long arc — programs and content written for the man who plans to lift for the next twenty years, not the next twenty days" }],
+      children: [{ _key: "s4l1s", _type: "span", marks: [], text: "Built for the long arc - programs and content written for the man who plans to lift for the next twenty years, not the next twenty days" }],
     },
     {
       _key: "s4l2",
@@ -783,7 +783,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s4l2s", _type: "span", marks: [], text: "Theologically serious — scripture handled as text, not decoration; no slogans, no bro-Christian aesthetic" }],
+      children: [{ _key: "s4l2s", _type: "span", marks: [], text: "Theologically serious - scripture handled as text, not decoration; no slogans, no bro-Christian aesthetic" }],
     },
     {
       _key: "s4l3",
@@ -792,7 +792,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s4l3s", _type: "span", marks: [], text: "Habit-first, hype-last — every plan is designed to be repeatable on a low-motivation day, because most days are low-motivation days" }],
+      children: [{ _key: "s4l3s", _type: "span", marks: [], text: "Habit-first, hype-last - every plan is designed to be repeatable on a low-motivation day, because most days are low-motivation days" }],
     },
     {
       _key: "s4l4",
@@ -801,7 +801,7 @@ const post: BlogPost = {
       listItem: "bullet",
       level: 1,
       markDefs: [],
-      children: [{ _key: "s4l4s", _type: "span", marks: [], text: "Spiritually framed without being preachy — the work is for the Lord; the writing assumes you already know that" }],
+      children: [{ _key: "s4l4s", _type: "span", marks: [], text: "Spiritually framed without being preachy - the work is for the Lord; the writing assumes you already know that" }],
     },
     {
       _key: "s4h3a",
@@ -845,7 +845,7 @@ const post: BlogPost = {
           _key: "s4p2e",
           _type: "span",
           marks: [],
-          text: " as the opening ritual of every session — it is the cheapest, highest-leverage habit available to a beginner.",
+          text: " as the opening ritual of every session - it is the cheapest, highest-leverage habit available to a beginner.",
         },
       ],
       markDefs: [
@@ -862,7 +862,7 @@ const post: BlogPost = {
       ],
     },
 
-    // ─── SECTION 5 — FAQ ───────────────────────────────────────────────────────
+    // ─── SECTION 5 - FAQ ───────────────────────────────────────────────────────
     {
       _key: "s5h2",
       _type: "block",
@@ -914,7 +914,7 @@ const post: BlogPost = {
           _key: "s5a2s",
           _type: "span",
           marks: [],
-          text: "Three real meals a day, each with a palm of protein and a fist of carbs. Water before coffee. No supplements in month one except creatine monohydrate at five grams per day if you have no kidney issues — it is the most well-studied training supplement in 2026 and it is cheap. Skip pre-workout powders, fat burners, and any product whose marketing copy uses the word 'shredded.' For a fuller treatment of fueling on a budget, see the separate guide.",
+          text: "Three real meals a day, each with a palm of protein and a fist of carbs. Water before coffee. No supplements in month one except creatine monohydrate at five grams per day if you have no kidney issues - it is the most well-studied training supplement in 2026 and it is cheap. Skip pre-workout powders, fat burners, and any product whose marketing copy uses the word 'shredded.' For a fuller treatment of fueling on a budget, see the separate guide.",
         },
       ],
     },
@@ -937,7 +937,7 @@ const post: BlogPost = {
           _key: "s5a3s",
           _type: "span",
           marks: [],
-          text: "Miss one and reschedule inside the same week — Saturday morning is the standard catch-up slot. Miss two in a row and the rule is do not double up; just resume the plan on the next scheduled day and finish the month. A missed session is a single data point. A missed session followed by a guilt-driven punishment session is how week three becomes the end of the experiment.",
+          text: "Miss one and reschedule inside the same week - Saturday morning is the standard catch-up slot. Miss two in a row and the rule is do not double up; just resume the plan on the next scheduled day and finish the month. A missed session is a single data point. A missed session followed by a guilt-driven punishment session is how week three becomes the end of the experiment.",
         },
       ],
     },
@@ -960,7 +960,7 @@ const post: BlogPost = {
           _key: "s5a4s",
           _type: "span",
           marks: [],
-          text: "Honestly — not in the first 30 days. Bar speed will improve, posture will start to organize, sleep will deepen. Visible change in the mirror typically begins between months three and four for men training three days a week with adequate protein. Anyone who promises measurable aesthetic results in thirty days is selling you something. The point of month one is not the mirror. It is becoming the kind of man who is still training in month thirteen.",
+          text: "Honestly - not in the first 30 days. Bar speed will improve, posture will start to organize, sleep will deepen. Visible change in the mirror typically begins between months three and four for men training three days a week with adequate protein. Anyone who promises measurable aesthetic results in thirty days is selling you something. The point of month one is not the mirror. It is becoming the kind of man who is still training in month thirteen.",
         },
       ],
     },
@@ -985,7 +985,7 @@ const post: BlogPost = {
           _key: "cp1s",
           _type: "span",
           marks: [],
-          text: "The first 30 days of strength training is not glamorous work. The numbers are small, the soreness is real, and the visible results are nearly nonexistent. What the month produces is an unglamorous and decisive thing — a man who, on day 31, no longer has to decide each week whether he is training. That is the entire game. Everything in the next decade of lifting compounds from that one shift in identity.",
+          text: "The first 30 days of strength training is not glamorous work. The numbers are small, the soreness is real, and the visible results are nearly nonexistent. What the month produces is an unglamorous and decisive thing - a man who, on day 31, no longer has to decide each week whether he is training. That is the entire game. Everything in the next decade of lifting compounds from that one shift in identity.",
         },
       ],
     },

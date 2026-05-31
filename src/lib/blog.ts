@@ -6,13 +6,13 @@
  * the same names (`BlogPost`, `getAllPosts`, `getPost`, `getPostsByTag`) so that
  * existing consumers don't need to change their imports.
  *
- * Posts with a `date` later than today are hidden — drip-publish runs against the
+ * Posts with a `date` later than today are hidden - drip-publish runs against the
  * ISR revalidate window on the blog list and detail pages (every 60s).
  *
  * The exported functions are synchronous internally but kept async to preserve
  * the existing call-sites that `await` them.
  *
- * @see https://github.com/faithdrivencreator/ao-strength-team — auto-deploys from `main`
+ * @see https://github.com/faithdrivencreator/ao-strength-team - auto-deploys from `main`
  */
 
 import {

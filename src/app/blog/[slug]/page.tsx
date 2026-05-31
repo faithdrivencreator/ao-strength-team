@@ -24,7 +24,7 @@ interface PageProps {
 }
 
 interface BlogPostWithExtras extends BlogPost {
-  /** Optional Sanity field — gracefully missing today. */
+  /** Optional Sanity field - gracefully missing today. */
   tldr?: string[];
   modifiedDate?: string;
   series?: string;
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 /* ─────────────────────────────────────────────────────────────
-   PortableText components — editorial body styling
+   PortableText components - editorial body styling
    H1 lives only in the article header (strict hierarchy).
    ───────────────────────────────────────────────────────────── */
 const portableTextComponents: PortableTextComponents = {
@@ -103,7 +103,7 @@ const portableTextComponents: PortableTextComponents = {
     strong: ({ children }) => (
       <strong className="font-semibold text-white">{children}</strong>
     ),
-    em: ({ children }) => <em className="italic">{children}</em>,
+    em: ({ children }) => <span className="text-white">{children}</span>,
     link: ({ children, value }) => {
       const href = (value as { href?: string } | undefined)?.href ?? "#";
       const isExternal = href.startsWith("http");
@@ -163,7 +163,7 @@ const portableTextComponents: PortableTextComponents = {
 };
 
 /* ─────────────────────────────────────────────────────────────
-   PortableText helpers — extract FAQ + first body sentences
+   PortableText helpers - extract FAQ + first body sentences
    ───────────────────────────────────────────────────────────── */
 
 interface PTSpan {
@@ -192,7 +192,7 @@ const FAQ_HEADING_REGEX = /^\s*(faq|frequently\s+asked\s+questions?|questions?\s
  * Convention: H2 reading "FAQ" / "Frequently Asked Questions" followed by
  * H3 question headings, each with one or more paragraphs of answer beneath.
  *
- * Returns [] if no FAQ section is found — the component renders nothing in that case.
+ * Returns [] if no FAQ section is found - the component renders nothing in that case.
  */
 function extractFAQ(body: readonly unknown[] | undefined | null): FAQItem[] {
   if (!body) return [];
@@ -268,7 +268,7 @@ function deriveTldr(post: BlogPostWithExtras): string[] {
     bullets.push(t);
   };
 
-  // From excerpt — split by sentence terminator.
+  // From excerpt - split by sentence terminator.
   if (post.excerpt) {
     const sentences = post.excerpt.split(/(?<=[.!?])\s+/).filter(Boolean);
     sentences.forEach(push);
@@ -406,7 +406,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       )}
 
       {/* ════════════════════════════════════════════════════════════
-          POST HEADER — left-aligned, journal-style
+          POST HEADER - left-aligned, journal-style
       ════════════════════════════════════════════════════════════ */}
       <header className="border-b border-white/10">
         <div className="mx-auto max-w-[1100px] px-8 md:px-16 lg:px-20 pt-12 pb-14 md:pb-16">
@@ -423,7 +423,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/30 mb-2">
               // {post.series.toUpperCase()}
               {post.seriesNumber
-                ? ` — PART ${String(post.seriesNumber).padStart(2, "0")}`
+                ? ` - PART ${String(post.seriesNumber).padStart(2, "0")}`
                 : ""}
             </p>
           )}
@@ -433,12 +433,12 @@ export default async function BlogPostPage({ params }: PageProps) {
             </p>
           )}
 
-          {/* H1 — left-aligned, this is the single biggest credibility change */}
+          {/* H1 - left-aligned, this is the single biggest credibility change */}
           <h1 className="font-sans font-black uppercase tracking-tight leading-[1.02] text-4xl md:text-5xl lg:text-[64px] max-w-[1000px]">
             {post.title}
           </h1>
 
-          {/* Meta row — mono, single line. Date + author + reading time + word count */}
+          {/* Meta row - mono, single line. Date + author + reading time + word count */}
           <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[11px] md:text-[12px] uppercase tracking-[0.22em] text-white/45">
             <time dateTime={post.date}>{monoDate}</time>
             <span aria-hidden="true" className="text-white/20">/</span>
@@ -467,7 +467,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       </header>
 
       {/* ════════════════════════════════════════════════════════════
-          HERO IMAGE — full-bleed cinematic banner, no overlay.
+          HERO IMAGE - full-bleed cinematic banner, no overlay.
           If the file is missing the dark placeholder shows through.
       ════════════════════════════════════════════════════════════ */}
       {post.mainImage && (
@@ -484,13 +484,13 @@ export default async function BlogPostPage({ params }: PageProps) {
       )}
 
       {/* ════════════════════════════════════════════════════════════
-          BODY COLUMN — 720px editorial column
+          BODY COLUMN - 720px editorial column
       ════════════════════════════════════════════════════════════ */}
       <div className="mx-auto max-w-[720px] px-6 md:px-8 pt-14 md:pt-20">
-        {/* TL;DR — always visible (derived if no Sanity field) */}
+        {/* TL;DR - always visible (derived if no Sanity field) */}
         <Tldr bullets={tldrBullets} />
 
-        {/* Lead-in — formatted excerpt as a quiet drop cap intro */}
+        {/* Lead-in - formatted excerpt as a quiet drop cap intro */}
         {post.excerpt && (
           <p className="font-sans text-xl md:text-[22px] text-white/80 leading-[1.55] font-light mb-12 pb-12 border-b border-white/10">
             {post.excerpt}
@@ -502,10 +502,10 @@ export default async function BlogPostPage({ params }: PageProps) {
           <PortableText value={post.body as PortableTextBlock[]} components={portableTextComponents} />
         </div>
 
-        {/* FAQ — only when present in body */}
+        {/* FAQ - only when present in body */}
         <FAQ items={faqItems} />
 
-        {/* Gear strip — fallback to in-stock products */}
+        {/* Gear strip - fallback to in-stock products */}
         <ProductCTAStrip />
 
         {/* Newsletter inline */}
@@ -517,7 +517,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           />
         </div>
 
-        {/* Share + tags — mono, no icons */}
+        {/* Share + tags - mono, no icons */}
         <div className="mt-14 pt-10 border-t border-white/10 flex flex-wrap items-center gap-x-8 gap-y-4">
           <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/40">
             Share
@@ -557,7 +557,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         )}
 
-        {/* Author bio — E-E-A-T signal */}
+        {/* Author bio - E-E-A-T signal */}
         {author.bio && (
           <aside className="mt-14 pt-12 border-t border-white/10">
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/40 mb-4">
@@ -588,7 +588,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     href={author.url}
                     className="mt-5 inline-block font-mono text-[11px] uppercase tracking-[0.22em] text-white/55 hover:text-white transition-colors"
                   >
-                    More about {author.name.split(" ")[0]} —→
+                    More about {author.name.split(" ")[0]} -→
                   </Link>
                 )}
               </div>
@@ -603,7 +603,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       </div>
 
       {/* ════════════════════════════════════════════════════════════
-          RELATED — 3-col, no title overlay (per spec)
+          RELATED - 3-col, no title overlay (per spec)
       ════════════════════════════════════════════════════════════ */}
       {relatedPosts.length > 0 && (
         <div className="border-t border-white/10 mt-24 md:mt-28">

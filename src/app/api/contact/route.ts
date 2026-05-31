@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
   }
 
   const submittedAt = new Date().toISOString();
-  const subjectLine = `[AO Contact] ${subject} — ${name}`;
+  const subjectLine = `[AO Contact] ${subject} - ${name}`;
   const htmlBody = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">
       <h2 style="font-size: 18px; margin: 0 0 16px; color: #0a0a0a;">New AO Strength Team contact submission</h2>
@@ -76,7 +76,7 @@ ${message}
 Submitted: ${submittedAt}
 `;
 
-  // 1) Notify via Resend transactional email — lands in support@aostrengthteam.store
+  // 1) Notify via Resend transactional email - lands in support@aostrengthteam.store
   //    which ImprovMX forwards to faithdrivencreator@gmail.com.
   try {
     const emailRes = await fetch("https://api.resend.com/emails", {
@@ -107,7 +107,7 @@ Submitted: ${submittedAt}
 
   // 2) Best-effort: also add the submitter to the AO Contact Inquiries audience
   //    so we have a queryable record (Resend Audiences UI) of who's reached out.
-  //    Failure here is non-fatal — the email is what matters.
+  //    Failure here is non-fatal - the email is what matters.
   if (contactAudienceId) {
     const nameParts = name.split(/\s+/);
     const firstName = nameParts[0] ?? "";

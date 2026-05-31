@@ -1,5 +1,5 @@
 /**
- * AO Strength Team — branded email shell.
+ * AO Strength Team - branded email shell.
  *
  * Plain HTML string (no React Email) to match Greenstone's pattern and avoid
  * adding `@react-email/components` as a dependency. All CSS is inline so
@@ -8,10 +8,10 @@
  * Visual tokens follow the AO brand guide:
  *   - Iron Black background, Paper White ink, Steel for metadata
  *   - Inter (body 13px/300, headings 900 uppercase) + JetBrains Mono (eyebrows)
- *   - Eyebrow prefix `// ` — part of the brand's visual signature
+ *   - Eyebrow prefix `// ` - part of the brand's visual signature
  *   - Border-radius 0 everywhere (sharp corners, per §15 web tokens)
  *   - Buttons: solid white on Iron Black, uppercase, +0.06em tracking
- *   - Code blocks: 1px white rule above and below — no surrounding box
+ *   - Code blocks: 1px white rule above and below - no surrounding box
  *
  * Visual chrome (added 2026-05-13, "Option B"):
  *   - Logo PNG masthead (logo-white.png) replaces text wordmark
@@ -41,7 +41,7 @@ const FONT_IMPORT =
 
 // Email-asset CDN URLs (deployed via Netlify; preview script rewrites to
 // file:// for local viewing).
-// Square Emblem for masthead (brand guide §04 — "Architectural… any context
+// Square Emblem for masthead (brand guide §04 - "Architectural… any context
 // where the brand needs structure and symmetry"). Brush wordmark is reserved
 // for apparel/hero banners and is NOT used in email headers.
 const ASSET_LOGO = `${SITE_URL}/email-assets/logo-square-white.png`;
@@ -50,13 +50,13 @@ const INSTAGRAM_URL = "https://www.instagram.com/alphaomegastrengthteam/";
 const INSTAGRAM_HANDLE = "@alphaomegastrengthteam";
 
 export interface EmailSection {
-  /** e.g. "01  WELCOME TO THE TEAM" — rendered as `// 01  WELCOME TO THE TEAM` */
+  /** e.g. "01  WELCOME TO THE TEAM" - rendered as `// 01  WELCOME TO THE TEAM` */
   eyebrow: string;
   /** Optional Inter 900 uppercase heading */
   heading?: string;
-  /** Body paragraphs — string or array of paragraphs */
+  /** Body paragraphs - string or array of paragraphs */
   body?: string | string[];
-  /** Optional discount code block — 1px white rules above and below */
+  /** Optional discount code block - 1px white rules above and below */
   code?: { value: string; note?: string };
   /** Optional 2-col mono table (label, value) */
   table?: Array<[string, string]>;
@@ -77,7 +77,7 @@ export interface RenderAOEmailOptions {
   sections: EmailSection[];
   /** Optional CTA below the sections */
   cta?: { text: string; url: string };
-  /** Sign-off line, default "— AΩ" */
+  /** Sign-off line, default "- AΩ" */
   signoff?: string;
   /** Optional postscript paragraph rendered after the sign-off */
   ps?: string;
@@ -103,8 +103,8 @@ function looksLikeVerseQuote(p: string): boolean {
 
 /** Heuristic: is this paragraph the citation that follows a verse quote? */
 function looksLikeVerseCitation(p: string): boolean {
-  // Mono span starting with an em-dash, e.g. "— Revelation 22:13"
-  return /font-family:[^"]*Mono/i.test(p) && /—\s*\S/.test(p);
+  // Mono span starting with an em-dash, e.g. "- Revelation 22:13"
+  return /font-family:[^"]*Mono/i.test(p) && /-\s*\S/.test(p);
 }
 
 function renderPlainParagraph(p: string): string {
@@ -114,7 +114,7 @@ function renderPlainParagraph(p: string): string {
 /**
  * Render the Bone-cream scripture band. Receives the raw quote HTML (still
  * wrapped in the original <em>...</em>) and the citation HTML (which contains
- * its own <span> styling — we strip it and re-render with band-appropriate
+ * its own <span> styling - we strip it and re-render with band-appropriate
  * styling so it reads correctly on the Bone background).
  */
 function renderVerseBand(quoteHtml: string, citationHtml: string): string {
@@ -139,7 +139,7 @@ function renderVerseBand(quoteHtml: string, citationHtml: string): string {
         <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;background-color:${BONE}">
           <tr>
             <td style="padding:34px 36px 28px 36px;background-color:${BONE};text-align:left">
-              <p style="margin:0 0 14px;color:${IRON};font-family:${FONT_BODY};font-size:17px;font-weight:300;font-style:italic;line-height:1.45;letter-spacing:-0.005em">${cleanQuote}</p>
+              <p style="margin:0 0 14px;color:${IRON};font-family:${FONT_BODY};font-size:17px;font-weight:300;line-height:1.45;letter-spacing:-0.005em">${cleanQuote}</p>
               <p style="margin:0;color:${STEEL};font-family:${FONT_MONO};font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase">${cleanCitation}</p>
             </td>
           </tr>
@@ -158,7 +158,7 @@ function renderVerseBand(quoteHtml: string, citationHtml: string): string {
  * the standard section cell.
  *
  * Returns HTML that must be embedded inside an open `<td>` (the band closes
- * and reopens the section cell mid-stream — see renderVerseBand).
+ * and reopens the section cell mid-stream - see renderVerseBand).
  */
 function paragraphs(body: string | string[] | undefined): string {
   if (!body) return "";
@@ -249,7 +249,7 @@ function renderCta(cta: { text: string; url: string }): string {
 
 export function renderAOEmail(opts: RenderAOEmailOptions): string {
   const title = opts.title ?? "AO Strength Team";
-  const signoff = opts.signoff ?? "— AΩ";
+  const signoff = opts.signoff ?? "- AΩ";
 
   const sectionsHtml = opts.sections.map(renderSection).join("");
   const ctaHtml = opts.cta ? renderCta(opts.cta) : "";
@@ -274,7 +274,7 @@ export function renderAOEmail(opts: RenderAOEmailOptions): string {
     <td align="center" style="padding:32px 16px 48px 16px;background-color:${BG}">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;width:100%;background-color:${BG};border-collapse:collapse">
 
-        <!-- masthead — Square Emblem (white, hero size) -->
+        <!-- masthead - Square Emblem (white, hero size) -->
         <tr>
           <td align="center" style="padding:56px 36px 40px 36px;background-color:${BG};text-align:center">
             <a href="${SITE_URL}" style="text-decoration:none;color:${INK};display:inline-block;line-height:0">
@@ -319,7 +319,7 @@ export function renderAOEmail(opts: RenderAOEmailOptions): string {
         <!-- footer rule -->
         <tr><td style="padding:36px 36px 12px 36px;background-color:${BG}"><div style="border-top:1px solid ${RULE};height:1px;line-height:1px;font-size:1px">&nbsp;</div></td></tr>
 
-        <!-- footer — Instagram CTA -->
+        <!-- footer - Instagram CTA -->
         <tr>
           <td align="center" style="padding:0 36px 28px 36px;background-color:${BG};text-align:center">
             <a href="${INSTAGRAM_URL}" style="color:${INK};text-decoration:none;font-family:${FONT_MONO};font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;display:inline-block">

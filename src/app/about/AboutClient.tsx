@@ -63,7 +63,7 @@ const principles = [
     eyebrow: "OMEGA",
     title: "THE FINISH.",
     body:
-      "Anyone can begin. The team is built around finishing. The last rep, the last mile, the last yard — all of it carries the same weight as the first.",
+      "Anyone can begin. The team is built around finishing. The last rep, the last mile, the last yard - all of it carries the same weight as the first.",
   },
   {
     eyebrow: "UNBREAKABLE",
@@ -107,7 +107,7 @@ export default function AboutClient() {
           >
             Alpha Omega Strength Team is performance apparel for the disciplined.
             We build for the beginning. We are proven at the finish. Every garment
-            we make carries one standard &mdash; quiet, restrained, and built on faith.
+            we make carries one standard - quiet, restrained, and built on faith.
           </motion.p>
         </div>
       </section>
@@ -141,7 +141,7 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* ── ALPHA / OMEGA / UNBREAKABLE — THREE PRINCIPLES ── */}
+      {/* ── ALPHA / OMEGA / UNBREAKABLE - THREE PRINCIPLES ── */}
       <section className="relative py-28 md:py-40 border-b border-white/10">
         <div className="max-w-[1200px] mx-auto px-8 md:px-16 lg:px-20">
           <motion.span
@@ -212,12 +212,12 @@ export default function AboutClient() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.4 }}
           >
-            — Revelation 22:13
+            - Revelation 22:13
           </motion.p>
         </div>
       </section>
 
-      {/* ── TRUST BAR — same 4 pillars as homepage hero ── */}
+      {/* ── TRUST BAR - same 4 pillars as homepage hero ── */}
       <section className="bg-black border-b border-white/10">
         <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/10">
           {pillars.map(({ Icon, title, line }) => (

@@ -1,5 +1,5 @@
 /**
- * Author bios for the journal — E-E-A-T signals for SEO + GEO.
+ * Author bios for the journal - E-E-A-T signals for SEO + GEO.
  * Keyed by the `author` string used in Sanity blogPost documents.
  *
  * Add a new entry when a new author publishes. If a post's author is not
@@ -27,7 +27,7 @@ const authors: Record<string, Author> = {
   "Alpha Omega Strength Team": {
     name: "Alpha Omega Strength Team",
     title: "Editorial",
-    bio: "The collective voice of Alpha Omega Strength Team — training notes, scripture reflections, and dispatches from the team.",
+    bio: "The collective voice of Alpha Omega Strength Team - training notes, scripture reflections, and dispatches from the team.",
     url: "/about",
   },
 };

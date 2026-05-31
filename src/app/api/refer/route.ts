@@ -1,5 +1,5 @@
 /**
- * Refer-a-Friend API — AO Strength Team
+ * Refer-a-Friend API - AO Strength Team
  *
  * POST /api/refer
  *
@@ -8,7 +8,7 @@
  * referrer a short confirmation. Both emails use the AO branded shell.
  *
  * The base Stripe coupon `FRIEND15` must exist in the Stripe account before
- * this endpoint will succeed — Pete creates that base coupon out of band.
+ * this endpoint will succeed - Pete creates that base coupon out of band.
  */
 
 import { NextRequest } from 'next/server';
@@ -122,9 +122,9 @@ function buildFriendInviteHtml(args: {
 
   if (args.personalNote) {
     section01Body.push(
-      `<span style="display:block;border-left:1px solid rgba(255,255,255,0.30);padding:8px 0 8px 16px;margin:8px 0;color:rgba(255,255,255,0.85);font-style:italic">&ldquo;${escapeHtml(
+      `<span style="display:block;border-left:1px solid rgba(255,255,255,0.30);padding:8px 0 8px 16px;margin:8px 0;color:rgba(255,255,255,0.85)">&ldquo;${escapeHtml(
         args.personalNote,
-      )}&rdquo;<br><span style="font-style:normal;color:rgba(255,255,255,0.55)">&mdash; ${escapeHtml(
+      )}&rdquo;<br><span style="color:rgba(255,255,255,0.55)">- ${escapeHtml(
         args.referrerFirstName,
       )}</span></span>`,
     );
@@ -138,9 +138,9 @@ function buildFriendInviteHtml(args: {
     {
       eyebrow: '02  WHO WE ARE',
       body: [
-        'Alpha Omega Strength Team is performance apparel for those who train with intention. Lifters. Runners. Anyone who treats discipline as a daily practice — not a trend.',
-        'We make apparel for the disciplined — and the team that holds them to it.',
-        '<span style="font-family:\'JetBrains Mono\',\'SF Mono\',Menlo,Consolas,\'Courier New\',monospace;font-size:11px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.85)">DISCIPLINE &mdash; RESILIENCE &mdash; INTEGRITY &mdash; COMMUNITY</span>',
+        'Alpha Omega Strength Team is performance apparel for those who train with intention. Lifters. Runners. Anyone who treats discipline as a daily practice, not a trend.',
+        'We make apparel for the disciplined - and the team that holds them to it.',
+        '<span style="font-family:\'JetBrains Mono\',\'SF Mono\',Menlo,Consolas,\'Courier New\',monospace;font-size:11px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.85)">DISCIPLINE - RESILIENCE - INTEGRITY - COMMUNITY</span>',
       ],
     },
     {
@@ -154,7 +154,7 @@ function buildFriendInviteHtml(args: {
 
   return renderAOEmail({
     preheader: "A friend thinks you'd train next to them.",
-    title: 'AO Strength Team — An invite from a friend',
+    title: 'AO Strength Team - An invite from a friend',
     sections,
     cta: { text: 'SHOP THE TEAM →', url: `${SITE_URL}/shop` },
   });
@@ -165,7 +165,7 @@ function buildFriendInviteHtml(args: {
 function buildReferrerThanksHtml({ friendEmail }: { friendEmail: string }): string {
   return renderAOEmail({
     preheader: 'Your invite is on the way.',
-    title: 'AO Strength Team — Invite sent',
+    title: 'AO Strength Team - Invite sent',
     sections: [
       {
         eyebrow: '01  INVITATION SENT',
@@ -248,7 +248,7 @@ export async function POST(request: NextRequest) {
       }),
     });
   } catch (err) {
-    // Code already exists in Stripe — return ok so the user doesn't retry
+    // Code already exists in Stripe - return ok so the user doesn't retry
     // and burn another code. Log full context for ops review.
     console.error('[refer] Friend invite send failed (code already created)', {
       referrerEmail,
@@ -275,7 +275,7 @@ export async function POST(request: NextRequest) {
       code,
       err,
     });
-    // Still return ok — friend already got their invite, which is the
+    // Still return ok - friend already got their invite, which is the
     // primary outcome.
   }
 
