@@ -30,6 +30,7 @@ import fuelingOnBudget from "./blog-drafts/fueling-a-strength-program-on-a-budge
 import trainingWhenLifeFallsApart from "./blog-drafts/training-when-life-falls-apart";
 import first30Days from "./blog-drafts/first-30-days-of-strength-training";
 import alphaOmegaRevelation from "./blog-drafts/alpha-omega-revelation-22-13-meaning";
+import sabbathRest from "./blog-drafts/sabbath-rest-for-lifters";
 
 export interface BlogPostImage {
   src: string;
@@ -2355,6 +2356,7 @@ blogPosts.push(
   trainingWhenLifeFallsApart,
   first30Days,
   alphaOmegaRevelation,
+  sabbathRest,
 );
 
 /** All posts, newest first. */
