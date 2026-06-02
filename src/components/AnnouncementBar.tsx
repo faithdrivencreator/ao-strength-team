@@ -4,7 +4,7 @@ const LAUNCH_LABEL = process.env.NEXT_PUBLIC_LAUNCH_DATE_LABEL || "June 2";
 export default function AnnouncementBar() {
   return (
     <div className="fixed top-0 left-0 right-0 z-[60] w-full bg-black border-b border-white/10">
-      <div className="w-full px-8 md:px-16 lg:px-20 py-2.5">
+      <div className="w-full px-8 md:px-16 lg:px-20 min-h-[56px] sm:min-h-9 flex items-center justify-center">
         <p className="font-mono text-[11px] font-normal tracking-[0.15em] uppercase text-white/80 text-center">
           {PURCHASE_LOCKED ? (
             <>

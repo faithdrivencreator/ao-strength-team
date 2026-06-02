@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/contexts/CartContext";
 
-const ANNOUNCEMENT_HEIGHT = 36; // matches the announcement bar height
 const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
 // SHOP remains in nav even when locked - it routes to the ShopComingSoon hype page.
 const NAV_ITEMS = ["SHOP", "JOURNAL", "ABOUT", "CONTACT"];
@@ -36,9 +35,8 @@ export default function Header() {
 
   return (
     <header
-      className="fixed left-0 right-0 z-50 transition-all duration-300 border-b border-white/10"
+      className="fixed left-0 right-0 z-50 top-14 sm:top-9 transition-all duration-300 border-b border-white/10"
       style={{
-        top: ANNOUNCEMENT_HEIGHT,
         backgroundColor: scrolled ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)",
       }}
     >
@@ -114,7 +112,7 @@ export default function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-14 bg-black z-40">
+        <div className="md:hidden fixed inset-0 top-28 sm:top-[92px] bg-black z-40">
           <nav className="flex flex-col items-start px-8 pt-10 gap-8">
             {NAV_ITEMS.map((item) => (
               <Link

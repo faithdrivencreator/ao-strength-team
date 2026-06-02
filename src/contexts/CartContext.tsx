@@ -15,6 +15,7 @@ export interface CartItem {
 interface CartState {
   items: CartItem[];
   isOpen: boolean;
+  selectedCharity: string | null;
 }
 
 type CartAction =
@@ -25,13 +26,15 @@ type CartAction =
   | { type: "TOGGLE_CART" }
   | { type: "OPEN_CART" }
   | { type: "CLOSE_CART" }
-  | { type: "HYDRATE"; payload: CartItem[] };
+  | { type: "HYDRATE"; payload: CartItem[] }
+  | { type: "SET_CHARITY"; payload: string | null };
 
 interface CartContextValue {
   items: CartItem[];
   isOpen: boolean;
   itemCount: number;
   subtotal: number;
+  selectedCharity: string | null;
   addItem: (item: CartItem) => void;
   removeItem: (productSlug: string, color: string, size: string) => void;
   updateQuantity: (productSlug: string, color: string, size: string, quantity: number) => void;
@@ -39,6 +42,7 @@ interface CartContextValue {
   toggleCart: () => void;
   openCart: () => void;
   closeCart: () => void;
+  setSelectedCharity: (id: string | null) => void;
 }
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -101,7 +105,9 @@ function cartReducer(state: CartState, action: CartAction): CartState {
       };
     }
     case "CLEAR_CART":
-      return { ...state, items: [] };
+      return { ...state, items: [], selectedCharity: null };
+    case "SET_CHARITY":
+      return { ...state, selectedCharity: action.payload };
     case "TOGGLE_CART":
       return { ...state, isOpen: !state.isOpen };
     case "OPEN_CART":
@@ -118,7 +124,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 const STORAGE_KEY = "ao-strength-cart";
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(cartReducer, { items: [], isOpen: false });
+  const [state, dispatch] = useReducer(cartReducer, { items: [], isOpen: false, selectedCharity: null });
 
   useEffect(() => {
     try {
@@ -148,6 +154,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     isOpen: state.isOpen,
     itemCount,
     subtotal,
+    selectedCharity: state.selectedCharity,
     addItem: (item) => dispatch({ type: "ADD_ITEM", payload: item }),
     removeItem: (productSlug, color, size) =>
       dispatch({ type: "REMOVE_ITEM", payload: { productSlug, color, size } }),
@@ -157,6 +164,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     toggleCart: () => dispatch({ type: "TOGGLE_CART" }),
     openCart: () => dispatch({ type: "OPEN_CART" }),
     closeCart: () => dispatch({ type: "CLOSE_CART" }),
+    setSelectedCharity: (id) => dispatch({ type: "SET_CHARITY", payload: id }),
   };
 
   return <CartContext value={value}>{children}</CartContext>;

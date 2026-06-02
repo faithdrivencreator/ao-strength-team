@@ -15,6 +15,15 @@
   --color-gray-900: #171717;
   --color-gray-950: #0a0a0a;
 
+  --color-ink: #1C1814;        /* warm charcoal - the new base, replaces harsh pure black */
+  --color-ink-soft: #25201A;   /* elevated surfaces / cards */
+  --color-ink-deep: #14110D;   /* deepest wells / contrast */
+  --color-military: #4A5D3A;   /* military green accent */
+  --color-military-deep: #3B4A2F; /* deep green band background */
+  --color-cream: #E8DCC8;      /* bone/cream - light bands + accents */
+  --color-paper: #F5F4F0;      /* lighter paper cream (optional) */
+  --color-stone: #737373;      /* steel gray - hairlines/metadata */
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
@@ -80,7 +89,7 @@
 /* Tailwind v4 @import "tailwindcss" includes preflight reset - no manual * reset needed */
 
 html {
-  background-color: #000000;
+  background-color: #1C1814;
   color: #ffffff;
   scroll-behavior: smooth;
 }
@@ -90,7 +99,7 @@ body {
   font-size: 13px;
   font-weight: 300;
   line-height: 1.6;
-  background-color: #000000;
+  background-color: #1C1814;
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

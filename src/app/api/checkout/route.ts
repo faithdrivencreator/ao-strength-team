@@ -6,6 +6,7 @@ import {
   getAuthoritativeUnitPrice,
   type Sleeve,
 } from '@/data/products';
+import { isValidCharityId, getCharity } from '@/data/charities';
 
 interface CheckoutItem {
   slug: string;
@@ -21,7 +22,7 @@ interface CheckoutItem {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as { items: CheckoutItem[] };
+    const body = (await request.json()) as { items: CheckoutItem[]; charity?: string };
 
     if (!body.items || body.items.length === 0) {
       return Response.json(
@@ -29,6 +30,15 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    if (!isValidCharityId(body.charity)) {
+      return Response.json(
+        { error: 'Please select a charity for your tithe.' },
+        { status: 400 }
+      );
+    }
+
+    const charity = getCharity(body.charity)!;
 
     // Validate + price every line server-side before building the Stripe
     // session. Any client/server mismatch is a 400, not a silent overcharge.
@@ -104,6 +114,8 @@ export async function POST(request: NextRequest) {
         source_site: 'aostrengthteam.store',
         brand: 'ao-strength-team',
         revenue_type: 'apparel',
+        tithe_charity: charity.id,
+        tithe_charity_name: charity.name,
       },
       payment_intent_data: {
         statement_descriptor: 'AO STRENGTH TEAM',
@@ -111,6 +123,8 @@ export async function POST(request: NextRequest) {
           source_site: 'aostrengthteam.store',
           brand: 'ao-strength-team',
           revenue_type: 'apparel',
+          tithe_charity: charity.id,
+          tithe_charity_name: charity.name,
         },
       },
     });

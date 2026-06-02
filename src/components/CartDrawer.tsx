@@ -4,16 +4,27 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/contexts/CartContext";
+import { CHARITIES } from "@/data/charities";
 import { trackBeginCheckout } from "@/lib/gtag";
 import { metaInitiateCheckout } from "@/lib/meta-pixel";
 
 export default function CartDrawer() {
-  const { items, isOpen, itemCount, subtotal, closeCart, removeItem, updateQuantity } = useCart();
+  const {
+    items,
+    isOpen,
+    itemCount,
+    subtotal,
+    selectedCharity,
+    setSelectedCharity,
+    closeCart,
+    removeItem,
+    updateQuantity,
+  } = useCart();
   const [checkingOut, setCheckingOut] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   async function handleCheckout() {
-    if (items.length === 0 || checkingOut) return;
+    if (items.length === 0 || checkingOut || !selectedCharity) return;
     setCheckingOut(true);
     setCheckoutError(null);
 
@@ -44,7 +55,7 @@ export default function CartDrawer() {
             size: i.size,
             quantity: i.quantity,
             // Sleeve is encoded in the slug by the showcase add-to-cart flow
-            // (e.g. ao-brushstroke-short-sleeve). Send it explicitly so the
+            // (e.g. ao-warpaint-short-sleeve). Send it explicitly so the
             // server can derive the authoritative per-sleeve price, and send
             // the displayed price so the server can reject any drift.
             sleeve: i.productSlug.endsWith("-long-sleeve")
@@ -54,6 +65,7 @@ export default function CartDrawer() {
                 : undefined,
             price: i.price,
           })),
+          charity: selectedCharity,
         }),
       });
       const data = await res.json();
@@ -202,6 +214,53 @@ export default function CartDrawer() {
 
         {items.length > 0 && (
           <div className="px-6 py-6 border-t border-white/10">
+            <div className="mb-6">
+              <span className="font-mono text-[11px] tracking-[0.1em] text-white/60 uppercase">
+                YOUR 10% TITHE GOES TO
+              </span>
+              <div
+                role="radiogroup"
+                aria-label="Choose the charity for your 10 percent tithe"
+                className="mt-3 flex flex-col gap-2"
+              >
+                {CHARITIES.map((c) => {
+                  const isSelected = selectedCharity === c.id;
+                  return (
+                    <button
+                      key={c.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={isSelected}
+                      onClick={() => setSelectedCharity(c.id)}
+                      className={`group flex w-full items-center gap-3 border px-3 py-2.5 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8DCC8]/70 active:opacity-80 ${
+                        isSelected
+                          ? "border-[#E8DCC8] text-white"
+                          : "border-white/10 text-white/70 hover:border-white/30"
+                      }`}
+                    >
+                      <span
+                        className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full border transition-colors duration-150 ${
+                          isSelected ? "border-[#E8DCC8]" : "border-white/30"
+                        }`}
+                        aria-hidden="true"
+                      >
+                        {isSelected && (
+                          <span className="h-2 w-2 rounded-full bg-[#E8DCC8]" />
+                        )}
+                      </span>
+                      <span className="flex flex-col min-w-0">
+                        <span className="font-sans font-bold text-xs uppercase tracking-[-0.025em] truncate">
+                          {c.name}
+                        </span>
+                        <span className="font-mono text-[10px] text-white/40 truncate">
+                          {c.theme}
+                        </span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
             <div className="flex items-center justify-between mb-6">
               <span className="font-mono text-[11px] tracking-[0.1em] text-white/60 uppercase">
                 SUBTOTAL
@@ -212,11 +271,16 @@ export default function CartDrawer() {
             </div>
             <button
               onClick={handleCheckout}
-              disabled={checkingOut}
+              disabled={checkingOut || !selectedCharity}
               className="w-full h-12 bg-white text-black font-sans font-black text-xs tracking-[0.1em] uppercase transition-colors duration-150 hover:bg-gray-200 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {checkingOut ? "PROCESSING..." : "CHECKOUT"}
             </button>
+            {!selectedCharity && (
+              <p className="mt-3 font-mono text-[10px] tracking-[0.1em] text-white/40 uppercase">
+                SELECT A CHARITY TO CONTINUE
+              </p>
+            )}
             {checkoutError && (
               <p className="mt-3 font-mono text-[10px] tracking-[0.1em] text-red-400 uppercase">
                 {checkoutError}

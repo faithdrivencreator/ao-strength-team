@@ -4,8 +4,8 @@
  * Flat-lay mockups live under public/images/products/unbreakable/.
  * `id` is the filename stem (no extension). `image` is the public path.
  *
- * Long Sleeve catalog is empty until LS mockups are produced; the showcase
- * hides the SS/LS toggle when only one sleeve length is populated.
+ * Both sleeve lengths carry the same 7 colorways; the showcase shows the
+ * SS/LS toggle and preserves the selected color across the switch via sharedIds.
  */
 
 export type UnbreakableVariant = {
@@ -76,7 +76,64 @@ export const shortSleeveVariants: UnbreakableVariant[] = [
   },
 ];
 
-export const longSleeveVariants: UnbreakableVariant[] = [];
+export const longSleeveVariants: UnbreakableVariant[] = [
+  {
+    id: "asphalt-black",
+    garmentColor: "Asphalt",
+    garmentHex: "#515151",
+    printColor: "Black",
+    printHex: "#0a0a0a",
+    image: "/images/products/unbreakable/long-sleeve/asphalt-black.webp",
+  },
+  {
+    id: "black-gray",
+    garmentColor: "Black",
+    garmentHex: "#0a0a0a",
+    printColor: "Gray",
+    printHex: "#737373",
+    image: "/images/products/unbreakable/long-sleeve/black-gray.webp",
+  },
+  {
+    id: "black-white",
+    garmentColor: "Black",
+    garmentHex: "#0a0a0a",
+    printColor: "White",
+    printHex: "#f5f5f5",
+    image: "/images/products/unbreakable/long-sleeve/black-white.webp",
+  },
+  {
+    id: "military-green-black",
+    garmentColor: "Military Green",
+    garmentHex: "#4A5D3A",
+    printColor: "Black",
+    printHex: "#0a0a0a",
+    image: "/images/products/unbreakable/long-sleeve/military-green-black.webp",
+  },
+  {
+    id: "military-green-gray",
+    garmentColor: "Military Green",
+    garmentHex: "#4A5D3A",
+    printColor: "Gray",
+    printHex: "#737373",
+    image: "/images/products/unbreakable/long-sleeve/military-green-gray.webp",
+  },
+  {
+    id: "military-green-white",
+    garmentColor: "Military Green",
+    garmentHex: "#4A5D3A",
+    printColor: "White",
+    printHex: "#f5f5f5",
+    image: "/images/products/unbreakable/long-sleeve/military-green-white.webp",
+  },
+  {
+    id: "white-black",
+    garmentColor: "White",
+    garmentHex: "#f5f5f5",
+    printColor: "Black",
+    printHex: "#0a0a0a",
+    image: "/images/products/unbreakable/long-sleeve/white-black.webp",
+  },
+];
 
 export const sharedIds: string[] = shortSleeveVariants
   .map((v) => v.id)

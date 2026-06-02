@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import UnbreakableShowcase from "@/components/UnbreakableShowcase";
 
 export const metadata: Metadata = {
@@ -10,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AO Unbreakable | Alpha Omega Strength Team",
     description:
-      "Forged for the ones who don't bend. Warm Stone Series. Short sleeve, with Long Sleeve coming soon.",
+      "Forged for the ones who don't bend. Warm Stone Series. Short Sleeve and Long Sleeve, seven colorways.",
     images: [
       {
         url: "/images/products/unbreakable/short-sleeve/military-green-white.webp",
@@ -22,13 +20,5 @@ export const metadata: Metadata = {
 };
 
 export default function AoUnbreakablePage() {
-  return (
-    <>
-      <Header />
-      <main className="min-h-screen bg-black">
-        <UnbreakableShowcase />
-      </main>
-      <Footer />
-    </>
-  );
+  return <UnbreakableShowcase />;
 }

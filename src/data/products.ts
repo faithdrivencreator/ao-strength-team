@@ -27,19 +27,19 @@ export interface Product {
 
 const products: Product[] = [
   {
-    slug: 'ao-brushstroke',
-    name: 'AO Brushstroke Collection',
+    slug: 'ao-warpaint',
+    name: 'AO Warpaint Collection',
     price: 39.99,
     description:
-      'The Brushstroke Collection. Hand-painted ALPHA OMEGA mark on heavyweight cotton. Available in Short Sleeve and Long Sleeve, ten colorways across the Warm Stone series.',
+      'The Warpaint Collection. Hand-painted ALPHA OMEGA mark on heavyweight cotton. Available in Short Sleeve and Long Sleeve, ten colorways across the Warm Stone series.',
     scripture:
-      'I have fought the good fight, I have finished the race, I have kept the faith.',
-    scriptureRef: '2 Timothy 4:7',
+      'He trains my hands for war, my fingers for battle.',
+    scriptureRef: 'Psalm 144:1',
     images: [
-      '/images/products/brushstroke/short-sleeve/military-green-white.webp',
-      '/images/products/brushstroke/long-sleeve/natural-black.webp',
-      '/images/products/brushstroke/short-sleeve/natural-gray.webp',
-      '/images/products/brushstroke/long-sleeve/black-white.webp',
+      '/images/products/warpaint/short-sleeve/military-green-white.webp',
+      '/images/products/warpaint/long-sleeve/natural-black.webp',
+      '/images/products/warpaint/short-sleeve/natural-gray.webp',
+      '/images/products/warpaint/long-sleeve/black-white.webp',
     ],
     variants: [
       { color: 'Black', colorHex: '#0a0a0a', sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL'], inStock: true },
@@ -49,7 +49,7 @@ const products: Product[] = [
       { color: 'White', colorHex: '#f5f5f5', sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL'], inStock: true },
     ],
     category: 'collections',
-    tags: ['brushstroke', 'warm-stone', 'collection', 'short-sleeve', 'long-sleeve'],
+    tags: ['warpaint', 'warm-stone', 'collection', 'short-sleeve', 'long-sleeve'],
     status: 'in-stock',
   },
   {
@@ -57,7 +57,7 @@ const products: Product[] = [
     name: 'AO Unbreakable',
     price: 34.99,
     description:
-      'Unbreakable. Forged for the ones who do not bend. Heavyweight cotton tee, Warm Stone Series. Available in Short Sleeve now, Long Sleeve coming soon.',
+      'Unbreakable. Forged for the ones who do not bend. Heavyweight cotton, Warm Stone Series. Available in Short Sleeve and Long Sleeve, seven colorways with ALPHA OMEGA UNBREAKABLE across the chest and STRENGTH TEAM down the sleeve.',
     scripture:
       'I have fought the good fight, I have finished the race, I have kept the faith.',
     scriptureRef: '2 Timothy 4:7',
@@ -74,7 +74,7 @@ const products: Product[] = [
       { color: 'White', colorHex: '#f5f5f5', sizes: ['S', 'M', 'L', 'XL', '2XL', '3XL'], inStock: true },
     ],
     category: 'collections',
-    tags: ['unbreakable', 'warm-stone', 'collection', 'short-sleeve'],
+    tags: ['unbreakable', 'warm-stone', 'collection', 'short-sleeve', 'long-sleeve'],
     status: 'in-stock',
   },
   {
@@ -119,11 +119,11 @@ export function getProduct(slug: string): Product | undefined {
  * omits the missing length, and the single available price applies.
  *
  * These mirror PRODUCT_PRICE_SHORT / PRODUCT_PRICE_LONG in the per-collection
- * data files (brushstroke.ts, unbreakable.ts, cornerstone.ts).
+ * data files (warpaint.ts, unbreakable.ts, cornerstone.ts).
  */
 const SLEEVE_PRICES: Record<string, { short?: number; long?: number }> = {
-  'ao-brushstroke': { short: 34.99, long: 39.99 },
-  'ao-unbreakable': { short: 34.99 },
+  'ao-warpaint': { short: 34.99, long: 39.99 },
+  'ao-unbreakable': { short: 34.99, long: 39.99 },
   'ao-cornerstone': { short: 34.99, long: 39.99 },
 };
 
@@ -132,9 +132,9 @@ export type Sleeve = 'short' | 'long';
 /**
  * Normalize a cart line slug into its base product slug + sleeve.
  *
- * Showcase components add items with a slug like `ao-brushstroke-short-sleeve`
- * or `ao-brushstroke-long-sleeve`. The product detail page adds the bare base
- * slug (`ao-brushstroke`). This returns the base slug plus the sleeve when one
+ * Showcase components add items with a slug like `ao-warpaint-short-sleeve`
+ * or `ao-warpaint-long-sleeve`. The product detail page adds the bare base
+ * slug (`ao-warpaint`). This returns the base slug plus the sleeve when one
  * is encoded in the slug.
  */
 export function parseProductSlug(slug: string): { baseSlug: string; sleeve?: Sleeve } {

@@ -81,18 +81,29 @@ export default function CornerstoneShowcase() {
   const prefersReducedMotion = useReducedMotion();
 
   const [sleeve, setSleeve] = useState<SleeveLength>("long");
-  // Single source of truth: derive activeVariant + activeIndex from these
+  // Single source of truth: derive activeVariant + activeIndex from these.
+  // Default the configurator to Black when a Black variant exists.
+  const defaultVariant =
+    longSleeveVariants.find((v) => v.garmentColor === "Black") ??
+    longSleeveVariants[0];
   const [garmentColor, setGarmentColor] = useState<string>(
-    longSleeveVariants[0].garmentColor,
+    defaultVariant.garmentColor,
   );
   const [printColor, setPrintColor] = useState<string>(
-    longSleeveVariants[0].printColor,
+    defaultVariant.printColor,
   );
   const [size, setSize] = useState<Size | null>(null);
+
+  // On-model hero controls
+  const [heroGender, setHeroGender] = useState<"him" | "her">("him");
+  const [heroSide, setHeroSide] = useState<"front" | "back">("front");
 
   const [isMobile, setIsMobile] = useState(false);
   const [announce, setAnnounce] = useState("");
   const [isMorphing, setIsMorphing] = useState(false);
+  const [hasSwiped, setHasSwiped] = useState(false);
+  // Whether the active card is showing the shirt FRONT (default is BACK).
+  const [showFront, setShowFront] = useState(false);
 
   const stageRef = useRef<HTMLDivElement>(null);
   const dragX = useMotionValue(0);
@@ -217,6 +228,11 @@ export default function CornerstoneShowcase() {
     );
   }, [activeVariant.garmentColor, activeVariant.printColor, sleeve]);
 
+  /* ----- snap back to the BACK view when the active colorway or sleeve changes ----- */
+  useEffect(() => {
+    setShowFront(false);
+  }, [activeVariant.id, sleeve]);
+
   /* ----- sleeve toggle with id-preserving jump ----- */
   function toggleSleeve(next: SleeveLength) {
     if (next === sleeve) return;
@@ -239,10 +255,11 @@ export default function CornerstoneShowcase() {
 
   /* ----- drag-to-advance ----- */
   function onDragEnd(_: unknown, info: PanInfo) {
-    const threshold = 80;
-    if (info.offset.x < -threshold || info.velocity.x < -400) {
+    const threshold = 44;
+    setHasSwiped(true);
+    if (info.offset.x < -threshold || info.velocity.x < -250) {
       advance(1);
-    } else if (info.offset.x > threshold || info.velocity.x > 400) {
+    } else if (info.offset.x > threshold || info.velocity.x > 250) {
       advance(-1);
     }
     dragX.set(0);
@@ -345,18 +362,32 @@ export default function CornerstoneShowcase() {
         {/* Section label */}
         <div className="flex w-full items-center justify-between">
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/55">
-            // 06 CORNERSTONE
+            // FAITH-GROUNDED PERFORMANCE TEE
           </p>
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/35">
-            WARM STONE SERIES
+            FROM ${PRODUCT_PRICE_SHORT.toFixed(2)}
           </p>
         </div>
 
         {/* Headline */}
         <div className="flex flex-col items-center gap-4 md:gap-6">
-          <h1 className="text-center text-[44px] font-black uppercase leading-[0.95] tracking-[-0.02em] md:text-[72px] lg:text-[88px]">
-            Cornerstone
-          </h1>
+          <div className="flex flex-col items-center gap-2">
+            <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-white/55">
+              Collection
+            </p>
+            <h1 className="text-center text-[44px] font-black uppercase leading-[0.95] tracking-[-0.02em] md:text-[72px] lg:text-[88px]">
+              Cornerstone
+            </h1>
+            <p className="mt-3 max-w-[34ch] text-center font-mono text-[12px] leading-relaxed tracking-[0.04em] text-white/70 md:text-[13px]">
+              &ldquo;The stone the builders rejected has become the cornerstone.&rdquo;
+              <span className="mt-1 block text-[11px] tracking-[0.14em] text-white/45">
+                Psalm 118:22 ✞
+              </span>
+            </p>
+            <p className="mt-2 max-w-[40ch] text-center font-mono text-[11px] uppercase tracking-[0.16em] text-white/45">
+              Boxed Alpha and Omega, cross at center. Built to train in.
+            </p>
+          </div>
           <Image
             src="/brand/logo-horizontal-white.png"
             alt="Alpha cross Omega"
@@ -367,6 +398,152 @@ export default function CornerstoneShowcase() {
             className="h-auto w-[70vw] max-w-[460px] opacity-40"
           />
         </div>
+
+        {/* On-model hero - the lead of the page */}
+        <div className="flex flex-col items-center gap-5">
+          <div className="relative aspect-[4/5] w-[min(88vw,520px)] overflow-hidden rounded-xl bg-[#1c1814] ring-1 ring-white/5">
+            <AnimatePresence mode="popLayout" initial={false}>
+              <motion.div
+                key={`${heroGender}-${heroSide}`}
+                className="absolute inset-0"
+                initial={prefersReducedMotion ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+              >
+                <Image
+                  src={`/images/models/cornerstone/${heroGender === "him" ? "man" : "woman"}-${heroSide}.webp`}
+                  alt={`Model wearing the AO Cornerstone tee in black, ${heroSide} view`}
+                  fill
+                  sizes="(max-width: 768px) 88vw, 520px"
+                  className="object-cover"
+                  priority
+                  draggable={false}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Vertical scroll rail - hugs the right edge of the model image */}
+            <button
+              type="button"
+              aria-label="Scroll to choose your color"
+              onClick={() =>
+                document.getElementById("choose-your-color")?.scrollIntoView({
+                  behavior: prefersReducedMotion ? "auto" : "smooth",
+                  block: "start",
+                })
+              }
+              className="group absolute right-3 bottom-4 z-10 flex cursor-pointer flex-col items-center gap-3 rounded outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0a0a0a]"
+            >
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#0a0a0a]/90 transition-colors duration-200 [writing-mode:vertical-rl] group-hover:text-[#0a0a0a]">
+                Scroll
+              </span>
+              <span aria-hidden className="relative block h-16 w-px bg-[#0a0a0a]/25">
+                <motion.span
+                  className="absolute left-1/2 top-0 block h-6 w-px -translate-x-1/2"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, rgba(10,10,10,0), #0a0a0a)",
+                  }}
+                  initial={false}
+                  animate={
+                    prefersReducedMotion
+                      ? { y: 20, opacity: 1 }
+                      : { y: [-8, 64], opacity: [0, 1, 0] }
+                  }
+                  transition={
+                    prefersReducedMotion
+                      ? { duration: 0 }
+                      : { repeat: Infinity, duration: 1.6, ease: "easeInOut" }
+                  }
+                />
+              </span>
+              <motion.span
+                aria-hidden
+                className="block opacity-90 transition-opacity duration-200 group-hover:opacity-100"
+                style={{ color: "#0a0a0a" }}
+                animate={prefersReducedMotion ? undefined : { y: [0, 6, 0] }}
+                transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </motion.span>
+            </button>
+          </div>
+
+          {/* Hero toggles - styled to match the SS / LS pill */}
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="relative inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/[0.03] p-1 backdrop-blur-sm">
+              {(["him", "her"] as const).map((g) => {
+                const isActive = heroGender === g;
+                return (
+                  <button
+                    key={g}
+                    type="button"
+                    aria-pressed={isActive}
+                    onClick={() => setHeroGender(g)}
+                    className="relative z-10 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-200"
+                    style={{ color: isActive ? "#0a0a0a" : "rgba(255,255,255,0.7)" }}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="cornerstone-hero-gender"
+                        className="absolute inset-0 -z-10 rounded-full"
+                        style={{ backgroundColor: "#E8DCC8" }}
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    {g === "him" ? "Him" : "Her"}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="relative inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/[0.03] p-1 backdrop-blur-sm">
+              {(["front", "back"] as const).map((sd) => {
+                const isActive = heroSide === sd;
+                return (
+                  <button
+                    key={sd}
+                    type="button"
+                    aria-pressed={isActive}
+                    onClick={() => setHeroSide(sd)}
+                    className="relative z-10 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-200"
+                    style={{ color: isActive ? "#0a0a0a" : "rgba(255,255,255,0.7)" }}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="cornerstone-hero-side"
+                        className="absolute inset-0 -z-10 rounded-full"
+                        style={{ backgroundColor: "#E8DCC8" }}
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    {sd === "front" ? "Front" : "Back"}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/45">
+            Shown in Black · Relaxed fit
+          </p>
+        </div>
+
+        {/* Configurator eyebrow */}
+        <p
+          id="choose-your-color"
+          className="scroll-mt-24 font-mono text-[11px] uppercase tracking-[0.18em] text-white/55"
+        >
+          // CHOOSE YOUR COLOR
+        </p>
 
         {/* Top pill toggle - SS / LS */}
         <div
@@ -435,7 +612,7 @@ export default function CornerstoneShowcase() {
             style={{ transformStyle: "preserve-3d", x: dragX }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.18}
+            dragElastic={0.32}
             onDragEnd={onDragEnd}
           >
             <div
@@ -449,7 +626,7 @@ export default function CornerstoneShowcase() {
                   const side = rel === 0 ? 0 : rel > 0 ? 1 : -1;
 
                   const xOffset = side * (absRel === 1 ? 440 : 700);
-                  const rotY = side * (absRel === 1 ? 28 : 42);
+                  const rotY = side * (absRel === 1 ? 28 : 42) * (isMobile ? 0.6 : 1);
                   const scale = absRel === 0 ? 1 : absRel === 1 ? 0.78 : 0.6;
                   const opacity =
                     absRel === 0 ? 1 : absRel === 1 ? 0.55 : 0.25;
@@ -460,13 +637,26 @@ export default function CornerstoneShowcase() {
                     ? scale * (isMorphing && isActive ? 0.82 : 0.92)
                     : scale * (isMorphing && isActive ? 0.9 : 1);
 
+                  // Front image lives next to the back image with a -front suffix.
+                  const frontSrc = v.image.replace(/\.webp$/, "-front.webp");
+
                   return (
                     <motion.button
                       key={`${sleeve}-${v.id}`}
                       type="button"
-                      onClick={() => !isActive && selectVariant(variants[idx])}
+                      onClick={() =>
+                        isActive
+                          ? setShowFront((prev) => !prev)
+                          : selectVariant(variants[idx])
+                      }
+                      onHoverStart={() => isActive && setShowFront(true)}
+                      onHoverEnd={() => isActive && setShowFront(false)}
                       aria-roledescription="slide"
-                      aria-label={`${v.garmentColor} garment with ${v.printColor} print`}
+                      aria-label={
+                        isActive
+                          ? `${v.garmentColor} garment with ${v.printColor} print. Showing ${showFront ? "front" : "back"}. Activate to view the ${showFront ? "back" : "front"}.`
+                          : `${v.garmentColor} garment with ${v.printColor} print`
+                      }
                       aria-current={isActive ? "true" : undefined}
                       className="absolute left-1/2 top-1/2 block aspect-square w-[min(86vw,560px)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl bg-[#1c1814] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.85)] outline-none ring-1 ring-white/5 focus-visible:ring-2 focus-visible:ring-[#E8DCC8]"
                       style={{ zIndex: z }}
@@ -496,16 +686,17 @@ export default function CornerstoneShowcase() {
                           : {
                               opacity: 0,
                               x: side < 0 ? -700 : 700,
-                              rotateY: -78,
+                              rotateY: isMobile ? -55 : -78,
                               scale: 0.6,
                               transition: {
-                                duration: 0.6,
+                                duration: 0.42,
                                 ease: [0.76, 0, 0.24, 1],
                               },
                             }
                       }
-                      transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+                      transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
                     >
+                      {/* Base layer: shirt BACK (always rendered) */}
                       <Image
                         src={v.image}
                         alt={`${PRODUCT_NAME} ${sleeve === "long" ? "long sleeve" : "short sleeve"} - ${v.garmentColor} with ${v.printColor} print`}
@@ -515,6 +706,28 @@ export default function CornerstoneShowcase() {
                         className="object-cover"
                         draggable={false}
                       />
+                      {/* Active-only cross-fade layer: shirt FRONT on hover / tap */}
+                      {isActive && (
+                        <div
+                          aria-hidden
+                          className="absolute inset-0"
+                          style={{
+                            opacity: showFront ? 1 : 0,
+                            transition: prefersReducedMotion
+                              ? undefined
+                              : "opacity 300ms ease",
+                          }}
+                        >
+                          <Image
+                            src={frontSrc}
+                            alt=""
+                            fill
+                            sizes="(max-width: 768px) 90vw, 600px"
+                            className="object-cover"
+                            draggable={false}
+                          />
+                        </div>
+                      )}
                       <div
                         aria-hidden
                         className="pointer-events-none absolute inset-0 rounded-xl"
@@ -523,12 +736,88 @@ export default function CornerstoneShowcase() {
                             "inset 0 0 60px 0 rgba(0,0,0,0.35), inset 0 1px 0 0 rgba(255,255,255,0.06)",
                         }}
                       />
+                      {/* Active-only affordance pill: hints the card flips */}
+                      {isActive && (
+                        <span
+                          aria-hidden
+                          className="pointer-events-none absolute bottom-3 left-3 rounded-full bg-[#1c1814]/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-[#E8DCC8] backdrop-blur-sm"
+                        >
+                          {showFront ? "View Back" : "View Front"}
+                        </span>
+                      )}
                     </motion.button>
                   );
                 })}
               </AnimatePresence>
             </div>
           </motion.div>
+        </div>
+
+        {/* Swipe indicator: pagination dots + first-time mobile hint */}
+        <div className="-mt-2 flex flex-col items-center gap-3">
+          <div
+            className="flex max-w-full flex-wrap items-center justify-center gap-1.5"
+            role="group"
+            aria-label="Color options"
+          >
+            {variants.map((v, i) => {
+              const on = i === activeIndex;
+              return (
+                <button
+                  key={v.id}
+                  type="button"
+                  onClick={() => selectVariant(variants[i])}
+                  aria-label={`View color ${i + 1} of ${variants.length}`}
+                  aria-current={on ? "true" : undefined}
+                  className="p-1.5 outline-none focus-visible:ring-2 focus-visible:ring-[#E8DCC8] rounded-full"
+                >
+                  <span
+                    aria-hidden
+                    className="block h-[6px] rounded-full transition-all duration-300"
+                    style={{
+                      width: on ? 22 : 6,
+                      backgroundColor: on ? "#E8DCC8" : "rgba(255,255,255,0.25)",
+                    }}
+                  />
+                </button>
+              );
+            })}
+          </div>
+
+          <AnimatePresence>
+            {!hasSwiped && (
+              <motion.div
+                aria-hidden
+                className="flex items-center gap-2 md:hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.span
+                  style={{ color: "#E8DCC8" }}
+                  animate={prefersReducedMotion ? undefined : { x: [-2, 1, -2] }}
+                  transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                    <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </motion.span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/55">
+                  Swipe for colors
+                </span>
+                <motion.span
+                  style={{ color: "#E8DCC8" }}
+                  animate={prefersReducedMotion ? undefined : { x: [2, -1, 2] }}
+                  transition={{ repeat: Infinity, duration: 1.4, ease: "easeInOut" }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
+                    <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </motion.span>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Caption block (scripture line) */}
@@ -612,6 +901,7 @@ export default function CornerstoneShowcase() {
                   ariaLabel={`${p.name}${!isAvailable ? " (not available for selected garment)" : ""}`}
                   size={{ w: 44, h: 44 }}
                   strikeWhenDisabled
+                  label={p.name}
                 >
                   <span
                     className="absolute inset-0 rounded-md"
@@ -777,6 +1067,7 @@ function ChipButton({
   size,
   strikeWhenDisabled = false,
   variant = "swatch",
+  label,
 }: {
   selected: boolean;
   disabled: boolean;
@@ -786,7 +1077,12 @@ function ChipButton({
   size: { w: number; h: number };
   strikeWhenDisabled?: boolean;
   variant?: "swatch" | "size";
+  label?: string;
 }) {
+  const swatchShadow =
+    selected && !disabled
+      ? `inset 0 0 0 2px rgba(0,0,0,0.4), 0 0 0 2px #0a0a0a, 0 0 0 4px ${RING_COLOR}`
+      : `inset 0 0 0 2px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.18)`;
   return (
     <button
       type="button"
@@ -796,42 +1092,59 @@ function ChipButton({
       aria-label={ariaLabel}
       tabIndex={selected ? 0 : -1}
       onClick={() => !disabled && onSelect()}
-      className={`relative inline-block rounded-md transition-transform duration-150 ${
-        disabled
-          ? "cursor-not-allowed opacity-30"
-          : "cursor-pointer hover:scale-[1.06]"
-      } ${
-        selected && !disabled
-          ? "outline-none"
-          : "outline-none"
+      className={`group inline-flex flex-col items-center gap-1.5 rounded-md outline-none ${
+        disabled ? "cursor-not-allowed" : "cursor-pointer"
       }`}
-      style={{
-        width: size.w,
-        height: size.h,
-        boxShadow:
-          selected && !disabled
-            ? `0 0 0 4px transparent, 0 0 0 6px ${RING_COLOR}`
-            : undefined,
-      }}
     >
-      {children}
-      {disabled && strikeWhenDisabled && (
-        <svg
-          aria-hidden
-          className="pointer-events-none absolute inset-0 h-full w-full"
-          viewBox="0 0 44 44"
-          preserveAspectRatio="none"
+      <span
+        className={`relative block rounded-md transition-transform duration-150 ${
+          disabled ? "" : "group-hover:scale-[1.06]"
+        }`}
+        style={{
+          width: size.w,
+          height: size.h,
+          boxShadow: swatchShadow,
+          opacity: disabled ? (strikeWhenDisabled ? 0.5 : 0.3) : 1,
+          filter: disabled && strikeWhenDisabled ? "grayscale(1)" : undefined,
+          outline:
+            disabled && strikeWhenDisabled
+              ? "1px dashed rgba(255,255,255,0.5)"
+              : undefined,
+          outlineOffset: disabled && strikeWhenDisabled ? 3 : undefined,
+        }}
+      >
+        {children}
+        {disabled && strikeWhenDisabled && (
+          <svg
+            aria-hidden
+            className="pointer-events-none absolute inset-0 h-full w-full"
+            viewBox="0 0 44 44"
+            preserveAspectRatio="none"
+          >
+            <line
+              x1="4"
+              y1="4"
+              x2="40"
+              y2="40"
+              stroke={RING_COLOR}
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+          </svg>
+        )}
+      </span>
+      {label && (
+        <span
+          className={`font-mono text-[9px] uppercase tracking-[0.08em] ${
+            disabled
+              ? "text-white/30 line-through"
+              : selected
+                ? "text-white"
+                : "text-white/45"
+          }`}
         >
-          <line
-            x1="2"
-            y1="2"
-            x2="42"
-            y2="42"
-            stroke="rgba(255,255,255,0.7)"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
+          {label}
+        </span>
       )}
       {/* Suppress unused-variant warnings */}
       <span hidden aria-hidden>{variant}</span>

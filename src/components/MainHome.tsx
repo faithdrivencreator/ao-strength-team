@@ -4,11 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import CollectionCards from "@/components/CollectionCards";
 import ScrollingMarquee from "@/components/ScrollingMarquee";
 import HomeEmailForm from "@/components/HomeEmailForm";
 import LaunchCountdown from "@/components/LaunchCountdown";
 import NotifyDropModal from "@/components/NotifyDropModal";
-import { getAllProducts, getDisplayPrice } from "@/data/products";
+import { getAllProducts } from "@/data/products";
 import type { BlogPost } from "@/lib/blog";
 
 const JOURNAL_DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
@@ -95,39 +96,11 @@ const trustPillars = [
   { Icon: PillarCrossIcon, title: "FAITH DRIVEN", line: "Purpose in every rep." },
 ];
 
-const pillars = [
-  {
-    num: "01",
-    title: "DISCIPLINE",
-    text: "The foundation of every rep, every decision, every product we make. We train because He calls us to be disciplined in all things.",
-    quote:
-      "\u201CNo discipline seems pleasant at the time, but painful. Later on, however, it produces a harvest of righteousness and peace for those who have been trained by it.\u201D",
-    ref: "Hebrews 12:11",
-  },
-  {
-    num: "02",
-    title: "RESILIENCE",
-    text: "Built to endure. Designed to outlast. Made for those who refuse to quit \u2014 because our endurance is rooted in something greater than ourselves.",
-    quote:
-      "\u201CBlessed is the one who perseveres under trial because, having stood the test, that person will receive the crown of life that the Lord has promised to those who love him.\u201D",
-    ref: "James 1:12",
-  },
-  {
-    num: "03",
-    title: "INTEGRITY",
-    text: "No shortcuts. No compromises. We walk upright because that is the path He set before us. Quality in every stitch, purpose in every design.",
-    quote:
-      "\u201CWhoever walks in integrity walks securely, but whoever takes crooked paths will be found out.\u201D",
-    ref: "Proverbs 10:9",
-  },
-  {
-    num: "04",
-    title: "COMMUNITY",
-    text: "Stronger together. A team united by faith, connected through purpose. We sharpen each other and lift each other up.",
-    quote:
-      "\u201CAs iron sharpens iron, so one person sharpens another.\u201D",
-    ref: "Proverbs 27:17",
-  },
+const charities = [
+  { name: "Compassion International", theme: "CHILD DEVELOPMENT", blurb: "Releasing children from extreme poverty and providing education in Jesus' name.", logo: "/images/charities/compassion.svg", url: "https://www.compassion.com" },
+  { name: "Samaritan's Purse", theme: "DISASTER RELIEF", blurb: "Deploying emergency aid, food, and mobile field hospitals to crisis zones around the world.", logo: "/images/charities/samaritans-purse.svg", url: "https://www.samaritanspurse.org" },
+  { name: "Mercy Ships", theme: "MEDICAL CARE", blurb: "Bringing life-saving surgeries and care to developing nations aboard the world's largest civilian hospital ships.", logo: "/images/charities/mercy-ships.png", url: "https://www.mercyships.org" },
+  { name: "World Vision", theme: "CLEAN WATER & COMMUNITY", blurb: "Helping vulnerable families break the cycle of poverty with clean water and sustainable support.", logo: "/images/charities/world-vision.svg", url: "https://www.worldvision.org" },
 ];
 
 interface MainHomeProps {
@@ -148,20 +121,11 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
       {/* ════════════════════════════════════════════════════════════
           HERO Split layout (text left, image right) + trust bar
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative w-full bg-black flex flex-col">
+      <section className="relative w-full bg-ink flex flex-col">
         <div className="flex flex-col md:flex-row">
         {/* Left side - black with text */}
-        <div className="relative w-full md:w-[48%] bg-black flex items-end md:items-center min-h-[50vh] md:min-h-[calc(100vh-220px)]">
+        <div className="relative w-full md:w-[48%] bg-ink-deep flex items-end md:items-center min-h-[50vh] md:min-h-[calc(100vh-220px)]">
           <div className="relative z-10 px-8 md:px-16 lg:px-20 pb-12 md:pb-0 pt-8 md:pt-0">
-            <motion.span
-              className="font-mono text-[12px] tracking-[0.2em] uppercase text-white/40 block mb-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
-              // ALPHA OMEGA STRENGTH TEAM
-            </motion.span>
-
             <motion.h1
               className="font-sans font-black text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl uppercase leading-[0.95] tracking-tight"
               initial={{ opacity: 0, y: 30 }}
@@ -274,7 +238,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
         {/* Trust bar - 4 pillars across full width */}
         <motion.div
-          className="relative z-10 border-t border-white/10 bg-black"
+          className="relative z-10 border-t border-white/10 bg-ink"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
@@ -311,7 +275,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
           NEW ARRIVALS Big product showcase (hidden while purchase is locked)
       ════════════════════════════════════════════════════════════ */}
       {!PURCHASE_LOCKED && (
-      <section className="relative py-32 md:py-48 lg:py-56">
+      <section className="relative pt-32 md:pt-48 lg:pt-56 pb-20 md:pb-24">
         {/* Background decorative cross */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/[0.02] pointer-events-none">
           <CrossIcon className="w-[500px] h-[500px] md:w-[700px] md:h-[700px]" />
@@ -354,60 +318,62 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
-            {products.map((product, index) => (
-              <motion.div
-                key={product.slug}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.7, delay: index * 0.15 }}
-              >
-                <Link
-                  href={`/products/${product.slug}`}
-                  className="group block"
-                >
-                  <div className="relative aspect-[3/4] overflow-hidden bg-gray-950 border border-white/5">
-                    <Image
-                      src={product.images[0]}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-                    />
-                    {product.status === "sold-out" && (
-                      <span className="absolute top-5 left-5 font-mono text-[11px] tracking-[0.15em] uppercase bg-black/90 text-white/80 px-4 py-2 border border-white/10">
-                        SOLD OUT
-                      </span>
-                    )}
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
-                  </div>
-                  <div className="mt-6 space-y-2">
-                    <h3 className="font-sans font-bold text-base uppercase tracking-[0.05em]">
-                      {product.name}
-                    </h3>
-                    <p className="font-mono text-sm text-white/50">
-                      {getDisplayPrice(product)}
-                      {product.compareAtPrice && product.compareAtPrice > product.price && (
-                        <span className="ml-2 text-white/30 line-through">
-                          ${product.compareAtPrice.toFixed(2)}
-                        </span>
-                      )}
-                    </p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+          <CollectionCards products={products} />
         </div>
       </section>
       )}
 
 
       {/* ════════════════════════════════════════════════════════════
+          CAMPAIGN BANNER Full-bleed cinematic call to action
+      ════════════════════════════════════════════════════════════ */}
+      <section className="relative w-full h-[60vh] min-h-[440px] md:h-[70vh] overflow-hidden">
+        <Image
+          src="/images/campaign/strength-banner.webp"
+          alt="Athlete training toward the light"
+          fill
+          priority={false}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/40 to-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
+        <div className="relative z-10 h-full max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20 flex items-center justify-center md:justify-end">
+          <motion.div
+            className="max-w-md text-center md:text-right"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-[#E8DCC8]/80 block mb-4">
+              // STRENGTH WITH A PURPOSE
+            </span>
+            <h2 className="font-sans font-black uppercase tracking-tight text-3xl md:text-5xl leading-[1.05] text-white">
+              WEAR YOUR
+              <br />
+              FAITH.
+            </h2>
+            <p className="font-sans font-light text-white/70 text-base mt-5 md:ml-auto max-w-sm">
+              Faith-forged gear in three collections. 10% of every order goes
+              back to those on the frontlines of human need.
+            </p>
+            <Link
+              href="/shop"
+              className="inline-block mt-8 bg-white text-black font-sans text-sm font-bold uppercase tracking-[0.15em] px-14 py-5 hover:bg-white/90 transition-all duration-300"
+            >
+              SHOP THE COLLECTION →
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+
+      {/* ════════════════════════════════════════════════════════════
           LOOKBOOK Editorial bento grid of lifestyle photography
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative py-32 md:py-48 bg-black">
+      <section className="relative pt-24 md:pt-28 pb-32 md:pb-48 bg-ink">
         <div className="relative max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20">
           {/* Section header */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 md:mb-20">
@@ -456,9 +422,9 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             </motion.div>
           </div>
 
-          {/* Bento grid - 12-col desktop, asymmetric mix of landscape features + portraits */}
-          <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4">
-            {/* Row 1 - landscape feature (left, clickable) + two portraits */}
+          {/* Bento grid - balanced editorial: full-width 16:9 features framing 3-up portrait rows */}
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-4">
+            {/* Row 1 - full-width landscape feature (clickable) */}
             <motion.div
               className="col-span-2 md:col-span-6"
               initial={{ opacity: 0, y: 40 }}
@@ -474,7 +440,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
                   src="/images/lifestyle/female-back-black.webp"
                   alt="Athlete seen from behind wearing the black Alpha Omega sweater"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="100vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
@@ -485,8 +451,29 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
               </Link>
             </motion.div>
 
+            {/* Row 2 - 3-up equal portraits (couple clickable) */}
             <motion.div
-              className="col-span-1 md:col-span-3"
+              className="col-span-1 md:col-span-2"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0 }}
+            >
+              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
+                <Image
+                  src="/images/lifestyle/male-overhead-press.webp"
+                  alt="Athlete pressing overhead in the black Alpha Omega gear"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="col-span-1 md:col-span-2"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -494,10 +481,10 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             >
               <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
                 <Image
-                  src="/images/lifestyle/male-overhead-press.webp"
-                  alt="Athlete pressing overhead in the black Alpha Omega gear"
+                  src="/images/lifestyle/female-bench-press.webp"
+                  alt="Athlete on the bench press in the cream Alpha Omega gear"
                   fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
+                  sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
@@ -506,42 +493,21 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             </motion.div>
 
             <motion.div
-              className="col-span-1 md:col-span-3"
+              className="col-span-2 md:col-span-2"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: 0.16 }}
             >
-              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
-                <Image
-                  src="/images/lifestyle/female-bench-press.webp"
-                  alt="Athlete on the bench press in the cream Alpha Omega gear"
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
-              </div>
-            </motion.div>
-
-            {/* Row 2 - anchor portrait (couple, taller) + two portraits + landscape feature */}
-            <motion.div
-              className="col-span-2 md:col-span-3"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: 0 }}
-            >
               <Link
                 href="/shop"
-                className="group relative block w-full aspect-[4/5] md:h-full overflow-hidden bg-neutral-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-white/60"
+                className="group relative block w-full aspect-[4/5] overflow-hidden bg-neutral-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-white/60"
               >
                 <Image
                   src="/images/lifestyle/couple-walkout.webp"
                   alt="A couple walking out of the gym in matching cream Alpha Omega tanks"
                   fill
-                  sizes="(max-width: 768px) 100vw, 25vw"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
@@ -552,69 +518,9 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
               </Link>
             </motion.div>
 
+            {/* Row 3 - full-width landscape feature (clickable) */}
             <motion.div
-              className="col-span-1 md:col-span-3"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: 0.08 }}
-            >
-              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
-                <Image
-                  src="/images/lifestyle/female-cable-row.webp"
-                  alt="Athlete on the cable row in the black Alpha Omega gear"
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="col-span-1 md:col-span-3"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: 0.16 }}
-            >
-              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
-                <Image
-                  src="/images/lifestyle/female-portrait-sage.webp"
-                  alt="Portrait of an athlete in the sage Alpha Omega piece"
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="col-span-2 md:col-span-3"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, delay: 0.24 }}
-            >
-              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
-                <Image
-                  src="/images/lifestyle/male-towel-rest.webp"
-                  alt="Athlete resting between sets in the black Alpha Omega gear"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
-              </div>
-            </motion.div>
-
-            {/* Row 3 - landscape feature (right, clickable) spanning the back half */}
-            <motion.div
-              className="col-span-2 md:col-span-6 md:col-start-7"
+              className="col-span-2 md:col-span-6"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -628,7 +534,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
                   src="/images/lifestyle/male-portrait-cream.webp"
                   alt="Portrait of an athlete in the cream Alpha Omega sweater"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="100vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
@@ -638,6 +544,67 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
                 </span>
               </Link>
             </motion.div>
+
+            {/* Row 4 - 3-up equal portraits */}
+            <motion.div
+              className="col-span-1 md:col-span-2"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0 }}
+            >
+              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
+                <Image
+                  src="/images/lifestyle/female-cable-row.webp"
+                  alt="Athlete on the cable row in the black Alpha Omega gear"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="col-span-1 md:col-span-2"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.08 }}
+            >
+              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
+                <Image
+                  src="/images/lifestyle/female-portrait-sage.webp"
+                  alt="Portrait of an athlete in the sage Alpha Omega piece"
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="col-span-2 md:col-span-2"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.16 }}
+            >
+              <div className="group relative w-full aspect-[4/5] overflow-hidden bg-neutral-950">
+                <Image
+                  src="/images/lifestyle/male-towel-rest.webp"
+                  alt="Athlete resting between sets in the black Alpha Omega gear"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -646,13 +613,13 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
       {/* ════════════════════════════════════════════════════════════
           BRAND STORY - "FAITHFUL" with background texture
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-cream">
         {/* Dark gradient background with subtle texture */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-black to-gray-950" />
+        <div className="absolute inset-0 bg-cream" />
 
         {/* Large decorative cross watermark */}
         <motion.div
-          className="absolute -right-20 top-1/2 -translate-y-1/2 text-white/[0.03] pointer-events-none"
+          className="absolute -right-20 top-1/2 -translate-y-1/2 text-ink/[0.05] pointer-events-none"
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -663,14 +630,14 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
         {/* Floating small crosses */}
         <motion.div
-          className="absolute top-[10%] left-[8%] text-white/[0.04]"
+          className="absolute top-[10%] left-[8%] text-ink/[0.06]"
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
           <ThinCross className="w-8 h-10" />
         </motion.div>
         <motion.div
-          className="absolute bottom-[15%] left-[15%] text-white/[0.03]"
+          className="absolute bottom-[15%] left-[15%] text-ink/[0.05]"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -680,7 +647,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
         <div className="relative max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20 py-32 md:py-48">
           <div className="max-w-3xl mx-auto text-center">
             <motion.span
-              className="font-mono text-[13px] tracking-[0.25em] uppercase text-white/30 block mb-8"
+              className="font-mono text-[13px] tracking-[0.25em] uppercase text-military block mb-8"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -690,7 +657,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             </motion.span>
 
             <motion.h2
-              className="font-sans font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight leading-[1.05]"
+              className="font-sans font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight leading-[1.05] text-ink"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -700,11 +667,11 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
               <br />
               BEGINNING //
               <br />
-              <span className="text-white/60">AND THE END</span>
+              <span className="text-ink/60">AND THE END</span>
             </motion.h2>
 
             <motion.p
-              className="mt-14 font-sans text-lg font-light text-white/60 leading-8 max-w-2xl mx-auto"
+              className="mt-14 font-sans text-lg font-light text-ink/70 leading-8 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -718,7 +685,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             </motion.p>
 
             <motion.blockquote
-              className="mt-14 border-l-2 border-white/15 pl-10 text-base text-white/40 leading-8 max-w-xl mx-auto text-left"
+              className="mt-14 border-l-2 border-ink/20 pl-10 text-base text-ink/60 leading-8 max-w-xl mx-auto text-left"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -726,7 +693,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             >
               &ldquo;I am the Alpha and the Omega, the First and the Last, the
               Beginning and the End.&rdquo;
-              <span className="block mt-4 not-italic font-mono text-[12px] tracking-[0.2em] text-white/30">
+              <span className="block mt-4 not-italic font-mono text-[12px] tracking-[0.2em] text-military">
                 Revelation 22:13
               </span>
             </motion.blockquote>
@@ -736,62 +703,188 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
 
       {/* ════════════════════════════════════════════════════════════
-          FOUR PILLARS Each one is a statement
+          10% TITHE Strength with a purpose, giving back
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative py-32 md:py-48 lg:py-56">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20">
-          {/* Section header */}
+      <section className="relative py-32 md:py-48 bg-cream overflow-hidden">
+        {/* Impact montage background */}
+        <div className="absolute inset-0 -z-0">
+          <Image
+            src="/images/tithe/impact-montage.webp"
+            alt=""
+            aria-hidden
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-cream/80 via-cream/90 to-cream/95" />
+        </div>
+        {/* Background cross watermarks */}
+        <div className="absolute top-[12%] left-1/2 -translate-x-1/2 text-ink/[0.04] pointer-events-none">
+          <CrossIcon className="w-[420px] h-[420px] md:w-[600px] md:h-[600px]" />
+        </div>
+        <motion.div
+          className="absolute bottom-[8%] right-[6%] text-ink/[0.05] pointer-events-none"
+          animate={{ y: [0, -14, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ThinCross className="w-12 h-16 md:w-16 md:h-20" />
+        </motion.div>
+
+        <div className="relative z-10 max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20">
+          {/* Intro */}
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.span
+              className="font-mono text-[12px] tracking-[0.2em] uppercase text-military block mb-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              // STRENGTH WITH A PURPOSE
+            </motion.span>
+
+            <motion.h2
+              className="font-sans font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight leading-[1.05] text-ink"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              OUR 10%
+              <br />
+              TITHE
+            </motion.h2>
+
+            <motion.p
+              className="mt-12 font-sans text-lg font-light text-ink/70 leading-8 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              At Alpha Omega Strength Team, we believe true strength isn&apos;t just
+              built in the gym. It comes directly from God, the Beginning and the
+              End. Our gear is a bold reminder of where your power truly originates.
+              But we want this brand to do more than equip you for your workouts. We
+              want it to equip others for life.
+            </motion.p>
+
+            <motion.p
+              className="mt-6 font-sans text-lg font-light text-ink/80 leading-8 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              Starting with our very first drop on Tuesday, June 2nd, 10% of every
+              purchase goes directly to vetted, high-impact Christian charities.
+            </motion.p>
+          </div>
+
+          {/* Impact sub-band */}
           <motion.div
-            className="text-center mb-24 md:mb-32"
-            initial={{ opacity: 0, y: 30 }}
+            className="max-w-3xl mx-auto text-center mt-24 md:mt-28"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="font-mono text-[12px] tracking-[0.25em] uppercase text-white/30 block mb-4">
-              RESTRAINED · ENCOURAGING · DISCIPLINED · FAITH-GROUNDED
+            <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-military block mb-6">
+              // HOW YOUR PURCHASE MAKES AN IMPACT
             </span>
-            <h2 className="font-sans font-black text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight leading-[1.05]">
-              OUR PILLARS
-            </h2>
+            <p className="font-sans text-base md:text-lg font-light text-ink/70 leading-8">
+              We selected four ECFA-accredited organizations so every dollar is
+              stewarded faithfully and reaches the frontlines of human need. A
+              portion of every purchase actively supports:
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10">
-            {pillars.map((pillar, index) => (
+          {/* Impact cards grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-16 md:mt-20">
+            {charities.map((c, index) => (
               <motion.div
-                key={pillar.num}
-                className="relative bg-black p-12 md:p-16 lg:p-20 group transition-colors duration-500 hover:bg-white/[0.03]"
-                initial={{ opacity: 0, y: 50 }}
+                key={c.name}
+                className="flex flex-col bg-ink backdrop-blur-sm border border-white/10 p-8 hover:bg-ink-soft transition"
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                {/* Large background number */}
-                <span className="absolute top-8 right-8 md:top-12 md:right-12 font-sans font-black text-[120px] md:text-[160px] leading-none text-white/[0.03] select-none pointer-events-none">
-                  {pillar.num}
+                <div className="bg-white rounded-lg p-4 h-20 flex items-center justify-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={c.logo}
+                    alt={c.name}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+
+                <span className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#E8DCC8] block mt-8 mb-3">
+                  // {c.theme}
                 </span>
 
-                <span className="font-mono text-[12px] tracking-[0.2em] text-white/40 uppercase block mb-6">
-                  // {pillar.num}
-                </span>
-
-                <h3 className="font-sans font-black text-2xl md:text-3xl uppercase tracking-tight mb-8 leading-[1.1]">
-                  {pillar.title}
+                <h3 className="font-sans font-bold text-base uppercase tracking-[0.05em] text-white leading-tight">
+                  {c.name}
                 </h3>
 
-                <p className="font-sans text-base font-light text-white/60 leading-8 mb-10 max-w-md">
-                  {pillar.text}
+                <p className="mt-4 font-sans text-sm font-light text-white/55 leading-relaxed">
+                  {c.blurb}
                 </p>
 
-                <blockquote className="border-l-2 border-white/10 pl-6 text-[15px] text-white/35 leading-7 max-w-md group-hover:border-white/20 transition-colors duration-500">
-                  {pillar.quote}
-                  <span className="block mt-3 not-italic font-mono text-[11px] tracking-[0.2em] text-white/25">
-                    {pillar.ref}
-                  </span>
-                </blockquote>
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-block self-start font-mono text-[11px] tracking-[0.15em] uppercase text-white/40 hover:text-white border-b border-transparent hover:border-white pb-1 transition-colors duration-300"
+                >
+                  VISIT →
+                </a>
               </motion.div>
             ))}
           </div>
+
+          {/* Scripture */}
+          <motion.blockquote
+            className="max-w-3xl mx-auto mt-24 md:mt-28 border-l-2 border-ink/20 pl-10 text-base md:text-lg text-ink/60 leading-8 text-left"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            &ldquo;Each of you should give what you have decided in your heart to
+            give, not reluctantly or under compulsion, for God loves a cheerful
+            giver.&rdquo;
+            <span className="block mt-4 not-italic font-mono text-[12px] tracking-[0.2em] text-military">
+              2 Corinthians 9:7
+            </span>
+          </motion.blockquote>
+
+          {/* Join the team closing */}
+          <motion.div
+            className="max-w-3xl mx-auto text-center mt-24 md:mt-28"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="font-mono text-[12px] tracking-[0.2em] uppercase text-military block mb-6">
+              // JOIN THE TEAM
+            </span>
+            <p className="font-sans text-base md:text-lg font-light text-ink/70 leading-8 max-w-2xl mx-auto">
+              We are called to be strong, courageous, and to be the hands and feet
+              of Christ for those who are hurting. Grab your gear, wear your faith,
+              and let&apos;s make a kingdom impact together.
+            </p>
+
+            <div className="mt-12">
+              <Link
+                href="/shop"
+                className="inline-block bg-military text-cream font-sans text-sm font-bold uppercase tracking-[0.15em] px-14 py-5 hover:bg-military-deep transition-colors duration-300"
+              >
+                SHOP THE DROP →
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -799,9 +892,9 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
       {/* ════════════════════════════════════════════════════════════
           TRAIN WITH PURPOSE Bridge band
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative border-y border-white/10 bg-black overflow-hidden">
+      <section className="relative border-y border-cream/15 bg-military-deep overflow-hidden">
         <motion.div
-          className="absolute -right-10 top-1/2 -translate-y-1/2 text-white/[0.025] pointer-events-none"
+          className="absolute -right-10 top-1/2 -translate-y-1/2 text-cream/[0.06] pointer-events-none"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -812,7 +905,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
 
         <div className="relative max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20 py-20 md:py-28 text-center">
           <motion.span
-            className="font-mono text-[12px] tracking-[0.25em] uppercase text-white/30 block mb-6"
+            className="font-mono text-[12px] tracking-[0.25em] uppercase text-cream/70 block mb-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -821,7 +914,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
             // THE STANDARD
           </motion.span>
           <motion.h2
-            className="font-sans font-black text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight leading-[0.95]"
+            className="font-sans font-black text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight leading-[0.95] text-white"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -829,7 +922,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
           >
             TRAIN WITH
             <br />
-            <span className="text-white/50">PURPOSE.</span>
+            <span className="text-cream/75">PURPOSE.</span>
           </motion.h2>
         </div>
       </section>

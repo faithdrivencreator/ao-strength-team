@@ -130,6 +130,7 @@ async function extractOrderDetails(session: Stripe.Checkout.Session) {
       (session as unknown as { shipping_details?: { address?: Stripe.Address } }).shipping_details?.address ??
       null,
     stripeSessionId: session.id,
+    titheCharityName: session.metadata?.tithe_charity_name ?? null,
     paymentIntent:
       typeof session.payment_intent === 'string'
         ? session.payment_intent
@@ -244,6 +245,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
               <tr><td style="color:#666">Email</td><td><a href="mailto:${order.customerEmail}">${order.customerEmail}</a></td></tr>
               <tr><td style="color:#666">Total</td><td><strong style="color:#000;font-size:18px">$${order.amountTotal.toFixed(2)} ${order.currency}</strong></td></tr>
               <tr><td style="color:#666">Shipping</td><td>${peteShippingText}</td></tr>
+              <tr><td style="color:#666">Tithe (10%)</td><td><strong>${order.titheCharityName ?? 'Not specified'}</strong></td></tr>
             </table>
             <h3 style="color:#000">Items</h3>
             <table style="width:100%;border-collapse:collapse">
@@ -312,7 +314,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
                 body: shippingLines.join('<br>'),
               },
               {
-                eyebrow: '04  QUESTIONS',
+                eyebrow: '04  YOUR 10% TITHE',
+                body: `Ten percent of this order supports ${order.titheCharityName ?? 'our vetted charity partners'}. Thank you for giving with us.`,
+              },
+              {
+                eyebrow: '05  QUESTIONS',
                 body: 'Reply to this email.',
               },
             ],

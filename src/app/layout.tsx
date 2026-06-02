@@ -91,7 +91,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
-      <body className="min-h-screen flex flex-col bg-black text-white antialiased">
+      <body className="min-h-screen flex flex-col bg-ink text-white antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -112,7 +112,7 @@ export default function RootLayout({
         <CartProvider>
           <AnnouncementBar />
           <Header />
-          <main className="flex-1 pt-[92px]">{children}</main>
+          <main className="flex-1 pt-[112px] sm:pt-[92px]">{children}</main>
           <Footer />
           <CartDrawer />
           <EmailCapture />

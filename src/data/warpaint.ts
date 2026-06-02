@@ -1,11 +1,11 @@
 /**
- * Brushstroke Collection - variant data
+ * Warpaint Collection - variant data
  *
- * Flat-lay mockups already live under public/images/products/brushstroke/.
+ * Flat-lay mockups already live under public/images/products/warpaint/.
  * `id` is the filename stem (no extension). `image` is the public path.
  */
 
-export type BrushstrokeVariant = {
+export type WarpaintVariant = {
   id: string;
   garmentColor: string;
   garmentHex: string;
@@ -14,14 +14,14 @@ export type BrushstrokeVariant = {
   image: string;
 };
 
-export const longSleeveVariants: BrushstrokeVariant[] = [
+export const longSleeveVariants: WarpaintVariant[] = [
   {
     id: "asphalt-black",
     garmentColor: "Asphalt",
     garmentHex: "#515151",
     printColor: "Black",
     printHex: "#0a0a0a",
-    image: "/images/products/brushstroke/long-sleeve/asphalt-black.webp",
+    image: "/images/products/warpaint/long-sleeve/asphalt-black.webp",
   },
   {
     id: "asphalt-white",
@@ -29,7 +29,7 @@ export const longSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#515151",
     printColor: "White",
     printHex: "#f5f5f5",
-    image: "/images/products/brushstroke/long-sleeve/asphalt-white.webp",
+    image: "/images/products/warpaint/long-sleeve/asphalt-white.webp",
   },
   {
     id: "black-gray",
@@ -37,7 +37,7 @@ export const longSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#0a0a0a",
     printColor: "Gray",
     printHex: "#737373",
-    image: "/images/products/brushstroke/long-sleeve/black-gray.webp",
+    image: "/images/products/warpaint/long-sleeve/black-gray.webp",
   },
   {
     id: "black-white",
@@ -45,7 +45,7 @@ export const longSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#0a0a0a",
     printColor: "White",
     printHex: "#f5f5f5",
-    image: "/images/products/brushstroke/long-sleeve/black-white.webp",
+    image: "/images/products/warpaint/long-sleeve/black-white.webp",
   },
   {
     id: "military-green-black",
@@ -53,7 +53,7 @@ export const longSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#4A5D3A",
     printColor: "Black",
     printHex: "#0a0a0a",
-    image: "/images/products/brushstroke/long-sleeve/military-green-black.webp",
+    image: "/images/products/warpaint/long-sleeve/military-green-black.webp",
   },
   {
     id: "military-green-white",
@@ -61,7 +61,7 @@ export const longSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#4A5D3A",
     printColor: "White",
     printHex: "#f5f5f5",
-    image: "/images/products/brushstroke/long-sleeve/military-green-white.webp",
+    image: "/images/products/warpaint/long-sleeve/military-green-white.webp",
   },
   {
     id: "natural-black",
@@ -69,7 +69,7 @@ export const longSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#E8DCC8",
     printColor: "Black",
     printHex: "#0a0a0a",
-    image: "/images/products/brushstroke/long-sleeve/natural-black.webp",
+    image: "/images/products/warpaint/long-sleeve/natural-black.webp",
   },
   {
     id: "natural-gray",
@@ -77,7 +77,7 @@ export const longSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#E8DCC8",
     printColor: "Gray",
     printHex: "#737373",
-    image: "/images/products/brushstroke/long-sleeve/natural-gray.webp",
+    image: "/images/products/warpaint/long-sleeve/natural-gray.webp",
   },
   {
     id: "white-black",
@@ -85,7 +85,7 @@ export const longSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#f5f5f5",
     printColor: "Black",
     printHex: "#0a0a0a",
-    image: "/images/products/brushstroke/long-sleeve/white-black-v2.webp",
+    image: "/images/products/warpaint/long-sleeve/white-black-v2.webp",
   },
   {
     id: "white-gray",
@@ -93,18 +93,18 @@ export const longSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#f5f5f5",
     printColor: "Gray",
     printHex: "#737373",
-    image: "/images/products/brushstroke/long-sleeve/white-gray.webp",
+    image: "/images/products/warpaint/long-sleeve/white-gray.webp",
   },
 ];
 
-export const shortSleeveVariants: BrushstrokeVariant[] = [
+export const shortSleeveVariants: WarpaintVariant[] = [
   {
     id: "asphalt-white",
     garmentColor: "Asphalt",
     garmentHex: "#515151",
     printColor: "White",
     printHex: "#f5f5f5",
-    image: "/images/products/brushstroke/short-sleeve/asphalt-white.webp",
+    image: "/images/products/warpaint/short-sleeve/asphalt-white.webp",
   },
   {
     id: "black-white",
@@ -112,7 +112,7 @@ export const shortSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#0a0a0a",
     printColor: "White",
     printHex: "#f5f5f5",
-    image: "/images/products/brushstroke/short-sleeve/black-white.webp",
+    image: "/images/products/warpaint/short-sleeve/black-white.webp",
   },
   {
     id: "military-green-white",
@@ -120,7 +120,7 @@ export const shortSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#4A5D3A",
     printColor: "White",
     printHex: "#f5f5f5",
-    image: "/images/products/brushstroke/short-sleeve/military-green-white.webp",
+    image: "/images/products/warpaint/short-sleeve/military-green-white.webp",
   },
   {
     id: "natural-black",
@@ -128,7 +128,7 @@ export const shortSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#E8DCC8",
     printColor: "Black",
     printHex: "#0a0a0a",
-    image: "/images/products/brushstroke/short-sleeve/natural-black.webp",
+    image: "/images/products/warpaint/short-sleeve/natural-black.webp",
   },
   {
     id: "natural-gray",
@@ -136,7 +136,7 @@ export const shortSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#E8DCC8",
     printColor: "Gray",
     printHex: "#737373",
-    image: "/images/products/brushstroke/short-sleeve/natural-gray.webp",
+    image: "/images/products/warpaint/short-sleeve/natural-gray.webp",
   },
   {
     id: "white-black",
@@ -144,7 +144,7 @@ export const shortSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#f5f5f5",
     printColor: "Black",
     printHex: "#0a0a0a",
-    image: "/images/products/brushstroke/short-sleeve/white-black.webp",
+    image: "/images/products/warpaint/short-sleeve/white-black.webp",
   },
   {
     id: "white-gray",
@@ -152,7 +152,7 @@ export const shortSleeveVariants: BrushstrokeVariant[] = [
     garmentHex: "#f5f5f5",
     printColor: "Gray",
     printHex: "#737373",
-    image: "/images/products/brushstroke/short-sleeve/white-gray.webp",
+    image: "/images/products/warpaint/short-sleeve/white-gray.webp",
   },
 ];
 
@@ -168,7 +168,7 @@ export type SharedColorway = (typeof sharedIds)[number];
 
 export type SleeveLength = "short" | "long";
 
-export const PRODUCT_SLUG = "ao-brushstroke";
-export const PRODUCT_NAME = "AO Brushstroke";
+export const PRODUCT_SLUG = "ao-warpaint";
+export const PRODUCT_NAME = "AO Warpaint";
 export const PRODUCT_PRICE_LONG = 39.99;
 export const PRODUCT_PRICE_SHORT = 34.99;

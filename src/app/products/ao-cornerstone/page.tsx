@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import CornerstoneShowcase from "@/components/CornerstoneShowcase";
 
 export const metadata: Metadata = {
@@ -22,13 +20,5 @@ export const metadata: Metadata = {
 };
 
 export default function AoCornerstonePage() {
-  return (
-    <>
-      <Header />
-      <main className="min-h-screen bg-black">
-        <CornerstoneShowcase />
-      </main>
-      <Footer />
-    </>
-  );
+  return <CornerstoneShowcase />;
 }
