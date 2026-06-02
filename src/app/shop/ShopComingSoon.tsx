@@ -23,7 +23,7 @@ export default function ShopComingSoon() {
             transition={{ duration: 0.7, ease: EXPO_EASE }}
             className="block font-mono text-[11px] md:text-[12px] tracking-[0.30em] uppercase text-white/55"
           >
-            // FIRST DROP · MAY 25
+            // FIRST DROP · JUNE 2
           </motion.span>
 
           <motion.h1
@@ -206,7 +206,7 @@ export default function ShopComingSoon() {
             transition={{ duration: 0.9, ease: EXPO_EASE, delay: 0.1 }}
             className="mt-6 font-sans font-black uppercase tracking-[-0.02em] leading-[0.95] text-[clamp(36px,5.5vw,72px)]"
           >
-            THE DROP OPENS MAY 25.
+            THE DROP OPENS JUNE 2.
             <br />
             <span className="text-white/55">BE FIRST IN LINE.</span>
           </motion.h2>

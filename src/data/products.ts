@@ -59,8 +59,8 @@ const products: Product[] = [
     description:
       'Unbreakable. Forged for the ones who do not bend. Heavyweight cotton, Warm Stone Series. Available in Short Sleeve and Long Sleeve, seven colorways with ALPHA OMEGA UNBREAKABLE across the chest and STRENGTH TEAM down the sleeve.',
     scripture:
-      'I have fought the good fight, I have finished the race, I have kept the faith.',
-    scriptureRef: '2 Timothy 4:7',
+      'Hard pressed on every side, but not crushed.',
+    scriptureRef: '2 Corinthians 4:8',
     images: [
       '/images/products/unbreakable/short-sleeve/military-green-white.webp',
       '/images/products/unbreakable/short-sleeve/black-white.webp',
@@ -84,8 +84,8 @@ const products: Product[] = [
     description:
       'AO Cornerstone. A clean boxed ALPHA, cross, OMEGA emblem pressed into heavyweight cotton, built for the ones whose foundation does not move. Available in Short Sleeve and Long Sleeve across the Warm Stone series.',
     scripture:
-      'I am the Alpha and the Omega, the First and the Last, the Beginning and the End.',
-    scriptureRef: 'Revelation 22:13',
+      'The stone the builders rejected has become the cornerstone.',
+    scriptureRef: 'Psalm 118:22',
     images: [
       '/images/products/cornerstone/short-sleeve/black-white.webp',
       '/images/products/cornerstone/long-sleeve/natural-black.webp',
