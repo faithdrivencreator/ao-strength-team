@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/contexts/CartContext";
@@ -13,6 +13,23 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { itemCount, toggleCart } = useCart();
+
+  // Swipe-up-to-close for the mobile menu. Track where a touch starts; if the
+  // finger lifts at least 50px higher than it began, treat it as a swipe up and
+  // collapse the menu. A near-stationary tap on a link stays well under the
+  // threshold, so navigation is unaffected.
+  const touchStartY = useRef<number | null>(null);
+
+  function handleMenuTouchStart(e: React.TouchEvent) {
+    touchStartY.current = e.touches[0].clientY;
+  }
+
+  function handleMenuTouchEnd(e: React.TouchEvent) {
+    if (touchStartY.current === null) return;
+    const swipedUp = touchStartY.current - e.changedTouches[0].clientY;
+    if (swipedUp > 50) setMobileMenuOpen(false);
+    touchStartY.current = null;
+  }
 
   useEffect(() => {
     function handleScroll() {
@@ -112,8 +129,16 @@ export default function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-28 sm:top-[92px] bg-black z-40">
-          <nav className="flex flex-col items-start px-8 pt-10 gap-8">
+        <div
+          className="md:hidden fixed inset-0 top-28 sm:top-[92px] bg-black z-40"
+          onTouchStart={handleMenuTouchStart}
+          onTouchEnd={handleMenuTouchEnd}
+        >
+          {/* Grab handle - signals the menu can be swiped up to dismiss. */}
+          <div className="flex justify-center pt-3" aria-hidden="true">
+            <span className="h-1 w-10 rounded-full bg-white/25" />
+          </div>
+          <nav className="flex flex-col items-start px-8 pt-8 gap-8">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item}
