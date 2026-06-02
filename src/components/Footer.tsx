@@ -15,9 +15,13 @@ const legalLinks = [
 export default function Footer() {
   return (
     <footer className="w-full border-t border-white/10 bg-black">
-      <div className="mx-auto max-w-[1440px] px-6 pt-8">
+      <div className="mx-auto max-w-[1440px] px-6 pt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-6">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/60 text-center">
           // FREE SHIPPING ON ORDERS OVER $75
+        </p>
+        <span className="hidden sm:inline text-white/15">/</span>
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/40 text-center">
+          // NEXT DROP IN THE FORGE
         </p>
       </div>
       <div className="mx-auto max-w-[1440px] px-6 py-12">

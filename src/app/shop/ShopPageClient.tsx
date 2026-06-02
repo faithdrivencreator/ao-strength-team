@@ -70,6 +70,17 @@ export default function ShopPageClient() {
             );
           })}
         </div>
+
+        {/* Quiet teaser - this is only the first drop */}
+        <div className="mt-20 lg:mt-28 flex flex-col items-center text-center">
+          <div className="h-px w-12 bg-white/15 mb-5" />
+          <p className="font-mono text-[11px] tracking-[0.2em] text-white/45 uppercase mb-3">
+            // THIS IS THE FIRST DROP
+          </p>
+          <p className="max-w-[44ch] text-[13px] leading-relaxed text-white/45">
+            More collections are in the forge. Join the team below to hear when the next one drops.
+          </p>
+        </div>
       </div>
     </section>
   );

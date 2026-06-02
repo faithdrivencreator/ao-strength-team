@@ -319,6 +319,16 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
           </div>
 
           <CollectionCards products={products} />
+
+          <motion.p
+            className="mt-16 font-mono text-[11px] tracking-[0.2em] uppercase text-white/40 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7 }}
+          >
+            // THE FIRST THREE ARE LIVE. THE NEXT IS ALREADY IN THE FORGE.
+          </motion.p>
         </div>
       </section>
       )}
