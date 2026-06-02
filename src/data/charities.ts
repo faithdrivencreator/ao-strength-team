@@ -35,7 +35,7 @@ export const CHARITIES: Charity[] = [
   {
     id: "world-vision",
     name: "World Vision",
-    theme: "CLEAN WATER & COMMUNITY",
+    theme: "CLEAN WATER",
     blurb: "Helping vulnerable families break the cycle of poverty with clean water and sustainable support.",
     logo: "/images/charities/world-vision.svg",
     url: "https://www.worldvision.org",

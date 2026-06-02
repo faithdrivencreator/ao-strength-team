@@ -127,7 +127,7 @@ export default function CartDrawer() {
       {isOpen && (
         <div className="fixed inset-0 z-[100]">
           <motion.div
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-[#14110D]/75 backdrop-blur-sm"
             onClick={closeCart}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -136,7 +136,7 @@ export default function CartDrawer() {
           />
 
           <motion.aside
-            className="absolute top-0 right-0 h-full w-full max-w-md bg-[#0a0a0a] border-l border-white/10 flex flex-col shadow-[-24px_0_60px_-12px_rgba(0,0,0,0.8)]"
+            className="absolute top-0 right-0 h-full w-full max-w-md bg-[#1C1814] border-l border-white/10 flex flex-col shadow-[-24px_0_60px_-12px_rgba(0,0,0,0.8)]"
             role="dialog"
             aria-modal="true"
             aria-label="Shopping cart"
@@ -269,7 +269,7 @@ export default function CartDrawer() {
             </div>
 
             {items.length > 0 && (
-              <div className="px-6 py-6 border-t border-white/10 bg-black/40">
+              <div className="px-6 py-6 border-t border-white/10 bg-[#14110D]/60">
                 <div className="mb-6">
                   <span className="block font-mono text-xs tracking-[0.18em] text-[#E8DCC8]/90 uppercase">
                     Your 10% Tithe Goes To
@@ -290,8 +290,8 @@ export default function CartDrawer() {
                           onClick={() => setSelectedCharity(c.id)}
                           className={`group flex w-full items-center gap-3 rounded-sm border px-3 py-3 text-left transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8DCC8]/70 active:opacity-80 ${
                             isSelected
-                              ? "border-[#E8DCC8] bg-[#E8DCC8]/10 text-white"
-                              : "border-white/15 text-white/85 hover:border-white/35 hover:bg-white/[0.03]"
+                              ? "border-[#E8DCC8] bg-[#4A5D3A]/20 text-white"
+                              : "border-white/15 text-white/85 hover:border-[#E8DCC8]/30 hover:bg-white/[0.03]"
                           }`}
                         >
                           <span
@@ -342,13 +342,13 @@ export default function CartDrawer() {
                       Free shipping unlocked
                     </p>
                   ) : (
-                    <p className="font-mono text-xs tracking-[0.12em] text-white/70 uppercase">
+                    <p className="font-mono text-xs tracking-[0.12em] text-[#E8DCC8]/70 uppercase">
                       Add ${remaining.toFixed(2)} for free shipping
                     </p>
                   )}
-                  <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-white/10">
+                  <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-[#E8DCC8]/10">
                     <motion.div
-                      className="h-full rounded-full bg-[#E8DCC8]"
+                      className="h-full rounded-full bg-gradient-to-r from-[#4A5D3A] to-[#E8DCC8]"
                       initial={false}
                       animate={{ width: `${shippingProgress}%` }}
                       transition={{ duration: reduceMotion ? 0 : 0.4, ease: "easeOut" }}
@@ -357,7 +357,7 @@ export default function CartDrawer() {
                 </div>
 
                 <div className="flex items-baseline justify-between mb-1">
-                  <span className="font-mono text-xs tracking-[0.18em] text-white/70 uppercase">
+                  <span className="font-mono text-xs tracking-[0.18em] text-[#E8DCC8]/80 uppercase">
                     Subtotal
                   </span>
                   <span className="font-sans font-black text-xl text-white tabular-nums">
@@ -371,7 +371,7 @@ export default function CartDrawer() {
                 <button
                   onClick={handleCheckout}
                   disabled={checkingOut || !selectedCharity}
-                  className="w-full min-h-[52px] py-4 bg-[#E8DCC8] text-black font-sans font-black text-sm tracking-[0.14em] uppercase transition-colors duration-150 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:ring-[#E8DCC8] disabled:opacity-40 disabled:cursor-not-allowed active:opacity-90"
+                  className="w-full min-h-[52px] py-4 bg-[#4A5D3A] text-[#E8DCC8] font-sans font-black text-sm tracking-[0.14em] uppercase transition-colors duration-150 hover:bg-[#3B4A2F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#14110D] focus-visible:ring-[#E8DCC8] disabled:bg-white/[0.06] disabled:text-white/40 disabled:cursor-not-allowed active:opacity-90"
                 >
                   {checkingOut ? "Processing..." : "Checkout"}
                 </button>
