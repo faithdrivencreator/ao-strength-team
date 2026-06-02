@@ -19,6 +19,7 @@ import {
   shortSleeveVariants as unbreakableShort,
   longSleeveVariants as unbreakableLong,
 } from '@/data/unbreakable';
+import { variants as croptopVariants } from '@/data/croptop';
 
 // Server-side variant lookup so we can resolve the exact shirt image (garment +
 // emblem) the customer chose. The cart only forwards slug / color / size /
@@ -29,6 +30,9 @@ const VARIANT_LOOKUP: Record<string, { short: ImageVariant[]; long: ImageVariant
   'ao-warpaint': { short: warpaintShort, long: warpaintLong },
   'ao-cornerstone': { short: cornerstoneShort, long: cornerstoneLong },
   'ao-unbreakable': { short: unbreakableShort, long: unbreakableLong },
+  // Crop is single-style; both keys map to the one variant list because the
+  // checkout image lookup defaults to 'short' when no sleeve is encoded.
+  'ao-croptop': { short: croptopVariants, long: croptopVariants },
 };
 
 interface CheckoutItem {
@@ -157,10 +161,47 @@ export async function POST(request: NextRequest) {
       };
     });
 
+    // Shipping policy: flat $7.95, free on orders $75 or more. The threshold is
+    // evaluated on the pre-discount subtotal (sum of line items), matching the
+    // public shipping page. USPS Priority, 3-5 business days.
+    const subtotalCents = lineItems.reduce(
+      (sum, li) => sum + li.price_data.unit_amount * li.quantity,
+      0,
+    );
+    const FREE_SHIPPING_THRESHOLD_CENTS = 7500;
+    const FLAT_SHIPPING_CENTS = 795;
+    const deliveryEstimate = {
+      minimum: { unit: 'business_day' as const, value: 3 },
+      maximum: { unit: 'business_day' as const, value: 5 },
+    };
+    const shippingOptions =
+      subtotalCents >= FREE_SHIPPING_THRESHOLD_CENTS
+        ? [
+            {
+              shipping_rate_data: {
+                type: 'fixed_amount' as const,
+                fixed_amount: { amount: 0, currency: 'usd' },
+                display_name: 'Free Shipping',
+                delivery_estimate: deliveryEstimate,
+              },
+            },
+          ]
+        : [
+            {
+              shipping_rate_data: {
+                type: 'fixed_amount' as const,
+                fixed_amount: { amount: FLAT_SHIPPING_CENTS, currency: 'usd' },
+                display_name: 'Standard Shipping',
+                delivery_estimate: deliveryEstimate,
+              },
+            },
+          ];
+
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       customer_creation: 'always',
       line_items: lineItems,
+      shipping_options: shippingOptions,
       allow_promotion_codes: true,
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/shop`,

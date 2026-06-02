@@ -103,6 +103,29 @@ const products: Product[] = [
     tags: ['cornerstone', 'warm-stone', 'collection', 'short-sleeve', 'long-sleeve'],
     status: 'in-stock',
   },
+  {
+    slug: 'ao-croptop',
+    name: 'AO Cornerstone Crop',
+    price: 34.99,
+    description:
+      'AO Cornerstone Crop. A BELLA+CANVAS 8882 flowy cropped tee in 65/35 poly/viscose with a modest crop, the boxed ALPHA, cross, OMEGA emblem on the front chest and a small cross at the nape. Cut for women in sizes S to 2XL.',
+    scripture:
+      'The stone the builders rejected has become the cornerstone.',
+    scriptureRef: 'Psalm 118:22',
+    images: [
+      '/images/products/croptop/black-white-front.webp',
+      '/images/products/croptop/heather-dust-black-front.webp',
+      '/images/products/croptop/white-black-front.webp',
+    ],
+    variants: [
+      { color: 'Black', colorHex: '#0a0a0a', sizes: ['S', 'M', 'L', 'XL', '2XL'], inStock: true },
+      { color: 'Heather Dust', colorHex: '#D9CFC2', sizes: ['S', 'M', 'L', 'XL', '2XL'], inStock: true },
+      { color: 'White', colorHex: '#f5f5f5', sizes: ['S', 'M', 'L', 'XL', '2XL'], inStock: true },
+    ],
+    category: 'collections',
+    tags: ['croptop', 'cornerstone', 'womens', 'crop', 'collection'],
+    status: 'in-stock',
+  },
 ];
 
 export function getProduct(slug: string): Product | undefined {

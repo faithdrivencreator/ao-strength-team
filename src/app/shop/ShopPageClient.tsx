@@ -11,6 +11,10 @@ const MODEL_SHOTS: Record<string, { front: string; back: string }> = {
     front: "/images/models/cornerstone/woman-front.webp",
     back: "/images/models/cornerstone/woman-back.webp",
   },
+  "ao-croptop": {
+    front: "/images/models/croptop/woman-front.webp",
+    back: "/images/products/croptop/black-white.webp",
+  },
   "ao-warpaint": {
     front: "/images/models/warpaint/man-front.webp",
     back: "/images/models/warpaint/man-back.webp",
