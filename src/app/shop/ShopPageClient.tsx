@@ -5,11 +5,13 @@ import ProductCard from "@/components/ProductCard";
 
 const products = getAllProducts();
 
-// Featured on-model shot per collection (woman, man, woman) for visual variety.
+// Featured on-model cover per collection, balanced 2 male / 2 female across the
+// four cards: Warpaint (man), Unbreakable (woman), Cornerstone (man), Crop Top
+// (woman). Crop Top is women's only, so Cornerstone carries the second male.
 const MODEL_SHOTS: Record<string, { front: string; back: string }> = {
   "ao-cornerstone": {
-    front: "/images/models/cornerstone/woman-front.webp",
-    back: "/images/models/cornerstone/woman-back.webp",
+    front: "/images/models/cornerstone/man-front.webp",
+    back: "/images/models/cornerstone/man-back.webp",
   },
   "ao-croptop": {
     front: "/images/models/croptop/woman-front.webp",
@@ -51,15 +53,17 @@ export default function ShopPageClient() {
           </div>
         </div>
 
-        {/* Product grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Product grid - four collections in a balanced 2 x 2 on desktop.
+            Constrained width so the cards read as large editorial tiles
+            rather than stretching the full 1440 container. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-[1120px] mx-auto">
           {products.map((product, i) => {
             const shots = MODEL_SHOTS[product.slug];
             return (
               <ProductCard
                 key={product.slug}
                 product={product}
-                priority={i < 3}
+                priority={i < 4}
                 onModelFront={shots?.front}
                 onModelBack={shots?.back}
               />
