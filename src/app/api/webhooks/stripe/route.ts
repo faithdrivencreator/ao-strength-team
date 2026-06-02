@@ -127,6 +127,7 @@ async function extractOrderDetails(session: Stripe.Checkout.Session) {
           : {};
 
       const sleeveMeta = metadata.sleeve ?? '';
+      const emblemMeta = metadata.emblem_color ?? '';
 
       return {
         name: item.description ?? 'Product',
@@ -138,6 +139,12 @@ async function extractOrderDetails(session: Stripe.Checkout.Session) {
         color: metadata.color || '',
         size: metadata.size || '',
         sleeve: sleeveMeta === 'n/a' ? '' : sleeveMeta,
+        // Garment and emblem are stamped as separate fields at checkout so the
+        // print partner sees them distinctly. Older orders fall back to the
+        // combined color string for the garment.
+        garmentColor: metadata.garment_color || metadata.color || '',
+        emblemColor: emblemMeta === 'n/a' ? '' : emblemMeta,
+        variantImagePath: metadata.variant_image || '',
       };
     }) ?? [];
 
@@ -312,9 +319,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         items: order.lineItems.map((i) => ({
           collection: i.collection,
           sleeve: i.sleeve,
-          color: i.color,
+          garmentColor: i.garmentColor,
+          emblemColor: i.emblemColor,
           size: i.size,
           quantity: i.quantity,
+          imageUrl: i.variantImagePath ? `${SITE_URL}${i.variantImagePath}` : '',
         })),
       };
 

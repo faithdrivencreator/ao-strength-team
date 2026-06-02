@@ -7,6 +7,29 @@ import {
   type Sleeve,
 } from '@/data/products';
 import { isValidCharityId, getCharity } from '@/data/charities';
+import {
+  shortSleeveVariants as warpaintShort,
+  longSleeveVariants as warpaintLong,
+} from '@/data/warpaint';
+import {
+  shortSleeveVariants as cornerstoneShort,
+  longSleeveVariants as cornerstoneLong,
+} from '@/data/cornerstone';
+import {
+  shortSleeveVariants as unbreakableShort,
+  longSleeveVariants as unbreakableLong,
+} from '@/data/unbreakable';
+
+// Server-side variant lookup so we can resolve the exact shirt image (garment +
+// emblem) the customer chose. The cart only forwards slug / color / size /
+// sleeve, so the image is resolved here from base product data.
+type ImageVariant = { garmentColor: string; printColor: string; image: string };
+
+const VARIANT_LOOKUP: Record<string, { short: ImageVariant[]; long: ImageVariant[] }> = {
+  'ao-warpaint': { short: warpaintShort, long: warpaintLong },
+  'ao-cornerstone': { short: cornerstoneShort, long: cornerstoneLong },
+  'ao-unbreakable': { short: unbreakableShort, long: unbreakableLong },
+};
 
 interface CheckoutItem {
   slug: string;
@@ -89,23 +112,43 @@ export async function POST(request: NextRequest) {
       const sleeveLabel =
         sleeve === 'short' ? 'Short Sleeve' : sleeve === 'long' ? 'Long Sleeve' : '';
 
+      // Split the combined cart color "<Garment> / <Emblem> Print" into its two
+      // parts so the print partner sees garment and emblem as distinct values.
+      const parts = item.color.split(' / ');
+      const garmentColor = (parts[0] ?? item.color).trim();
+      const emblemColor = (parts[1] ?? '').replace(/\s*Print$/i, '').trim();
+
+      // Resolve the exact variant image (garment + emblem) the customer chose.
+      // Default to 'short' for the image lookup only when no sleeve is known.
+      const imageSleeve = sleeve === 'long' ? 'long' : 'short';
+      const variantList = VARIANT_LOOKUP[baseSlug]?.[imageSleeve] ?? [];
+      const matchedVariant = variantList.find(
+        (v) => v.garmentColor === garmentColor && v.printColor === emblemColor,
+      );
+      const variantImage =
+        matchedVariant?.image ?? (product.images.length > 0 ? product.images[0] : '');
+
+      const baseUrl =
+        process.env.NEXT_PUBLIC_BASE_URL ||
+        process.env.NEXT_PUBLIC_SITE_URL ||
+        'http://localhost:3000';
+
       return {
         price_data: {
           currency: 'usd',
           product_data: {
             name: product.name,
             description: `${item.color} / ${item.size}${sleeveLabel ? ` / ${sleeveLabel}` : ''}`,
-            images: product.images.length > 0
-              ? [
-                  `${process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}${product.images[0]}`,
-                ]
-              : undefined,
+            images: variantImage ? [`${baseUrl}${variantImage}`] : undefined,
             metadata: {
               collection: product.name,
               base_slug: baseSlug,
               color: item.color,
               size: item.size,
               sleeve: sleeveLabel || 'n/a',
+              garment_color: garmentColor,
+              emblem_color: emblemColor || 'n/a',
+              variant_image: variantImage,
             },
           },
           unit_amount: Math.round(unitPrice * 100),

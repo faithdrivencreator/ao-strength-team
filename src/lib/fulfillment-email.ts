@@ -17,9 +17,11 @@ export const PRINT_PARTNER_REPLYTO = 'pete@fluidfaithsolutions.com';
 export interface FulfillmentItem {
   collection: string;
   sleeve: string;
-  color: string;
+  garmentColor: string;
+  emblemColor: string;
   size: string;
   quantity: number;
+  imageUrl: string;
 }
 
 export interface FulfillmentOrder {
@@ -66,21 +68,42 @@ export function buildPrintPartnerEmailHtml(order: FulfillmentOrder): string {
   const INK = '#1a1a1a';
   const MUTED = '#666666';
   const BORDER = '#d4d4d4';
-  const HEADER_BG = '#f2f2f2';
 
   const dash = (v: string) => (v && v.trim() ? esc(v) : '-');
 
-  const itemRows = order.items
-    .map((item, idx) => {
-      const bg = idx % 2 === 0 ? '#ffffff' : '#fafafa';
+  // One card per item: shirt image on the left, a clean spec grid on the right.
+  // Garment color and emblem color are two distinct rows so the print partner
+  // never has to guess which color is the ink.
+  const specRow = (label: string, value: string) => `
+                      <tr>
+                        <td style="padding:5px 16px 5px 0;font-family:${FONT};font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${MUTED};white-space:nowrap;vertical-align:top">${esc(label)}</td>
+                        <td style="padding:5px 0;font-family:${FONT};font-size:14px;font-weight:700;color:${INK};vertical-align:top">${value}</td>
+                      </tr>`;
+
+  const itemCards = order.items
+    .map((item) => {
+      const imageCell = item.imageUrl
+        ? `<img src="${esc(item.imageUrl)}" width="120" alt="${esc(item.garmentColor)} ${esc(item.collection)}" style="display:block;width:120px;height:auto;border:1px solid #eeeeee;background:#f5f5f5">`
+        : `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="120" style="border-collapse:collapse"><tr><td style="width:120px;height:120px;border:1px solid #eeeeee;background:#f5f5f5;font-family:${FONT};font-size:11px;color:${MUTED};text-align:center;line-height:1.4;vertical-align:middle">No image<br>on file</td></tr></table>`;
+
       return `
-          <tr style="background-color:${bg}">
-            <td style="padding:12px 14px;border-bottom:1px solid ${BORDER};font-family:${FONT};font-size:14px;color:${INK};font-weight:700">${dash(item.collection)}</td>
-            <td style="padding:12px 14px;border-bottom:1px solid ${BORDER};font-family:${FONT};font-size:14px;color:${INK}">${dash(item.sleeve)}</td>
-            <td style="padding:12px 14px;border-bottom:1px solid ${BORDER};font-family:${FONT};font-size:14px;color:${INK}">${dash(item.color)}</td>
-            <td style="padding:12px 14px;border-bottom:1px solid ${BORDER};font-family:${FONT};font-size:14px;color:${INK};text-align:center">${dash(item.size)}</td>
-            <td style="padding:12px 14px;border-bottom:1px solid ${BORDER};font-family:${FONT};font-size:14px;color:${INK};text-align:center;font-weight:700">${esc(String(item.quantity))}</td>
-          </tr>`;
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;border:1px solid ${BORDER};margin-bottom:14px">
+            <tr>
+              <td width="130" style="width:130px;padding:14px;vertical-align:top">
+                ${imageCell}
+              </td>
+              <td style="padding:14px 14px 14px 4px;vertical-align:top">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse">
+                  ${specRow('Design / Collection', dash(item.collection))}
+                  ${specRow('Sleeve', dash(item.sleeve))}
+                  ${specRow('Garment Color', dash(item.garmentColor))}
+                  ${specRow('Emblem Color', dash(item.emblemColor))}
+                  ${specRow('Size', dash(item.size))}
+                  ${specRow('Quantity', esc(String(item.quantity)))}
+                </table>
+              </td>
+            </tr>
+          </table>`;
     })
     .join('');
 
@@ -142,17 +165,8 @@ export function buildPrintPartnerEmailHtml(order: FulfillmentOrder): string {
         <!-- SECTION 2: PRINT SPEC -->
         ${sectionLabel('SECTION 2', 'PRINT SPEC')}
         <tr>
-          <td style="padding:6px 28px 4px 28px">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;border:1px solid ${BORDER}">
-              <tr style="background-color:${HEADER_BG}">
-                <th style="padding:11px 14px;border-bottom:2px solid ${INK};font-family:${FONT};font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${INK};text-align:left">Design / Collection</th>
-                <th style="padding:11px 14px;border-bottom:2px solid ${INK};font-family:${FONT};font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${INK};text-align:left">Sleeve</th>
-                <th style="padding:11px 14px;border-bottom:2px solid ${INK};font-family:${FONT};font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${INK};text-align:left">Garment Color</th>
-                <th style="padding:11px 14px;border-bottom:2px solid ${INK};font-family:${FONT};font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${INK};text-align:center">Size</th>
-                <th style="padding:11px 14px;border-bottom:2px solid ${INK};font-family:${FONT};font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${INK};text-align:center">Qty</th>
-              </tr>
-              ${itemRows}
-            </table>
+          <td style="padding:10px 28px 4px 28px">
+            ${itemCards}
           </td>
         </tr>
 
