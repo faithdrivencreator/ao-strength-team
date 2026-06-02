@@ -108,7 +108,7 @@ const products: Product[] = [
     name: 'AO Cornerstone Crop',
     price: 34.99,
     description:
-      'AO Cornerstone Crop. A BELLA+CANVAS 8882 flowy cropped tee in 65/35 poly/viscose with a modest crop, the boxed ALPHA, cross, OMEGA emblem on the front chest and a small cross at the nape. Cut for women in sizes S to 2XL.',
+      'AO Cornerstone Crop. A flowy cropped tee in soft 65/35 poly-viscose with a modest crop, the boxed ALPHA, cross, OMEGA emblem on the front chest and a small cross at the nape. Cut for women in sizes S to 2XL.',
     scripture:
       'The stone the builders rejected has become the cornerstone.',
     scriptureRef: 'Psalm 118:22',

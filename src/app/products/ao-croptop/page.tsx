@@ -4,7 +4,7 @@ import CropTopShowcase from "@/components/CropTopShowcase";
 export const metadata: Metadata = {
   title: "AO Cornerstone Crop | Alpha Omega Strength Team",
   description:
-    "AO Cornerstone Crop - the BELLA+CANVAS flowy cropped tee carrying the boxed ALPHA, cross, OMEGA emblem on the chest and a cross at the nape. Modest crop, women's sizing S to 2XL, built to train in, built to believe in.",
+    "AO Cornerstone Crop - a flowy cropped tee carrying the boxed ALPHA, cross, OMEGA emblem on the chest and a cross at the nape. Modest crop, women's sizing S to 2XL, built to train in, built to believe in.",
   openGraph: {
     title: "AO Cornerstone Crop | Alpha Omega Strength Team",
     description:

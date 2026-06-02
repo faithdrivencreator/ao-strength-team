@@ -51,14 +51,6 @@ export const shortSleeveVariants: UnbreakableVariant[] = [
     image: "/images/products/unbreakable/short-sleeve/military-green-black.webp",
   },
   {
-    id: "military-green-gray",
-    garmentColor: "Military Green",
-    garmentHex: "#4A5D3A",
-    printColor: "Gray",
-    printHex: "#737373",
-    image: "/images/products/unbreakable/short-sleeve/military-green-gray.webp",
-  },
-  {
     id: "military-green-white",
     garmentColor: "Military Green",
     garmentHex: "#4A5D3A",
@@ -108,14 +100,6 @@ export const longSleeveVariants: UnbreakableVariant[] = [
     printColor: "Black",
     printHex: "#0a0a0a",
     image: "/images/products/unbreakable/long-sleeve/military-green-black.webp",
-  },
-  {
-    id: "military-green-gray",
-    garmentColor: "Military Green",
-    garmentHex: "#4A5D3A",
-    printColor: "Gray",
-    printHex: "#737373",
-    image: "/images/products/unbreakable/long-sleeve/military-green-gray.webp",
   },
   {
     id: "military-green-white",

@@ -47,7 +47,7 @@ function relIndex(active: number, target: number, len: number): number {
 /* Picker constants                                                   */
 /* ------------------------------------------------------------------ */
 
-// Order: gritty -> light. Drives chip ordering. BC8882 ships in only these 3.
+// Order: gritty -> light. Drives chip ordering. Ships in only these 3 colors.
 const GARMENT_ORDER: Array<{ name: string; hex: string }> = [
   { name: "Black", hex: "#0a0a0a" },
   { name: "Heather Dust", hex: "#D9CFC2" },
@@ -88,8 +88,8 @@ export default function CropTopShowcase() {
   const [isMobile, setIsMobile] = useState(false);
   const [announce, setAnnounce] = useState("");
   const [hasSwiped, setHasSwiped] = useState(false);
-  // Whether the active card is showing the shirt FRONT (default is BACK).
-  const [showFront, setShowFront] = useState(false);
+  // Whether the active card is flipped to the shirt BACK (default is FRONT).
+  const [showBack, setShowBack] = useState(false);
 
   const stageRef = useRef<HTMLDivElement>(null);
   const dragX = useMotionValue(0);
@@ -212,9 +212,9 @@ export default function CropTopShowcase() {
     );
   }, [activeVariant.garmentColor, activeVariant.printColor]);
 
-  /* ----- snap back to the BACK view when the active colorway changes ----- */
+  /* ----- snap to the FRONT view when the active colorway changes ----- */
   useEffect(() => {
-    setShowFront(false);
+    setShowBack(false);
   }, [activeVariant.id]);
 
   /* ----- drag-to-advance ----- */
@@ -510,15 +510,15 @@ export default function CropTopShowcase() {
                       type="button"
                       onClick={() =>
                         isActive
-                          ? setShowFront((prev) => !prev)
+                          ? setShowBack((prev) => !prev)
                           : selectVariant(variants[idx])
                       }
-                      onHoverStart={() => isActive && setShowFront(true)}
-                      onHoverEnd={() => isActive && setShowFront(false)}
+                      onHoverStart={() => isActive && setShowBack(true)}
+                      onHoverEnd={() => isActive && setShowBack(false)}
                       aria-roledescription="slide"
                       aria-label={
                         isActive
-                          ? `${v.garmentColor} garment with ${v.printColor} print. Showing ${showFront ? "front" : "back"}. Activate to view the ${showFront ? "back" : "front"}.`
+                          ? `${v.garmentColor} garment with ${v.printColor} print. Showing ${showBack ? "back" : "front"}. Activate to view the ${showBack ? "front" : "back"}.`
                           : `${v.garmentColor} garment with ${v.printColor} print`
                       }
                       aria-current={isActive ? "true" : undefined}
@@ -560,9 +560,9 @@ export default function CropTopShowcase() {
                       }
                       transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
                     >
-                      {/* Base layer: shirt BACK (always rendered) */}
+                      {/* Base layer: shirt FRONT (always rendered) */}
                       <Image
-                        src={v.image}
+                        src={frontSrc}
                         alt={`${PRODUCT_NAME} - ${v.garmentColor} with ${v.printColor} print`}
                         fill
                         sizes="(max-width: 768px) 90vw, 600px"
@@ -570,20 +570,20 @@ export default function CropTopShowcase() {
                         className="object-cover"
                         draggable={false}
                       />
-                      {/* Active-only cross-fade layer: shirt FRONT on hover / tap */}
+                      {/* Active-only cross-fade layer: shirt BACK on hover / tap */}
                       {isActive && (
                         <div
                           aria-hidden
                           className="absolute inset-0"
                           style={{
-                            opacity: showFront ? 1 : 0,
+                            opacity: showBack ? 1 : 0,
                             transition: prefersReducedMotion
                               ? undefined
                               : "opacity 300ms ease",
                           }}
                         >
                           <Image
-                            src={frontSrc}
+                            src={v.image}
                             alt=""
                             fill
                             sizes="(max-width: 768px) 90vw, 600px"
@@ -606,7 +606,7 @@ export default function CropTopShowcase() {
                           aria-hidden
                           className="pointer-events-none absolute bottom-3 left-3 rounded-full bg-[#1c1814]/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-[#E8DCC8] backdrop-blur-sm"
                         >
-                          {showFront ? "View Back" : "View Front"}
+                          {showBack ? "View Front" : "View Back"}
                         </span>
                       )}
                     </motion.button>

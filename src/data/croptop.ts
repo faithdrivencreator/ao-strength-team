@@ -1,7 +1,7 @@
 /**
  * AO Cornerstone Crop - variant data
  *
- * BELLA+CANVAS BC8882 women's flowy cropped tee carrying the Cornerstone
+ * Women's flowy cropped tee (poly-viscose) carrying the Cornerstone
  * emblem (boxed ALPHA, cross, OMEGA) on the front chest and a small cross at
  * the back of the neck. Single garment style, no sleeve length variants.
  *
