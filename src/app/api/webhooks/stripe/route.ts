@@ -14,6 +14,14 @@ import { stripe } from '@/lib/stripe';
 import { Resend } from 'resend';
 import { renderAOEmail } from '@/lib/email-shell';
 import { sendMetaCapiPurchase } from '@/lib/meta-capi';
+import {
+  PRINT_PARTNER_TO,
+  PRINT_PARTNER_FROM,
+  PRINT_PARTNER_REPLYTO,
+  buildPrintPartnerSubject,
+  buildPrintPartnerEmailHtml,
+  type FulfillmentOrder,
+} from '@/lib/fulfillment-email';
 
 export const runtime = 'nodejs';
 
@@ -104,16 +112,34 @@ async function addToCustomersAudience(email: string, firstName: string | null) {
 async function extractOrderDetails(session: Stripe.Checkout.Session) {
   const sessionWithItems = await stripe.checkout.sessions.retrieve(
     session.id,
-    { expand: ['line_items'] }
+    { expand: ['line_items.data.price.product'] }
   );
 
   const lineItems =
-    sessionWithItems.line_items?.data.map((item) => ({
-      name: item.description ?? 'Product',
-      quantity: item.quantity ?? 1,
-      unitAmount: (item.price?.unit_amount ?? 0) / 100,
-      subtotal: (item.amount_total ?? 0) / 100,
-    })) ?? [];
+    sessionWithItems.line_items?.data.map((item) => {
+      // The expanded product carries the structured variant fields stamped at
+      // checkout. It can come back as a string id (not expanded) or a deleted
+      // product, so guard before reading metadata.
+      const product = item.price?.product;
+      const metadata =
+        product && typeof product === 'object' && 'metadata' in product
+          ? product.metadata ?? {}
+          : {};
+
+      const sleeveMeta = metadata.sleeve ?? '';
+
+      return {
+        name: item.description ?? 'Product',
+        quantity: item.quantity ?? 1,
+        unitAmount: (item.price?.unit_amount ?? 0) / 100,
+        subtotal: (item.amount_total ?? 0) / 100,
+        // Structured variant for the print-partner work order.
+        collection: metadata.collection || item.description || 'AO Tee',
+        color: metadata.color || '',
+        size: metadata.size || '',
+        sleeve: sleeveMeta === 'n/a' ? '' : sleeveMeta,
+      };
+    }) ?? [];
 
   return {
     customerEmail: session.customer_details?.email ?? '',
@@ -259,6 +285,49 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       console.log('[Webhook] Order notification email sent to Pete');
     } catch (err) {
       console.error('[Webhook] Failed to send Pete alert:', err);
+    }
+
+    // ─── Print-partner work order (Frank at Prodigy) ───────────────────────
+    // Best-effort: this NEVER throws into the order flow. Same pattern as the
+    // Pete alert - on failure we only console.error and move on.
+    try {
+      const frankShippingLines = order.shippingAddress
+        ? [
+            order.shippingAddress.line1,
+            order.shippingAddress.line2,
+            `${order.shippingAddress.city ?? ''}, ${order.shippingAddress.state ?? ''} ${order.shippingAddress.postal_code ?? ''}`.trim(),
+            order.shippingAddress.country,
+          ].filter((line): line is string => Boolean(line && line.trim()))
+        : ['Address on file with Stripe - confirm before shipping'];
+
+      const fulfillmentOrder: FulfillmentOrder = {
+        orderRef,
+        orderDate: new Date().toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }),
+        customerName: order.customerName || 'Customer',
+        shippingLines: frankShippingLines,
+        items: order.lineItems.map((i) => ({
+          collection: i.collection,
+          sleeve: i.sleeve,
+          color: i.color,
+          size: i.size,
+          quantity: i.quantity,
+        })),
+      };
+
+      await getResend().emails.send({
+        from: PRINT_PARTNER_FROM,
+        to: PRINT_PARTNER_TO,
+        replyTo: PRINT_PARTNER_REPLYTO,
+        subject: buildPrintPartnerSubject(orderRef),
+        html: buildPrintPartnerEmailHtml(fulfillmentOrder),
+      });
+      console.log('[Webhook] Print-partner work order sent to Frank');
+    } catch (err) {
+      console.error('[Webhook] Failed to send print-partner work order:', err);
     }
 
     // ─── Customer-facing flow ──────────────────────────────────────────────

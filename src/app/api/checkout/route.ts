@@ -76,23 +76,37 @@ export async function POST(request: NextRequest) {
     }
 
     const lineItems = body.items.map((item) => {
-      const { baseSlug } = parseProductSlug(item.slug);
+      const { baseSlug, sleeve: slugSleeve } = parseProductSlug(item.slug);
       // Non-null assertions are safe: the validation pass above already
       // confirmed the product exists and the unit price resolves.
       const product = getProduct(baseSlug)!;
       const unitPrice = getAuthoritativeUnitPrice(item.slug, item.sleeve)!;
+
+      // Resolve the sleeve so the full variant (color / size / sleeve) flows
+      // through to Stripe - the customer receipt and the print-partner work
+      // order both depend on it.
+      const sleeve = slugSleeve ?? item.sleeve;
+      const sleeveLabel =
+        sleeve === 'short' ? 'Short Sleeve' : sleeve === 'long' ? 'Long Sleeve' : '';
 
       return {
         price_data: {
           currency: 'usd',
           product_data: {
             name: product.name,
-            description: `${item.color} / ${item.size}`,
+            description: `${item.color} / ${item.size}${sleeveLabel ? ` / ${sleeveLabel}` : ''}`,
             images: product.images.length > 0
               ? [
                   `${process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}${product.images[0]}`,
                 ]
               : undefined,
+            metadata: {
+              collection: product.name,
+              base_slug: baseSlug,
+              color: item.color,
+              size: item.size,
+              sleeve: sleeveLabel || 'n/a',
+            },
           },
           unit_amount: Math.round(unitPrice * 100),
         },
