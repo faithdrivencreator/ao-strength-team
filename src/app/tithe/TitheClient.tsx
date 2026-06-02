@@ -9,7 +9,7 @@ const charities = [
   { name: "World Vision", theme: "CLEAN WATER & COMMUNITY", blurb: "Helping vulnerable families break the cycle of poverty with clean water and sustainable support.", logo: "/images/charities/world-vision.svg", url: "https://www.worldvision.org" },
 ];
 
-export default function CharitiesClient() {
+export default function TitheClient() {
   return (
     <div className="flex flex-col overflow-x-hidden bg-black">
       {/* ── HERO / INTRO ── */}
