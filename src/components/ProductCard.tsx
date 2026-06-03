@@ -17,8 +17,8 @@ function displayName(name: string): string {
 }
 
 function fromPrice(product: Product): string {
-  // getDisplayPrice returns the starting (short-sleeve) price, e.g. "from $34.99"
-  // for multi-sleeve collections or "$34.99" for single-sleeve products.
+  // getDisplayPrice returns the starting (short-sleeve) price, e.g. "from $29.99"
+  // for multi-sleeve collections or "$25.99" for single-sleeve products.
   const display = getDisplayPrice(product);
   const match = display.match(/\$[\d.]+/);
   const amount = match ? match[0] : `$${product.price.toFixed(2)}`;

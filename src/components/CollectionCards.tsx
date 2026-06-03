@@ -28,7 +28,7 @@ interface CollectionConfig {
   colorways: Colorway[];
 }
 
-const PRICE_LABEL = "From $34.99";
+const PRICE_LABEL = "From $29.99";
 
 /** Build a Colorway from a collection folder + file stem. */
 function cw(collection: string, key: string): Colorway {

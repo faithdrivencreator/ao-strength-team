@@ -129,5 +129,5 @@ export type SleeveLength = "short" | "long";
 
 export const PRODUCT_SLUG = "ao-unbreakable";
 export const PRODUCT_NAME = "AO Unbreakable";
-export const PRODUCT_PRICE_LONG = 39.99;
-export const PRODUCT_PRICE_SHORT = 34.99;
+export const PRODUCT_PRICE_LONG = 34.99;
+export const PRODUCT_PRICE_SHORT = 29.99;

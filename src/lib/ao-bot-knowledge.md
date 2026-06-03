@@ -58,7 +58,7 @@ Do not:
 ### Example On-Brand Bot Sentences
 
 1. "The Warpaint Collection is built on Psalm 144:1: He trains my hands for war, my fingers for battle. That is what the mark on the chest represents."
-2. "Short Sleeve is $34.99. Long Sleeve is $39.99. Both are the same heavyweight cotton, same print."
+2. "Short Sleeve is $29.99. Long Sleeve is $34.99. Both are the same heavyweight cotton, same print."
 3. "If you are between sizes, the standard fit runs true to size. Go up one if you prefer room to train."
 4. "Ten percent of your order goes to the charity you choose at checkout. That is the tithe model - built in, not an afterthought."
 5. "Cornerstone is for the ones whose foundation does not move. The boxed Alpha-cross-Omega emblem says it plainly."
@@ -91,8 +91,8 @@ The "Oversized Box" style is an additional option offered within each collection
 **Description:** Hand-painted ALPHA OMEGA mark on heavyweight cotton. Available in Short Sleeve and Long Sleeve, ten colorways across the Warm Stone series.
 
 **Prices:**
-- Short Sleeve: $34.99
-- Long Sleeve: $39.99
+- Short Sleeve: $29.99
+- Long Sleeve: $34.99
 
 **Sizes:** S, M, L, XL, 2XL, 3XL
 
@@ -123,7 +123,7 @@ The "Oversized Box" style is an additional option offered within each collection
 | White | Black |
 | White | Gray |
 
-**Oversized Box style option:** Available on the Warpaint product page. Garment-dyed, dropped-shoulder silhouette. Colorways: Washed Black with Cream print, Vintage White with Black print, Khaki with Black print. Short Sleeve $34.99, Long Sleeve $39.99.
+**Oversized Box style option:** Available on the Warpaint product page. Garment-dyed, dropped-shoulder silhouette. Colorways: Washed Black with Cream print, Vintage White with Black print, Khaki with Black print. Short Sleeve $29.99, Long Sleeve $34.99.
 
 ---
 
@@ -138,8 +138,8 @@ The "Oversized Box" style is an additional option offered within each collection
 **Description:** Forged for the ones who do not bend. Heavyweight cotton, Warm Stone Series. Available in Short Sleeve and Long Sleeve across the Warm Stone series.
 
 **Prices:**
-- Short Sleeve: $34.99
-- Long Sleeve: $39.99
+- Short Sleeve: $29.99
+- Long Sleeve: $34.99
 
 **Sizes:** S, M, L, XL, 2XL, 3XL
 
@@ -167,7 +167,7 @@ The "Oversized Box" style is an additional option offered within each collection
 
 Note: additional colorways may be added as the collection expands. Direct the shopper to the product page for the current full selection.
 
-**Oversized Box style option:** Available on the Unbreakable product page. Colorways: Washed Black with Cream print, Vintage White with Black print, Khaki with Black print. Short Sleeve $34.99, Long Sleeve $39.99.
+**Oversized Box style option:** Available on the Unbreakable product page. Colorways: Washed Black with Cream print, Vintage White with Black print, Khaki with Black print. Short Sleeve $29.99, Long Sleeve $34.99.
 
 ---
 
@@ -182,8 +182,8 @@ Note: additional colorways may be added as the collection expands. Direct the sh
 **Description:** A clean boxed ALPHA, cross, OMEGA emblem pressed into heavyweight cotton, built for the ones whose foundation does not move. Available in Short Sleeve and Long Sleeve across the Warm Stone series.
 
 **Prices:**
-- Short Sleeve: $34.99
-- Long Sleeve: $39.99
+- Short Sleeve: $29.99
+- Long Sleeve: $34.99
 
 **Sizes:** S, M, L, XL, 2XL, 3XL
 
@@ -217,7 +217,7 @@ Note: additional colorways may be added as the collection expands. Direct the sh
 | White | Black |
 | White | Gray |
 
-**Oversized Box style option:** Available on the Cornerstone product page. Colorways: Washed Black with Cream print, Vintage White with Black print, Khaki with Black print. Short Sleeve $34.99, Long Sleeve $39.99.
+**Oversized Box style option:** Available on the Cornerstone product page. Colorways: Washed Black with Cream print, Vintage White with Black print, Khaki with Black print. Short Sleeve $29.99, Long Sleeve $34.99.
 
 ---
 
@@ -229,7 +229,7 @@ Note: additional colorways may be added as the collection expands. Direct the sh
 
 **Fabric:** 65/35 poly-viscose blend. Softer, flowing fabric - different from the heavyweight cotton of the main collections.
 
-**Price:** $34.99 (single price; no sleeve variation - the Crop is one style)
+**Price:** $25.99 (single price; no sleeve variation - the Crop is one style)
 
 **Sizes:** S, M, L, XL, 2XL
 
@@ -249,7 +249,7 @@ No oversized box variant for the Crop. Single style only.
 
 AO uses Stripe for payments. Buy-now-pay-later (BNPL) options are available at checkout: Affirm, Klarna, Afterpay, Cash App Pay, and Link. The bot can surface BNPL as a helpful option for shoppers asking about price. Example: "If you want to spread that out, Affirm, Klarna, and Afterpay are all available at checkout."
 
-Promotion codes are accepted at checkout. The VIP welcome code (TEAMVIP) gives 15% off a first order for email list subscribers.
+Promotion codes are accepted at checkout. The launch code TEAMVIP gives 15% off an order. It is a limited-time code that expires June 9, 2026. Shoppers enter it in the promotion code field on the checkout page.
 
 ---
 
@@ -544,10 +544,10 @@ AO publishes a faith-and-training blog called The Journal at /blog. A new articl
 
 | Topic | Answer |
 |---|---|
-| Short Sleeve price | $34.99 (Warpaint, Unbreakable, Cornerstone, Crop) |
-| Long Sleeve price | $39.99 (Warpaint, Unbreakable, Cornerstone) |
-| Crop Top price | $34.99 (single style, no long sleeve option) |
-| Oversized Box style price | $34.99 SS / $39.99 LS (same as standard) |
+| Short Sleeve price | $29.99 (Warpaint, Unbreakable, Cornerstone) |
+| Long Sleeve price | $34.99 (Warpaint, Unbreakable, Cornerstone) |
+| Crop Top price | $25.99 (single style, no long sleeve option) |
+| Oversized Box style price | $29.99 SS / $34.99 LS (same as standard) |
 | Flat shipping | $7.95 |
 | Free shipping threshold | $75.00 or more (pre-discount subtotal) |
 | Carrier and delivery | USPS Priority, 3-5 business days |
@@ -556,7 +556,7 @@ AO publishes a faith-and-training blog called The Journal at /blog. A new articl
 | Charity choice | Buyer picks one of four at checkout |
 | Charity partners | Compassion International, Samaritan's Purse, Mercy Ships, World Vision |
 | BNPL options | Affirm, Klarna, Afterpay, Cash App Pay, Link |
-| VIP discount code | TEAMVIP - 15% off first order (email list subscribers) |
+| VIP discount code | TEAMVIP - 15% off one order, limited-time (expires June 9, 2026) |
 | Returns contact | returns@aostrengthteam.store |
 | Return refund window | Within 5 business days of receipt |
 | Women's item | AO Cornerstone Crop (65/35 poly-viscose, S-2XL, 3 colorways) |

@@ -29,7 +29,7 @@ const products: Product[] = [
   {
     slug: 'ao-warpaint',
     name: 'AO Warpaint Collection',
-    price: 39.99,
+    price: 29.99,
     description:
       'The Warpaint Collection. Hand-painted ALPHA OMEGA mark on heavyweight cotton. Available in Short Sleeve and Long Sleeve, ten colorways across the Warm Stone series.',
     scripture:
@@ -55,7 +55,7 @@ const products: Product[] = [
   {
     slug: 'ao-unbreakable',
     name: 'AO Unbreakable',
-    price: 34.99,
+    price: 29.99,
     description:
       'Unbreakable. Forged for the ones who do not bend. Heavyweight cotton, Warm Stone Series. Available in Short Sleeve and Long Sleeve, seven colorways with ALPHA OMEGA UNBREAKABLE across the chest and STRENGTH TEAM down the sleeve.',
     scripture:
@@ -80,7 +80,7 @@ const products: Product[] = [
   {
     slug: 'ao-cornerstone',
     name: 'AO Cornerstone',
-    price: 34.99,
+    price: 29.99,
     description:
       'AO Cornerstone. A clean boxed ALPHA, cross, OMEGA emblem pressed into heavyweight cotton, built for the ones whose foundation does not move. Available in Short Sleeve and Long Sleeve across the Warm Stone series.',
     scripture:
@@ -106,7 +106,7 @@ const products: Product[] = [
   {
     slug: 'ao-croptop',
     name: 'AO Cornerstone Crop',
-    price: 34.99,
+    price: 25.99,
     description:
       'AO Cornerstone Crop. A flowy cropped tee in soft 65/35 poly-viscose with a modest crop, the boxed ALPHA, cross, OMEGA emblem on the front chest and a small cross at the nape. Cut for women in sizes S to 2XL.',
     scripture:
@@ -145,9 +145,9 @@ export function getProduct(slug: string): Product | undefined {
  * data files (warpaint.ts, unbreakable.ts, cornerstone.ts).
  */
 const SLEEVE_PRICES: Record<string, { short?: number; long?: number }> = {
-  'ao-warpaint': { short: 34.99, long: 39.99 },
-  'ao-unbreakable': { short: 34.99, long: 39.99 },
-  'ao-cornerstone': { short: 34.99, long: 39.99 },
+  'ao-warpaint': { short: 29.99, long: 34.99 },
+  'ao-unbreakable': { short: 29.99, long: 34.99 },
+  'ao-cornerstone': { short: 29.99, long: 34.99 },
 };
 
 export type Sleeve = 'short' | 'long';

@@ -170,5 +170,5 @@ export type SleeveLength = "short" | "long";
 
 export const PRODUCT_SLUG = "ao-warpaint";
 export const PRODUCT_NAME = "AO Warpaint";
-export const PRODUCT_PRICE_LONG = 39.99;
-export const PRODUCT_PRICE_SHORT = 34.99;
+export const PRODUCT_PRICE_LONG = 34.99;
+export const PRODUCT_PRICE_SHORT = 29.99;

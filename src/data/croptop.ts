@@ -49,4 +49,4 @@ export const variants: CropTopVariant[] = [
 
 export const PRODUCT_SLUG = "ao-croptop";
 export const PRODUCT_NAME = "AO Cornerstone Crop";
-export const PRODUCT_PRICE = 34.99;
+export const PRODUCT_PRICE = 25.99;
