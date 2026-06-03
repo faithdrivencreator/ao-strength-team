@@ -41,8 +41,10 @@ const reportIssue = tool({
       .string()
       .describe('Clear description of the problem the customer is reporting'),
     category: z
-      .enum(['bug/broken', 'ux/design', 'checkout/payment', 'content/typo', 'other'])
-      .describe('Best-fit category'),
+      .enum(['broken', 'design', 'checkout', 'typo', 'other'])
+      .describe(
+        'Best-fit category: broken (a feature or functionality not working), design (UX, layout, or visual problem), checkout (checkout or payment trouble), typo (content or wording error), or other.',
+      ),
     pageOrArea: z
       .string()
       .optional()
