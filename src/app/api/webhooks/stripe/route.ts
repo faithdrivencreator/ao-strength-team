@@ -14,6 +14,7 @@ import { stripe } from '@/lib/stripe';
 import { Resend } from 'resend';
 import { renderAOEmail } from '@/lib/email-shell';
 import { sendMetaCapiPurchase } from '@/lib/meta-capi';
+import { getCharity } from '@/data/charities';
 import {
   PRINT_PARTNER_TO,
   PRINT_PARTNER_FROM,
@@ -164,11 +165,77 @@ async function extractOrderDetails(session: Stripe.Checkout.Session) {
       null,
     stripeSessionId: session.id,
     titheCharityName: session.metadata?.tithe_charity_name ?? null,
+    titheCharityId: session.metadata?.tithe_charity ?? null,
     paymentIntent:
       typeof session.payment_intent === 'string'
         ? session.payment_intent
         : (session.payment_intent?.id ?? null),
   };
+}
+
+// ─── Tithe ledger (Notion) ────────────────────────────────────────────────────
+// Best-effort append to the AO Tithe Ledger Notion database. This runs after the
+// order is processed and emails are attempted. It is fully self-guarded: a missing
+// token or any failure is logged and swallowed so it can never block the order or
+// the HTTP 200 response. The 10% is logged as Owed - funds are not auto-segregated;
+// Pete donates manually, then marks the row Donated.
+async function appendTitheLedgerRow(
+  order: Awaited<ReturnType<typeof extractOrderDetails>> & { orderRef: string },
+): Promise<void> {
+  const token = process.env.NOTION_TOKEN;
+  if (!token) {
+    console.log('[Webhook] NOTION_TOKEN not set; skipping tithe ledger append');
+    return;
+  }
+
+  const databaseId = process.env.NOTION_TITHE_DATABASE_ID || 'eefa8921f80e471486c551ce244a3c21';
+  const today = new Date().toISOString().slice(0, 10);
+
+  const properties: Record<string, unknown> = {
+    'Order Ref': { title: [{ text: { content: order.orderRef } }] },
+    'Date': { date: { start: today } },
+    'Customer': { rich_text: [{ text: { content: order.customerName || '' } }] },
+    'Customer Email': { email: order.customerEmail || null },
+    'Gross': { number: order.amountTotal },
+    'Tithe (10%)': { number: Math.round(order.amountTotal * 10) / 100 },
+    'Status': { select: { name: 'Owed' } },
+    'Stripe Session': { rich_text: [{ text: { content: order.stripeSessionId || '' } }] },
+    'Notes': {
+      rich_text: [
+        {
+          text: {
+            content:
+              'Auto-logged from purchase webhook. Funds not auto-segregated; donate then mark Donated.',
+          },
+        },
+      ],
+    },
+  };
+
+  // Notion select rejects a null/empty name, so only set Charity when we have one.
+  if (order.titheCharityName) {
+    properties['Charity'] = { select: { name: order.titheCharityName } };
+  }
+
+  try {
+    const res = await fetch('https://api.notion.com/v1/pages', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Notion-Version': '2022-06-28',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ parent: { database_id: databaseId }, properties }),
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      console.error('[Webhook] Tithe ledger append failed:', res.status, text);
+      return;
+    }
+    console.log('[Webhook] Tithe ledger row created for', order.orderRef);
+  } catch (err) {
+    console.error('[Webhook] Tithe ledger append failed:', err);
+  }
 }
 
 // ─── Webhook handler ──────────────────────────────────────────────────────────
@@ -364,6 +431,25 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
           ].filter((line): line is string => Boolean(line && line.trim()))
         : ['On file with Stripe'];
 
+      // ─── Tithe section copy (personalized by chosen charity) ─────────────
+      // Fires immediately on purchase, BEFORE the 10% is actually disbursed
+      // (disbursement is manual/later). So we frame it as a commitment that is
+      // set aside / goes to the charity - never as a donation already sent.
+      const titheCharity = order.titheCharityId ? getCharity(order.titheCharityId) : undefined;
+      const titheBody: string[] = titheCharity
+        ? (() => {
+            // Convert the ALLCAPS theme to readable sentence-case words.
+            const cause = titheCharity.theme.toLowerCase();
+            return [
+              `You pointed your 10% at ${titheCharity.name}. Because of this order, that tithe is set aside for ${cause} through their work.`,
+              `That is the whole point of this team: strength with a purpose. Thank you for giving with us.`,
+            ];
+          })()
+        : [
+            `Ten percent of this order is set aside for our vetted charity partners.`,
+            `That is the whole point of this team: strength with a purpose. Thank you for giving with us.`,
+          ];
+
       // ─── Email 1 - Order Confirmation (immediate) ────────────────────────
       try {
         await getResend().emails.send({
@@ -393,7 +479,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
               },
               {
                 eyebrow: '04  YOUR 10% TITHE',
-                body: `Ten percent of this order supports ${order.titheCharityName ?? 'our vetted charity partners'}. Thank you for giving with us.`,
+                body: titheBody,
               },
               {
                 eyebrow: '05  QUESTIONS',
@@ -476,6 +562,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         console.log('[Webhook] Returning customer - skipping welcome email');
       }
     }
+
+    // ─── Tithe ledger append (Notion) ──────────────────────────────────────
+    // Last step, after emails are attempted. Internally guarded so it cannot
+    // throw - it can never affect the emails above or the HTTP 200 below.
+    await appendTitheLedgerRow({ ...order, orderRef });
   } catch (err) {
     console.error('[Webhook] Error processing order:', err);
   }
