@@ -80,7 +80,7 @@ export default function CornerstoneShowcase() {
   const { addItem, openCart } = useCart();
   const prefersReducedMotion = useReducedMotion();
 
-  const [sleeve, setSleeve] = useState<SleeveLength>("long");
+  const [sleeve, setSleeve] = useState<SleeveLength>("short");
   // Single source of truth: derive activeVariant + activeIndex from these.
   // Default the configurator to Black when a Black variant exists.
   const defaultVariant =

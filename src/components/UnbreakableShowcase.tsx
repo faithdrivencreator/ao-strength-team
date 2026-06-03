@@ -72,7 +72,7 @@ const RING_COLOR = "#E8DCC8";
 const HAS_SHORT = shortSleeveVariants.length > 0;
 const HAS_LONG = longSleeveVariants.length > 0;
 const SHOW_SLEEVE_TOGGLE = HAS_SHORT && HAS_LONG;
-const DEFAULT_SLEEVE: SleeveLength = HAS_LONG ? "long" : "short";
+const DEFAULT_SLEEVE: SleeveLength = HAS_SHORT ? "short" : "long";
 const DEFAULT_LIST = DEFAULT_SLEEVE === "long" ? longSleeveVariants : shortSleeveVariants;
 
 /* ------------------------------------------------------------------ */
