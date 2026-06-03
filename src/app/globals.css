@@ -243,3 +243,26 @@ img {
   font-weight: 700;
   color: #ffffff;
 }
+
+/* Glowing military-green option toggles (gender / view / style / sleeve).
+   Military-green fill on the pill, neon-green pulsing halo to catch the eye. */
+@keyframes aoToggleGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px 1px rgba(124, 224, 66, 0.45),
+                0 0 16px 3px rgba(124, 224, 66, 0.28);
+  }
+  50% {
+    box-shadow: 0 0 14px 3px rgba(158, 255, 84, 0.90),
+                0 0 30px 9px rgba(124, 224, 66, 0.55);
+  }
+}
+.ao-toggle-glow {
+  animation: aoToggleGlow 1.9s ease-in-out infinite;
+  will-change: box-shadow;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ao-toggle-glow {
+    animation: none;
+    box-shadow: 0 0 14px 3px rgba(140, 240, 76, 0.65);
+  }
+}

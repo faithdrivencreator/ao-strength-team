@@ -491,13 +491,13 @@ export default function CornerstoneShowcase() {
                     aria-pressed={isActive}
                     onClick={() => setHeroGender(g)}
                     className="relative z-10 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-200"
-                    style={{ color: isActive ? "#0a0a0a" : "rgba(255,255,255,0.7)" }}
+                    style={{ color: isActive ? "#ffffff" : "rgba(255,255,255,0.7)" }}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="cornerstone-hero-gender"
-                        className="absolute inset-0 -z-10 rounded-full"
-                        style={{ backgroundColor: "#E8DCC8" }}
+                        className="absolute inset-0 -z-10 rounded-full ao-toggle-glow"
+                        style={{ backgroundColor: "#5f7d33" }}
                         transition={{ type: "spring", stiffness: 380, damping: 32 }}
                       />
                     )}
@@ -516,13 +516,13 @@ export default function CornerstoneShowcase() {
                     aria-pressed={isActive}
                     onClick={() => setHeroSide(sd)}
                     className="relative z-10 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-200"
-                    style={{ color: isActive ? "#0a0a0a" : "rgba(255,255,255,0.7)" }}
+                    style={{ color: isActive ? "#ffffff" : "rgba(255,255,255,0.7)" }}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="cornerstone-hero-side"
-                        className="absolute inset-0 -z-10 rounded-full"
-                        style={{ backgroundColor: "#E8DCC8" }}
+                        className="absolute inset-0 -z-10 rounded-full ao-toggle-glow"
+                        style={{ backgroundColor: "#5f7d33" }}
                         transition={{ type: "spring", stiffness: 380, damping: 32 }}
                       />
                     )}
@@ -570,8 +570,8 @@ export default function CornerstoneShowcase() {
                 {isActive && (
                   <motion.span
                     layoutId="cornerstone-pill"
-                    className="absolute inset-0 -z-10 rounded-full"
-                    style={{ backgroundColor: "#E8DCC8" }}
+                    className="absolute inset-0 -z-10 rounded-full ao-toggle-glow"
+                    style={{ backgroundColor: "#5f7d33" }}
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   />
                 )}

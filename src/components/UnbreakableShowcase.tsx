@@ -468,13 +468,13 @@ export default function UnbreakableShowcase() {
                     aria-pressed={isActive}
                     onClick={() => setHeroGender(g)}
                     className="relative z-10 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-200"
-                    style={{ color: isActive ? "#0a0a0a" : "rgba(255,255,255,0.7)" }}
+                    style={{ color: isActive ? "#ffffff" : "rgba(255,255,255,0.7)" }}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="unbreakable-hero-gender"
-                        className="absolute inset-0 -z-10 rounded-full"
-                        style={{ backgroundColor: "#E8DCC8" }}
+                        className="absolute inset-0 -z-10 rounded-full ao-toggle-glow"
+                        style={{ backgroundColor: "#5f7d33" }}
                         transition={{ type: "spring", stiffness: 380, damping: 32 }}
                       />
                     )}
@@ -493,13 +493,13 @@ export default function UnbreakableShowcase() {
                     aria-pressed={isActive}
                     onClick={() => setHeroSide(sd)}
                     className="relative z-10 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-200"
-                    style={{ color: isActive ? "#0a0a0a" : "rgba(255,255,255,0.7)" }}
+                    style={{ color: isActive ? "#ffffff" : "rgba(255,255,255,0.7)" }}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="unbreakable-hero-side"
-                        className="absolute inset-0 -z-10 rounded-full"
-                        style={{ backgroundColor: "#E8DCC8" }}
+                        className="absolute inset-0 -z-10 rounded-full ao-toggle-glow"
+                        style={{ backgroundColor: "#5f7d33" }}
                         transition={{ type: "spring", stiffness: 380, damping: 32 }}
                       />
                     )}
@@ -542,13 +542,13 @@ export default function UnbreakableShowcase() {
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => toggleSleeve(s)}
                   className="relative z-10 px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-200 md:px-6 md:py-2.5 md:text-[12px]"
-                  style={{ color: isActive ? "#0a0a0a" : "rgba(255,255,255,0.7)" }}
+                  style={{ color: isActive ? "#ffffff" : "rgba(255,255,255,0.7)" }}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="unbreakable-pill"
-                      className="absolute inset-0 -z-10 rounded-full"
-                      style={{ backgroundColor: "#E8DCC8" }}
+                      className="absolute inset-0 -z-10 rounded-full ao-toggle-glow"
+                      style={{ backgroundColor: "#5f7d33" }}
                       transition={{ type: "spring", stiffness: 380, damping: 32 }}
                     />
                   )}
