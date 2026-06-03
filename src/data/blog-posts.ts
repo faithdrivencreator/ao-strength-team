@@ -31,6 +31,7 @@ import trainingWhenLifeFallsApart from "./blog-drafts/training-when-life-falls-a
 import first30Days from "./blog-drafts/first-30-days-of-strength-training";
 import alphaOmegaRevelation from "./blog-drafts/alpha-omega-revelation-22-13-meaning";
 import sabbathRest from "./blog-drafts/sabbath-rest-for-lifters";
+import deadliftForm from "./blog-drafts/deadlift-form-faith-driven-lifter";
 
 export interface BlogPostImage {
   src: string;
@@ -2357,6 +2358,7 @@ blogPosts.push(
   first30Days,
   alphaOmegaRevelation,
   sabbathRest,
+  deadliftForm,
 );
 
 /** All posts, newest first. */
