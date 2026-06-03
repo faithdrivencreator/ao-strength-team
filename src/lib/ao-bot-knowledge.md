@@ -454,7 +454,93 @@ God, thank you. For the breath to train. For the body that moves, even when it a
 
 ---
 
-## 6. Quick Reference
+## 6. The Journal (Blog)
+
+AO publishes a faith-and-training blog called The Journal at /blog. A new article drops regularly. When someone asks about training, nutrition, recovery, faith, identity, or how to start, point them to the matching article by name and link it as [Title](/blog/<slug>). Always recommend a specific post rather than just saying "read the blog." Browse all of them at [The Journal](/blog).
+
+### Published Articles
+
+- **Alpha and Omega: What Revelation 22:13 Means for the Man Under the Bar**
+  - Link: /blog/alpha-omega-revelation-22-13-meaning
+  - Topics: Faith, Identity
+  - Summary: Revelation 22:13 is the last self-introduction Christ gives in the canon - Alpha and Omega, the first and the last. This is the theological frame behind it, the three-part identity framework it gives a lifter, and what changes when you carry it under a barbell.
+
+- **The Beginner's Guide to Starting Strength Training: How to Lift Weights as a Christian**
+  - Link: /blog/beginners-guide-lifting-as-a-christian
+  - Topics: Faith, Training, Discipline, Lifestyle
+  - Summary: Strength training isn't a vanity project - it's an act of stewardship. Here's how to start lifting weights with purpose, with a framework grounded in faith and built to last 90 days.
+
+- **The Christian Woman's Guide to Strength Training: Building a Faithful, Strong Foundation**
+  - Link: /blog/christian-womens-guide-to-strength-training
+  - Topics: Training, Faith, Strength, Identity
+  - Summary: Strength is a biblical virtue - and Proverbs 31:17 makes that clear. This guide covers programming, hormones, identity, and the faith framework Christian women need to train with purpose.
+
+- **The 5 Compound Lifts Every Christian Man Should Know: A Strength Foundation Guide**
+  - Link: /blog/compound-lifts-every-christian-man-should-know
+  - Topics: Training, Faith, Discipline
+  - Summary: Squat, deadlift, bench press, overhead press, barbell row. Five movements built the strongest men in history. This is why they matter, how they form the foundation of any serious training program, and what the theology of hard work has to do with learning them.
+
+- **The Faith-Driven Athlete's Guide to Gym Apparel: Why What You Wear Reflects Who You Are**
+  - Link: /blog/faith-driven-gym-apparel-guide
+  - Topics: Faith, Lifestyle, Identity, Training
+  - Summary: What you put on before you train is a small daily decision about identity. This guide explores the theology of apparel as witness - and how to build a kit that reflects what you actually train for.
+
+- **The Faith-Driven Training Split for Busy Men: A 4-Day Program That Fits a Real Life**
+  - Link: /blog/faith-driven-training-split-for-busy-men
+  - Topics: Training, Discipline, Faith
+  - Summary: If you have 3-4 hours of training time per week, a family to lead, and a God to honor, this 4-day upper/lower split is built for you - with a Sabbath rest day baked in from the start.
+
+- **Your First 30 Days of Strength Training: A Faith-Driven Lifter's Survival Guide**
+  - Link: /blog/first-30-days-of-strength-training
+  - Topics: Training, Faith, Discipline
+  - Summary: Most men quit lifting before week three. This is the 30-day onboarding plan that gets you to day 31 - physically, mentally, and spiritually intact.
+
+- **Fueling a Strength Program on a Real Budget: The Faith-Driven Lifter's Grocery Guide**
+  - Link: /blog/fueling-a-strength-program-on-a-budget
+  - Topics: Nutrition, Training, Discipline
+  - Summary: Most nutrition advice assumes you have $300 a week and no family to feed. This is the actual grocery framework for hitting 180g+ protein under $100 a week - built on stewardship, not supplement sponsorships.
+
+- **Morning vs. Evening Training for the Faith-Driven Lifter: Choosing the Right Window**
+  - Link: /blog/morning-vs-evening-training-faith-driven-lifter
+  - Topics: Training, Discipline, Mindset
+  - Summary: The debate over when to lift is mostly noise. The real question is which window serves your life - your family, your work, your walk with God - and which one quietly consumes it. Here's how to decide.
+
+- **The Faith-Driven Lifter's Guide to Pre-Workout Prayer: A 5-Minute Mental Routine for Strength Training**
+  - Link: /blog/pre-workout-prayer-faith-driven-lifters
+  - Topics: Faith, Mindset, Prayer, Training
+  - Summary: Most pre-workout routines stop at caffeine and a playlist. This is the 5-minute mental and spiritual routine that turns a training session into an act of devotion - and makes you stronger under the bar.
+
+- **The Disciplined Lifter's Guide to Progressive Overload: Training Smarter for Faith-Driven Athletes**
+  - Link: /blog/progressive-overload-for-faith-driven-athletes
+  - Topics: Training, Discipline, Strength
+  - Summary: You've been training for months and the gains have slowed. This is the principle that breaks the plateau - and it maps directly onto what scripture says about growth through intentional stress.
+
+- **The Sabbath Rest for Lifters: Why a Real Day Off Makes You Stronger**
+  - Link: /blog/sabbath-rest-for-lifters
+  - Topics: Recovery, Faith, Wellness
+  - Summary: Most lifters treat the rest day as a problem to manage with active recovery and step counts. Scripture and physiology agree on something harder: one true day off — a full Sabbath — is where the strength actually gets built.
+
+- **The Lifter's Devotional Guide to Training as Worship: Strength Training and Faith**
+  - Link: /blog/training-as-worship
+  - Topics: Faith, Discipline, Training
+  - Summary: What does it mean to lift weights as an act of worship? This devotional guide explores the Hebrew theology of avodah, the New Testament view of the body, and how every hard set can become an offering.
+
+- **The Faith-Driven Man's Guide to Staying in the Gym When Life Falls Apart: Training Through Hard Seasons**
+  - Link: /blog/training-when-life-falls-apart
+  - Topics: Faith, Discipline, Mindset
+  - Summary: Job loss, grief, divorce, the long collapse. The gym is the last place most men go when life breaks. It should be the first. Here is the case for training through hard seasons, and the five-anchor framework that keeps you under the bar without faking it.
+
+- **The Unbreakable Athlete's Guide to Finishing Strong: Faith, Endurance, and the Long Game**
+  - Link: /blog/unbreakable-finishing-strong
+  - Topics: Endurance, Faith, Discipline, Mental Toughness
+  - Summary: Motivation fades. The novelty ends. What keeps a disciplined athlete going for years - not weeks - is something deeper. This is the guide for the long middle of the race.
+
+- **What the Bible Actually Says About Physical Strength: A Lifter's Theological Primer**
+  - Link: /blog/what-the-bible-says-about-physical-strength
+  - Topics: Faith, Training, Identity
+  - Summary: Most Christian fitness content recycles three or four verses. This is the survey you actually need - Old Testament and New, from Genesis to Revelation - on what Scripture says about the body, physical strength, and the stewardship owed to both.
+
+## 7. Quick Reference
 
 | Topic | Answer |
 |---|---|
