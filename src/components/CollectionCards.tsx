@@ -46,15 +46,16 @@ const COLLECTIONS: CollectionConfig[] = [
     displayName: "WARPAINT",
     descriptor: "Hand-painted mark",
     index: "01",
-    // Hero: natural / black (warm cream body) - leads the trio
+    // Hero: military green / black (warm charcoal emblem) - leads the trio (Pete's pick for the cover)
     colorways: [
+      cw("warpaint", "military-green-black"),
+      cw("warpaint", "military-green-white"),
       cw("warpaint", "natural-black"),
       cw("warpaint", "natural-gray"),
       cw("warpaint", "asphalt-white"),
       cw("warpaint", "black-white"),
       cw("warpaint", "white-black"),
       cw("warpaint", "white-gray"),
-      cw("warpaint", "military-green-white"),
     ],
   },
   {
