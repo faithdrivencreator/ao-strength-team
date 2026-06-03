@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import EmailCapture from "@/components/EmailCapture";
+import ChatWidget from "@/components/ChatWidget";
 import MetaPixel from "@/components/MetaPixel";
 import "./globals.css";
 
@@ -116,6 +117,7 @@ export default function RootLayout({
           <Footer />
           <CartDrawer />
           <EmailCapture />
+          <ChatWidget />
         </CartProvider>
       </body>
     </html>

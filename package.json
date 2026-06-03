@@ -9,11 +9,14 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/react": "^3.0.197",
+    "@ai-sdk/xai": "^3.0.93",
     "@portabletext/react": "^4.0.3",
     "@sanity/client": "^7.22.0",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^5.24.0",
     "@stripe/stripe-js": "^9.2.0",
+    "ai": "^6.0.195",
     "motion": "^12.38.0",
     "next": "16.2.4",
     "next-sanity": "^12.4.3",
