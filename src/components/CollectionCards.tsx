@@ -46,9 +46,17 @@ const COLLECTIONS: CollectionConfig[] = [
     displayName: "WARPAINT",
     descriptor: "Hand-painted mark",
     index: "01",
-    // Hero: military green / black (warm charcoal emblem) - leads the trio (Pete's pick for the cover)
+    // Hero: military green / solid black emblem - leads the trio (Pete's pick for the cover).
+    // Short sleeve uses a versioned file (-v2) to bust the Next image cache after a re-render;
+    // long sleeve points at the real long-sleeve render, so this colorway is defined explicitly
+    // rather than via cw() (which would force one shared file stem for both sleeves).
     colorways: [
-      cw("warpaint", "military-green-black"),
+      {
+        key: "military-green-black",
+        name: "MILITARY GREEN / BLACK",
+        ssImage: "/images/products/warpaint/short-sleeve/military-green-black-v2.webp",
+        lsImage: "/images/products/warpaint/long-sleeve/military-green-black.webp",
+      },
       cw("warpaint", "military-green-white"),
       cw("warpaint", "natural-black"),
       cw("warpaint", "natural-gray"),
