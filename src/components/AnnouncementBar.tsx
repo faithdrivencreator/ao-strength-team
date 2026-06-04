@@ -1,3 +1,5 @@
+import { FREE_SHIPPING_THRESHOLD_CENTS, dollars } from "@/lib/shipping";
+
 const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
 const LAUNCH_LABEL = process.env.NEXT_PUBLIC_LAUNCH_DATE_LABEL || "June 2";
 
@@ -14,9 +16,9 @@ export default function AnnouncementBar() {
             </>
           ) : (
             <>
-              FREE SHIPPING ON ORDERS OVER $75
+              FREE US SHIPPING OVER {dollars(FREE_SHIPPING_THRESHOLD_CENTS)}
               <span className="text-white/30 mx-2">//</span>
-              JOIN THE STRENGTH TEAM
+              LAUNCH DROP PRICING IS LIVE
             </>
           )}
         </p>
