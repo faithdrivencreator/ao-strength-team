@@ -153,6 +153,13 @@ const SLEEVE_PRICES: Record<string, { short?: number; long?: number }> = {
 export type Sleeve = 'short' | 'long';
 
 /**
+ * Garment fit. 'mens' = standard retail cut; 'womens' = the women's-cut
+ * equivalent the print partner pulls. Absent is treated as 'mens'.
+ * Pure type - flows cart -> checkout -> webhook -> fulfillment email.
+ */
+export type Fit = 'mens' | 'womens';
+
+/**
  * Normalize a cart line slug into its base product slug + sleeve.
  *
  * Showcase components add items with a slug like `ao-warpaint-short-sleeve`
