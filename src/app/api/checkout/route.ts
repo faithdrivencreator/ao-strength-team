@@ -6,6 +6,7 @@ import {
   parseProductSlug,
   getAuthoritativeUnitPrice,
   type Sleeve,
+  type Fit,
 } from '@/data/products';
 import { isValidCharityId, getCharity } from '@/data/charities';
 import {
@@ -46,6 +47,8 @@ interface CheckoutItem {
   // tampering or drift, never to charge.
   sleeve?: Sleeve;
   price?: number;
+  // Garment fit for fulfillment. Never affects price. Missing => 'mens'.
+  fit?: Fit;
 }
 
 export async function POST(request: NextRequest) {
@@ -143,7 +146,7 @@ export async function POST(request: NextRequest) {
           currency: 'usd',
           product_data: {
             name: product.name,
-            description: `${item.color} / ${item.size}${sleeveLabel ? ` / ${sleeveLabel}` : ''}`,
+            description: `${item.color} / ${item.size}${sleeveLabel ? ` / ${sleeveLabel}` : ''}${item.fit === 'womens' ? " / Women's Fit" : ''}`,
             images: variantImage ? [`${baseUrl}${variantImage}`] : undefined,
             metadata: {
               collection: product.name,
@@ -151,6 +154,7 @@ export async function POST(request: NextRequest) {
               color: item.color,
               size: item.size,
               sleeve: sleeveLabel || 'n/a',
+              fit: item.fit ?? 'mens',
               garment_color: garmentColor,
               emblem_color: emblemColor || 'n/a',
               variant_image: variantImage,
