@@ -19,6 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AoWarpaintPage() {
-  return <WarpaintShowcase />;
+export default async function AoWarpaintPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ fit?: string }>;
+}) {
+  const { fit } = await searchParams;
+  const defaultFit = fit === "womens" ? "womens" : fit === "mens" ? "mens" : undefined;
+  return <WarpaintShowcase defaultFit={defaultFit} />;
 }

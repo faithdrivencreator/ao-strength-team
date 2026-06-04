@@ -19,6 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AoCornerstonePage() {
-  return <CornerstoneShowcase />;
+export default async function AoCornerstonePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ fit?: string }>;
+}) {
+  const { fit } = await searchParams;
+  const defaultFit = fit === "womens" ? "womens" : fit === "mens" ? "mens" : undefined;
+  return <CornerstoneShowcase defaultFit={defaultFit} />;
 }

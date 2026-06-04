@@ -13,6 +13,7 @@ import {
 import { useCart } from "@/contexts/CartContext";
 import ProductInfoPanel from "@/components/ProductInfoPanel";
 import { getProduct } from "@/data/products";
+import type { Fit } from "@/data/products";
 import {
   variants,
   PRODUCT_NAME,
@@ -69,7 +70,7 @@ const RING_COLOR = "#E8DCC8";
 /* Component                                                           */
 /* ------------------------------------------------------------------ */
 
-export default function CropTopShowcase() {
+export default function CropTopShowcase({ defaultFit: _defaultFit }: { defaultFit?: Fit }) {
   const { addItem, openCart } = useCart();
   const prefersReducedMotion = useReducedMotion();
 
@@ -263,6 +264,7 @@ export default function CropTopShowcase() {
       size,
       quantity: 1,
       image: activeVariant.image,
+      fit: "womens",
     });
     openCart();
   }

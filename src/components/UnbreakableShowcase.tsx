@@ -13,6 +13,7 @@ import {
 import { useCart } from "@/contexts/CartContext";
 import ProductInfoPanel from "@/components/ProductInfoPanel";
 import { getProduct } from "@/data/products";
+import type { Fit } from "@/data/products";
 import {
   longSleeveVariants,
   shortSleeveVariants,
@@ -79,7 +80,7 @@ const DEFAULT_LIST = DEFAULT_SLEEVE === "long" ? longSleeveVariants : shortSleev
 /* Component                                                           */
 /* ------------------------------------------------------------------ */
 
-export default function UnbreakableShowcase() {
+export default function UnbreakableShowcase({ defaultFit }: { defaultFit?: Fit }) {
   const { addItem, openCart } = useCart();
   const prefersReducedMotion = useReducedMotion();
 
@@ -96,7 +97,9 @@ export default function UnbreakableShowcase() {
   const [size, setSize] = useState<Size | null>(null);
 
   // On-model hero controls
-  const [heroGender, setHeroGender] = useState<"him" | "her">("him");
+  const [heroGender, setHeroGender] = useState<"him" | "her">(
+    defaultFit === "womens" ? "her" : "him",
+  );
   const [heroSide, setHeroSide] = useState<"front" | "back">("front");
 
   const [isMobile, setIsMobile] = useState(false);
@@ -281,6 +284,7 @@ export default function UnbreakableShowcase() {
       size,
       quantity: 1,
       image: activeVariant.image,
+      fit: heroGender === "her" ? "womens" : "mens",
     });
     openCart();
   }

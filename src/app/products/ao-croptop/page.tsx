@@ -19,6 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AoCropTopPage() {
-  return <CropTopShowcase />;
+export default async function AoCropTopPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ fit?: string }>;
+}) {
+  const { fit } = await searchParams;
+  const defaultFit = fit === "womens" ? "womens" : fit === "mens" ? "mens" : undefined;
+  return <CropTopShowcase defaultFit={defaultFit} />;
 }

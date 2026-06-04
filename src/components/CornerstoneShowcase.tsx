@@ -13,6 +13,7 @@ import {
 import { useCart } from "@/contexts/CartContext";
 import ProductInfoPanel from "@/components/ProductInfoPanel";
 import { getProduct } from "@/data/products";
+import type { Fit } from "@/data/products";
 import {
   longSleeveVariants,
   shortSleeveVariants,
@@ -76,7 +77,7 @@ const RING_COLOR = "#E8DCC8";
 /* Component                                                           */
 /* ------------------------------------------------------------------ */
 
-export default function CornerstoneShowcase() {
+export default function CornerstoneShowcase({ defaultFit }: { defaultFit?: Fit }) {
   const { addItem, openCart } = useCart();
   const prefersReducedMotion = useReducedMotion();
 
@@ -95,7 +96,9 @@ export default function CornerstoneShowcase() {
   const [size, setSize] = useState<Size | null>(null);
 
   // On-model hero controls
-  const [heroGender, setHeroGender] = useState<"him" | "her">("him");
+  const [heroGender, setHeroGender] = useState<"him" | "her">(
+    defaultFit === "womens" ? "her" : "him",
+  );
   const [heroSide, setHeroSide] = useState<"front" | "back">("front");
 
   const [isMobile, setIsMobile] = useState(false);
@@ -299,6 +302,7 @@ export default function CornerstoneShowcase() {
       size,
       quantity: 1,
       image: activeVariant.image,
+      fit: heroGender === "her" ? "womens" : "mens",
     });
     openCart();
   }
