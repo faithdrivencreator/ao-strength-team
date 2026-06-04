@@ -4,7 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
-import type { Product } from "@/data/products";
+import { getProduct, getDisplayPrice, getDisplayCompareAtPrice, type Product } from "@/data/products";
+import PriceTag from "@/components/PriceTag";
 
 /* ------------------------------------------------------------------ */
 /* Local collection config (display layer)                            */
@@ -302,7 +303,12 @@ function CollectionCard({
             {config.descriptor}
           </p>
           <div className="flex items-center justify-between">
-            <span className="font-mono text-sm text-white/60">{PRICE_LABEL}</span>
+            {(() => {
+              const prod = getProduct(config.slug);
+              if (!prod) return <span className="font-mono text-sm text-white/60">{PRICE_LABEL}</span>;
+              const current = Number(getDisplayPrice(prod).match(/[\d.]+/)?.[0] ?? prod.price);
+              return <PriceTag prefix="From" price={current} compareAt={getDisplayCompareAtPrice(prod)} />;
+            })()}
           </div>
         </div>
       </div>

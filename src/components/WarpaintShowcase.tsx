@@ -12,8 +12,9 @@ import {
 } from "motion/react";
 import { useCart } from "@/contexts/CartContext";
 import ProductInfoPanel from "@/components/ProductInfoPanel";
-import { getProduct } from "@/data/products";
+import { getProduct, getCompareAtPrice } from "@/data/products";
 import type { Fit } from "@/data/products";
+import PriceTag from "@/components/PriceTag";
 import {
   longSleeveVariants,
   shortSleeveVariants,
@@ -917,7 +918,11 @@ export default function WarpaintShowcase({ defaultFit }: { defaultFit?: Fit }) {
               className="font-sans text-[32px] font-black leading-none tracking-[-0.01em] md:text-[40px]"
               style={{ color: "#E8DCC8" }}
             >
-              ${price.toFixed(2)}
+              <PriceTag
+                variant="pdp"
+                price={price}
+                compareAt={getCompareAtPrice(PRODUCT_SLUG, sleeve)}
+              />
             </p>
           </div>
 
