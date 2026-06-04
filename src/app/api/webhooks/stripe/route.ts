@@ -129,6 +129,7 @@ async function extractOrderDetails(session: Stripe.Checkout.Session) {
 
       const sleeveMeta = metadata.sleeve ?? '';
       const emblemMeta = metadata.emblem_color ?? '';
+      const fitMeta = metadata.fit === 'womens' ? 'womens' : 'mens';
 
       return {
         name: item.description ?? 'Product',
@@ -145,6 +146,7 @@ async function extractOrderDetails(session: Stripe.Checkout.Session) {
         // combined color string for the garment.
         garmentColor: metadata.garment_color || metadata.color || '',
         emblemColor: emblemMeta === 'n/a' ? '' : emblemMeta,
+        fit: fitMeta as 'mens' | 'womens',
         variantImagePath: metadata.variant_image || '',
       };
     }) ?? [];
@@ -388,6 +390,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
           sleeve: i.sleeve,
           garmentColor: i.garmentColor,
           emblemColor: i.emblemColor,
+          fit: i.fit,
           size: i.size,
           quantity: i.quantity,
           imageUrl: i.variantImagePath ? `${SITE_URL}${i.variantImagePath}` : '',
