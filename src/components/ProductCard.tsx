@@ -1,12 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getDisplayPrice, type Product } from "@/data/products";
+import { getDisplayPrice, getDisplayCompareAtPrice, type Product, type Fit } from "@/data/products";
+import PriceTag from "@/components/PriceTag";
 
 interface ProductCardProps {
   product: Product;
   priority?: boolean;
   onModelFront?: string;
   onModelBack?: string;
+  /** When set, the card links to the PDP pre-set to this fit. */
+  fit?: Fit;
 }
 
 function displayName(name: string): string {
@@ -30,12 +33,13 @@ export default function ProductCard({
   priority = false,
   onModelFront,
   onModelBack,
+  fit,
 }: ProductCardProps) {
   const name = displayName(product.name);
 
   return (
     <Link
-      href={`/products/${product.slug}`}
+      href={fit ? `/products/${product.slug}?fit=${fit}` : `/products/${product.slug}`}
       className="group block rounded-xl overflow-hidden ring-1 ring-white/10 transition-transform duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-[#1c1814]">
@@ -89,16 +93,11 @@ export default function ProductCard({
             {name}
           </h3>
           <div className="mt-2 flex items-center justify-between">
-            <span className="flex items-center gap-2">
-              <span className="font-mono text-[12px] tracking-wide text-white/85">
-                {fromPrice(product)}
-              </span>
-              {product.compareAtPrice && product.compareAtPrice > product.price && (
-                <span className="font-mono text-[12px] text-white/40 line-through">
-                  ${product.compareAtPrice.toFixed(2)}
-                </span>
-              )}
-            </span>
+            <PriceTag
+              prefix="From"
+              price={Number(fromPrice(product).match(/[\d.]+/)?.[0] ?? product.price)}
+              compareAt={getDisplayCompareAtPrice(product)}
+            />
             <span className="flex items-center gap-1.5">
               <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-white/70">
                 EXPLORE
