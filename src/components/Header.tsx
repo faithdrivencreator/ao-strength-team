@@ -7,7 +7,7 @@ import { useCart } from "@/contexts/CartContext";
 
 const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
 // SHOP remains in nav even when locked - it routes to the ShopComingSoon hype page.
-const NAV_ITEMS = ["SHOP", "JOURNAL", "ABOUT", "TITHE", "CONTACT"];
+const NAV_ITEMS = ["MEN", "WOMEN", "SHOP", "JOURNAL", "ABOUT", "TITHE", "CONTACT"];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
