@@ -107,6 +107,7 @@ const products: Product[] = [
     slug: 'ao-croptop',
     name: 'AO Cornerstone Crop',
     price: 25.99,
+    compareAtPrice: 34.99,
     description:
       'AO Cornerstone Crop. A flowy cropped tee in soft 65/35 poly-viscose with a modest crop, the boxed ALPHA, cross, OMEGA emblem on the front chest and a small cross at the nape. Cut for women in sizes S to 2XL.',
     scripture:
@@ -148,6 +149,17 @@ const SLEEVE_PRICES: Record<string, { short?: number; long?: number }> = {
   'ao-warpaint': { short: 29.99, long: 34.99 },
   'ao-unbreakable': { short: 29.99, long: 34.99 },
   'ao-cornerstone': { short: 29.99, long: 34.99 },
+};
+
+/**
+ * Former (pre-June-2-drop) per-sleeve prices, shown struck-through.
+ * DISPLAY ONLY - never feeds checkout. These are the genuine prices charged
+ * before the launch markdown: SS was 34.99, LS was 39.99.
+ */
+const SLEEVE_COMPARE_PRICES: Record<string, { short?: number; long?: number }> = {
+  'ao-warpaint': { short: 34.99, long: 39.99 },
+  'ao-unbreakable': { short: 34.99, long: 39.99 },
+  'ao-cornerstone': { short: 34.99, long: 39.99 },
 };
 
 export type Sleeve = 'short' | 'long';
@@ -248,6 +260,43 @@ export function getDisplayPrice(product: Product): string {
   }
 
   return `$${product.price.toFixed(2)}`;
+}
+
+/**
+ * Former price for a specific line (display-only struck price).
+ * Resolves per-sleeve compare for the standard collections, else the
+ * product-level compareAtPrice (e.g. the crop top).
+ */
+export function getCompareAtPrice(slug: string, sleeveHint?: Sleeve): number | undefined {
+  const { baseSlug, sleeve: slugSleeve } = parseProductSlug(slug);
+  const sleeve = slugSleeve ?? sleeveHint;
+  const comparePrices = SLEEVE_COMPARE_PRICES[baseSlug];
+  if (comparePrices && sleeve) {
+    return comparePrices[sleeve];
+  }
+  const product = getProduct(baseSlug);
+  return product?.compareAtPrice;
+}
+
+/**
+ * Former price to display alongside getDisplayPrice (the "from" / lowest
+ * current price) on cards. Display-only.
+ */
+export function getDisplayCompareAtPrice(product: Product): number | undefined {
+  const comparePrices = SLEEVE_COMPARE_PRICES[product.slug];
+  if (comparePrices) {
+    const available = Object.values(comparePrices).filter(
+      (p): p is number => typeof p === 'number',
+    );
+    if (available.length) return Math.min(...available);
+  }
+  return product.compareAtPrice;
+}
+
+/** Dollar savings if a real former price exists and exceeds the current price. */
+export function getSavings(price: number, compareAt?: number): number {
+  if (compareAt && compareAt > price) return compareAt - price;
+  return 0;
 }
 
 export function getAllProducts(): Product[] {
