@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import CollectionCards from "@/components/CollectionCards";
 import ScrollingMarquee from "@/components/ScrollingMarquee";
+import ShopByFit from "@/components/ShopByFit";
 import HomeEmailForm from "@/components/HomeEmailForm";
 import LaunchCountdown from "@/components/LaunchCountdown";
 import NotifyDropModal from "@/components/NotifyDropModal";
@@ -333,6 +334,7 @@ export default function MainHome({ latestPosts = [] }: MainHomeProps) {
       </section>
       )}
 
+      {!PURCHASE_LOCKED && <ShopByFit />}
 
       {/* ════════════════════════════════════════════════════════════
           CAMPAIGN BANNER Full-bleed cinematic call to action
