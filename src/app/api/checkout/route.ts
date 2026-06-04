@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
 import { stripe } from '@/lib/stripe';
+import { FREE_SHIPPING_THRESHOLD_CENTS } from '@/lib/shipping';
 import {
   getProduct,
   parseProductSlug,
@@ -168,7 +169,6 @@ export async function POST(request: NextRequest) {
       (sum, li) => sum + li.price_data.unit_amount * li.quantity,
       0,
     );
-    const FREE_SHIPPING_THRESHOLD_CENTS = 7500;
     const FLAT_SHIPPING_CENTS = 795;
     const deliveryEstimate = {
       minimum: { unit: 'business_day' as const, value: 3 },
