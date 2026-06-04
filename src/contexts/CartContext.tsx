@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useReducer, useEffect, type ReactNode } from "react";
+import type { Fit } from "@/data/products";
 
 export interface CartItem {
   productSlug: string;
@@ -10,6 +11,8 @@ export interface CartItem {
   size: string;
   quantity: number;
   image: string;
+  // Garment fit. Missing is treated as 'mens'.
+  fit?: Fit;
 }
 
 interface CartState {
@@ -20,8 +23,8 @@ interface CartState {
 
 type CartAction =
   | { type: "ADD_ITEM"; payload: CartItem }
-  | { type: "REMOVE_ITEM"; payload: { productSlug: string; color: string; size: string } }
-  | { type: "UPDATE_QUANTITY"; payload: { productSlug: string; color: string; size: string; quantity: number } }
+  | { type: "REMOVE_ITEM"; payload: { productSlug: string; color: string; size: string; fit?: Fit } }
+  | { type: "UPDATE_QUANTITY"; payload: { productSlug: string; color: string; size: string; fit?: Fit; quantity: number } }
   | { type: "CLEAR_CART" }
   | { type: "TOGGLE_CART" }
   | { type: "OPEN_CART" }
@@ -36,8 +39,8 @@ interface CartContextValue {
   subtotal: number;
   selectedCharity: string | null;
   addItem: (item: CartItem) => void;
-  removeItem: (productSlug: string, color: string, size: string) => void;
-  updateQuantity: (productSlug: string, color: string, size: string, quantity: number) => void;
+  removeItem: (productSlug: string, color: string, size: string, fit?: Fit) => void;
+  updateQuantity: (productSlug: string, color: string, size: string, fit: Fit | undefined, quantity: number) => void;
   clearCart: () => void;
   toggleCart: () => void;
   openCart: () => void;
@@ -47,14 +50,15 @@ interface CartContextValue {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-function cartReducer(state: CartState, action: CartAction): CartState {
+export function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case "ADD_ITEM": {
       const existingIndex = state.items.findIndex(
         (item) =>
           item.productSlug === action.payload.productSlug &&
           item.color === action.payload.color &&
-          item.size === action.payload.size
+          item.size === action.payload.size &&
+          (item.fit ?? "mens") === (action.payload.fit ?? "mens")
       );
       if (existingIndex > -1) {
         const updated = [...state.items];
@@ -74,7 +78,8 @@ function cartReducer(state: CartState, action: CartAction): CartState {
             !(
               item.productSlug === action.payload.productSlug &&
               item.color === action.payload.color &&
-              item.size === action.payload.size
+              item.size === action.payload.size &&
+              (item.fit ?? "mens") === (action.payload.fit ?? "mens")
             )
         ),
       };
@@ -88,7 +93,8 @@ function cartReducer(state: CartState, action: CartAction): CartState {
               !(
                 item.productSlug === action.payload.productSlug &&
                 item.color === action.payload.color &&
-                item.size === action.payload.size
+                item.size === action.payload.size &&
+                (item.fit ?? "mens") === (action.payload.fit ?? "mens")
               )
           ),
         };
@@ -98,7 +104,8 @@ function cartReducer(state: CartState, action: CartAction): CartState {
         items: state.items.map((item) =>
           item.productSlug === action.payload.productSlug &&
           item.color === action.payload.color &&
-          item.size === action.payload.size
+          item.size === action.payload.size &&
+          (item.fit ?? "mens") === (action.payload.fit ?? "mens")
             ? { ...item, quantity: action.payload.quantity }
             : item
         ),
@@ -156,10 +163,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     subtotal,
     selectedCharity: state.selectedCharity,
     addItem: (item) => dispatch({ type: "ADD_ITEM", payload: item }),
-    removeItem: (productSlug, color, size) =>
-      dispatch({ type: "REMOVE_ITEM", payload: { productSlug, color, size } }),
-    updateQuantity: (productSlug, color, size, quantity) =>
-      dispatch({ type: "UPDATE_QUANTITY", payload: { productSlug, color, size, quantity } }),
+    removeItem: (productSlug, color, size, fit) =>
+      dispatch({ type: "REMOVE_ITEM", payload: { productSlug, color, size, fit } }),
+    updateQuantity: (productSlug, color, size, fit, quantity) =>
+      dispatch({ type: "UPDATE_QUANTITY", payload: { productSlug, color, size, fit, quantity } }),
     clearCart: () => dispatch({ type: "CLEAR_CART" }),
     toggleCart: () => dispatch({ type: "TOGGLE_CART" }),
     openCart: () => dispatch({ type: "OPEN_CART" }),
