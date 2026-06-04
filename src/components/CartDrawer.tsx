@@ -8,9 +8,13 @@ import { useCart } from "@/contexts/CartContext";
 import { CHARITIES } from "@/data/charities";
 import { trackBeginCheckout } from "@/lib/gtag";
 import { metaInitiateCheckout } from "@/lib/meta-pixel";
+import {
+  FREE_SHIPPING_THRESHOLD_DOLLARS,
+  remainingToFreeShip,
+  hasFreeShipping,
+} from "@/lib/shipping";
 
 const STONE = "#E8DCC8";
-const FREE_SHIPPING_THRESHOLD = 75;
 
 export default function CartDrawer() {
   const {
@@ -69,6 +73,7 @@ export default function CartDrawer() {
                 ? "short"
                 : undefined,
             price: i.price,
+            fit: i.fit ?? "mens",
           })),
           charity: selectedCharity,
         }),
@@ -111,12 +116,9 @@ export default function CartDrawer() {
     ? CHARITIES.find((c) => c.id === selectedCharity)
     : undefined;
 
-  const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
-  const freeShippingUnlocked = subtotal >= FREE_SHIPPING_THRESHOLD;
-  const shippingProgress = Math.min(
-    100,
-    (subtotal / FREE_SHIPPING_THRESHOLD) * 100,
-  );
+  const remaining = remainingToFreeShip(subtotal);
+  const freeShippingUnlocked = hasFreeShipping(subtotal);
+  const shippingProgress = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD_DOLLARS) * 100);
 
   const panelTransition = reduceMotion
     ? { duration: 0 }
@@ -198,7 +200,7 @@ export default function CartDrawer() {
                 <div className="flex flex-col gap-5">
                   {items.map((item) => (
                     <div
-                      key={`${item.productSlug}-${item.color}-${item.size}`}
+                      key={`${item.productSlug}-${item.color}-${item.size}-${item.fit ?? "mens"}`}
                       className="flex gap-4 border-b border-white/10 pb-5 last:border-b-0 last:pb-0"
                     >
                       <div className="w-24 h-24 bg-white/[0.04] flex-shrink-0 relative overflow-hidden rounded-sm ring-1 ring-white/10">
@@ -222,6 +224,11 @@ export default function CartDrawer() {
                             <p className="font-mono text-xs tracking-[0.1em] text-white/65 mt-1.5 uppercase">
                               {item.color} / {item.size}
                             </p>
+                            {item.fit && (
+                              <p className="font-mono text-[10px] tracking-[0.12em] text-white/50 mt-1 uppercase">
+                                {item.fit === "womens" ? "Women's Fit" : "Men's Fit"}
+                              </p>
+                            )}
                           </div>
                           <p className="font-sans font-bold text-sm text-white flex-shrink-0 tabular-nums">
                             ${(item.price * item.quantity).toFixed(2)}
@@ -232,7 +239,7 @@ export default function CartDrawer() {
                           <div className="flex items-center rounded-sm border border-white/15 bg-white/[0.03]">
                             <button
                               onClick={() =>
-                                updateQuantity(item.productSlug, item.color, item.size, item.quantity - 1)
+                                updateQuantity(item.productSlug, item.color, item.size, item.fit, item.quantity - 1)
                               }
                               className="w-9 h-9 flex items-center justify-center text-white/70 transition-colors duration-150 hover:text-white hover:bg-white/5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#E8DCC8]/70 active:opacity-80"
                               aria-label="Decrease quantity"
@@ -244,7 +251,7 @@ export default function CartDrawer() {
                             </span>
                             <button
                               onClick={() =>
-                                updateQuantity(item.productSlug, item.color, item.size, item.quantity + 1)
+                                updateQuantity(item.productSlug, item.color, item.size, item.fit, item.quantity + 1)
                               }
                               className="w-9 h-9 flex items-center justify-center text-white/70 transition-colors duration-150 hover:text-white hover:bg-white/5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#E8DCC8]/70 active:opacity-80"
                               aria-label="Increase quantity"
@@ -254,7 +261,7 @@ export default function CartDrawer() {
                           </div>
 
                           <button
-                            onClick={() => removeItem(item.productSlug, item.color, item.size)}
+                            onClick={() => removeItem(item.productSlug, item.color, item.size, item.fit)}
                             className="font-mono text-xs tracking-[0.12em] text-white/55 uppercase transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8DCC8]/70 active:opacity-80"
                             aria-label={`Remove ${item.name}`}
                           >
@@ -339,11 +346,11 @@ export default function CartDrawer() {
                 <div className="mb-5">
                   {freeShippingUnlocked ? (
                     <p className="font-mono text-xs tracking-[0.12em] text-[#E8DCC8] uppercase">
-                      Free shipping unlocked
+                      You have unlocked free shipping
                     </p>
                   ) : (
                     <p className="font-mono text-xs tracking-[0.12em] text-[#E8DCC8]/70 uppercase">
-                      Add ${remaining.toFixed(2)} for free shipping
+                      {`You are $${remaining.toFixed(0)} away from free shipping`}
                     </p>
                   )}
                   <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-[#E8DCC8]/10">
