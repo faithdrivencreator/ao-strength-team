@@ -22,6 +22,8 @@ export interface FulfillmentItem {
   size: string;
   quantity: number;
   imageUrl: string;
+  // Garment fit. 'womens' = pull the women's-cut equivalent blank. Missing => 'mens'.
+  fit?: 'mens' | 'womens';
 }
 
 export interface FulfillmentOrder {
@@ -49,6 +51,17 @@ function esc(s: string): string {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }
+
+const isLongSleeve = (sleeve: string) =>
+  sleeve.toLowerCase().includes('long');
+
+const blankForItem = (item: FulfillmentItem): string => {
+  const base = isLongSleeve(item.sleeve) ? 'BC 3501 (retail fit)' : 'BC 3001 (retail fit)';
+  if (item.fit === 'womens') {
+    return `Women's-cut equivalent of ${base}`;
+  }
+  return base;
+};
 
 /* ------------------------------------------------------------------ */
 /* subject                                                            */
@@ -98,7 +111,11 @@ export function buildPrintPartnerEmailHtml(order: FulfillmentOrder): string {
                   ${specRow('Sleeve', dash(item.sleeve))}
                   ${specRow('Garment Color', dash(item.garmentColor))}
                   ${specRow('Emblem Color', dash(item.emblemColor))}
+                  ${specRow('Blank', blankForItem(item))}
                   ${specRow('Size', dash(item.size))}
+                  ${specRow('Fit', item.fit === 'womens'
+                    ? '<span style="display:inline-block;padding:2px 8px;background:#000;color:#fff;font-weight:800;letter-spacing:0.04em">WOMEN&#39;S FIT</span>'
+                    : "MEN&#39;S FIT")}
                   ${specRow('Quantity', esc(String(item.quantity)))}
                 </table>
               </td>
@@ -174,7 +191,8 @@ export function buildPrintPartnerEmailHtml(order: FulfillmentOrder): string {
         ${sectionLabel('SECTION 3', 'BLANK REFERENCE')}
         <tr>
           <td style="padding:6px 28px 4px 28px">
-            <p style="margin:0;font-family:${FONT};font-size:14px;color:${INK};line-height:1.6">All AO tees print on Bella+Canvas blanks, retail fit (not athletic): Short Sleeve = BC 3001, Long Sleeve = BC 3501. Match the garment color above to the Warm Stone series. Use the standard AO emblem ink tones and color codes already on file.</p>
+            <p style="margin:0 0 8px 0;font-family:${FONT};font-size:14px;color:${INK};line-height:1.6">All AO tees print on Bella+Canvas blanks, retail fit (not athletic): Short Sleeve = BC 3001, Long Sleeve = BC 3501. Match the garment color above to the Warm Stone series. Use the standard AO emblem ink tones and color codes already on file.</p>
+            <p style="margin:0;font-family:${FONT};font-size:14px;color:${INK};line-height:1.6"><strong>Women&#39;s fit lines</strong> print on the women&#39;s-cut equivalent of the same Bella+Canvas blank (the FIT row on each item says WOMEN&#39;S FIT). Match the size run to the women&#39;s-cut garment.</p>
           </td>
         </tr>
 
