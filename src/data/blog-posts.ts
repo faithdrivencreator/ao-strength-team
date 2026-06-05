@@ -32,6 +32,7 @@ import first30Days from "./blog-drafts/first-30-days-of-strength-training";
 import alphaOmegaRevelation from "./blog-drafts/alpha-omega-revelation-22-13-meaning";
 import sabbathRest from "./blog-drafts/sabbath-rest-for-lifters";
 import deadliftForm from "./blog-drafts/deadlift-form-faith-driven-lifter";
+import proteinTargets from "./blog-drafts/protein-targets-for-faith-driven-athletes";
 
 export interface BlogPostImage {
   src: string;
@@ -2359,6 +2360,7 @@ blogPosts.push(
   alphaOmegaRevelation,
   sabbathRest,
   deadliftForm,
+  proteinTargets,
 );
 
 /** All posts, newest first. */
