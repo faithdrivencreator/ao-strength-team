@@ -56,7 +56,24 @@ export interface InstagramEmbedBlock {
   caption?: string;
 }
 
-export type BlogBodyBlock = PortableTextBlock | PortableTextInlineImage | InstagramEmbedBlock;
+export interface TableRow {
+  _key?: string;
+  cells: string[];
+}
+
+export interface TableBlock {
+  _type: "table";
+  _key?: string;
+  /** First row is rendered as the header. */
+  rows: TableRow[];
+  caption?: string;
+}
+
+export type BlogBodyBlock =
+  | PortableTextBlock
+  | PortableTextInlineImage
+  | InstagramEmbedBlock
+  | TableBlock;
 
 export interface BlogPost {
   slug: string;

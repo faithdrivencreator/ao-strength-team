@@ -383,6 +383,18 @@ const post: BlogPost = {
       ],
     },
     {
+      _key: "s2tbl",
+      _type: "table",
+      caption: "Nightly sleep vs. recovery for strength athletes",
+      rows: [
+        { _key: "s2tblh", cells: ["Nightly Sleep", "Recovery & Adaptation", "Strength & Power", "What It Costs You"] },
+        { _key: "s2tbl1", cells: ["8-9 hours", "Full muscle repair and hormone release", "Peak output, day after day", "Nothing - this is the target"] },
+        { _key: "s2tbl2", cells: ["7 hours", "Adequate for most training blocks", "Held, not gaining", "The practical floor for a hard week"] },
+        { _key: "s2tbl3", cells: ["6 hours", "Incomplete; fatigue carries into the next session", "Measurable drop within a week", "Slower progress you will blame on the program"] },
+        { _key: "s2tbl4", cells: ["5 hours or less", "The body burns muscle over fat", "Power and accuracy fall sharply", "Lost gains and higher injury risk"] },
+      ],
+    },
+    {
       _key: "s2tip",
       _type: "block",
       style: "blockquote",

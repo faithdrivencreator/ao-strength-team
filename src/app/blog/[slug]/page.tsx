@@ -126,6 +126,53 @@ const portableTextComponents: PortableTextComponents = {
       value: { url: string; caption?: string };
     }) => <InstagramEmbed url={value.url} caption={value.caption} />,
 
+    table: ({
+      value,
+    }: {
+      value: { rows?: { cells?: string[] }[]; caption?: string };
+    }) => {
+      const rows = value.rows ?? [];
+      if (rows.length === 0) return null;
+      const [header, ...bodyRows] = rows;
+      return (
+        <figure className="my-12 overflow-x-auto">
+          <table className="w-full border-collapse text-left font-sans text-base">
+            <thead>
+              <tr>
+                {(header.cells ?? []).map((cell, i) => (
+                  <th
+                    key={i}
+                    className="border-b border-white/40 px-4 py-3 font-mono text-[11px] uppercase tracking-[0.14em] text-white/60"
+                  >
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {bodyRows.map((row, ri) => (
+                <tr key={ri} className="align-top">
+                  {(row.cells ?? []).map((cell, ci) => (
+                    <td
+                      key={ci}
+                      className="border-b border-white/10 px-4 py-3 leading-7 text-white/80"
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {value.caption && (
+            <figcaption className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/40">
+              // {value.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
+
     image: ({
       value,
     }: {
