@@ -33,6 +33,7 @@ import alphaOmegaRevelation from "./blog-drafts/alpha-omega-revelation-22-13-mea
 import sabbathRest from "./blog-drafts/sabbath-rest-for-lifters";
 import deadliftForm from "./blog-drafts/deadlift-form-faith-driven-lifter";
 import proteinTargets from "./blog-drafts/protein-targets-for-faith-driven-athletes";
+import sleepForStrength from "./blog-drafts/sleep-for-strength-faith-driven-athletes";
 
 export interface BlogPostImage {
   src: string;
@@ -2361,6 +2362,7 @@ blogPosts.push(
   sabbathRest,
   deadliftForm,
   proteinTargets,
+  sleepForStrength,
 );
 
 /** All posts, newest first. */
