@@ -36,6 +36,7 @@ import proteinTargets from "./blog-drafts/protein-targets-for-faith-driven-athle
 import sleepForStrength from "./blog-drafts/sleep-for-strength-faith-driven-athletes";
 import trainingWithYourSon from "./blog-drafts/training-with-your-son";
 import garageGymBudget from "./blog-drafts/garage-gym-build-on-a-budget";
+import mobilityOver30 from "./blog-drafts/mobility-routine-for-lifters-over-30";
 
 export interface BlogPostImage {
   src: string;
@@ -2384,6 +2385,7 @@ blogPosts.push(
   sleepForStrength,
   trainingWithYourSon,
   garageGymBudget,
+  mobilityOver30,
 );
 
 /** All posts, newest first. */
