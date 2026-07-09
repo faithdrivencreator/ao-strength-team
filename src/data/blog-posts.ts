@@ -39,6 +39,7 @@ import garageGymBudget from "./blog-drafts/garage-gym-build-on-a-budget";
 import mobilityOver30 from "./blog-drafts/mobility-routine-for-lifters-over-30";
 import trainingWhileFasting from "./blog-drafts/training-while-fasting";
 import squatProgramming from "./blog-drafts/squat-programming-faith-driven-lifter";
+import trainingAfterInjury from "./blog-drafts/training-after-injury-faith-driven-comeback";
 
 export interface BlogPostImage {
   src: string;
@@ -2390,6 +2391,7 @@ blogPosts.push(
   mobilityOver30,
   trainingWhileFasting,
   squatProgramming,
+  trainingAfterInjury,
 );
 
 /** All posts, newest first. */
