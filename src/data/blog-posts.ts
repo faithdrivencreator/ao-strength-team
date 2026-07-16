@@ -41,6 +41,7 @@ import trainingWhileFasting from "./blog-drafts/training-while-fasting";
 import squatProgramming from "./blog-drafts/squat-programming-faith-driven-lifter";
 import trainingAfterInjury from "./blog-drafts/training-after-injury-faith-driven-comeback";
 import fastedCardioMyths from "./blog-drafts/fasted-cardio-myths";
+import trainingPartner from "./blog-drafts/training-partner-iron-sharpens-iron";
 
 export interface BlogPostImage {
   src: string;
@@ -2394,6 +2395,7 @@ blogPosts.push(
   squatProgramming,
   trainingAfterInjury,
   fastedCardioMyths,
+  trainingPartner,
 );
 
 /** All posts, newest first. */
