@@ -42,6 +42,7 @@ import squatProgramming from "./blog-drafts/squat-programming-faith-driven-lifte
 import trainingAfterInjury from "./blog-drafts/training-after-injury-faith-driven-comeback";
 import fastedCardioMyths from "./blog-drafts/fasted-cardio-myths";
 import trainingPartner from "./blog-drafts/training-partner-iron-sharpens-iron";
+import cuttingWithoutLosingStrength from "./blog-drafts/cutting-without-losing-strength";
 
 export interface BlogPostImage {
   src: string;
@@ -2396,6 +2397,7 @@ blogPosts.push(
   trainingAfterInjury,
   fastedCardioMyths,
   trainingPartner,
+  cuttingWithoutLosingStrength,
 );
 
 /** All posts, newest first. */
