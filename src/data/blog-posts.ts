@@ -43,6 +43,7 @@ import trainingAfterInjury from "./blog-drafts/training-after-injury-faith-drive
 import fastedCardioMyths from "./blog-drafts/fasted-cardio-myths";
 import trainingPartner from "./blog-drafts/training-partner-iron-sharpens-iron";
 import cuttingWithoutLosingStrength from "./blog-drafts/cutting-without-losing-strength";
+import morningPrayerRoutine from "./blog-drafts/morning-prayer-routine-for-athletes";
 
 export interface BlogPostImage {
   src: string;
@@ -2398,6 +2399,7 @@ blogPosts.push(
   fastedCardioMyths,
   trainingPartner,
   cuttingWithoutLosingStrength,
+  morningPrayerRoutine,
 );
 
 /** All posts, newest first. */
