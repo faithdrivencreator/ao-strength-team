@@ -45,6 +45,7 @@ import trainingPartner from "./blog-drafts/training-partner-iron-sharpens-iron";
 import cuttingWithoutLosingStrength from "./blog-drafts/cutting-without-losing-strength";
 import morningPrayerRoutine from "./blog-drafts/morning-prayer-routine-for-athletes";
 import supplementsWorthTheMoney from "./blog-drafts/supplements-worth-the-money";
+import trainingWhenYouDontFeelLikeIt from "./blog-drafts/training-when-you-dont-feel-like-it";
 
 export interface BlogPostImage {
   src: string;
@@ -2402,6 +2403,7 @@ blogPosts.push(
   cuttingWithoutLosingStrength,
   morningPrayerRoutine,
   supplementsWorthTheMoney,
+  trainingWhenYouDontFeelLikeIt,
 );
 
 /** All posts, newest first. */
