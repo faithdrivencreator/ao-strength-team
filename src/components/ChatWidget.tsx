@@ -3,6 +3,7 @@
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useEffect, useRef, useState, ReactNode } from "react";
+import { usePathname } from "next/navigation";
 
 const transport = new DefaultChatTransport({ api: "/api/chat" });
 
@@ -57,6 +58,9 @@ export default function ChatWidget() {
   const [showBubble, setShowBubble] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  // On product pages keep the launcher icon-only on phones so it covers less
+  // of the buy box; the sticky add-to-bag bar sits above it when shown.
+  const onProductPage = (usePathname() ?? "").startsWith("/products/");
   const [input, setInput] = useState("");
 
   const { messages, sendMessage, status, error } = useChat({ transport });
@@ -77,14 +81,8 @@ export default function ChatWidget() {
     }
   }, [open]);
 
-  // Nudge first-time visitors with a small help bubble a few seconds in.
-  // Shows once per browser session so it never nags.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (sessionStorage.getItem("ao-caleb-bubble-seen")) return;
-    const t = setTimeout(() => setShowBubble(true), 3500);
-    return () => clearTimeout(t);
-  }, []);
+  // No timed help bubble: it covered the product photo on a first visit
+  // (store audit 2026-09-29). The launcher stays one tap away.
 
   function dismissBubble() {
     setShowBubble(false);
@@ -168,7 +166,7 @@ export default function ChatWidget() {
         <button
           onClick={openChat}
           aria-label="Open chat with Caleb, the AO Strength guide"
-          className="ao-caleb-glow fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[60] flex items-center gap-2 rounded-full bg-military px-4 py-3 transition-transform hover:scale-105 active:scale-95"
+          className={`ao-caleb-glow fixed right-5 sm:right-6 z-[60] flex items-center gap-2 rounded-full bg-military transition-transform hover:scale-105 active:scale-95 ${onProductPage ? "bottom-5 p-3 md:bottom-6 md:px-4 md:py-3" : "bottom-5 sm:bottom-6 px-4 py-3"}`}
           style={{ border: `1px solid ${CREAM}33` }}
         >
           <svg
@@ -185,7 +183,7 @@ export default function ChatWidget() {
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
           <span
-            className="font-mono text-[11px] uppercase tracking-[0.15em]"
+            className={`font-mono text-[11px] uppercase tracking-[0.15em] ${onProductPage ? "hidden md:inline" : ""}`}
             style={{ color: CREAM }}
           >
             Ask Caleb
