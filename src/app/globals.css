@@ -142,12 +142,16 @@ a {
   text-decoration: none;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  color: inherit;
-  font-family: inherit;
+/* In the base layer so Tailwind utilities on a button (bg, border) win.
+   Unlayered, this reset silently removed every designed button background. */
+@layer base {
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+    font-family: inherit;
+  }
 }
 
 img {
@@ -265,4 +269,12 @@ img {
     animation: none;
     box-shadow: 0 0 14px 3px rgba(140, 240, 76, 0.65);
   }
+}
+
+/* Horizontal galleries and chip rows: scroll without a visible bar. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
