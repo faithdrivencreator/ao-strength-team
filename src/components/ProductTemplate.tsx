@@ -58,7 +58,10 @@ export default function ProductTemplate({ slug }: { slug: string }) {
   const fit: Fit =
     chosenFit ?? (product.fits.find((f) => f === urlFit) as Fit | undefined) ?? product.fits[0];
   const colorways = product.sleeves[sleeve]!.colorways;
-  const defaultColorway = colorways.find((c) => c.garmentColor === "Black") ?? colorways[0];
+  const defaultColorway =
+    colorways.find((c) => c.garmentColor === "Black" && c.printColor === "White") ??
+    colorways.find((c) => c.garmentColor === "Black") ??
+    colorways[0];
   const [garment, setGarment] = useState(defaultColorway.garmentColor);
   const [print, setPrint] = useState(defaultColorway.printColor);
   const [size, setSize] = useState<string | null>(null);
