@@ -36,8 +36,8 @@ export default function PriceTag({ price, compareAt, prefix, variant = "card" }:
           <span
             className={
               big
-                ? "font-mono text-sm text-white/40 line-through"
-                : "font-mono text-[12px] text-white/40 line-through"
+                ? "font-mono text-sm text-white/70 line-through"
+                : "font-mono text-[12px] text-white/70 line-through"
             }
           >
             ${compareAt!.toFixed(2)}

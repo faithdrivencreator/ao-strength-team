@@ -1,77 +1,23 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProduct, getAllProducts } from "@/data/products";
-import ProductPageClient from "./ProductPageClient";
+import ProductPage, { productMetadata } from "@/components/ProductPage";
+import { getStoreProduct } from "@/data/storefront";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateStaticParams() {
-  const products = getAllProducts();
-  return products.map((p) => ({ slug: p.slug }));
-}
+// The four live products have their own folders; this route only catches
+// other slugs, so anything not in the storefront data is a 404.
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProduct(slug);
-
-  if (!product) {
-    return { title: "Product Not Found | Alpha Omega Strength Team" };
-  }
-
-  return {
-    title: `${product.name} | Alpha Omega Strength Team`,
-    description: product.description,
-    openGraph: {
-      title: `${product.name} | Alpha Omega Strength Team`,
-      description: product.description,
-      images: [{ url: product.images[0], width: 600, height: 800 }],
-    },
-  };
+  return productMetadata(slug);
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://aostrengthteam.store";
-
-export default async function ProductPage({ params }: Props) {
+export default async function ProductSlugPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProduct(slug);
-
-  if (!product) {
-    notFound();
-  }
-
-  const allProducts = getAllProducts();
-  const related = allProducts.filter((p) => p.slug !== product.slug);
-
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    description: product.description,
-    image: product.images.map((src) => `${SITE_URL}${src}`),
-    brand: { "@type": "Brand", name: "Alpha Omega Strength Team" },
-    sku: product.slug,
-    category: product.category,
-    offers: {
-      "@type": "Offer",
-      url: `${SITE_URL}/products/${product.slug}`,
-      priceCurrency: "USD",
-      price: product.price,
-      availability:
-        product.status === "in-stock"
-          ? "https://schema.org/InStock"
-          : "https://schema.org/OutOfStock",
-    },
-  };
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      />
-      <ProductPageClient product={product} relatedProducts={related} />
-    </>
-  );
+  if (!getStoreProduct(slug)) notFound();
+  return <ProductPage slug={slug} />;
 }

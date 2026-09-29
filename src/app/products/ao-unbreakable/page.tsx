@@ -1,30 +1,7 @@
-import type { Metadata } from "next";
-import UnbreakableShowcase from "@/components/UnbreakableShowcase";
+import ProductPage, { productMetadata } from "@/components/ProductPage";
 
-export const metadata: Metadata = {
-  title: "AO Unbreakable | Alpha Omega Strength Team",
-  description:
-    "Unbreakable. Forged for the ones who don't bend. Heavyweight cotton tee, warm stone series. Built to train in, built to believe in.",
-  openGraph: {
-    title: "AO Unbreakable | Alpha Omega Strength Team",
-    description:
-      "Forged for the ones who don't bend. Warm Stone Series. Short Sleeve and Long Sleeve, seven colorways.",
-    images: [
-      {
-        url: "/images/products/unbreakable/short-sleeve/military-green-white.webp",
-        width: 600,
-        height: 600,
-      },
-    ],
-  },
-};
+export const metadata = productMetadata("ao-unbreakable");
 
-export default async function AoUnbreakablePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ fit?: string }>;
-}) {
-  const { fit } = await searchParams;
-  const defaultFit = fit === "womens" ? "womens" : fit === "mens" ? "mens" : undefined;
-  return <UnbreakableShowcase defaultFit={defaultFit} />;
+export default function AoUnbreakablePage() {
+  return <ProductPage slug="ao-unbreakable" />;
 }
