@@ -21,7 +21,7 @@ export default function PriceTag({ price, compareAt, prefix, variant = "card" }:
   const big = variant === "pdp";
 
   return (
-    <span className="inline-flex items-center gap-2">
+    <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
       <span
         className={
           big

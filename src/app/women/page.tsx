@@ -6,7 +6,8 @@ import ProductCard from "@/components/ProductCard";
 import PriceTag from "@/components/PriceTag";
 
 export const metadata: Metadata = {
-  title: "Women's | Alpha Omega Strength Team",
+  title: "Women's Christian Workout Tees and Crop",
+  alternates: { canonical: "/women" },
   description:
     "Women's faith-forged training gear. Warpaint, Unbreakable, Cornerstone, and the Cornerstone Crop, cut for women. Built to train in, built to believe in.",
 };
@@ -73,7 +74,7 @@ function FeaturedCrop() {
             <br />
             Crop
           </h2>
-          <p className="font-sans text-sm md:text-base leading-relaxed text-white/55 max-w-md">
+          <p className="font-sans text-sm md:text-base leading-relaxed text-white/80 max-w-md">
             A flowy cropped tee with the boxed Alpha, cross, Omega emblem. Modest cut,
             built to train in and built to believe in.
           </p>
@@ -98,14 +99,14 @@ export default function WomensPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
       <section className="max-w-[1440px] mx-auto px-8 md:px-16 lg:px-20 pt-16 pb-24">
-        <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/40">The Strength Team</p>
+        <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-white/75">The Strength Team</p>
         <h1 className="mt-2 font-sans font-black text-5xl md:text-7xl uppercase tracking-tight text-white">Women&apos;s</h1>
 
         <div className="mt-12">
           <FeaturedCrop />
         </div>
 
-        <p className="mt-16 font-mono text-[11px] tracking-[0.2em] uppercase text-white/40">The Collections</p>
+        <p className="mt-16 font-mono text-[11px] tracking-[0.2em] uppercase text-white/75">The Collections</p>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {COLLECTIONS.map(({ slug, front, back }) => {
             const product = getProduct(slug);

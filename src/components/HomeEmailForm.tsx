@@ -52,7 +52,7 @@ export default function HomeEmailForm({ variant = "transparent" }: HomeEmailForm
         <p className="font-sans text-[14px] font-bold uppercase tracking-[0.15em] text-white mb-2">
           Welcome to the team.
         </p>
-        <p className="font-mono text-[11px] tracking-[0.15em] text-white/40">
+        <p className="font-mono text-[11px] tracking-[0.15em] text-white/75">
           First Weekly Discipline lands Sunday morning.
         </p>
       </motion.div>
@@ -80,7 +80,7 @@ export default function HomeEmailForm({ variant = "transparent" }: HomeEmailForm
           className={
             variant === "solid"
               ? "w-full bg-white border border-white px-5 py-4 font-mono text-[12px] tracking-[0.15em] text-black placeholder:text-black/45 focus:outline-none focus:ring-2 focus:ring-white/50 transition-shadow duration-300 disabled:opacity-60"
-              : "w-full bg-transparent border border-white/15 px-5 py-4 font-mono text-[12px] tracking-[0.15em] text-white placeholder:text-white/25 focus:outline-none focus:border-white/40 transition-colors duration-300 disabled:opacity-60"
+              : "w-full bg-transparent border border-white/15 px-5 py-4 font-mono text-[12px] tracking-[0.15em] text-white placeholder:text-white/60 focus:outline-none focus:border-white/40 transition-colors duration-300 disabled:opacity-60"
           }
         />
         {error && (
