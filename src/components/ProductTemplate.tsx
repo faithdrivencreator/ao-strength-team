@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/contexts/CartContext";
@@ -29,6 +29,8 @@ interface Slide {
   contain?: boolean;
 }
 
+const noopSubscribe = () => () => {};
+
 function uniqueColors(list: StoreColorway[], key: "garment" | "print") {
   const seen = new Map<string, string>();
   for (const c of list) {
@@ -45,7 +47,16 @@ export default function ProductTemplate({ slug }: { slug: string }) {
 
   const sleeveOptions = Object.keys(product.sleeves) as Sleeve[];
   const [sleeve, setSleeve] = useState<Sleeve>(sleeveOptions[0]);
-  const [fit, setFit] = useState<Fit>(product.fits[0]);
+  // ?fit=womens from the Women's page presets the fit. Read on the client so
+  // the page itself stays static; the shopper's own choice wins after that.
+  const urlFit = useSyncExternalStore(
+    noopSubscribe,
+    () => new URLSearchParams(window.location.search).get("fit"),
+    () => null,
+  );
+  const [chosenFit, setFit] = useState<Fit | null>(null);
+  const fit: Fit =
+    chosenFit ?? (product.fits.find((f) => f === urlFit) as Fit | undefined) ?? product.fits[0];
   const colorways = product.sleeves[sleeve]!.colorways;
   const defaultColorway = colorways.find((c) => c.garmentColor === "Black") ?? colorways[0];
   const [garment, setGarment] = useState(defaultColorway.garmentColor);
@@ -59,22 +70,11 @@ export default function ProductTemplate({ slug }: { slug: string }) {
   const buyRef = useRef<HTMLButtonElement>(null);
   const sizeRef = useRef<HTMLFieldSetElement>(null);
 
-  // ?fit=womens from the Women's page presets the fit (read on the client so
-  // the page itself stays static).
-  useEffect(() => {
-    const q = new URLSearchParams(window.location.search).get("fit");
-    if (q === "womens" || q === "mens") {
-      if (product.fits.includes(q)) setFit(q);
-    }
-  }, [product.fits]);
 
-  const colorway = useMemo(() => {
-    return (
-      colorways.find((c) => c.garmentColor === garment && c.printColor === print) ??
-      colorways.find((c) => c.garmentColor === garment) ??
-      colorways[0]
-    );
-  }, [colorways, garment, print]);
+  const colorway =
+    colorways.find((c) => c.garmentColor === garment && c.printColor === print) ??
+    colorways.find((c) => c.garmentColor === garment) ??
+    colorways[0];
 
   const price = product.sleeves[sleeve]!.price;
   const compareAt = getCompareAtPrice(product.slug, sleeve);
@@ -84,7 +84,7 @@ export default function ProductTemplate({ slug }: { slug: string }) {
     "print",
   );
 
-  const slides: Slide[] = useMemo(() => {
+  const slides: Slide[] = (() => {
     const out: Slide[] = [];
     const model = product.models[fit] ?? Object.values(product.models)[0]!;
     const who = fit === "womens" ? "woman" : "man";
@@ -102,7 +102,7 @@ export default function ProductTemplate({ slug }: { slug: string }) {
       if (m) out.push({ src: m.front, alt: `Front of the ${product.title} tee on a ${other === "womens" ? "woman" : "man"}` });
     }
     return out;
-  }, [product, fit, colorway, sleeve]);
+  })();
 
   useEffect(() => {
     trackViewItem({ slug: product.slug, name: product.cartName, price: fromPrice(product), category: "tees" });

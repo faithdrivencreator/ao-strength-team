@@ -104,7 +104,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     metaDescription:
       "Warpaint: a hand-painted ALPHA, cross, OMEGA back print. Psalm 144:1. Short sleeve $29.99, long sleeve $34.99. 10% of every order goes to the charity you choose.",
     ogImage: "/images/og/ao-warpaint.jpg",
-    badges: ["Men's and women's fit", "Long sleeve available"],
+    badges: ["Men's + women's fit", "Short + long sleeve"],
   },
   {
     slug: "ao-cornerstone",
@@ -134,7 +134,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     metaDescription:
       "Cornerstone: the boxed ALPHA, cross, OMEGA emblem, Psalm 118:22. Short sleeve $29.99, long sleeve $34.99. 10% of every order goes to the charity you choose.",
     ogImage: "/images/og/ao-cornerstone.jpg",
-    badges: ["Men's and women's fit", "Long sleeve available"],
+    badges: ["Men's + women's fit", "Short + long sleeve"],
   },
   {
     slug: "ao-unbreakable",
@@ -164,7 +164,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     metaDescription:
       "Unbreakable: ALPHA. OMEGA. UNBREAKABLE. across the chest, 2 Corinthians 4:8. Short sleeve $29.99, long sleeve $34.99. 10% of every order goes to the charity you choose.",
     ogImage: "/images/og/ao-unbreakable.jpg",
-    badges: ["Men's and women's fit", "Long sleeve available"],
+    badges: ["Men's + women's fit", "Short + long sleeve"],
   },
   {
     slug: "ao-croptop",

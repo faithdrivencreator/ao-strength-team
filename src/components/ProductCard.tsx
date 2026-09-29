@@ -86,13 +86,7 @@ export default function ProductCard({
           </div>
         )}
         {store && store.badges.length > 0 && (
-          <ul className="mt-2.5 flex flex-wrap gap-1.5">
-            {store.badges.map((b) => (
-              <li key={b} className="border border-white/30 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.08em] text-white/90">
-                {b}
-              </li>
-            ))}
-          </ul>
+          <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.06em] text-white/85">{store.badges.join(" · ")}</p>
         )}
       </div>
     </Link>
