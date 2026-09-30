@@ -447,7 +447,7 @@ export default function ProductTemplate({ slug }: { slug: string }) {
       {/* More from the drop */}
       <section className="border-t border-white/10">
         <div className="mx-auto max-w-[1280px] px-5 md:px-10 py-12 md:py-16">
-          <h2 className="font-sans font-black uppercase tracking-tight text-2xl md:text-3xl">More from Drop 01</h2>
+          <h2 className="font-sans font-black uppercase tracking-tight text-2xl md:text-3xl">More from the Launch Collection</h2>
           <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
             {others.map((p) => (
               <Link key={p.slug} href={`/products/${p.slug}`} className="group block">

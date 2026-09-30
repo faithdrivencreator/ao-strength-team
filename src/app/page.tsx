@@ -15,7 +15,7 @@ const PURCHASE_LOCKED = process.env.NEXT_PUBLIC_PURCHASE_LOCKED === "true";
 export const metadata: Metadata = {
   title: { absolute: "Christian Gym Shirts and Faith Workout Apparel | Alpha Omega Strength Team" },
   description:
-    "Christian gym shirts and workout tees with the scripture printed on them. Drop 01 is live: short and long sleeve, men's and women's fit. 10% of every order goes to the charity you choose.",
+    "Christian gym shirts and workout tees with the scripture printed on them. The Launch Collection is live: short and long sleeve, men's and women's fit. 10% of every order goes to the charity you choose.",
   alternates: { canonical: "/" },
   openGraph: { url: "/", images: [{ url: "/images/og/home.jpg", width: 1200, height: 630 }] },
 };

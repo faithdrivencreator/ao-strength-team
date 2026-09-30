@@ -51,7 +51,7 @@ export default function StoreHome({ latestPosts = [] }: { latestPosts?: BlogPost
         </div>
         <div className="flex items-center px-5 pt-5 pb-8 md:px-14 lg:px-20 md:py-16">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/80">Drop 01 · Warm Stone Series · Live now</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/80">Warm Stone Series · Live now</p>
             <h1 className="mt-3 font-sans font-black uppercase leading-[0.95] tracking-tight text-[34px] sm:text-5xl lg:text-7xl">
               Built for the beginning.
               <span className="block text-cream">Proven at the finish.</span>
@@ -59,9 +59,9 @@ export default function StoreHome({ latestPosts = [] }: { latestPosts?: BlogPost
             <div className="mt-5 flex flex-col sm:flex-row gap-3">
               <Link
                 href="/shop"
-                className="inline-flex min-h-13 items-center justify-center gap-2 bg-white px-8 font-sans text-[13px] font-black uppercase tracking-[0.14em] text-black hover:bg-cream transition-colors"
+                className="inline-flex min-h-13 items-center justify-center gap-2 bg-white px-5 sm:px-8 font-sans text-[13px] font-black uppercase tracking-[0.14em] text-black hover:bg-cream transition-colors"
               >
-                Shop Drop 01 <Arrow />
+                Shop the Launch Collection <Arrow />
               </Link>
               <Link
                 href="/women"
@@ -81,7 +81,7 @@ export default function StoreHome({ latestPosts = [] }: { latestPosts?: BlogPost
       {/* The drop */}
       <section className="max-w-[1440px] w-full mx-auto px-5 md:px-10 py-14 md:py-20">
         <div className="flex items-end justify-between gap-4">
-          <h2 className="font-sans font-black uppercase tracking-tight text-3xl md:text-5xl leading-none">Drop 01</h2>
+          <h2 className="font-sans font-black uppercase tracking-tight text-3xl md:text-5xl leading-none">The Launch Collection</h2>
           <Link href="/shop" className="inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.14em] text-white underline-offset-4 hover:underline">
             View all <Arrow />
           </Link>
@@ -187,7 +187,7 @@ export default function StoreHome({ latestPosts = [] }: { latestPosts?: BlogPost
       {/* The list */}
       <section id="signup" className="border-t border-white/10 bg-ink-deep scroll-mt-28">
         <div className="max-w-[1440px] mx-auto px-5 md:px-10 py-14 md:py-20 text-center">
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/80">Drop 02 is in the forge</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/80">The next drop is in the forge</p>
           <h2 className="mt-3 font-sans font-black uppercase tracking-tight text-3xl md:text-5xl leading-none">Join the team</h2>
           <p className="mt-4 mx-auto max-w-[44ch] text-[15px] leading-relaxed text-white/85">
             One email when the next drop is ready, plus the weekly discipline note.

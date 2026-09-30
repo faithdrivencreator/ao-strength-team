@@ -25,10 +25,10 @@ export default function ShopPageClient() {
     <section className="pt-8 pb-16 md:pt-14 md:pb-24">
       <div className="max-w-[1440px] mx-auto px-5 md:px-10">
         <p className="font-mono text-[11px] tracking-[0.18em] text-white/80 uppercase">
-          Drop 01 · Warm Stone Series · Live now
+          Warm Stone Series · Live now
         </p>
         <h1 className="mt-3 font-sans font-black text-4xl md:text-6xl uppercase tracking-tight leading-[0.95]">
-          Shop the drop
+          The Launch Collection
         </h1>
         <p className="mt-4 max-w-[60ch] text-[15px] leading-relaxed text-white/85">
           Christian gym shirts with the scripture printed on them. Four designs, short and long sleeve, men&apos;s
@@ -64,7 +64,7 @@ export default function ShopPageClient() {
         </div>
 
         <div className="mt-20 border-t border-white/15 pt-12 text-center">
-          <p className="font-mono text-[11px] tracking-[0.18em] text-white/80 uppercase">Drop 02 is in the forge</p>
+          <p className="font-mono text-[11px] tracking-[0.18em] text-white/80 uppercase">The next drop is in the forge</p>
           <p className="mt-3 mx-auto max-w-[44ch] text-[15px] leading-relaxed text-white/85">
             Join the list and we will email you when the next drop is ready.
           </p>
