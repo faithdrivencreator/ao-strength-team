@@ -139,8 +139,8 @@ export default function StoreHome({ latestPosts = [] }: { latestPosts?: BlogPost
       <section className="max-w-[900px] w-full mx-auto px-5 md:px-10 py-16 md:py-24 text-center">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/80">Why we print the Word</p>
         <blockquote className="mt-5">
-          <p className="font-sans font-black uppercase tracking-tight text-2xl md:text-4xl leading-[1.1]">
-            &ldquo;I am the Alpha and the Omega, the First and the Last, the Beginning and the End.&rdquo;
+          <p className="font-sans font-black uppercase tracking-tight text-2xl md:text-4xl leading-[1.1] text-balance">
+            &ldquo;I am the Alpha and the Omega, the First and the Last, the Beginning and the&nbsp;End.&rdquo;
           </p>
           <cite className="mt-4 block font-mono text-[12px] not-italic uppercase tracking-[0.16em] text-white/80">Revelation 22:13</cite>
         </blockquote>
