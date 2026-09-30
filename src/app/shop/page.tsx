@@ -13,7 +13,11 @@ export const metadata: Metadata = PURCHASE_LOCKED
         "Faith-grounded performance apparel. Strengthen. Endure. Finish. The first drop opens June 2.",
     }
   : {
-      title: "Shop | Alpha Omega Strength Team",
+      title: "Shop Christian Gym Shirts and Workout Tees",
+      description:
+        "Shop the Launch Collection: Warpaint, Cornerstone, Unbreakable and the Cornerstone Crop. Scripture on every tee, short and long sleeve, from $25.99. 10% of every order goes to the charity you choose.",
+      alternates: { canonical: "/shop" },
+      openGraph: { url: "/shop", images: [{ url: "/images/og/home.jpg", width: 1200, height: 630 }] },
     };
 
 export default async function ShopPage() {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Shipping & Returns | AO Strength Team",
+  title: "Shipping & Returns",
   description:
     "How we ship. How returns work. Free shipping on orders over $75. Built for the long set.",
 };

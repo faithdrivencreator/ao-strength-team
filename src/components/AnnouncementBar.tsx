@@ -11,14 +11,12 @@ export default function AnnouncementBar() {
           {PURCHASE_LOCKED ? (
             <>
               OFFICIAL DROP · {LAUNCH_LABEL}
-              <span className="text-white/30 mx-2">//</span>
+              <span className="text-white/60 mx-2">//</span>
               GET ON THE LIST FOR FIRST ACCESS
             </>
           ) : (
             <>
               FREE US SHIPPING OVER {dollars(FREE_SHIPPING_THRESHOLD_CENTS)}
-              <span className="text-white/30 mx-2">//</span>
-              LAUNCH DROP PRICING IS LIVE
             </>
           )}
         </p>

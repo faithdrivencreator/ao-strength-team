@@ -21,7 +21,7 @@ export default function PriceTag({ price, compareAt, prefix, variant = "card" }:
   const big = variant === "pdp";
 
   return (
-    <span className="inline-flex items-center gap-2">
+    <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
       <span
         className={
           big
@@ -36,8 +36,8 @@ export default function PriceTag({ price, compareAt, prefix, variant = "card" }:
           <span
             className={
               big
-                ? "font-mono text-sm text-white/40 line-through"
-                : "font-mono text-[12px] text-white/40 line-through"
+                ? "font-mono text-sm text-white/70 line-through"
+                : "font-mono text-[12px] text-white/70 line-through"
             }
           >
             ${compareAt!.toFixed(2)}

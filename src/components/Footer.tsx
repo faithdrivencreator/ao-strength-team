@@ -19,8 +19,8 @@ export default function Footer() {
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/60 text-center">
           // FREE SHIPPING ON ORDERS OVER $75
         </p>
-        <span className="hidden sm:inline text-white/15">/</span>
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/40 text-center">
+        <span className="hidden sm:inline text-white/50" aria-hidden="true">/</span>
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/70 text-center">
           // NEXT DROP IN THE FORGE
         </p>
       </div>
@@ -42,7 +42,7 @@ export default function Footer() {
               href="https://www.instagram.com/alphaomegastrengthteam/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 transition-colors duration-150 hover:text-white"
+              className="text-white/70 transition-colors duration-150 hover:text-white"
               aria-label="Instagram"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -53,7 +53,7 @@ export default function Footer() {
             </Link>
           </div>
 
-          <p className="font-mono text-[11px] tracking-[0.1em] text-white/40">
+          <p className="font-mono text-[11px] tracking-[0.1em] text-white/70">
             &copy; 2026 Alpha Omega Strength Team
           </p>
         </div>
@@ -66,7 +66,7 @@ export default function Footer() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-mono text-[11px] uppercase tracking-[0.15em] text-white/50 hover:text-white transition-colors"
+              className="font-mono text-[11px] uppercase tracking-[0.15em] text-white/70 hover:text-white transition-colors"
             >
               {link.label}
             </Link>

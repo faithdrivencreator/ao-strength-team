@@ -1,69 +1,61 @@
-"use client";
-
+import Link from "next/link";
 import { getAllProducts } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import HomeEmailForm from "@/components/HomeEmailForm";
 
 const products = getAllProducts();
 
-// Featured on-model cover per collection, balanced 2 male / 2 female across the
-// four cards: Warpaint (man), Unbreakable (woman), Cornerstone (man), Crop Top
-// (woman). Crop Top is women's only, so Cornerstone carries the second male.
-const MODEL_SHOTS: Record<string, { front: string; back: string }> = {
-  "ao-cornerstone": {
-    front: "/images/models/cornerstone/man-front.webp",
-    back: "/images/models/cornerstone/man-back.webp",
-  },
-  "ao-croptop": {
-    front: "/images/models/croptop/woman-front.webp",
-    back: "/images/products/croptop/black-white.webp",
-  },
-  "ao-warpaint": {
-    front: "/images/models/warpaint/man-front.webp",
-    back: "/images/models/warpaint/man-back.webp",
-  },
-  "ao-unbreakable": {
-    front: "/images/models/unbreakable/woman-front.webp",
-    back: "/images/models/unbreakable/woman-back.webp",
-  },
+// Lead with the design's main print: back shots for the back-print designs,
+// the front for Unbreakable and the crop. Hover shows the other side.
+const MODEL_SHOTS: Record<string, { front: string; back?: string }> = {
+  "ao-warpaint": { front: "/images/models/warpaint/man-back.webp", back: "/images/models/warpaint/man-front.webp" },
+  "ao-cornerstone": { front: "/images/models/cornerstone/man-back.webp", back: "/images/models/cornerstone/man-front.webp" },
+  "ao-unbreakable": { front: "/images/models/unbreakable/woman-front.webp", back: "/images/models/unbreakable/woman-back.webp" },
+  "ao-croptop": { front: "/images/models/croptop/woman-front.webp" },
 };
+
+const FIT_LINKS = [
+  { href: "/shop", label: "All", active: true },
+  { href: "/men", label: "Men's" },
+  { href: "/women", label: "Women's" },
+];
 
 export default function ShopPageClient() {
   return (
-    <section className="py-16 lg:py-24">
-      <div className="max-w-[1440px] mx-auto px-6">
-        {/* Hero band */}
-        <div className="mb-14 lg:mb-20">
-          <p className="font-mono text-[11px] tracking-[0.18em] text-white/60 uppercase mb-5">
-            // FIRST DROP · JUNE 2, 2026
-          </p>
+    <section className="pt-8 pb-16 md:pt-14 md:pb-24">
+      <div className="max-w-[1440px] mx-auto px-5 md:px-10">
+        <p className="font-mono text-[11px] tracking-[0.18em] text-white/80 uppercase">
+          Warm Stone Series · Live now
+        </p>
+        <h1 className="mt-3 font-sans font-black text-4xl md:text-6xl uppercase tracking-tight leading-[0.95]">
+          The Launch Collection
+        </h1>
+        <p className="mt-4 max-w-[60ch] text-[15px] leading-relaxed text-white/85">
+          Christian gym shirts with the scripture printed on them. Four designs, short and long sleeve, men&apos;s
+          and women&apos;s fit. 10% of every order goes to the charity you choose at checkout.
+        </p>
 
-          <h1 className="font-sans font-black text-4xl md:text-6xl lg:text-7xl uppercase tracking-tight leading-[0.95]">
-            FAITH-GROUNDED PERFORMANCE
-          </h1>
+        <nav aria-label="Shop by fit" className="mt-6 flex gap-2">
+          {FIT_LINKS.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              aria-current={l.active ? "page" : undefined}
+              className={`min-h-11 inline-flex items-center px-4 font-mono text-[12px] uppercase tracking-[0.12em] border ${l.active ? "bg-white text-black border-white" : "border-white/40 text-white hover:border-white"}`}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
 
-          <p className="mt-6 max-w-[52ch] text-[15px] md:text-base leading-relaxed text-white/55">
-            Three collections. One foundation. Built to train in, built to believe in.
-          </p>
-
-          <div className="mt-8 max-w-[52ch]">
-            <div className="h-px w-12 bg-white/15 mb-3" />
-            <p className="font-mono text-[11px] tracking-[0.05em] text-white/45">
-              10% of every order goes to the charity you choose at checkout.
-            </p>
-          </div>
-        </div>
-
-        {/* Product grid - four collections in a balanced 2 x 2 on desktop.
-            Constrained width so the cards read as large editorial tiles
-            rather than stretching the full 1440 container. */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-[1120px] mx-auto">
+        <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-10 md:gap-x-6">
           {products.map((product, i) => {
             const shots = MODEL_SHOTS[product.slug];
             return (
               <ProductCard
                 key={product.slug}
                 product={product}
-                priority={i < 4}
+                priority={i < 2}
                 onModelFront={shots?.front}
                 onModelBack={shots?.back}
               />
@@ -71,15 +63,14 @@ export default function ShopPageClient() {
           })}
         </div>
 
-        {/* Quiet teaser - this is only the first drop */}
-        <div className="mt-20 lg:mt-28 flex flex-col items-center text-center">
-          <div className="h-px w-12 bg-white/15 mb-5" />
-          <p className="font-mono text-[11px] tracking-[0.2em] text-white/45 uppercase mb-3">
-            // THIS IS THE FIRST DROP
+        <div className="mt-20 border-t border-white/15 pt-12 text-center">
+          <p className="font-mono text-[11px] tracking-[0.18em] text-white/80 uppercase">The next drop is in the forge</p>
+          <p className="mt-3 mx-auto max-w-[44ch] text-[15px] leading-relaxed text-white/85">
+            Join the list and we will email you when the next drop is ready.
           </p>
-          <p className="max-w-[44ch] text-[13px] leading-relaxed text-white/45">
-            More collections are in the forge. Join the team below to hear when the next one drops.
-          </p>
+          <div className="mt-6">
+            <HomeEmailForm />
+          </div>
         </div>
       </div>
     </section>

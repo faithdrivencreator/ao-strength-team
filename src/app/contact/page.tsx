@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import ContactForm from './ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact | Alpha Omega Strength Team',
+  title: 'Contact',
+  alternates: { canonical: '/contact' },
   description:
     'Get in touch with Alpha Omega Strength Team. General inquiries, order support, returns, and wholesale.',
 };

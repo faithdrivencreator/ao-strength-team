@@ -47,7 +47,6 @@ export const metadata: Metadata = {
     template: "%s | Alpha Omega Strength Team",
   },
   description: OG_DESCRIPTION,
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: SITE_URL,

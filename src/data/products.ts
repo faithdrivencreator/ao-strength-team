@@ -31,7 +31,7 @@ const products: Product[] = [
     name: 'AO Warpaint Collection',
     price: 29.99,
     description:
-      'The Warpaint Collection. Hand-painted ALPHA OMEGA mark on heavyweight cotton. Available in Short Sleeve and Long Sleeve, ten colorways across the Warm Stone series.',
+      'The Warpaint Collection. Hand-painted ALPHA OMEGA mark, small on the chest and big across the back. Available in Short Sleeve and Long Sleeve across the Warm Stone series.',
     scripture:
       'He trains my hands for war, my fingers for battle.',
     scriptureRef: 'Psalm 144:1',
@@ -57,7 +57,7 @@ const products: Product[] = [
     name: 'AO Unbreakable',
     price: 29.99,
     description:
-      'Unbreakable. Forged for the ones who do not bend. Heavyweight cotton, Warm Stone Series. Available in Short Sleeve and Long Sleeve, seven colorways with ALPHA OMEGA UNBREAKABLE across the chest and STRENGTH TEAM down the sleeve.',
+      'Unbreakable. Forged for the ones who do not bend. Warm Stone Series. Available in Short Sleeve and Long Sleeve, seven colorways with ALPHA OMEGA UNBREAKABLE across the chest and STRENGTH TEAM down the sleeve.',
     scripture:
       'Hard pressed on every side, but not crushed.',
     scriptureRef: '2 Corinthians 4:8',
@@ -82,7 +82,7 @@ const products: Product[] = [
     name: 'AO Cornerstone',
     price: 29.99,
     description:
-      'AO Cornerstone. A clean boxed ALPHA, cross, OMEGA emblem pressed into heavyweight cotton, built for the ones whose foundation does not move. Available in Short Sleeve and Long Sleeve across the Warm Stone series.',
+      'AO Cornerstone. A clean boxed ALPHA, cross, OMEGA emblem, built for the ones whose foundation does not move. Available in Short Sleeve and Long Sleeve across the Warm Stone series.',
     scripture:
       'The stone the builders rejected has become the cornerstone.',
     scriptureRef: 'Psalm 118:22',

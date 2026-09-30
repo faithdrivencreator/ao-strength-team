@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 
 export default function EmailCapture() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,16 +10,31 @@ export default function EmailCapture() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Never on a timer and never over a product page or checkout: the popup
+  // opens only after real interest, meaning half of a page scrolled or a
+  // second page viewed in this session (store audit 2026-09-29).
+  const pathname = usePathname() ?? "/";
   useEffect(() => {
-    const dismissed = sessionStorage.getItem("ao-email-capture-dismissed");
-    if (dismissed) return;
+    if (sessionStorage.getItem("ao-email-capture-dismissed")) return;
+    const views = Number(sessionStorage.getItem("ao-pageviews") || "0") + 1;
+    sessionStorage.setItem("ao-pageviews", String(views));
+    if (pathname.startsWith("/products/") || pathname.startsWith("/checkout")) return;
 
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
+    const open = () => setIsOpen(true);
+    if (views >= 2) {
+      const t = setTimeout(open, 1500);
+      return () => clearTimeout(t);
+    }
+    function onScroll() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0 && window.scrollY / max >= 0.5) {
+        window.removeEventListener("scroll", onScroll);
+        open();
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [pathname]);
 
   const handleClose = useCallback(() => {
     setIsOpen(false);
@@ -71,7 +87,7 @@ export default function EmailCapture() {
       <div className="relative w-full max-w-md bg-black border border-white/10 p-8">
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 text-white/30 transition-colors duration-150 hover:text-white"
+          className="absolute top-4 right-4 text-white/70 transition-colors duration-150 hover:text-white"
           aria-label="Close"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -89,13 +105,13 @@ export default function EmailCapture() {
         ) : (
           <>
             <div className="mb-6">
-              <p className="font-mono text-[11px] tracking-[0.1em] text-white/40 uppercase mb-3">
+              <p className="font-mono text-[11px] tracking-[0.1em] text-white/70 uppercase mb-3">
                 // STRENGTH TEAM
               </p>
               <h2 className="font-sans font-black text-2xl tracking-[-0.025em] uppercase text-white mb-3">
                 Join the Strength Team
               </h2>
-              <p className="font-sans text-[13px] font-light text-white/60 leading-relaxed">
+              <p className="font-sans text-[13px] font-light text-white/80 leading-relaxed">
                 Be first to access new releases, limited drops, and training insights.
               </p>
             </div>
@@ -108,7 +124,7 @@ export default function EmailCapture() {
                 placeholder="EMAIL ADDRESS"
                 required
                 disabled={submitting}
-                className="w-full h-12 bg-transparent border border-white/10 px-4 font-mono text-[11px] tracking-[0.1em] text-white placeholder:text-white/20 outline-none transition-colors duration-150 focus:border-white/30 disabled:opacity-60"
+                className="w-full h-12 bg-transparent border border-white/10 px-4 font-mono text-[11px] tracking-[0.1em] text-white placeholder:text-white/60 outline-none transition-colors duration-150 focus:border-white/30 disabled:opacity-60"
               />
               <button
                 type="submit"
