@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Returns & Refunds | Alpha Omega Strength Team",
+  title: "Returns & Refunds",
   description:
     "Our return window, eligibility, and refund process for orders from Alpha Omega Strength Team.",
 };

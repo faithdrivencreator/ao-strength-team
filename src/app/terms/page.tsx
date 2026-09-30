@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Alpha Omega Strength Team",
+  title: "Terms of Service",
+  alternates: { canonical: "/terms" },
   description:
     "The terms governing your use of aostrengthteam.store and any purchases made through the site.",
 };

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Alpha Omega Strength Team",
+  title: "Privacy Policy",
+  alternates: { canonical: "/privacy" },
   description:
     "How Alpha Omega Strength Team collects, uses, and protects your personal information.",
 };
