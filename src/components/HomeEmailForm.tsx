@@ -63,10 +63,6 @@ export default function HomeEmailForm({ variant = "transparent" }: HomeEmailForm
     <motion.form
       onSubmit={handleSubmit}
       className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: 0.4 }}
     >
       <div className="flex-1 flex flex-col gap-2">
         <input
