@@ -80,9 +80,9 @@ export default function StoreHome({ latestPosts = [] }: { latestPosts?: BlogPost
 
       {/* The drop */}
       <section className="max-w-[1440px] w-full mx-auto px-5 md:px-10 py-14 md:py-20">
-        <div className="flex items-end justify-between gap-4">
+        <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
           <h2 className="font-sans font-black uppercase tracking-tight text-3xl md:text-5xl leading-none">The Launch Collection</h2>
-          <Link href="/shop" className="inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.14em] text-white underline-offset-4 hover:underline">
+          <Link href="/shop" className="inline-flex shrink-0 whitespace-nowrap items-center gap-2 font-mono text-[12px] uppercase tracking-[0.14em] text-white underline-offset-4 hover:underline">
             View all <Arrow />
           </Link>
         </div>

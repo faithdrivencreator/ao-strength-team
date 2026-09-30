@@ -61,6 +61,11 @@ export default function ChatWidget() {
   // On product pages keep the launcher icon-only on phones so it covers less
   // of the buy box; the sticky add-to-bag bar sits above it when shown.
   const onProductPage = (usePathname() ?? "").startsWith("/products/");
+  // Phones: the floating launcher covered size buttons, prices and card text
+  // (Vern review 2026-09-29). Below md it stays hidden until the visitor
+  // reaches the end of the page, where it sits in an empty strip reserved
+  // under the footer (above the sticky add-to-bag bar on product pages).
+  const [atPageEnd, setAtPageEnd] = useState(false);
   const [input, setInput] = useState("");
 
   const { messages, sendMessage, status, error } = useChat({ transport });
@@ -73,6 +78,23 @@ export default function ChatWidget() {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
+
+  useEffect(() => {
+    function check() {
+      const doc = document.documentElement;
+      setAtPageEnd(doc.scrollHeight - (window.scrollY + window.innerHeight) <= 24);
+    }
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+    const ro = new ResizeObserver(check);
+    ro.observe(document.body);
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+      ro.disconnect();
+    };
+  }, []);
 
   // Focus the input when the panel opens.
   useEffect(() => {
@@ -114,6 +136,9 @@ export default function ChatWidget() {
 
   return (
     <>
+      {/* Phones: empty strip below the footer that the launcher sits in at the page end */}
+      <div aria-hidden="true" className={`md:hidden bg-black ${onProductPage ? "h-40" : "h-24"}`} />
+
       {/* Help bubble - a one-time nudge in AO's voice, above the launcher */}
       {!open && showBubble && (
         <div className="ao-bubble-in fixed bottom-[84px] right-5 sm:bottom-[88px] sm:right-6 z-[60] w-[238px]">
@@ -166,7 +191,7 @@ export default function ChatWidget() {
         <button
           onClick={openChat}
           aria-label="Open chat with Caleb, the AO Strength guide"
-          className={`ao-caleb-glow fixed right-5 sm:right-6 z-[60] flex items-center gap-2 rounded-full bg-military transition-transform hover:scale-105 active:scale-95 ${onProductPage ? "bottom-5 p-3 md:bottom-6 md:px-4 md:py-3" : "bottom-5 sm:bottom-6 px-4 py-3"}`}
+          className={`ao-caleb-glow fixed right-5 sm:right-6 z-[60] flex items-center gap-2 rounded-full bg-military transition-transform hover:scale-105 active:scale-95 ${onProductPage ? "bottom-[84px] p-3 md:bottom-6 md:px-4 md:py-3" : "bottom-5 md:bottom-6 px-4 py-3"} ${atPageEnd ? "" : "max-md:hidden"}`}
           style={{ border: `1px solid ${CREAM}33` }}
         >
           <svg
