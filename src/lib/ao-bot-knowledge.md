@@ -58,7 +58,7 @@ Do not:
 ### Example On-Brand Bot Sentences
 
 1. "The Warpaint Collection is built on Psalm 144:1: He trains my hands for war, my fingers for battle. That is what the mark on the chest represents."
-2. "Short Sleeve is $29.99. Long Sleeve is $34.99. Both are the same heavyweight cotton, same print."
+2. "Short Sleeve is $29.99. Long Sleeve is $34.99. Same print on both."
 3. "If you are between sizes, the standard fit runs true to size. Go up one if you prefer room to train."
 4. "Ten percent of your order goes to the charity you choose at checkout. That is the tithe model - built in, not an afterthought."
 5. "Cornerstone is for the ones whose foundation does not move. The boxed Alpha-cross-Omega emblem says it plainly."
@@ -70,7 +70,7 @@ Do not:
 
 ### Fabric and Construction Standard
 
-All three main collections (Warpaint, Unbreakable, Cornerstone) are built on heavyweight cotton in the Warm Stone series. The fabric standard is 200+ GSM heavyweight cotton - the same spec as brands charging twice the price. The Cornerstone Crop is a different fabric (see below). Specific blend percentages for the main collections are not specified in the repo beyond the 200+ GSM heavyweight cotton standard.
+All three main collections (Warpaint, Unbreakable, Cornerstone) are part of the Warm Stone series. The exact blank, fabric and weight for the main tees are still being confirmed with our print partner. Do not describe them as heavyweight and do not quote a GSM or blend. If a customer asks, say the exact fabric and weight are being confirmed and will be posted on the product page, and point them to the size guide on the product page. The Cornerstone Crop is a different fabric (see below).
 
 Size range for the main collections: S, M, L, XL, 2XL, 3XL.
 
@@ -82,13 +82,13 @@ The "Oversized Box" style is an additional option offered within each collection
 
 ### Collection 1: AO Warpaint
 
-**What it is:** The most expressive of the three collections. Features a hand-painted ALPHA OMEGA mark on heavyweight cotton. Built for the ones who go to war every day and know who wins.
+**What it is:** The most expressive of the three collections. Features a hand-painted ALPHA OMEGA mark, small on the chest and big across the back. Built for the ones who go to war every day and know who wins.
 
 **Scripture:** "He trains my hands for war, my fingers for battle." - Psalm 144:1
 
 **What it stands for:** The fight earned. Not the performance of strength, but the actual practice of it.
 
-**Description:** Hand-painted ALPHA OMEGA mark on heavyweight cotton. Available in Short Sleeve and Long Sleeve, ten colorways across the Warm Stone series.
+**Description:** Hand-painted ALPHA OMEGA mark, small on the chest and big across the back. Available in Short Sleeve and Long Sleeve, ten colorways across the Warm Stone series.
 
 **Prices:**
 - Short Sleeve: $29.99
@@ -135,7 +135,7 @@ The "Oversized Box" style is an additional option offered within each collection
 
 **What it stands for:** Endurance under load. Strength that does not break.
 
-**Description:** Forged for the ones who do not bend. Heavyweight cotton, Warm Stone Series. Available in Short Sleeve and Long Sleeve across the Warm Stone series.
+**Description:** Forged for the ones who do not bend. Warm Stone Series. Available in Short Sleeve and Long Sleeve across the Warm Stone series.
 
 **Prices:**
 - Short Sleeve: $29.99
@@ -173,13 +173,13 @@ Note: additional colorways may be added as the collection expands. Direct the sh
 
 ### Collection 3: AO Cornerstone
 
-**What it is:** A clean, boxed Alpha-cross-Omega emblem pressed into heavyweight cotton. Built for the ones whose foundation does not move. The Cornerstone collection is the brand's identity made into a garment.
+**What it is:** A clean, boxed Alpha-cross-Omega emblem. Built for the ones whose foundation does not move. The Cornerstone collection is the brand's identity made into a garment.
 
 **Scripture:** "The stone the builders rejected has become the cornerstone." - Psalm 118:22
 
 **What it stands for:** The foundation. The reminder that Christ is the cornerstone - the rejected stone that holds everything else up.
 
-**Description:** A clean boxed ALPHA, cross, OMEGA emblem pressed into heavyweight cotton, built for the ones whose foundation does not move. Available in Short Sleeve and Long Sleeve across the Warm Stone series.
+**Description:** A clean boxed ALPHA, cross, OMEGA emblem, built for the ones whose foundation does not move. Available in Short Sleeve and Long Sleeve across the Warm Stone series.
 
 **Prices:**
 - Short Sleeve: $29.99
@@ -227,7 +227,7 @@ Note: additional colorways may be added as the collection expands. Direct the sh
 
 **Scripture:** "The stone the builders rejected has become the cornerstone." - Psalm 118:22
 
-**Fabric:** 65/35 poly-viscose blend. Softer, flowing fabric - different from the heavyweight cotton of the main collections.
+**Fabric:** 65/35 poly-viscose blend. Softer, flowing fabric - different from the main collection tees.
 
 **Price:** $25.99 (single price; no sleeve variation - the Crop is one style)
 
@@ -561,7 +561,7 @@ AO publishes a faith-and-training blog called The Journal at /blog. A new articl
 | Return refund window | Within 5 business days of receipt |
 | Women's item | AO Cornerstone Crop (65/35 poly-viscose, S-2XL, 3 colorways) |
 | Brand name source | Revelation 22:13 - Christ as the Alpha and the Omega |
-| Fabric standard (main tees) | Heavyweight cotton, 200+ GSM |
+| Fabric (main tees) | Being confirmed with our print partner; no weight or GSM claim |
 | Fabric (Crop Top) | 65/35 poly-viscose |
 | Size range (main tees) | S through 3XL |
 | Size range (Crop Top) | S through 2XL |
